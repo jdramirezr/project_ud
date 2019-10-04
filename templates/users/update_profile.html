@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+<title>@{{ request.user.username }} | Calculo datos</title>
+{% endblock %}
+
+{% block container %}
+
+<form action="{% url 'calculate_address' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+
+
+
+    </div>
+    <div id="mapid" class="form-group">
+            <script>
+                var mymap = L.map('mapid').setView([4.60972222222, -74.0816666667], 13);
+                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1IjoianVhbnBlcnJvIiwiYSI6ImNrMGs1YWcweTA1a2kzYnVwZTRzbm5vbWoifQ.JW2OcVZdik5hdffJ_uRdJg'
+                }).addTo(mymap);
+                var marker = L.marker([4.60972222222, -74.0816666667]).addTo(mymap);
+                var polygon = L.polygon([
+                    [4.61, -74.09],
+                    [4.615, -74.095],
+                    [4.615, -74.1]
+                ]).addTo(mymap);
+                var polygon2 = L.polygon([
+                    [4.71, -74.19],
+                    [4.715, -74.195],
+                    [4.715, -74.2]
+                ],{color: 'red'}).addTo(mymap);
+            </script>
+        </div>
+        <input class="form-control" type="text" placeholder="Dirección" name="address" />
+        <button type="submit" class="btn btn-primary btn-block mt-5">Ubicar</button>
+
+</form>
+
+
+
+
+
+
+
+
+<!--
+<div class="container">
+
+    <div class="row justify-content-md-center">
+        <div class="col-6 p-4" id="profile-box">
+
+
+
+            <form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- <div class="media">
+                    {% if profile.picture %}
+                        <img src="{{ profile.picture.url }}" class="rounded-circle" height="50" />
+                    {% else%}
+                        <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
+                    {% endif %}
+
+                    <div class="media-body">
+                        <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
+                        <p class="ml-4"><input type="file" name="picture"></p>
+                    </div>
+                </div>
+
+                {% for error in form.picture.errors %}
+                <div class="alert alert-danger">
+                    <b>Picture: </b>{{ error }}
+                </div>
+                {% endfor %}
+
+                <hr><br> -->
+
+<!--
+                {# Website field #}
+                <div class="form-group">
+                    <label>Website</label>
+                    <input
+                        class="form-control {% if form.website.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="website"
+                        placeholder="Website"
+                        value="{% if form.errors %}{{ form.website.value }}{% else %}{{ profile.website }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.website.errors %}
+                            {{ error }}
+                        {% endfor%}
+                    </div>
+                </div>
+
+                {# Biography field #}
+                <div class="form-group">
+                    <label>Biography</label>
+                    <textarea
+                        class="form-control {% if form.biography.errors %}is-invalid{% endif %}"
+                        name="biography"
+                    >{% if form.errors %}{{ form.biography.value }}{% else %}{{ profile.biography }}{% endif %}</textarea>
+
+                    <div class="invalid-feedback">
+                        {% for error in form.biography.errors %}
+                            {{ error }}
+                        {% endfor%}
+                    </div>
+                </div>
+
+                {# Phone number field #}
+                <div class="form-group">
+                    <label>Nombre del propietario</label>
+                    <input
+                        class="form-control {% if form.name_owner.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="name_owner"
+                        placeholder="Nombre propietario"
+                        value="{% if form.errors %}{{ form.name_owner.value }}{% else %}{{ profile.name_owner }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.name_owner.errors %}
+                            {{ error }}
+                        {% endfor%}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+            </form>
+        </div>
+    </div>
+</div> --> -->
+
+{% endblock %}
