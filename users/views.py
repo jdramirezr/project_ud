@@ -14,10 +14,14 @@ from users.models import Profile
 
 # Forms
 from users.forms import ProfileForm
+from geopy.geocoders import Nominatim
 
 from googlemaps import Client as GoogleMaps
 from django.http import HttpResponse
 
+
+import socket
+from ip2geotools.databases.noncommercial import DbIpCity
 
 
 @login_required
@@ -100,13 +104,30 @@ def new(request):
 def calculate_address(request):
 
     if request.method == 'POST':
-        address = request.POST['address']
-        gmaps = GoogleMaps('AIzaSyBxoCjWLd69Ryt2AnFrqPEvB6LYC_mWNdM')
-        lat, lng = gmaps.address_to_latlng(address)
-        print('+++'*55)
-        return HttpResponse(lat,lng)
+        try:
+            hostname = socket.gethostname()
+            IPAddr = socket.gethostbyname(hostname)
+            # print(DbIpCity.get(IPAddr, api_key='free'))
+
+            print('++++++++++++++++++++++++++++++++++++++++++')
+            print("Your Computer Name is:" + hostname)
+            print("Your Computer IP Address is:" + IPAddr)
+
+            # print(response.latitude, response.latitude)
+            # print(response.to_json())
+            geolocator = Nominatim(user_agent="specify_your_app_name_here")
+            location = geolocator.geocode(request.POST['address'])
+            print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+            # print('///////////////////////////////////////')
+            # print(location.address)
+
+            # print(location.latitude, location.longitude)
+            return HttpResponse(location.latitude, location.longitude)
+
+        except:
+            return HttpResponse('No se pudo encontrar la direccion')
     else:
-        return HttpResponse('paila')
+        return HttpResponse('fall el internet')
 
 @login_required
 def logout_view(request):
