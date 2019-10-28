@@ -21,7 +21,7 @@ from django.http import HttpResponse
 
 
 import socket
-from ip2geotools.databases.noncommercial import DbIpCity
+
 
 
 @login_required
