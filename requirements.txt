@@ -1,3 +1,4 @@
 geopy
 googlemaps
-Django
+Pillow
+Django==2.2.3
