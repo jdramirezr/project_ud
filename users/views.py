@@ -51,7 +51,9 @@ def update_profile(request):
         context={
             'profile': profile,
             'user': request.user,
-            'form': form
+            'form': form,
+            'lat': 4.715757,
+            'long': -74.1095727
         }
     )
 
@@ -104,30 +106,16 @@ def new(request):
 def calculate_address(request):
 
     if request.method == 'POST':
-        try:
-            hostname = socket.gethostname()
-            IPAddr = socket.gethostbyname(hostname)
-            # print(DbIpCity.get(IPAddr, api_key='free'))
+        geolocator = Nominatim(user_agent="users")
+        location = geolocator.geocode(request.POST['address'])
+        if location:
+            a = location.latitude
+            b = location.longitude
+            return render(request, 'users/update_profile.html', {'lat': a, 'long': b})
+        return render(request, 'users/update_profile.html', {'error': 'No se pudo encontrar la direccion'})
 
-            print('++++++++++++++++++++++++++++++++++++++++++')
-            print("Your Computer Name is:" + hostname)
-            print("Your Computer IP Address is:" + IPAddr)
-
-            # print(response.latitude, response.latitude)
-            # print(response.to_json())
-            geolocator = Nominatim(user_agent="specify_your_app_name_here")
-            location = geolocator.geocode(request.POST['address'])
-            print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-            # print('///////////////////////////////////////')
-            # print(location.address)
-
-            # print(location.latitude, location.longitude)
-            return HttpResponse(location.latitude, location.longitude)
-
-        except:
-            return HttpResponse('No se pudo encontrar la direccion')
     else:
-        return HttpResponse('fall el internet')
+        return render(request, 'users/update_profile.html', {'error': 'No se pudo encontrar la direccion'})
 
 @login_required
 def logout_view(request):
