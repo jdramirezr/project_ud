@@ -22,7 +22,7 @@ SECRET_KEY = 'g%#mue@@9+%3+q!e7b0%eh9dg2=kbxs-#35(h5!em)fz&2!=2$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # 'vulnerabilidadsismica.pythonanywhere.com'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tesisconstruccion.pythonanywhere.com']
 
 
 # Application definition

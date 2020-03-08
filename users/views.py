@@ -15,10 +15,8 @@ from users.models import Process
 from users.area import areas
 # Forms
 from users.forms import ProfileForm
-from geopy.geocoders import Nominatim
 from matplotlib.path import Path
 
-from googlemaps import Client as GoogleMaps
 from django.http import HttpResponse
 
 
@@ -253,19 +251,6 @@ def calculate_address(request):
             print(process)
             return render(request, 'users/finish.html', {'message': 'Proceso correcto', 'status': 'success'})
 
-
-    #     geolocator = Nominatim(user_agent="users")
-    #     location = geolocator.geocode(request.POST['address'])
-    #     if location:
-    #         print('7777777777777777777777777777777777777777777777')
-    #         print(a,b)
-    #         a = location.latitude
-    #         b = location.longitude
-    #         return render(request, 'users/update_profile.html', {'lat': a, 'long': b})
-    #     return render(request, 'users/update_profile.html', {'error': 'No se pudo encontrar la direccion'})
-
-    # else:
-    #     return render(request, 'users/update_profile.html', {'error': 'No se pudo encontrar la direccion'})
 
 @login_required
 def logout_view(request):
