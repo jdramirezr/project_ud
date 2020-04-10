@@ -15,11 +15,11 @@
                     </a>
                 </li> -->
 
-                <!-- <li class="nav-item nav-icon">
-                    <a href="">
-                        <i class="fas fa-plus"></i>
+                <li class="nav-item nav-icon">
+                    <a href="{% url "page" %}">
+                        <i class="fas fa-home"></i>
                     </a>
-                </li> -->
+                </li>
 
                 <li class="nav-item nav-icon">
                     <a href="{% url "logout" %}">
@@ -31,3 +31,43 @@
         </div>
     </div>
 </nav>
+
+
+
+
+<div class="row" id="placa_0">
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label>Ancho X:</label>
+            <input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label>Ancho Y:</label>
+            <input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label># de Placas:</label>
+            <input class="form-control" type="number" name="num_placa_0" min="0" required>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label>Tipo de Placa:</label>
+                <select class="form-control" name="type_placa" id="type_placa" required>
+                <option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option>
+                <option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option>
+                <option name="Placa_Facil" value="Placa_Facil">Facil</option>
+            </select>
+        </div>
+    </div>
+        <div class="col-sm-2">
+            <div class="form-group" id="p">
+                <span class="more_information" id="mas_placas"><u>Agregar más filas</u></span>
+            </div>
+        </div>
+    </div>
+</div>
