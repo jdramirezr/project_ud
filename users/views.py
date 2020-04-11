@@ -102,6 +102,18 @@ def signup(request):
 def new(request):
     if request.method == 'POST':
         return render(request, 'users/signup.html')
+    else:
+        return render(request, 'users/signup.html')
+
+def page(request):
+    if request.method == 'GET':
+        return render(request, 'index.html')
+
+@login_required
+def stadistic(request):
+    print(request.method)
+    if request.method == 'GET':
+        return render(request, 'stadistic.html')
 
 def calculate_address(request):
 
@@ -256,4 +268,7 @@ def calculate_address(request):
 def logout_view(request):
     """Logout a user."""
     logout(request)
-    return redirect('login')
+    return redirect('page')
+
+def weight(request):
+    return render(request, 'users/weight_calculation.html')
