@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
   <!-- <link rel="stylesheet" href="/static/css/main.css" /> -->
 
@@ -26,10 +27,10 @@
 
 <body>
 
-<div style="width: 1100px;  height:60px;" id="main-navbar">
+<div style="width: 100%;  height:60px;" id="main-navbar">
 
 </div>
-<h1 id="title_process">Proceso de calculo de vulnerabilidad sismica</h1>
+<h1 id="title_process">Proceso de calculo de vulnerabilidad sísmica</h1>
 <form id="regForm" action="/action_page.php">
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
@@ -395,13 +396,14 @@
 
     </div>
   </div>
-
   <div style="overflow:auto;">
-    <div style="float:right;">
+    <div class="next-button" style="float:left;">
+        <br>
       <button type="button" class="btn btn-primary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
+
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
@@ -2355,7 +2357,7 @@ function fixStepIndicator(n) {
           margin: 100px auto;
           font-family: Raleway;
           padding: 40px;
-          width: 70%;
+          width: 100%;
           min-width: 300px;
         }
 

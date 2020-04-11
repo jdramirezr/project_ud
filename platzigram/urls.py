@@ -25,7 +25,7 @@ urlpatterns = [
     path('users/new/', users_views.new, name='new'),
     path('users/calculate_address/', users_views.calculate_address, name='calculate_address'),
     path('users/me/profile/', users_views.update_profile, name='update_profile'),
-    path('page/', users_views.page, name='page'),
+    path('', users_views.page, name='page'),
     path('stadistic/', users_views.stadistic, name='stadistic'),
     path('weight_calculation/', users_views.weight, name='weight'),
 
