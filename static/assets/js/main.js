@@ -46,7 +46,7 @@
 			$(
 				'<div id="titleBar">' +
 					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo').html() + '</span>' +
+					'<span class="title">' + 'Proceso de vulnerabilidad sísmica' + '</span>' +
 				'</div>'
 			)
 				.appendTo($body);

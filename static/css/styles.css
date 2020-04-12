@@ -1,11 +1,64 @@
-.tab .container {
+/* .tab .container {
     margin-right: 0;
     margin-left: 0;
     padding-right: 0;
     padding-left: 0;
-}
+} */
 
 .next-button {
     padding-right: 15px;
     padding-left: 15px;
+}
+
+/* .tab .juan-container {
+    margin: 0 auto;
+    width: 50%;
+} */
+
+.tab-juan {
+    display: flex;
+    position: relative;
+}
+
+.regForm2 {
+    --Example: 0px;
+    position: relative;
+    width: calc(100% - var(--Example)/2);
+    padding: 50px 10%;
+}
+
+#regForm {
+    background-color: white;
+    position: relative;
+    display: grid;
+    font-family: Raleway;
+    padding-bottom: 40px;
+}
+
+#lat_long {
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+#map {
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.next-button {
+    text-align: center;
+}
+
+.my-btn {
+    width: 160px;
+    height: 40px;
+    font-size: 20px;
+}
+
+
+#profile-box3, #profile-box2, #profile-box1 {
+    width: 100%;
+    margin: 0 auto;
 }
