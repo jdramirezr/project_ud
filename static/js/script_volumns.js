@@ -1,6 +1,6 @@
 $(document).ready(function(){
     console.log('///////')
-    $(document).on ("click", '#type_placa', function( event ){
+    $(document).on ("change", '#type_placa', function( event ){
         event.preventDefault();
         console.log($('#type_placa').serialize().split("=")[1])
         if ($('#type_placa').serialize().split("=")[1] == "Placa_Facil"){
@@ -25,7 +25,7 @@ $(document).ready(function(){
 
     })
 
-    $(document).on ("click", '#info', function( event ){
+    $(document).on ("mouseover", '#info', function( event ){
         event.preventDefault();
         console.log('info!!!!!')
         var url="/static/images/placa.jpg";
