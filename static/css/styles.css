@@ -24,14 +24,15 @@
     --Example: 0px;
     position: relative;
     width: calc(100% - var(--Example)/2);
-    text-align: center;
-    padding: 20px;
+    padding: 50px 10%;
 }
 
 #regForm {
     background-color: white;
     position: relative;
     display: grid;
+    font-family: Raleway;
+    padding-bottom: 40px;
 }
 
 #lat_long {
@@ -59,6 +60,5 @@
 
 #profile-box3, #profile-box2, #profile-box1 {
     width: 100%;
-    text-align: center;
     margin: 0 auto;
 }
