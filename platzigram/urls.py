@@ -23,10 +23,11 @@ urlpatterns = [
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup, name='signup'),
     path('users/new/', users_views.new, name='new'),
-    path('users/calculate_address/', users_views.calculate_address, name='calculate_address'),
-    path('users/me/profile/', users_views.update_profile, name='update_profile'),
+    path('users/calculate_process/', users_views.calculate_process, name='calculate_process'),
     path('', users_views.page, name='page'),
-    path('stadistic/', users_views.stadistic, name='stadistic'),
-    path('weight_calculation/', users_views.weight, name='weight'),
+    path('users/info', users_views.info, name='info'),
+    path('users/info_construccion', users_views.info_construccion, name='info_construccion'),
+    path('users/stadistic/', users_views.stadistic, name='stadistic'),
+    path('users/weight_calculation/', users_views.weight, name='weight'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

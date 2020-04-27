@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('#type_construccion').html('<option selected></option><option name="Muros_de_carga" value="Muros_de_carga">Muros de carga</option><option name="Sistema_combinado" value="Sistema_combinado">Sistema combinado</option><option name="Sistema_portico" value="Sistema_portico">Sistema portico</option><option name="Sistema_dual" value="Sistema_dual">Sistema dual</option>')
     $('#type_construccion').click(function( date ) {
         event.preventDefault();
         console.log('&&&&&&&&&&&&&&&&&&')

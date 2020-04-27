@@ -6,11 +6,12 @@
 -->
 <html>
 	<head>
-		<title>Landed by HTML5 UP</title>
+		<title>UD</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/static/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/static/assets/css/noscript.css" /></noscript>
+
 	</head>
 	<body class="is-preload landing">
 		<div id="page-wrapper">
@@ -20,24 +21,7 @@
 					<!-- <h1 id="logo"><a href="index.html">Landed</a></h1> -->
 					<nav id="nav">
 						<ul>
-							<li>
-								<a href="/stadistic/">Estadísticas</a>
-								<!-- <ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul> -->
-							</li>
-							<li><a href="/users/me/profile/">Calcular Processo</a></li>
+							<li><a href="/users/calculate_process/">Calcular Processo</a></li>
 
 							<li><a href="/users/login/" class="">Ingresar</a></li>
 						</ul>
@@ -46,17 +30,17 @@
 
 			<!-- Banner -->
 				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>Proceso de vulnerabilidad sísmica</h2>
-							<p>Plataforma diseñada para determinar la vulnerabilidad<br />
-							sisimica de viviendas que no cumplen la NSR-10.</p>
-						</header>
-						<span class="image"><img  class="img-circle" src="/static/images/mapa.png" alt="" /></span>
+						<div class="content">
+							<header>
+								<h2>Proceso de vulnerabilidad sísmica</h2>
+								<p>Plataforma diseñada para determinar la vulnerabilidad en viviendas</p>
+								<br></br>
+							</header>
+							<span class="image"><img src="/static/images/mapa.png" alt="" /></span>
+						</div>
+						<a href="#one" class="goto-next scrolly">Next</a>
+					</section>
 
-					</div>
-					<a href="#one" class="goto-next scrolly">Next</a>
-				</section>
 
 			<!-- One -->
 				<section id="one" class="spotlight style1 bottom">
@@ -66,23 +50,21 @@
 							<div class="row">
 								<div class="col-4 col-12-medium">
 									<header>
-										<h2>Odio faucibus ipsum integer consequat</h2>
-										<p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
+										<h2>¿Su vivienda está bien construida?</h2>
+										<p>Determine la vulnerabilidad sísmica de una vivienda en 5 minutos</p>
 									</header>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-									Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-									nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-									augue varius tempus lobortis porttitor accumsan consequat
-									adipiscing lorem dolor.</p>
+									<p>
+									La plataforma determina el índice de vulnerabilidad de viviendas informales en la ciudad de
+									Bogotá, implementando la metodología de la Asociación Colombiana de
+									Ingeniería Sísmica y parte del Reglamento Colombiano de Construcción Sismo
+									Resistente (NSR-10) que estable unos parámetros para emplear en un análisis
+									más detallado de la vulnerabilidad sísmica de viviendas que fueron construidas
+									antes de este reglamento.</p>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-									adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-									Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-									mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-									ipsum dolor nullam.</p>
+									<p>Para el análisis del índice de vulnerabilidad solo se tendrán en cuenta las edificaciones de grupo de uso I.</p>
 								</div>
 							</div>
 						</div>
@@ -92,15 +74,15 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="/static/images/pic03.jpg" alt="" /></span>
+					<span class="image fit main"><img src="/static/images/barrio.png" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>Interdum amet non magna accumsan</h2>
-							<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+							<h2>En Colombia más del 50% de las viviendas son de origen informal</h2>
+							<p>Datos registrados por el DANE</p>
 						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+						<p>Muchas de estas viviendas están ubicadas en zonas de riesgo sísmico medio-alto, por lo que es muy probable que sean vulnerables ante la ocurrencia de un sismo. </p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="{% url 'info' %}" class="button">Leer Más</a></li>
 						</ul>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -108,15 +90,15 @@
 
 			<!-- Three -->
 				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="/static/images/pic04.jpg" alt="" /></span>
+					<span class="image fit main bottom"><img src="/static/images/construccion" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>Interdum felis blandit praesent sed augue</h2>
-							<p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
+							<h2>Introducción a conceptos estructurales</h2>
+							<p>Para personas con conocimientos en construcción</p>
 						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+						<p>Un breve resumen de conceptos, aclaración de términos, variables y  glosario que le ayudará a llenar el formulario para determinar la vulnerabilidad de la vivienda</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="{% url 'info_construccion' %}" class="button">Leer Más</a></li>
 						</ul>
 					</div>
 					<a href="#four" class="goto-next scrolly">Next</a>
@@ -142,9 +124,9 @@
 									<p>Contratista de obra, estudiante de tec. en construcciones civiles y emprendedor por la edificación sostenible</p>
 								</section>
 								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="image"><img id="edwar" src="/static/images/ivan.png" alt=""  width="150px" height="150px"/></span>
-									<h3>Ivan Rojas (Colaborador)</h3>
-									<p>Senior python Developer, cuenta con mas de 6 años de experiencia en big Data, data science y multiples tecnologias web</p>
+									<span class="image"><img id="edwar" src="/static/images/docente.png" alt=""  width="150px" height="150px"/></span>
+									<h3>Hector Pinzón (Colaborador)</h3>
+									<p>Ingeniero Civil, Docente de la universidad Distrital Francisco Jose de Caldas</p>
 								</section>
 							</div>
 						</div>
@@ -173,14 +155,11 @@
 				</section> -->
 
 			<!-- Footer -->
-				<footer id="footer">
+				<footer id="footer" style="height: 30px;">
 					<ul class="icons">
 						<li><a href="https://www.linkedin.com/in/juan-diego-ramirez-rojas-a25529129/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 						<li><a href="https://github.com/jdramirezr" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 					</ul>
-					<!-- <ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul> -->
 				</footer>
 
 		</div>
@@ -197,3 +176,15 @@
 
 	</body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script>
+	var option = {{ process }}
+	if (option){
+		Swal.fire(
+		'{{ message }}',
+		'{{ result }}',
+		'{{ status }}'
+		)
+	}
+</script>

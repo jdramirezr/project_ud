@@ -1,42 +1,68 @@
-{% extends "users/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <title>Document</title>
+</head>
+<body class="h-100" id="base">
 
-{% block head_content %}
-<title>sign in</title>
-{% endblock%}
 
-{% block container %}
-    <div class="form-group" >
-        <h8>DETERMINACION DE VULNERABILIDA SISMICA</h8>
+    <div class="container h-100">
+
+        <div class="row h-100 justify-content-center align-items-center" id="test">
+            <div class="col-sm-12 col-md-5 col-lg-5 pt-2 pl-5 pr-5 pb-5" id="auth-container">
+
+                <img src="/static/img/descarga.png" class="img-fluid rounded mx-auto d-block pb-4" style="max-width: 60%;">
+                {% if error %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endif%}
+
+
+                <form method="POST" action="{% url "login" %}">
+                    {% csrf_token %}
+
+
+                    <div class="form-group">
+
+                        <input class="form-control" type="text" placeholder="Nombre de usario" name="username" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Contraseña" name="password" />
+                    </div>
+
+
+                    <button class="btn btn-primary btn-block mt-5" type="submit">Iniciar Sesion</button>
+
+
+                </form>
+                <form method="POST" action="{% url "new" %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link">¿Eres nuevo?</button>
+                </form>
+
+
+
+            </div>
+        </div>
     </div>
 
+</body>
+<style>
+    #auth-container{
+        background-color: #272833;
+        /* #272833 */
+        border-style: none;
+    }
+    #base {
+        background-color: #272833;
+    }
 
+</style>
+</html>
 
-    {% if error %}
-        <p class="alert alert-danger">{{ error }}</p>
-    {% endif%}
-
-
-    <form method="POST" action="{% url "login" %}">
-        {% csrf_token %}
-
-
-        <div class="form-group">
-
-            <input class="form-control" type="text" placeholder="Username" name="username" />
-        </div>
-
-        <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" name="password" />
-        </div>
-
-
-        <button class="btn btn-primary btn-block mt-5" type="submit">Iniciar Sesion</button>
-
-
-    </form>
-    <form method="POST" action="{% url "new" %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-link">¿Eres nuevo?</button>
-    </form>
-
-{% endblock %}

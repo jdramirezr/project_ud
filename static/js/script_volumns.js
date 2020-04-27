@@ -4,18 +4,18 @@ $(document).ready(function(){
         event.preventDefault();
         console.log($('#type_placa').serialize().split("=")[1])
         if ($('#type_placa').serialize().split("=")[1] == "Placa_Facil"){
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div>')
         }
         if ($('#type_placa').serialize().split("=")[1] == "Placa_Maciza"){
 
             console.log("MACIZAAAAAAAAAAAAAAAAAAAAAAA")
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
 
         }
         if ($('#type_placa').serialize().split("=")[1] == "Placa_Aligerada"){
 
             console.log("ALIGERADAAAAAAAAAAAAAAA")
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa" id="type_placa" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa" id="type_placa" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
             $('#type_placa').html(`<option name="Placa_Aligerada" value="Placa_Aligerada" selected>Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option>`)
 
         }
@@ -45,14 +45,14 @@ $(document).ready(function(){
     $(document).on ("click", '#type_placa_facil', function( event ){
         if ($('#type_placa_facil').serialize().split("=")[1] == "Placa"){
 
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
         }
         if ($('#type_placa_facil').serialize().split("=")[1] == "Bloquelon"){
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
 
         }
         if ($('#type_placa_facil').serialize().split("=")[1] == "Perfil_Metalico"){
-            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
+            $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
 
         }
 
@@ -66,7 +66,7 @@ $(document).ready(function(){
         count = count + 1
         if (count < 3){
             var element = $('#profile-box1').html()
-            $('#profile-box1').html(`${element}<div class="row" id="placa_${count}"><div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_${count}" id="type_placa_${count}" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div>`)
+            $('#profile-box1').html(`${element}<div class="row" id="placa_${count}"><div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_${count}" id="type_placa_${count}" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div>`)
         }
     })
 
@@ -81,18 +81,18 @@ $(document).ready(function(){
         event.preventDefault();
         console.log($('#type_placa_1').serialize().split("=")[1])
         if ($('#type_placa_1').serialize().split("=")[1] == "Placa_Facil"){
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div>')
         }
         if ($('#type_placa_1').serialize().split("=")[1] == "Placa_Maciza"){
 
             console.log("MACIZAAAAAAAAAAAAAAAAAAAAAAA")
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
 
         }
         if ($('#type_placa_1').serialize().split("=")[1] == "Placa_Aligerada"){
 
             console.log("ALIGERADAAAAAAAAAAAAAAA")
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
             $('#type_placa_1').html(`<option name="Placa_Aligerada" value="Placa_Aligerada" selected>Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option>`)
 
         }
@@ -106,14 +106,14 @@ $(document).ready(function(){
     $(document).on ("click", '#type_placa_facil_1', function( event ){
         if ($('#type_placa_facil_1').serialize().split("=")[1] == "Placa"){
 
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
         }
         if ($('#type_placa_facil_1').serialize().split("=")[1] == "Bloquelon"){
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
 
         }
         if ($('#type_placa_facil_1').serialize().split("=")[1] == "Perfil_Metalico"){
-            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
+            $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_1" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_1" id="type_placa_facil_1" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
 
         }
 
@@ -129,18 +129,18 @@ $(document).ready(function(){
         event.preventDefault();
         console.log($('#type_placa_2').serialize().split("=")[1])
         if ($('#type_placa_2').serialize().split("=")[1] == "Placa_Facil"){
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div>')
         }
         if ($('#type_placa_2').serialize().split("=")[1] == "Placa_Maciza"){
 
             console.log("MACIZAAAAAAAAAAAAAAAAAAAAAAA")
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza" selected>Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="_placa" min="0" required></div></div>')
 
         }
         if ($('#type_placa_2').serialize().split("=")[1] == "Placa_Aligerada"){
 
             console.log("ALIGERADAAAAAAAAAAAAAAA")
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option selected></option><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>A</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>B</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>C</label><input class="form-control" type="number" name="vg_c_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>D</label><input class="form-control" type="number" name="vg_a_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>E</label><input class="form-control" type="number" name="vg_b_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group" id="p"><span class="more_information" id="info"><u>info</u></span></div></div>')
             $('#type_placa_2').html(`<option name="Placa_Aligerada" value="Placa_Aligerada" selected>Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil">Facil</option>`)
 
         }
@@ -154,14 +154,14 @@ $(document).ready(function(){
     $(document).on ("click", '#type_placa_facil_2', function( event ){
         if ($('#type_placa_facil_2').serialize().split("=")[1] == "Placa"){
 
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
         }
         if ($('#type_placa_facil_2').serialize().split("=")[1] == "Bloquelon"){
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" selected>Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/M2(kg)</label><input class="form-control" type="number" name="peso_bloquelon" step=".001" min="0" required></div></div>')
 
         }
         if ($('#type_placa_facil_2').serialize().split("=")[1] == "Perfil_Metalico"){
-            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
+            $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa_2" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-1"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil_2" id="type_placa_facil_2" required><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon" >Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico" selected>Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Cantidad:</label><input class="form-control count" type="number" name="num_placa_0" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Ml perfil</label><input class="form-control" type="number" name="ml_perfil" step=".001" min="0" required></div></div><div class="col-sm-1"><div class="form-group"><label>Peso/ml(kg)</label><input class="form-control" type="number" name="peso_ml_perfil" step=".001" min="0" required></div></div>')
 
         }
 
@@ -174,7 +174,7 @@ $(document).ready(function(){
         count_vigas = count_vigas + 1
 
         var element = $('#profile-box2').html()
-        $('#profile-box2').html(`${element}<div class="row" id="viga_${count_vigas}"><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="ancho_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Alto:</label><input class="form-control" type="number" name="alto_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="largo_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de vigas:</label><input class="form-control" type="number" name="numero_viga_${count_vigas}" min="0" required></div></div>`)
+        $('#profile-box2').html(`${element}<div class="row" id="viga_${count_vigas}"><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="ancho_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Alto:</label><input class="form-control" type="number" name="alto_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="largo_viga_${count_vigas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de vigas:</label><input class="form-control count" type="number" name="numero_viga_${count_vigas}" min="0" required></div></div>`)
 
 
     })
@@ -184,8 +184,289 @@ $(document).ready(function(){
         console.log(count_columnas)
         count_columnas = count_columnas + 1
         var element = $('#profile-box3').html()
-        $('#profile-box3').html(`${element}<div class="row" id="columna_${count_columnas}"><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="ancho_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Alto:</label><input class="form-control" type="number" name="alto_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="largo_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de columnas:</label><input class="form-control" type="number" name="numero_columna_${count_columnas}" min="0" required></div></div>`)
+        $('#profile-box3').html(`${element}<div class="row" id="columna_${count_columnas}"><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="ancho_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Alto:</label><input class="form-control" type="number" name="alto_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="largo_columna_${count_columnas}" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de columnas:</label><input class="form-control count" type="number" name="numero_columna_${count_columnas}" min="0" required></div></div>`)
 
+
+    })
+
+
+
+
+    $(document).on ("change", '#option_floor', function( event ){
+        if ($('#option_floor').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_floor', function( event ){
+                var url="/static/images/1_floor.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_floor', function( event ){
+                Swal.fire({html:'<ul><li>Forma geométrica de la edificación es regular y aproximadamente simetrica. </li><li>El largo es menor a 2.5 veces el ancho. </li><li>No tiene "entradas y salidas" como las que se muestran en las otras dos figuras, visto tanto en planta como en altura. </li></ul>'})
+            })
+
+        }
+        if ($('#option_floor').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_floor', function( event ){
+                var url="/static/images/2_floor.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_floor', function( event ){
+                Swal.fire({html:'<ul><li>Presenta algunas irregularidades en planta o en altura no muy pronunciadas.</li></ul>'})
+            })
+
+        }
+        if ($('#option_floor').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_floor', function( event ){
+                var url="/static/images/3_floor.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_floor', function( event ){
+                Swal.fire({html:'<ul><li>El largo es mayor que 3.5 veces el ancho. </li><l1>La forma de la edificacion es irregular, con entradas y salidas abruptas.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_wall', function( event ){
+        if ($('#option_wall').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_wall', function( event ){
+                var url="/static/images/1_wall.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_wall', function( event ){
+                Swal.fire({html:'<ul><li>Existen muros estructurales en las dos direcciones principales de la vivienda y estyos son confinados o reforzados.</li><li>Hay una longitud totalizada de muros en cada una de las direcciones principales al menos igual al valor dado por:<ul><li>Lo=(Mo*Ap)/t</li><li>Ap: Area en m2 de la planta (si la cuebierta es liviana, lamina, asbesto, cemento, ap se puede multiplicar por 0.67).</li><li>t: espesor de muros.</li></ul></li></ul>'})
+            })
+
+        }
+        if ($('#option_wall').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_wall', function( event ){
+                var url="/static/images/2_wall.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_wall', function( event ){
+                Swal.fire({html:'<ul><li>La mayoria de los muros se concentran en una sola direccion aunque existen unos o varios en la otra direccion.</li><li>La longitud de muros en la direccion de menor cantidad de muros es ligeramente inferior a la calculada con la formula anterior.</li></ul>'})
+            })
+
+        }
+        if ($('#option_wall').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_wall', function( event ){
+                var url="/static/images/3_wall.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_wall', function( event ){
+                Swal.fire({html:'<ul><li>Mas del 70% de los muros estan en una sola direccion.</li><li>hay muy pocos muros confinados o reforzados.</li><li>La longitud total de muros estructurales en cualquier direccion es mucho menor que la calculada con la ecuacion anterior.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_height', function( event ){
+        if ($('#option_height').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_height', function( event ){
+                var url="/static/images/1_height.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_height', function( event ){
+                Swal.fire({html:'<ul><li>La mayoria de los muros estructurales son continuos desde la cimentacion hasta la cubierta</li></ul>'})
+            })
+
+        }
+        if ($('#option_height').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_height', function( event ){
+                var url="/static/images/2_height.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_height', function( event ){
+                Swal.fire({html:'<ul><li>Algunos muros representan discontinuidades desde la cimentacion hasta la cubierta</li></ul>'})
+            })
+
+        }
+        if ($('#option_height').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_height', function( event ){
+                var url="/static/images/3_height.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_height', function( event ){
+                Swal.fire({html:'<ul><li>La mayoria de los muros no son continuos en altura desde su cimentacion hasta la cubierta.</li><li>Cambios de alineacion en el sistema de muros en direcion vertical.</li><li>Cambio de sistema de muros en pisos superiores a culomnas en el iso inferior.</li></ul>'})
+            })
+        }
+
+    })
+
+
+
+
+
+    $(document).on ("change", '#option_quality', function( event ){
+        if ($('#option_quality').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_quality', function( event ){
+                var url="/static/images/1_quality.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_quality', function( event ){
+                Swal.fire({html:'<ul><li>El mortero de la mayoría de las pegas esta entre 0.7 y 1.3 cm. </li><li>Las juntas son uniformes y continuas.</li><li>Hay juntas de buena calidad verticales y horizontales rodeando cada unidad de mampostería.</li><li>El mortero es de buena calidad y presentan buena adherencia con la pieza de mampostería</li></ul>'})
+            })
+
+        }
+        if ($('#option_quality').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_quality', function( event ){
+                var url="/static/images/2_quality.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_quality', function( event ){
+                Swal.fire({html:'<ul><li>El espesor de la mayoria de las pegas es mayor a 1.3 cm o menos de 0.7 cm.</li><li>Las juntas no son uniformes.</li><li>No existen juntas verticales o son de mala calidad.</li></ul>'})
+            })
+
+        }
+        if ($('#option_quality').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_quality', function( event ){
+                var url="/static/images/3_quality.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_quality', function( event ){
+                Swal.fire({html:'<ul><li>La pega es muy pobre entre los bloques, casi inexistente.</li><li>Poca regularidad en la alineación de las piezas.</li><li>El mortero es de muy mala calidad o evidencia separación con las piezas de mampostería.</li><li>No existen juntas verticales y/o horizontales en zonas del muro.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_location', function( event ){
+        if ($('#option_location').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_location', function( event ){
+                var url="/static/images/1_location.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_location', function( event ){
+                Swal.fire({html:'<ul><li>Las unidades de mampostería están trabadas.</li><li>Las unidades de mampostería son de buena calidad. No presentan agrietamientos importantes, nos hay piezas deterioradas o rotas.</li><li>Las piezas están colocadas de manera uniforme y continua hilada tras hilada.</li></ul>'})
+            })
+
+        }
+        if ($('#option_location').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_location', function( event ){
+                var url="/static/images/2_location.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_location', function( event ){
+                Swal.fire({html:'<ul><li>Algunas piezas están trabadas, mientras otras no lo están Siendo la mayoría de la primera clase.</li><li>Algunas piezas presentan agrietamiento o deterioro.</li><li>Algunas piezas están colocadas de manera uniforme y continua hilada tras hilada.</li></ul>'})
+            })
+
+        }
+        if ($('#option_location').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_location', function( event ){
+                var url="/static/images/3_location.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_location', function( event ){
+                Swal.fire({html:'<ul><li>Las unidades de mampostería NO están trabadas (petaca).</li><li>Las unidades de mampostería son de muy mala calidad. Se presentan agrietamientos importantes con piezas deterioradas o rotas.</li><li>Las piezas no están colocadas de manera uniforme y continua hiladas tras hiladas.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_materials', function( event ){
+        if ($('#option_materials').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_materials', function( event ){
+                var url="/static/images/1_materials.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_materials', function( event ){
+                Swal.fire({html:'<ul><li>El mortero no se deja rayar o desmoronar con un clavo o herramienta metálicas.</li><li>El concreto tiene buen aspecto, sin hormigueros y el acero no esta expuesto.</li><li>En los elementos de confinamiento en concreto reforzado, hay estribos abundantes y por lo menos 3 a 4 barras No 3, en sentido longitudinal.</li><li>El ladrillo es de buena calidad, no esta muy fisurado, quebrado, ni despegado y resiste caídas de por lo menos 2 metros de alto sin desintegrarse ni deteriorarse en forma apreciable.</li></ul>'})
+            })
+
+        }
+        if ($('#option_materials').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_materials', function( event ){
+                var url="/static/images/2_materials.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_materials', function( event ){
+                Swal.fire({html:'<ul><li>Se cumplen varios de los requisitos mencionados anteriormente.</li></ul>'})
+            })
+
+        }
+        if ($('#option_materials').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_materials', function( event ){
+                var url="/static/images/3_materials.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_materials', function( event ){
+                Swal.fire({html:'<ul><li>No se cumples mas de dos requisitos de los mencionados anteriormente.</li></ul>'})
+            })
+        }
 
     })
 
@@ -196,7 +477,432 @@ $(document).ready(function(){
 
 
 
-});
+    $(document).on ("change", '#option_confined_walls', function( event ){
+        if ($('#option_confined_walls').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_confined_walls', function( event ){
+                var url="/static/images/1_confined_walls.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_confined_walls', function( event ){
+                Swal.fire({html:'<ul><li>Todos los muros de mampostería de la vivienda están confinados con vigas y columnas de concreto reforzado alrededor de ellos.</li><li>El espaciamiento máximo entre elementos de confinamiento es del orden de 4m o la altura entre pisos.</li><li>Todos los elementos de confinamiento tienen refuerzo tanto longitudinal como transversal y esta adecuadamente dispuesto.</li><li>Las culatas y antepechos también están confinados.</li></ul>'})
+            })
 
+        }
+        if ($('#option_confined_walls').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_confined_walls', function( event ){
+                var url="/static/images/2_confined_walls.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_confined_walls', function( event ){
+                Swal.fire({html:'<ul><li>Algunos muros de la edificación no cumplen con los requisitos mencionados anteriormente.</li></ul>'})
+            })
+
+        }
+        if ($('#option_confined_walls').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_confined_walls', function( event ){
+                var url="/static/images/3_confined_walls.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_confined_walls', function( event ){
+                Swal.fire({html:'<ul><li>La mayoría de los muros de mampostería de la vivienda no tienen confinamiento mediante columnas y vigas de concreto reforzado.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_detail', function( event ){
+        if ($('#option_detail').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_detail', function( event ){
+                var url="/static/images/1_detail.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_detail', function( event ){
+                Swal.fire({html:'<ul><li>Las columnas y vigas tienen mas de 20 cm de espesor o mas de 400 cm2 de área transversal.</li><li>Las columnas y vigas tienen al menos 4 barras No 3 longitudinales y estribos espaciados a no mas de 10 a 15 cm.</li><li>Existe un buen contacto entre el muro de mampostería y los elementos de confinamiento.</li><li>El refuerzo longitudinal de las columnas y vigas debe estar adecuadamente anclado a sus extremos y a los elementos de la cimentación.</li></ul>'})
+            })
+
+        }
+        if ($('#option_detail').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_detail', function( event ){
+                var url="/static/images/2_detail.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_detail', function( event ){
+                Swal.fire({html:'<ul><li>No todas las columnas y vigas cumplen con los requisitos anteriores.</li></ul>'})
+            })
+
+        }
+        if ($('#option_detail').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_detail', function( event ){
+                var url="/static/images/3_detail.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_detail', function( event ){
+                Swal.fire({html:'<ul><li>La mayoría de las columnas y vigas de confinamiento no cumplen con los requisitos establecidos anteriormente.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_mooring', function( event ){
+        if ($('#option_mooring').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_mooring', function( event ){
+                var url="/static/images/1_mooring.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mooring', function( event ){
+                Swal.fire({html:'<ul><li>Existen vigas de amarre o de corona en concreto reforzado en todos los muros, parapetos, fachadas y culatas en mamposteria.</li></ul>'})
+            })
+
+        }
+        if ($('#option_mooring').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_mooring', function( event ){
+                var url="/static/images/2_mooring.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mooring', function( event ){
+                Swal.fire({html:'<ul><li>No todos los muros o elementos de mampostería disponen de vigas de amarre o de corona.</li></ul>'})
+            })
+
+        }
+        if ($('#option_mooring').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_mooring', function( event ){
+                var url="/static/images/3_mooring.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mooring', function( event ){
+                Swal.fire({html:'<ul><li>La vivienda no dispone de vigas de amarre o corona en los muros de elementos de mampostería</li></ul>'})
+            })
+        }
+
+    })
+
+
+
+
+
+
+    $(document).on ("change", '#option_characteristics', function( event ){
+        if ($('#option_characteristics').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_characteristics', function( event ){
+                var url="/static/images/1_characteristics.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_characteristics', function( event ){
+                Swal.fire({html:'<ul><li>Las aberturas en los muros estructurales totalizan menos del 35% del area total del muro.</li><li>La longitud total de aberturas en el muro corresponde a menos de la mitad de la longitud total del muro.</li><li>Existe una distancia desde el borde del muro hasta la abertura adyacente igual a la altura de la misma o 50 cm, la que sea mayor.</li></ul>'})
+            })
+
+        }
+        if ($('#option_characteristics').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_characteristics', function( event ){
+                var url="/static/images/2_characteristics.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_characteristics', function( event ){
+                Swal.fire({html:'<ul><li>No se cumplen algunos de los anteriores requisitos en algunos de los muros de la vivienda.</li></ul>'})
+            })
+
+        }
+        if ($('#option_characteristics').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_characteristics', function( event ){
+                var url="/static/images/3_characteristics.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_characteristics', function( event ){
+                Swal.fire({html:'<ul><li>Muy pocos o ningún muro estructural de la vivienda cumple con los requisitos anteriores.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_mezzanine', function( event ){
+        if ($('#option_mezzanine').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_mezzanine', function( event ){
+                var url="/static/images/1_mezzanine.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mezzanine', function( event ){
+                Swal.fire({html:'<ul><li>El entrepiso esta conformado por placas de concreto fundidas en el sitio o placas prefabricadas que funcionan de manera monolítica.</li><li>La placa de entrepiso se apoya de manera adecuada a los muros de soporte y proporciona continuidad y monolitismo.</li><li>La placa de entrepiso es continua, monolítica y uniforme en relación con los materiales que lo componen.</li></ul>'})
+            })
+
+        }
+        if ($('#option_mezzanine').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_mezzanine', function( event ){
+                var url="/static/images/2_mezzanine.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mezzanine', function( event ){
+                Swal.fire({html:'<ul><li>La placa de entrepiso no cumple con alguna de las anteriores consideraciones.</li></ul>'})
+            })
+
+        }
+        if ($('#option_mezzanine').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_mezzanine', function( event ){
+                var url="/static/images/3_mezzanine.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_mezzanine', function( event ){
+                Swal.fire({html:'<ul><li>La placa de entrepiso no cumple con varias de las consideraciones anteriores.</li><li>Los entrepisos estan conformados por madera o combinaciones de materiales (guadua, mortero, madera, concreto) y no proporcionan las caracteristicas de continuidad y amarre deseados.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_cover', function( event ){
+        if ($('#option_cover').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_cover', function( event ){
+                var url="/static/images/1_cover.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_cover', function( event ){
+                Swal.fire({html:'<ul><li>Existen tornillos, alambres o conexiones similares que amarran el techo a los muros.</li><li>Hay arriostramiento de las vigas y la distancia entre vigas no es muy grande.</li><li>La cubierta es liviana y esta debidamente amarrada y apoyada a la estructura de cubierta.</li></ul>'})
+            })
+
+        }
+        if ($('#option_cover').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_cover', function( event ){
+                var url="/static/images/2_cover.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_cover', function( event ){
+                Swal.fire({html:'<ul><li>Algunos de los anteriores requisitos se cumplen.</li></ul>'})
+            })
+
+        }
+        if ($('#option_cover').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_cover', function( event ){
+                var url="/static/images/3_cover.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_cover', function( event ){
+                Swal.fire({html:'<ul><li>La mayoría de los requisitos mencionados anteriormente no se cumplen.</li><li>La cubierta es pesada y no esta debidamente soportada o arriostrada.</li></ul>'})
+            })
+        }
+
+    })
+
+
+
+
+
+
+    $(document).on ("change", '#option_base', function( event ){
+        if ($('#option_base').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_base', function( event ){
+                var url="/static/images/1_base.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_base', function( event ){
+                Swal.fire({html:'<ul><li>La cimentación esta conformada por vigas corridas en concreto reforzado bajo los muros estructurales.</li><li>Las vigas de cimentacion conforman anillos amarrados.</li><li>Las vigas de cimentacion en concreto reforzado cumplen los requisitos por la NSR-10 en el titulo E.</li></ul>'})
+            })
+
+        }
+        if ($('#option_base').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_base', function( event ){
+                var url="/static/images/2_base.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_base', function( event ){
+                Swal.fire({html:'<ul><li>La cimentación no esta debidamente amarrada.</li><li>No se cumplen algunos de los requerimientos anteriores.</li></ul>'})
+            })
+
+        }
+        if ($('#option_base').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_base', function( event ){
+                var url="/static/images/3_base.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_base', function( event ){
+                Swal.fire({html:'<ul><li>La edificación no cuenta con una cimentacion adecuada de acuerdo con los requisitos anteriores.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_soil', function( event ){
+        if ($('#option_soil').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_soil', function( event ){
+                var url="/static/images/1_soil.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_soil', function( event ){
+                Swal.fire({html:'<ul><li>El suelo de la fundación es duro. Esto se puede saber cuando alrededor de la edificación no existen hundimientos, cuando no se evidencien arboles o postes inclinados, no se siente vibración cuando pasa un vehículo pesado cerca de la vivienda o cuando en general las viviendas no presentan agrietamientos o daños generalizados, especialmente grietas en los pisos o hundimientos y desniveles en el mismo.</li></ul>'})
+            })
+
+        }
+        if ($('#option_soil').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_soil', function( event ){
+                var url="/static/images/2_soil.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_soil', function( event ){
+                Swal.fire({html:'<ul><li>El suelo de la fundación es de mediana resistencia. Se puede presentar en general algunos hundimientos y vibraciones por el paso de vehículos pesados. Se pueden identificar algunos daños generalizados en viviendas o manifestaciones de hundimientos pequeños.</li></ul>'})
+            })
+
+        }
+        if ($('#option_soil').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_soil', function( event ){
+                var url="/static/images/3_soil.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_soil', function( event ){
+                Swal.fire({html:'<ul><li>El suelo de la fundación es blando o es arena suelta. Se sabe por el hundimiento en las zonas vecinas, se siente la vibración al paso de vehículos pesados y la vivienda ha presentado asentamientos considerables en el tiempo de construcción. La mayoría de las viviendas de la zona presentan agrietamientos y/o hundimientos.</li></ul>'})
+            })
+        }
+
+    })
+
+
+    $(document).on ("change", '#option_environment', function( event ){
+        if ($('#option_environment').serialize().split("=")[1] == "0"){
+            $(document).on ("click", '#info_img_environment', function( event ){
+                var url="/static/images/1_environment.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_environment', function( event ){
+                Swal.fire({html:'<ul><li>La topografía donde se encuentra la vivienda es plana o muy poco inclinada.</li></ul>'})
+            })
+
+        }
+        if ($('#option_environment').serialize().split("=")[1] == "1"){
+            $(document).on ("click", '#info_img_environment', function( event ){
+                var url="/static/images/2_environment.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_environment', function( event ){
+                Swal.fire({html:'<ul><li>La topografía donde se encuentra la casa tiene un angulo entre 20 a 30 grados de inclinación con la horizontal.</li></ul>'})
+            })
+
+        }
+        if ($('#option_environment').serialize().split("=")[1] == "2"){
+            $(document).on ("click", '#info_img_environment', function( event ){
+                var url="/static/images/3_environment.png";
+                Swal.fire({
+                    imageUrl: url,
+                    imageWidth: 1500,
+                    imageHeight: 200,
+                })
+            })
+            $(document).on ("click", '#info_descrip_environment', function( event ){
+                Swal.fire({html:'<ul><li>La vivienda se encuentra localizada en pendientes con una inclinación mayor de 30 grados con la horizontal.</li></ul>'})
+            })
+        }
+
+    })
+
+
+
+
+
+
+});
 
 

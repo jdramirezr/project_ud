@@ -28,7 +28,7 @@ class ProfileForm(forms.Form):
     type_construccion = forms.CharField(max_length=200, required=False)
     fuerzas_horizontales = forms.CharField(max_length=200, required=False)
     fuerzas_verticales = forms.FloatField(required=False)
-    type_property = forms.IntegerField(required=False)
+    type_property = forms.FloatField(required=False)
     irregular_long = forms.CharField(max_length=500, required=False)
     irregular_plant = forms.CharField(max_length=500, required=False)
     floors = forms.IntegerField(required=False)

@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>@pepe | Calculo datos</title>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/css/main.css" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+    <style>
+            #mapid { height: 180px;
+            width:100%;
+            height:400px;
+            }
+    </style>
 
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="/static/css/styles.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
-  <!-- <link rel="stylesheet" href="/static/css/main.css" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-  crossorigin=""></script>
-  <script src="/static/js/jquery.min.js"></script>
-  <script  type="text/javascript"  src="/static/js/script_volumns.js"></script>
-  <script  type="text/javascript"  src="/static/js/script.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script  type="text/javascript"  src="/static/js/script_volumns.js"></script>
+    <script  type="text/javascript"  src="/static/js/script.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <body>
 
 <div style="width: 100%;  height:60px;" id="main-navbar">
+    <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
+    left:50px;
+    top:17px;
+    font-weight: bold;""
+    ></a>
+    <a class="glyphicon glyphicon-log-out" href="{% url 'logout' %}" style="color: white;  position:relative;
+    left:80px;
+    top:17px;
+    font-weight: bold;""></a>
 
 </div>
-<br>
-<br>
+
 <h1 id="title_process">Proceso de calculo de vulnerabilidad sísmica</h1>
-<br>
-<br>
-<form id="regForm" action="/action_page.php">
+
+<form id="regForm" action="{% url 'calculate_process' %}" method="POST" enctype="multipart/form-data">
   <!-- One "tab" for each step in the form: -->
+  {% csrf_token %}
   <div class="tab">
     <div class="regForm2">
       <div class="col-lg-12" id="property">
@@ -53,7 +74,7 @@
                               type="text"
                               name="name_owner"
                               required
-                              value="666"
+
                             />
                       </div>
 
@@ -67,7 +88,7 @@
                           type="number"
                           name="phone_number"
                           required
-                          value="666"
+
                         />
                       <div class="invalid-feedback">
                           {% for error in form.name_owner.errors %}
@@ -95,19 +116,13 @@
                         type="text"
                         name="email"
                         required
-                        value="666"
                     />
-                    <div class="invalid-feedback">
-                        {% for error in form.name_owner.errors %}
-                            {{ error }}
-                        {% endfor%}
-                    </div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                     <label>Dirección:</label>
-                    <input class="form-control" type="text" name="address" required value="666" />
+                    <input class="form-control" type="text" name="address" required/>
                 </div>
               </div>
 
@@ -155,13 +170,13 @@
             <div class="col-sm-6">
                   <div class="form-group">
                       <label>Numero de pisos:</label>
-                      <input class="form-control" type="number" name="floors" min="1" max="10" required value="666" >
+                      <input class="form-control" type="number" name="floors" min="1" max="10" required>
                   </div>
             </div>
             <div class="col-sm-6">
                   <div class="form-group">
                       <label>Altura entre pisos:</label>
-                      <input class="form-control" type="number" name="height_floors" step=".001" min="1" max="10" required value="666">
+                      <input class="form-control" type="number" name="height_floors" step=".001" min="1" max="10" required>
                   </div>
             </div>
 
@@ -210,7 +225,871 @@
     </div>
   </div>
 
-    <div class="tab">
+  <div class="tab">
+    <div class="regForm2">
+      <div class="col-lg-12" id="property">
+        <h4>Irregularidad en planta de la edificacion</h4>
+      </div>
+
+      <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Opciones:</label>
+                          <select class="form-control" name="option_floor" id="option_floor" required>
+                            <option selected></option>
+                            <option name="1" type="number" value=0>1</option>
+                            <option name="2" type="number" value=1>2</option>
+                            <option name="3" type="number" value=2>3</option>
+                          </select>
+                      </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Observaciones:</label>
+                      <input
+                          class="form-control"
+                          type="text"
+                          name="obersation_floor"
+                          required
+
+                        />
+                  </div>
+
+                </div>
+
+              <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                        <a  class="more_information test" id="info_descrip_floor" >Descripción</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <a class="more_information test" id="info_img_floor" >Imagen</a>
+                    </div>
+                </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="col-lg-12" id="property">
+          <h4>Cantidad de muros en las dos direcciones</h4>
+        </div>
+
+      <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Opciones:</label>
+                          <select class="form-control" name="option_wall" id="option_wall" required>
+                            <option selected></option>
+                            <option name="1" value=0>1</option>
+                            <option name="2" value=1>2</option>
+                            <option name="3" value=2>3</option>
+                          </select>
+                      </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Observaciones:</label>
+                      <input
+                          class="form-control"
+                          type="text"
+                          name="observation_wall"
+                          required
+
+                        />
+                  </div>
+
+                </div>
+
+              <div class="col-sm-4">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <a  class="more_information test" id="info_descrip_wall" >Descripción</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a class="more_information test" id="info_img_wall" >Imagen</a>
+                        </div>
+
+                </div>
+              </div>
+
+
+
+          </div>
+
+      </div>
+
+
+      <div class="col-lg-12" id="property">
+        <h4>Irregularidad en altura</h4>
+      </div>
+
+      <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Opciones:</label>
+                          <select class="form-control" id="option_height" name="option_height" required>
+                            <option selected></option>
+                            <option name="1" value=0>1</option>
+                            <option name="2" value=1>2</option>
+                            <option name="3" value=2>3</option>
+                          </select>
+                      </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Observaciones:</label>
+                      <input
+                          class="form-control"
+                          type="text"
+                          name="observation_height"
+                          required
+
+                        />
+                  </div>
+
+                </div>
+
+              <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                      <a  class="more_information test" id="info_descrip_height">Descripción</a>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <a class="more_information test" id="info_img_height">Imagen</a>
+                    </div>
+
+                </div>
+              </div>
+
+
+
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tab">
+      <div class="regForm2">
+        <div class="col-lg-12" id="property">
+          <h4>Calidad de las juntas de pega en mortero</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_quality" id="option_quality" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="obersation_quality"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_quality" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_quality" >Imagen</a>
+                            </div>
+
+                        </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+            <h4>Tipo y disposición de las unidades de mampostería</h4>
+          </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_location" id="option_location" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_location"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_location" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_location" >Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Calidad de los materiales</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" id="option_materials" name="option_materials" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_materials"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <a  class="more_information test" id="info_descrip_materials">Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <a class="more_information test" id="info_img_materials">Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  <div class="tab">
+      <div class="regForm2">
+        <div class="col-lg-12" id="property">
+          <h4>Muros confinados y reforzados</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_confined_walls" id="option_confined_walls" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="obersation_confined_walls"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_confined_walls" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_confined_walls" >Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+            <h4>Detalles de columnas y vigas de confinamiento</h4>
+          </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_detail" id="option_detail" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_detail"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_detail" >Descripción</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a class="more_information test" id="info_img_detail" >Imagen</a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Vigas de amarre o corona</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" id="option_mooring" name="option_mooring" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_mooring"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <a  class="more_information test" id="info_descrip_mooring">Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <a class="more_information test" id="info_img_mooring">Imagen</a>
+                            </div>
+
+                        </div>
+                </div>
+
+            </div>
+
+        </div>
+
+      </div>
+  </div>
+
+
+  <div class="tab">
+      <div class="regForm2">
+        <div class="col-lg-12" id="property">
+          <h4>Características de las aberturas</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_characteristics" id="option_characteristics" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="obersation_characteristics"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_characteristics" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_characteristics" >Imagen</a>
+                            </div>
+
+                        </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+            <h4>Entrepiso</h4>
+          </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_mezzanine" id="option_mezzanine" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_mezzanine"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_mezzanine" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_mezzanine" >Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Amarre de cubiertas</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" id="option_cover" name="option_cover" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_cover"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <a  class="more_information test" id="info_descrip_cover">Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <a class="more_information test" id="info_img_cover">Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+      </div>
+  </div>
+
+
+  <div class="tab">
+      <div class="regForm2">
+        <div class="col-lg-12" id="property">
+          <h4>Cimentación</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_base" id="option_base" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="obersation_base"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_base" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_base" >Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+            <h4>Suelos</h4>
+          </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" name="option_soil" id="option_soil" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_soil"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                            <a  class="more_information test" id="info_descrip_soil" >Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <a class="more_information test" id="info_img_soil" >Imagen</a>
+                            </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Entorno</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Opciones:</label>
+                            <select class="form-control" id="option_environment" name="option_environment" required>
+                              <option selected></option>
+                              <option name="1" value=0>1</option>
+                              <option name="2" value=1>2</option>
+                              <option name="3" value=2>3</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="observation_environment"
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <a  class="more_information test" id="info_descrip_environment">Descripción</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <a class="more_information test" id="info_img_environment">Imagen</a>
+                            </div>
+
+                        </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+      </div>
+  </div>
+
+
+  <div class="tab">
         <div class="regForm2">
             <div class="mt-5">
 
@@ -242,9 +1121,9 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                                <div class="">
+                                <div class="form-group">
                                     <label>Cantidad:</label>
-                                    <input class="form-control" type="number" name="num_placa_0" min="0" required>
+                                    <input class="form-control count" type="number" name="num_placa_0" min="0" required>
                                 </div>
                         </div>
 
@@ -276,7 +1155,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label># de vigas:</label>
-                                <input class="form-control" type="number" name="numero_viga" min="0" required>
+                                <input class="form-control count" type="number" name="numero_viga" min="0" required>
                             </div>
                         </div>
                     </div>
@@ -306,7 +1185,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label># de columnas:</label>
-                            <input class="form-control" type="number" name="numero_columna" min="0" required>
+                            <input class="form-control count" type="number" name="numero_columna" min="0" required>
                         </div>
                     </div>
                     </div>
@@ -314,7 +1193,7 @@
                 <br>
             </div>
         </div>
-    </div>
+  </div>
 
   <div class="tab">
     <div  class="regForm2 last-form">
@@ -341,6 +1220,7 @@
                     <label>Irregularidad en planta:</label>
                     <select class="form-control" id="irregular_plant" name="irregular_plant" >
                         <option selected></option>
+                        <option >Ninguna</option>
                         <option value="Irregularidad_torsional">Irregularidad torsional</option>
                         <option value="Irregularidad_torsional_extrema">Irregularidad torsional extrema</option>
                         <option value="Retrocesos_excesivos_en_las_esquinas">Retrocesos excesivos en las esquinas</option>
@@ -357,6 +1237,7 @@
                     <label>Irregularidad en altura:</label>
                     <select class="form-control" id="irregular_long" name="irregular_long" >
                         <option selected></option>
+                        <option >Ninguna</option>
                         <option value="Piso_flexible_(Irregularidad_en_rigidez)">Piso flexible (Irregularidad en rigidez)</option>
                         <option value="Piso_flexible_(Irregularidad_extrema_en_rigidez)">Piso flexible (Irregularidad extrema en rigidez)</option>
                         <option value="Irregularidad_en_la_distribucion_de_las_masas">Irregularidad en la distribución de las masas</option>
@@ -400,17 +1281,23 @@
 
     </div>
   </div>
+
   <br>
   <div style="overflow:auto; position: relative;">
     <div class="next-button">
         <br>
       <button type="button" class="btn btn-primary my-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" class="btn btn-primary my-btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <button type="button" class="btn btn-primary my-btn" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
     </div>
   </div>
 
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px; position: relative;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
@@ -465,12 +1352,37 @@ function validateForm() {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
+  s = x[currentTab].getElementsByTagName("select");
+  element = x[currentTab].getElementsByClassName("count")
   // A loop that checks every input field in the current tab:
+  console.log('$$$$$$$$$$$$$$$$$$$$$$')
+  console.log(element)
+
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  for (i = 0; i < s.length; i++) {
+    // If a field is empty...
+    if (s[i].value == "") {
+      // add an "invalid" class to the field:
+      s[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  for (i = 0; i < element.length; i++) {
+    // If a field is empty...
+    console.log(typeof(element[i].value))
+
+    if (parseInt(element[i].value) == 0) {
+      // add an "invalid" class to the field:
+      element[i].className += " invalid";
       // and set the current valid status to false
       valid = false;
     }
@@ -2380,7 +3292,9 @@ function fixStepIndicator(n) {
         input.invalid {
           background-color: #ffdddd;
         }
-
+        select.invalid {
+          background-color: #ffdddd;
+        }
         /* Hide all steps by default: */
         .tab {
           display: none;
@@ -2450,6 +3364,10 @@ function fixStepIndicator(n) {
         #p{
             position: absolute;
             top: 24px;
+        }
+        .test{
+            position: absolute;
+            top: 30px;
         }
         #mapid { height: 180px;
             width:100%;
