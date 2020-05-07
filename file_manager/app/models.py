@@ -13,16 +13,23 @@ class Profile(AbstractUser):
         choices=ROLE_CHOICES,
         default=3
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='fecha de creación'
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='fecha de modificación'
+    )
 
     def __str__(self):
-        return self.role
+        return self.username
 
     class Meta(AbstractUser.Meta):
         swappable = 'AUTH_USER_MODEL'
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
+        ordering = ['id']
 
 class Folder(models.Model):
     name = models.CharField(max_length=200, verbose_name='nombre')
@@ -35,9 +42,9 @@ class Folder(models.Model):
         verbose_name='carpeta padre'
     )
 
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name='es una carpeta privada'
+    is_public = models.BooleanField(
+        default=True,
+        verbose_name='carpeta publica'
     )
 
     created_at = models.DateTimeField(
@@ -58,7 +65,7 @@ class Folder(models.Model):
         return self.get_name()
 
     class Meta:
-        ordering = ['name']
+        ordering = ['-id']
         verbose_name = 'Carpeta'
         verbose_name_plural = 'Carpetas'
 
@@ -70,15 +77,15 @@ class Document(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name='carpeta a la que pertenece el documento'
+        verbose_name='ruta del documento'
     )
     name = models.CharField(max_length=250, verbose_name='nombre')
     serie = models.CharField(max_length=250)
-    is_private = models.BooleanField(
-        default=False,
-        verbose_name='es una documento privado'
+    is_public = models.BooleanField(
+        default=True,
+        verbose_name='documento publico'
     )
-    comments = models.TextField(verbose_name='nombre')
+    comments = models.TextField(verbose_name='comentarios', blank=True)
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='fecha de creación'
@@ -92,35 +99,27 @@ class Document(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['name']
-        verbose_name = 'Document'
-        verbose_name_plural = 'Documents'
+        ordering = ['-id']
+        verbose_name = 'Documento'
+        verbose_name_plural = 'Documentos'
 
 
 class History(models.Model):
     user = models.ForeignKey(
         Profile,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        verbose_name='usuario'
+        on_delete=models.CASCADE
     )
-    action = models.CharField(max_length=250, verbose_name='acción')
     document = models.ForeignKey(
         Document,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        verbose_name='documento'
+        on_delete=models.CASCADE
     )
-    serie = models.CharField(max_length=250)
     date = models.DateTimeField(
         auto_now_add=True,
         verbose_name='fecha de la acción'
     )
 
     def __str__(self):
-        return self.serie
+        return f'{self.document.name} - {self.document.serie}'
 
     class Meta:
         ordering = ['-date']

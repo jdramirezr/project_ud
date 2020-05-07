@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTH_USER_MODEL = 'app.Profile'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -71,13 +72,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'file_manager.wsgi.application'
 
 
+
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db',
+        'NAME': 'project_db',
         'USER': 'admin',
         'PASSWORD': '1234567',
         'HOST': 'localhost',
@@ -108,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-co'
 
 TIME_ZONE = 'UTC'
 
@@ -117,9 +120,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-AUTH_USER_MODEL = 'app.Profile'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
