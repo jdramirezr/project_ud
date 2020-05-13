@@ -19,6 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
+from app.views import FolderList, FolderListParent
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('carpetas/', FolderListParent.as_view(), name="folder_list_parent"),
+    path('carpetas/<int:pk>', FolderList.as_view(), name="folder_list")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser
-
+from simple_history.models import HistoricalRecords
 
 class Profile(AbstractUser):
     ROLE_CHOICES = (
@@ -9,18 +9,23 @@ class Profile(AbstractUser):
         (2, 'Abogado'),
         (3, 'Administrador'),
     )
+
     role = models.PositiveSmallIntegerField(
         choices=ROLE_CHOICES,
         default=3
     )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='fecha de creación'
     )
+
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name='fecha de modificación'
     )
+
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.username
@@ -31,15 +36,19 @@ class Profile(AbstractUser):
         verbose_name_plural = 'Usuarios'
         ordering = ['id']
 
+
 class Folder(models.Model):
-    name = models.CharField(max_length=200, verbose_name='nombre')
+    name = models.CharField(
+        max_length=200,
+        verbose_name='nombre'
+    )
 
     parent = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name='carpeta padre'
+        verbose_name='ubicacion'
     )
 
     is_public = models.BooleanField(
@@ -49,17 +58,25 @@ class Folder(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='fecha de creación')
+        verbose_name='fecha de creación'
+    )
 
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name='fecha de modificación'
     )
 
+    history = HistoricalRecords()
+
     def get_name(self):
         if self.parent:
-            return f'{self.parent.get_name()} > {self.name}'
+            return f'{self.parent.get_name()}/{self.name}'
         return self.name
+
+    def get_pk(self):
+        if self.parent:
+            return self.parent.get_pk() + [{'name': self.name, 'pk': self.pk}]
+        return [{'name': self.name, 'pk': self.pk}]
 
     def __str__(self):
         return self.get_name()
@@ -71,32 +88,56 @@ class Folder(models.Model):
 
 
 class Document(models.Model):
-    file = models.FileField(upload_to='app/documents')
+    file = models.FileField(
+        upload_to='documents'
+    )
+
+    name = models.CharField(
+        max_length=250,
+        verbose_name='nombre'
+    )
+
     parent = models.ForeignKey(
         Folder,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name='ruta del documento'
+        verbose_name='ubicación'
     )
-    name = models.CharField(max_length=250, verbose_name='nombre')
-    serie = models.CharField(max_length=250)
+
+    serie = models.CharField(
+        max_length=250
+    )
+
     is_public = models.BooleanField(
         default=True,
         verbose_name='documento publico'
     )
-    comments = models.TextField(verbose_name='comentarios', blank=True)
+
+    comments = models.TextField(
+        verbose_name='comentarios',
+        blank=True
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='fecha de creación'
     )
+
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name='fecha de modificación'
     )
 
+    history = HistoricalRecords()
+
     def __str__(self):
         return self.name
+
+    def get_pk(self):
+        if self.parent:
+            return self.parent.get_pk() + [{'name': self.name, 'pk': self.pk}]
+        return [{'name': self.name, 'pk': self.pk}]
 
     class Meta:
         ordering = ['-id']
@@ -105,21 +146,39 @@ class Document(models.Model):
 
 
 class History(models.Model):
-    user = models.ForeignKey(
-        Profile,
-        on_delete=models.CASCADE
+    user = models.CharField(
+        max_length=250,
+        verbose_name='usuario'
     )
-    document = models.ForeignKey(
-        Document,
-        on_delete=models.CASCADE
+
+    document = models.CharField(
+        max_length=250,
+        verbose_name='documento'
     )
+
+    name_document = models.CharField(
+        max_length=250,
+        verbose_name='nombre documento'
+    )
+
+    serie = models.CharField(
+        max_length=250,
+        verbose_name='serie'
+    )
+
     date = models.DateTimeField(
         auto_now_add=True,
         verbose_name='fecha de la acción'
     )
 
+    history = HistoricalRecords()
+
     def __str__(self):
-        return f'{self.document.name} - {self.document.serie}'
+        return '{} modificó el documento "{}" serie {}'.format(
+            self.user,
+            self.name_documento,
+            self.serie
+        )
 
     class Meta:
         ordering = ['-date']
