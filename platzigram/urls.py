@@ -29,5 +29,6 @@ urlpatterns = [
     path('users/info_construccion', users_views.info_construccion, name='info_construccion'),
     path('users/stadistic/', users_views.stadistic, name='stadistic'),
     path('users/weight_calculation/', users_views.weight, name='weight'),
+    path('file/response/<int:pk>', users_views.file_response, name='file_response'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

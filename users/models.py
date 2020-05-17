@@ -47,3 +47,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
 
+class ResultPdf(models.Model):
+    process = models.OneToOneField(Process, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    result_pdf = models.TextField()

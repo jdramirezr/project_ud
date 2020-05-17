@@ -180,11 +180,52 @@
 
 <script>
 	var option = {{ process }}
+	var footers = {{ footer }}
+
 	if (option){
-		Swal.fire(
-		'{{ message }}',
-		'{{ result }}',
-		'{{ status }}'
-		)
+		var url_page = document.URL
+		if (url_page == 'http://127.0.0.1:8000/users/calculate_process/'){
+			fetch(`http://127.0.0.1:8000/file/response/${footers}`)
+				.then(resp => resp.blob())
+				.then(blob => {
+					const url = window.URL.createObjectURL(blob);
+					const a = document.createElement('a');
+					a.style.display = 'none';
+					a.href = url;
+					// the filename you want
+					a.download = 'proceso.pdf';
+					document.body.appendChild(a);
+					a.click();
+					window.URL.revokeObjectURL(url);
+				})
+				.catch(() => alert('oh no hubo un error generando el arhcivo!'));
+
+		}else {
+			fetch(`http://tesisud.pythonanywhere.com/file/response/${footers}`)
+				.then(resp => resp.blob())
+				.then(blob => {
+					const url = window.URL.createObjectURL(blob);
+					const a = document.createElement('a');
+					a.style.display = 'none';
+					a.href = url;
+					// the filename you want
+					a.download = 'proceso.pdf';
+					document.body.appendChild(a);
+					a.click();
+					window.URL.revokeObjectURL(url);
+				})
+				.catch(() => alert('oh no hubo un error generando el arhcivo!'));
+
+		}
+
+		Swal.fire({
+			icon:'{{ status }}',
+			title:'{{ message }}',
+			text:'{{ result }}'
+			})
+
+
+
 	}
+
 </script>

@@ -57,8 +57,13 @@
 <form id="regForm" action="{% url 'calculate_process' %}" method="POST" enctype="multipart/form-data">
   <!-- One "tab" for each step in the form: -->
   {% csrf_token %}
+
   <div class="tab">
     <div class="regForm2">
+        <!-- <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Información</h2>
+
+        </div> -->
       <div class="col-lg-12" id="property">
         <h4>Información del propietario</h4>
       </div>
@@ -122,16 +127,19 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <label>Dirección:</label>
-                    <input class="form-control" type="text" name="address" required/>
+                    <input class="form-control" type="text" name="address" required>
                 </div>
+
               </div>
 
           </div>
+          <br></br>
       </div>
 
       <div class="col-lg-12" id="property" style="width: auto;">
 
         <h4>Información de la propiedad</h4>
+
       </div>
 
       <div class="col-lg-12" id="property_2">
@@ -189,9 +197,12 @@
 
   <div class="tab">
     <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Ubicación de la vivienda</h2>
+            <br></br>
+        </div>
         <div class="col-lg-12" id="map">
 
-                  <h4>Ubicación de la vivienda:</h4>
                   <div id="mapid" class="form-group" >
                 </div>
         </div>
@@ -227,6 +238,11 @@
 
   <div class="tab">
     <div class="regForm2">
+      <div style="text-align: center;"class="col-lg-12" id="property">
+          <h2>Metodo cualitativo</h2>
+          <a id="help">(Información)</a>
+          <br></br>
+      </div>
       <div class="col-lg-12" id="property">
         <h4>Irregularidad en planta de la edificacion</h4>
       </div>
@@ -236,12 +252,12 @@
           <div class="row" id="info_0">
               <div class="col-sm-4">
                       <div class="form-group">
-                          <label>Opciones:</label>
+                          <label>Estado:</label>
                           <select class="form-control" name="option_floor" id="option_floor" required>
                             <option selected></option>
-                            <option name="1" type="number" value=0>1</option>
-                            <option name="2" type="number" value=1>2</option>
-                            <option name="3" type="number" value=2>3</option>
+                            <option name="Bueno" type="number" value=0 >Bueno</option>
+                            <option name="Regular" type="number" value=1>Regular</option>
+                            <option name="Malo" type="number" value=2>Malo</option>
                           </select>
                       </div>
 
@@ -251,7 +267,7 @@
                   <div class="form-group">
                       <label>Observaciones:</label>
                       <input
-                          class="form-control"
+                          class="form-control observation"
                           type="text"
                           name="obersation_floor"
                           required
@@ -264,19 +280,19 @@
               <div class="col-sm-4">
                 <div class="col-sm-6">
                   <div class="form-group">
-                        <a  class="more_information test" id="info_descrip_floor" >Descripción</a>
+                        <a  class="more_information test" id="info_descrip_floor" >Ver descripción</a>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <a class="more_information test" id="info_img_floor" >Imagen</a>
+                        <a class="more_information test" id="info_img_floor" >Ver imagen</a>
                     </div>
                 </div>
 
               </div>
 
           </div>
-
+          <br></br>
       </div>
 
 
@@ -289,12 +305,12 @@
           <div class="row" id="info_0">
               <div class="col-sm-4">
                       <div class="form-group">
-                          <label>Opciones:</label>
+                          <label>Estado:</label>
                           <select class="form-control" name="option_wall" id="option_wall" required>
                             <option selected></option>
-                            <option name="1" value=0>1</option>
-                            <option name="2" value=1>2</option>
-                            <option name="3" value=2>3</option>
+                            <option name="Bueno" value=0 >Bueno</option>
+                            <option name="Regular" value=1>Regular</option>
+                            <option name="Malo" value=2>Malo</option>
                           </select>
                       </div>
 
@@ -304,7 +320,7 @@
                   <div class="form-group">
                       <label>Observaciones:</label>
                       <input
-                          class="form-control"
+                          class="form-control observation"
                           type="text"
                           name="observation_wall"
                           required
@@ -318,13 +334,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
 
-                        <a  class="more_information test" id="info_descrip_wall" >Descripción</a>
+                        <a  class="more_information test" id="info_descrip_wall" >Ver descripción</a>
                     </div>
                 </div>
                 <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a class="more_information test" id="info_img_wall" >Imagen</a>
+                            <a class="more_information test" id="info_img_wall" >Ver imagen</a>
                         </div>
 
                 </div>
@@ -333,7 +349,7 @@
 
 
           </div>
-
+          <br></br>
       </div>
 
 
@@ -346,12 +362,12 @@
           <div class="row" id="info_0">
               <div class="col-sm-4">
                       <div class="form-group">
-                          <label>Opciones:</label>
+                          <label>Estado:</label>
                           <select class="form-control" id="option_height" name="option_height" required>
                             <option selected></option>
-                            <option name="1" value=0>1</option>
-                            <option name="2" value=1>2</option>
-                            <option name="3" value=2>3</option>
+                            <option name="Bueno" value=0 >Bueno</option>
+                            <option name="Regular" value=1>Regular</option>
+                            <option name="Malo" value=2>Malo</option>
                           </select>
                       </div>
 
@@ -361,7 +377,7 @@
                   <div class="form-group">
                       <label>Observaciones:</label>
                       <input
-                          class="form-control"
+                          class="form-control observation"
                           type="text"
                           name="observation_height"
                           required
@@ -374,12 +390,12 @@
               <div class="col-sm-4">
                 <div class="col-sm-6">
                   <div class="form-group">
-                      <a  class="more_information test" id="info_descrip_height">Descripción</a>
+                      <a  class="more_information test" id="info_descrip_height">Ver descripción</a>
                   </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <a class="more_information test" id="info_img_height">Imagen</a>
+                        <a class="more_information test" id="info_img_height">Ver imagen</a>
                     </div>
 
                 </div>
@@ -388,7 +404,7 @@
 
 
           </div>
-
+          <br></br>
       </div>
 
     </div>
@@ -396,6 +412,11 @@
 
   <div class="tab">
       <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cualitativo</h2>
+            <a id="help">(Información)</a>
+            <br></br>
+        </div>
         <div class="col-lg-12" id="property">
           <h4>Calidad de las juntas de pega en mortero</h4>
         </div>
@@ -405,12 +426,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_quality" id="option_quality" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -420,7 +441,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="obersation_quality"
                             required
@@ -434,13 +455,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_quality" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_quality" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_quality" >Imagen</a>
+                                <a class="more_information test" id="info_img_quality" >Ver imagen</a>
                             </div>
 
                         </div>
@@ -449,7 +470,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -462,12 +483,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_location" id="option_location" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -477,7 +498,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_location"
                             required
@@ -491,13 +512,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_location" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_location" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_location" >Imagen</a>
+                                <a class="more_information test" id="info_img_location" >Ver imagen</a>
                             </div>
 
                     </div>
@@ -506,7 +527,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -519,12 +540,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" id="option_materials" name="option_materials" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -534,7 +555,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_materials"
                             required
@@ -547,12 +568,12 @@
                 <div class="col-sm-4">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <a  class="more_information test" id="info_descrip_materials">Descripción</a>
+                            <a  class="more_information test" id="info_descrip_materials">Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
-                                <a class="more_information test" id="info_img_materials">Imagen</a>
+                                <a class="more_information test" id="info_img_materials">Ver imagen</a>
                             </div>
 
                     </div>
@@ -561,7 +582,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
       </div>
@@ -570,6 +591,11 @@
 
   <div class="tab">
       <div class="regForm2">
+          <div style="text-align: center;"class="col-lg-12" id="property">
+              <h2>Metodo cualitativo</h2>
+              <a id="help">(Información)</a>
+              <br></br>
+          </div>
         <div class="col-lg-12" id="property">
           <h4>Muros confinados y reforzados</h4>
         </div>
@@ -579,12 +605,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_confined_walls" id="option_confined_walls" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -594,7 +620,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="obersation_confined_walls"
                             required
@@ -608,13 +634,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_confined_walls" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_confined_walls" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_confined_walls" >Imagen</a>
+                                <a class="more_information test" id="info_img_confined_walls" >Ver imagen</a>
                             </div>
 
                     </div>
@@ -623,7 +649,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -636,12 +662,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_detail" id="option_detail" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -651,7 +677,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_detail"
                             required
@@ -665,14 +691,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_detail" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_detail" >Ver descripción</a>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a class="more_information test" id="info_img_detail" >Imagen</a>
+                            <a class="more_information test" id="info_img_detail" >Ver imagen</a>
                         </div>
 
                     </div>
@@ -680,7 +706,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -693,12 +719,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" id="option_mooring" name="option_mooring" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -708,7 +734,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_mooring"
                             required
@@ -721,19 +747,19 @@
                 <div class="col-sm-4">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <a  class="more_information test" id="info_descrip_mooring">Descripción</a>
+                            <a  class="more_information test" id="info_descrip_mooring">Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
-                                <a class="more_information test" id="info_img_mooring">Imagen</a>
+                                <a class="more_information test" id="info_img_mooring">Ver imagen</a>
                             </div>
 
                         </div>
                 </div>
 
             </div>
-
+            <br></br>
         </div>
 
       </div>
@@ -742,6 +768,11 @@
 
   <div class="tab">
       <div class="regForm2">
+          <div style="text-align: center;"class="col-lg-12" id="property">
+              <h2>Metodo cualitativo</h2>
+              <a id="help">(Información)</a>
+              <br></br>
+          </div>
         <div class="col-lg-12" id="property">
           <h4>Características de las aberturas</h4>
         </div>
@@ -751,12 +782,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_characteristics" id="option_characteristics" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -766,7 +797,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="obersation_characteristics"
                             required
@@ -780,13 +811,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_characteristics" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_characteristics" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_characteristics" >Imagen</a>
+                                <a class="more_information test" id="info_img_characteristics" >Ver imagen</a>
                             </div>
 
                         </div>
@@ -795,7 +826,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -808,12 +839,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_mezzanine" id="option_mezzanine" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -823,7 +854,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_mezzanine"
                             required
@@ -837,13 +868,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_mezzanine" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_mezzanine" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_mezzanine" >Imagen</a>
+                                <a class="more_information test" id="info_img_mezzanine" >Ver imagen</a>
                             </div>
 
                     </div>
@@ -852,7 +883,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -865,12 +896,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" id="option_cover" name="option_cover" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -880,7 +911,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_cover"
                             required
@@ -893,12 +924,12 @@
                 <div class="col-sm-4">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <a  class="more_information test" id="info_descrip_cover">Descripción</a>
+                            <a  class="more_information test" id="info_descrip_cover">Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
-                                <a class="more_information test" id="info_img_cover">Imagen</a>
+                                <a class="more_information test" id="info_img_cover">Ver imagen</a>
                             </div>
 
                     </div>
@@ -907,7 +938,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
       </div>
@@ -916,6 +947,11 @@
 
   <div class="tab">
       <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cualitativo</h2>
+            <a id="help">(Información)</a>
+            <br></br>
+        </div>
         <div class="col-lg-12" id="property">
           <h4>Cimentación</h4>
         </div>
@@ -925,12 +961,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_base" id="option_base" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -940,7 +976,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="obersation_base"
                             required
@@ -954,13 +990,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_base" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_base" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_base" >Imagen</a>
+                                <a class="more_information test" id="info_img_base" >Ver imagen</a>
                             </div>
 
                     </div>
@@ -969,7 +1005,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -982,12 +1018,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" name="option_soil" id="option_soil" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -997,7 +1033,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_soil"
                             required
@@ -1011,13 +1047,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
 
-                            <a  class="more_information test" id="info_descrip_soil" >Descripción</a>
+                            <a  class="more_information test" id="info_descrip_soil" >Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
 
-                                <a class="more_information test" id="info_img_soil" >Imagen</a>
+                                <a class="more_information test" id="info_img_soil" >Ver imagen</a>
                             </div>
 
                     </div>
@@ -1026,7 +1062,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
 
@@ -1039,12 +1075,12 @@
             <div class="row" id="info_0">
                 <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Opciones:</label>
+                            <label>Estado:</label>
                             <select class="form-control" id="option_environment" name="option_environment" required>
                               <option selected></option>
-                              <option name="1" value=0>1</option>
-                              <option name="2" value=1>2</option>
-                              <option name="3" value=2>3</option>
+                              <option name="Bueno" value=0 >Bueno</option>
+                              <option name="Regular" value=1>Regular</option>
+                              <option name="Malo" value=2>Malo</option>
                             </select>
                         </div>
 
@@ -1054,7 +1090,7 @@
                     <div class="form-group">
                         <label>Observaciones:</label>
                         <input
-                            class="form-control"
+                            class="form-control observation"
                             type="text"
                             name="observation_environment"
                             required
@@ -1067,12 +1103,12 @@
                 <div class="col-sm-4">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <a  class="more_information test" id="info_descrip_environment">Descripción</a>
+                            <a  class="more_information test" id="info_descrip_environment">Ver descripción</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                             <div class="form-group">
-                                <a class="more_information test" id="info_img_environment">Imagen</a>
+                                <a class="more_information test" id="info_img_environment">Ver imagen</a>
                             </div>
 
                         </div>
@@ -1082,7 +1118,7 @@
 
 
             </div>
-
+            <br></br>
         </div>
 
       </div>
@@ -1090,113 +1126,791 @@
 
 
   <div class="tab">
-        <div class="regForm2">
-            <div class="mt-5">
-
-                <div class="" id="profile-box1" style="width: 100%;">
-
-                    <h4>Dimensiones de la placa: <span class="more_information" id="mas_placas"><u><h6>(Agregar más filas)</h6></u></span></h4>
-                    <div class="row" id="placa_0">
-                        <div class="col-sm-2">
-                            <div class="">
-                                <label>Tipo de Placa:</label>
-                                <select class="form-control" name="type_placa" id="type_placa" required>
-                                    <option selected></option>
-                                    <option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option>
-                                    <option name="Placa_Maciza" value="Placa_Maciza">Maciza</option>
-                                    <option name="Placa_Facil" value="Placa_Facil">Facil</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="">
-                                <label>Ancho:</label>
-                                <input class="form-control" type="number" name="placa_x_0" step=".001" min="0" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="">
-                                <label>Largo:</label>
-                                <input class="form-control" type="number" name="placa_y_0" step=".001" min="0" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                                <div class="form-group">
-                                    <label>Cantidad:</label>
-                                    <input class="form-control count" type="number" name="num_placa_0" min="0" required>
-                                </div>
-                        </div>
+    <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cuantitativo</h2>
+            <a id="help_cuantitativo">(Información)</a>
+            <br></br>
+        </div>
+        <div class="mt-5">
 
 
-                    </div>
-                </div>
-                <br>
-                <div class="" id="profile-box2" style="width: 100%;">
-                    <h4>Especificaciónes de las vigas: <span class="more_information" id="mas_vigas"><u><h6>(Agregar más filas)</h6></u></span></h4>
-                    <div class="row" id="viga_0">
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label>Ancho:</label>
-                                <input class="form-control" type="number" name="ancho_viga" step=".001" min="0" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label>Alto:</label>
-                                <input class="form-control" type="number" name="alto_viga" step=".001" min="0" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label>Largo:</label>
-                                <input class="form-control" type="number" name="largo_viga" step=".001" min="0" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label># de vigas:</label>
-                                <input class="form-control count" type="number" name="numero_viga" min="0" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="" id="profile-box3" style="width: 100%;">
-                    <h4>Especificaciónes de las columnas:  <span class="more_information" id="mas_columnas"><u><h6>(Agregar más filas)</h6></u></span></h4>
-                    <div class="row" id="columna_0" >
-                    <div class="col-sm-2">
+            <div class="" id="profile-box2">
+                <h4>Especificaciónes de las vigas: <span class="more_information" id="mas_vigas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+                <div class="row" id="viga_0">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label>Ancho:</label>
-                            <input class="form-control" type="number" name="ancho_columna" step=".001" min="0" required>
+                            <input class="form-control" type="number" name="ancho_viga" step=".001" min="0" required>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label>Alto:</label>
-                            <input class="form-control" type="number" name="alto_columna" step=".001" min="0" required>
+                            <input class="form-control" type="number" name="alto_viga" step=".001" min="0" required>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label>Largo:</label>
-                            <input class="form-control" type="number" name="largo_columna" step=".001" min="0" required>
+                            <input class="form-control" type="number" name="largo_viga" step=".001" min="0" required>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label># de columnas:</label>
-                            <input class="form-control count" type="number" name="numero_columna" min="0" required>
+                            <label># de vigas:</label>
+                            <input class="form-control count" type="number" name="numero_viga" min="0" required>
                         </div>
-                    </div>
                     </div>
                 </div>
-                <br>
             </div>
+            <br>
+            <div class="" id="profile-box3" style="width: 100%;">
+                <h4>Especificaciónes de las columnas:  <span class="more_information" id="mas_columnas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+                <div class="row" id="columna_0" >
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Ancho:</label>
+                        <input class="form-control" type="number" name="ancho_columna" step=".001" min="0" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Alto:</label>
+                        <input class="form-control" type="number" name="alto_columna" step=".001" min="0" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Largo:</label>
+                        <input class="form-control" type="number" name="largo_columna" step=".001" min="0" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label># de columnas:</label>
+                        <input class="form-control count" type="number" name="numero_columna" min="0" required>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="" id="profile-box1" style="width: 100%;">
+
+              <h4>Dimensiones de la placa: <span class="more_information" id="mas_placas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+              <div class="row" id="placa_0">
+                  <div class="col-sm-3">
+                      <div class="">
+                          <label>Tipo de Placa:</label>
+                          <select class="form-control" name="type_placa" id="type_placa" required>
+                              <option selected></option>
+                              <option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option>
+                              <option name="Placa_Maciza" value="Placa_Maciza">Maciza</option>
+                              <option name="Placa_Facil" value="Placa_Facil">Facil</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-3">
+                      <div class="">
+                          <label>Ancho:</label>
+                          <input class="form-control" type="number" name="placa_x" step=".001" min="0" required>
+                      </div>
+                  </div>
+                  <div class="col-sm-3">
+                      <div class="">
+                          <label>Largo:</label>
+                          <input class="form-control" type="number" name="placa_y" step=".001" min="0" required>
+                      </div>
+                  </div>
+                  <div class="col-sm-3">
+                          <div class="form-group">
+                              <label>Cantidad:</label>
+                              <input class="form-control count" type="number" name="num_placa" min="0" required>
+                          </div>
+                  </div>
+
+
+              </div>
+            </div>
+            <br>
         </div>
+    </div>
+</div>
+
+<div class="tab">
+    <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cuantitativo</h2>
+            <a id="help_cuantitativo">(Información)</a>
+            <br></br>
+        </div>
+        <div class="col-lg-12" id="property">
+            <h4>Muros Fachada</h4>
+          </div>
+
+          <div class="col-lg-12" id="property_0">
+
+              <div class="row" id="info_0">
+                  <div class="col-sm-3">
+                          <div class="form-group">
+                              <label>Muro de fachadas</label>
+                              <select class="form-control" name="muro_fachada" id="muro_fachada" required>
+                                <option selected></option>
+                                <option value=0>Mampostería de bloque de arcilla</option>
+                                <option value=1>Mampostería de bloque de concreto</option>
+                                <option value=2>Mampostería maciza de arcilla</option>
+                                <option value=3>Mampostería maciza de concreto</option>
+                              </select>
+                          </div>
+
+                  </div>
+
+
+                  <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Caracteristica</label>
+                            <select class="form-control" name="muro_caracteristica" id="muro_caracteristica" required>
+                              <option selected></option>
+                            </select>
+                        </div>
+
+                  </div>
+
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Espesor (mm)</label>
+                        <select class="form-control" name="espesor" id="espesor" required>
+                          <option selected></option>
+                          <option name="100" value=0>100</option>
+                          <option name="150" value=1>150</option>
+                          <option name="200" value=2>200</option>
+                          <option name="250" value=3>250</option>
+                          <option name="300" value=4>300</option>
+                        </select>
+                    </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="cantidad_muros"
+                            min=0
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>M2:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="m2_muros"
+                            required
+                            step=".001"
+                            min="0"
+                            required>
+
+                    </div>
+
+                  </div>
+
+
+
+              </div>
+
+          </div>
+
+
+          <div class="col-lg-12" id="property">
+            <h4>Muros Divisorio</h4>
+          </div>
+
+          <div class="col-lg-12" id="property_0">
+
+              <div class="row" id="info_0">
+                  <div class="col-sm-3">
+                          <div class="form-group">
+                              <label>Muros divisorio</label>
+                              <select class="form-control" name="muro_divisorio" id="muro_divisorio" required>
+                                <option selected></option>
+                                <option value=0>Mampostería de bloque de arcilla</option>
+                                <option value=1>Mampostería de bloque de concreto</option>
+                                <option value=2>Mampostería maciza de arcilla</option>
+                                <option value=3>Mampostería maciza de concreto</option>
+                              </select>
+                          </div>
+
+                  </div>
+
+
+                  <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Caracteristica</label>
+                            <select class="form-control" name="muro_caracteristica_divisorio" id="muro_caracteristica_divisorio" required>
+                              <option selected></option>
+                            </select>
+                        </div>
+
+                  </div>
+
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Espesor (mm)</label>
+                        <select class="form-control" name="espesor_divisorio" id="espesor_divisorio" required>
+                          <option selected></option>
+                          <option name="100" value=0>100</option>
+                          <option name="150" value=1>150</option>
+                          <option name="200" value=2>200</option>
+                          <option name="250" value=3>250</option>
+                          <option name="300" value=4>300</option>
+                        </select>
+                    </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="cantidad_muros_divisorio"
+                            min=0
+                            required
+
+                          />
+                    </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>M2:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="m2_muros_divisorio"
+                            required
+                            step=".001"
+                            min="0"
+                            required>
+
+                    </div>
+
+                  </div>
+
+
+
+              </div>
+
+          </div>
+
+
+        <div class="col-lg-12" id="property">
+            <h4>Particiones livianas</h4>
+          </div>
+
+          <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Particiones livianas:</label>
+                            <select class="form-control" name="type_particiones" id="type_particiones" required>
+                              <option selected></option>
+                              <option name="0" value=0.5>Particiones móviles de acero (altura parcial)</option>
+                              <option name="1" value=0.2>Particiones móviles de acero (altura total)</option>
+                              <option name="2" value=0.9>Poste en madera o acero, yeso de 12 mm a cada lado</option>
+                            </select>
+                        </div>
+
+                </div>
+
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                      <label>M2:</label>
+                      <input
+                          class="form-control"
+                          type="number"
+                          name="m2_particiones"
+                          required
+                          step=".001"
+                          min="0"
+                          required>
+
+                  </div>
+
+                </div>
+
+
+
+            </div>
+
+          </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Ventanas</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>Ventanas:</label>
+                          <select class="form-control" name="type_ventanas" id="type_ventanas" required>
+                            <option selected></option>
+                            <option name="0" value=0.5>Muros cortina de vidrio, entramado y marco</option>
+                            <option name="1" value=0.45>Ventanas, vidrio, entramado y marco</option>
+                          </select>
+                      </div>
+
+              </div>
+
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                    <label>M2:</label>
+                    <input
+                        class="form-control"
+                        type="number"
+                        name="m2_ventanas"
+                        required
+                        step=".001"
+                        min="0"
+                        required>
+
+                </div>
+
+              </div>
+
+
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<div class="tab">
+  <div class="regForm2">
+      <div style="text-align: center;"class="col-lg-12" id="property">
+          <h2>Metodo cuantitativo</h2>
+          <a id="help_cuantitativo">(Información)</a>
+          <br></br>
+      </div>
+    <div class="col-lg-12" id="property">
+      <h4>Cubierta</h4>
+    </div>
+
+    <div class="col-lg-12" id="property_0">
+
+        <div class="row" id="info_0">
+            <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Tipo de cubierta:</label>
+                        <select class="form-control" name="type_cubierta" id="type_cubierta" required>
+                          <option selected></option>
+                          <option name="0" value=0.0020>Cubiertas aislantes Fibra de vidrio</option>
+                          <option name="1" value=0.2>Cubiertas corrugadas de asbesto-cemento</option>
+                          <option name="2" value=0.0060>Entablado de madera</option>
+                          <option name="3" value=0.1>Láminas de yeso, 12 mm</option>
+                          <option name="4" value=0.0100>Madera laminada (según el espesor)</option>
+                          <option name="5" value=0.4>Marquesinas, marco metálico, vidrio de 10 mm</option>
+                          <option name="6" value=0.15>Tablillas (shingles) de madera</option>
+                          <option name="7" value=0.8>Teja de arcilla, incluyendo el mortero</option>
+                        </select>
+                    </div>
+
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group"  id="espesor_disable">
+                  <label>Espesor (mm):</label>
+                  <input
+                      class="form-control disable"
+                      type="number"
+                      name="espesor_cubierta"
+                      required
+                      step=".001"
+                      min="0"
+                      required
+                  >
+              </div>
+
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                  <label>M2:</label>
+                  <input
+                      class="form-control"
+                      type="number"
+                      name="m2_cubierta"
+                      required
+                      step=".001"
+                      min="0"
+                      required>
+
+              </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-12" id="property">
+      <h4>Pisos</h4>
+    </div>
+
+    <div class="col-lg-12" id="property_0">
+
+      <div class="row" id="info_0">
+          <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Tipo de pisos:</label>
+                      <select class="form-control" name="type_piso" id="type_piso" required>
+                        <option selected></option>
+                        <option name="0" value=0.02>Acabado de piso en concreto</option>
+                        <option name="1" value=0.8>Baldosa cerámica (20 mm) sobre 12 mm de mortero</option>
+                        <option name="2" value=1.1>Baldosa sobre 25 mm de mortero</option>
+                        <option name="3" value=0.2>Madera densa, 25 mm</option>
+                        <option name="4" value=0.03>Pizarra</option>
+                        <option name="5" value=1.5>Terrazzo (25 mm), concreto 50 mm</option>
+                        <option name="6" value=0.9>Terrazzo (40 mm) directamente sobre la losa</option>
+                        <option name="7" value=1.5>Terrazzo (25 mm) sobre afinado en concreto</option>
+                      </select>
+                  </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group" id="piso_disable">
+                <label>Espesor (mm):</label>
+                <input
+                    class="form-control disable"
+                    type="number"
+                    name="espesor_piso"
+                    required
+                    step=".001"
+                    min="0"
+                    required
+                >
+            </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>M2:</label>
+                <input
+                    class="form-control"
+                    type="number"
+                    name="m2_pisos"
+                    required
+                    step=".001"
+                    min="0"
+                    required>
+
+            </div>
+
+          </div>
+
+
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-12" id="property">
+    <h4>Recubrimiento de muros</h4>
+    </div>
+
+    <div class="col-lg-12" id="property_0">
+
+      <div class="row" id="info_0">
+          <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Recubrimiento:</label>
+                      <select class="form-control" name="type_recubrimiento" id="type_recubrimiento" required>
+                        <option selected></option>
+                        <option name="0" value=0.8>Baldosín de cemento</option>
+                        <option name="1" value=0.01>Madera laminada (según el espesor)</option>
+                        <option name="2" value=0.003>Tableros de fibra (aislante)</option>
+                        <option name="3" value=0.1>Tableros de yeso, 12 mm (aislante)</option>
+                      </select>
+                  </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group" id="recubrimiento_disable">
+                <label>Espesor (mm):</label>
+                <input
+                    class="form-control disable"
+                    type="number"
+                    name="espesor_recubrimiento"
+                    required
+                    step=".001"
+                    min="0"
+                    required
+                >
+            </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>M2:</label>
+                <input
+                    class="form-control"
+                    type="number"
+                    name="m2_recubrimiento"
+                    required
+                    step=".001"
+                    min="0"
+                    required>
+
+            </div>
+
+          </div>
+
+
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-12" id="property">
+    <h4>Enchape</h4>
+    </div>
+
+    <div class="col-lg-12" id="property_0">
+
+    <div class="row" id="info_0">
+      <div class="col-sm-4">
+              <div class="form-group">
+                  <label>Enchape:</label>
+                  <select class="form-control" name="type_enchape" id="type_enchape" required>
+                    <option selected></option>
+                    <option name="0" value=0.015>Enchape cerámico</option>
+                    <option name="1" value=0.013>Enchape en arenisca</option>
+                    <option name="2" value=0.015>Enchape en caliza</option>
+                    <option name="3" value=0.017>Enchape en granito</option>
+                  </select>
+              </div>
+
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group" id="enchape_disable">
+            <label>Espesor (mm):</label>
+            <input
+                class="form-control"
+                type="number"
+                name="espesor_enchape"
+                required
+                step=".001"
+                min="0"
+                required
+            >
+        </div>
+
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+            <label>M2:</label>
+            <input
+                class="form-control"
+                type="number"
+                name="m2_enchape"
+                required
+                step=".001"
+                min="0"
+                required>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    </div>
+
+
   </div>
+</div>
+
+<div class="tab">
+    <div class="regForm2">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cuantitativo</h2>
+            <a id="help_cuantitativo">(Información)</a>
+            <br></br>
+        </div>
+        <div class="col-lg-12" id="property">
+            <h4>Ocupacion o Uso</h4>
+          </div>
+
+          <div class="col-lg-12" id="property_0">
+
+              <div class="row" id="info_0">
+                  <div class="col-sm-4">
+                          <div class="form-group">
+                              <label>Ocupación</label>
+                              <select class="form-control" name="ocupacion" id="ocupacion" required>
+                                <option selected></option>
+                                <option value=0>Oficinas</option>
+                                <option value=1>Educativos</option>
+                                <option value=2>Comercio</option>
+                                <option value=3>Residencial</option>
+                                <option value=4>Almacenamiento</option>
+                                <option value=5>Garajes</option>
+                              </select>
+                          </div>
+
+                  </div>
+
+
+                  <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Uso:</label>
+                            <select class="form-control" name="ocupacion_uso" id="ocupacion_uso" required>
+                              <option selected></option>
+                            </select>
+                        </div>
+
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>M2:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="m2_ocupacion"
+                            required
+                            step=".001"
+                            min="0"
+                            required>
+
+                    </div>
+
+                  </div>
+
+
+
+              </div>
+
+          </div>
+
+          <div class="col-lg-12" id="property">
+              <h4>Cubierta</h4>
+            </div>
+
+            <div class="col-lg-12" id="property_0">
+
+                <div class="row" id="info_0">
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Tipo de cubierta</label>
+                                <select class="form-control" name="cubierta_viva" id="cubierta_viva" required>
+                                  <option selected></option>
+                                  <option value=1>Cubiertas, Azoteas y Terrazas</option>
+                                  <option value=5.0>Cubiertas usadas para jardines de cubierta o para reuniones</option>
+                                  <option value=0.35>Cubiertas inclinadas con más de 15° de pendiente en estructura metálica o de madera con imposibilidad física de verse sometidas a cargas superiores a la aquí estipulada</option>
+                                  <option value=0.5>Cubiertas  inclinadas  con  pendiente  de  15°  o menos  en estructura metálica o de madera con imposibilidad física de verse sometidas a cargas superiores a la aquí estipulada</option>
+                                </select>
+                            </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>M2:</label>
+                          <input
+                              class="form-control"
+                              type="number"
+                              name="m2_cubierta_viva"
+                              required
+                              step=".001"
+                              min="0"
+                              required>
+
+                      </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
 
   <div class="tab">
     <div  class="regForm2 last-form">
+        <div style="text-align: center;"class="col-lg-12" id="property">
+            <h2>Metodo cuantitativo</h2>
+            <a id="help_cuantitativo">(Información)</a>
+            <br></br>
+        </div>
       <div class="col-lg-12">
             <div class="form-group">
                 <label>fuerzas horizontales:</label>
@@ -1256,14 +1970,14 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Imágenes de la propiedad:</label>
-                  <p class="ml-4"><input type="file" name="picture"></p>
+                  <p class="ml-4"><input type="file" name="picture" class="image"></p>
                 </div>
               </div>
 
               <div class="col-sm-6">
                 <div class="form-group">
                     <label>Planos de la propiedad:</label>
-                    <p class="ml-4"><input type="file" name="planes"></p>
+                    <p class="ml-4"><input type="file" name="planes" class="image"></p>
                 </div>
               </div>
           </div>
@@ -1283,7 +1997,7 @@
   </div>
 
   <br>
-  <div style="overflow:auto; position: relative;">
+  <div style="overflow:auto; position: relative; padding-top: 1px;">
     <div class="next-button">
         <br>
       <button type="button" class="btn btn-primary my-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -1293,6 +2007,9 @@
 
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px; position: relative;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
@@ -1355,12 +2072,11 @@ function validateForm() {
   s = x[currentTab].getElementsByTagName("select");
   element = x[currentTab].getElementsByClassName("count")
   // A loop that checks every input field in the current tab:
-  console.log('$$$$$$$$$$$$$$$$$$$$$$')
-  console.log(element)
 
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    class_observation = y[i].className.split(' ')[1]
+    if (y[i].value == "" & !(y[i].disabled) & !(class_observation == "observation") & !(y[i].className == 'image')) {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
@@ -1369,6 +2085,7 @@ function validateForm() {
   }
   for (i = 0; i < s.length; i++) {
     // If a field is empty...
+
     if (s[i].value == "") {
       // add an "invalid" class to the field:
       s[i].className += " invalid";
@@ -1378,7 +2095,6 @@ function validateForm() {
   }
   for (i = 0; i < element.length; i++) {
     // If a field is empty...
-    console.log(typeof(element[i].value))
 
     if (parseInt(element[i].value) == 0) {
       // add an "invalid" class to the field:
@@ -3360,6 +4076,9 @@ function fixStepIndicator(n) {
             /* padding: 350px; */
             /* height: auto; */
             padding-top: 1px;
+        }
+        .title_process {
+          background-color: white;
         }
         #p{
             position: absolute;
