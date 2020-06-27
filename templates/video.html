@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<body>
+
+<div style="width: 100%;  height:60px;" id="main-navbar">
+    <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
+    left:50px;
+    top:17px;
+    font-weight: bold;""
+    ></a>
+    <a class="glyphicon glyphicon-log-out" href="{% url 'logout' %}" style="color: white;  position:relative;
+    left:80px;
+    top:17px;
+    font-weight: bold;""></a>
+
+</div>
+
+<h1 id="title_process">Proceso de calculo de vulnerabilidad sísmica</h1>
+
+
+<div class="col-lg-12" id="property_0">
+
+        <div class="row" style="padding: 100px" id="info_0">
+
+
+            <div class="col-sm-4" style="text-align: center">
+              <div style="width: 50%; margin: auto">
+               <a  href="{% url 'ais' %}"><img class="image-a"  src="/static/images/ais.png" width="150px" style="display: block;
+                 margin: auto;
+                padding: 24px;
+                border-radius: 6px;
+                transition: 0.6s;
+                background-color: #272833;
+                "></a>
+                </div>
+                <label style="padding-top: 12px;
+                font-size: 17px;">AIS</label>
+
+            <h3 class="red-border-bottom" ></h3>
+              <label style="padding-top: 12px; max-width: 80%;
+              font-weight: normal;
+
+            ">Proceso de vulnerabilidad sísmica con valores cualitativos, implementando la metodología de la Asociación Colombiana de Ingeniería Sísmica</label>
+             <br></br>
+        </div>
+          <div class="col-sm-4" style="text-align: center;">
+              <div style="width: 50%; margin: auto">
+                <a href="#"><img class="image-a" src="/static/images/nsr-10.png" width="150px" style="display: block;
+                  margin: auto;
+                  height: 150px;
+                  padding: 24px;
+                  border-radius: 6px;
+                  transition: 0.6s;
+                  background-color: #272833;
+                  "></a>
+              </div>
+              <label   style="padding-top: 12px;
+              font-size: 17px;">NSR-10</label>
+
+
+            <h3 class="red-border-bottom" ></h3>
+            <label style="padding-top: 12px; max-width: 80%;
+            font-weight: normal;
+
+          ">Proceso de vulnerabilidad sísmica con valores cuantitativos, implementando  el Titulo A.10, se determina la ecuación de la fuerza equivalente, cargas vivas,  cargas muertas,tipo de suelo, etc...</label>
+          <br></br>
+        </div>
+
+          <div class="col-sm-4" style="text-align: center;">
+            <div style="width: 50%; margin: auto">
+            <a href="#" ><img class="image-a"   src="/static/images/learning.png" width="150px" style="display: block;
+              margin: auto;
+
+              padding: 24px;
+              border-radius: 6px;
+              transition: 0.6s;
+              background-color: #272833;
+              "></a>
+            </div>
+            <label   style="padding-top: 12px;
+            font-size: 17px;">MACHINE LEARNING</label>
+
+            <h3 class="red-border-bottom" ></h3>
+              <label style="padding-top: 12px; max-width: 80%;
+              font-weight: normal;
+
+            ">Predicción de calidad de elementos constructivos mediante el análisis de imágenes  con modelos elaborados con aprendizaje profundo</label>
+           <br></br>
+      </div>
+
+
+        </div>
+
+
+
+    </div>
+
+<style>
+      .image-a:hover {
+        background-color: white  !important;
+      }
+
+
+        .red-border-bottom {
+        margin: auto;
+        z-index: 1;
+        content: "";
+        width: 50%;
+        height: 2px;
+        background: #272833;
+        bottom: -9px;
+        left: 12.5%;
+        }
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          background-color: white;
+        }
+
+        /* #regForm {
+          background-color: #ffffff;
+          margin: 100px auto;
+          font-family: Raleway;
+          padding: 40px;
+          width: 100%;
+          min-width: 300px;
+        } */
+
+        h1 {
+          text-align: center;
+        }
+
+        input {
+          padding: 10px;
+          width: 100%;
+          font-size: 17px;
+          font-family: Raleway;
+          border: 1px solid #aaaaaa;
+        }
+
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+          background-color: #ffdddd;
+        }
+        select.invalid {
+          background-color: #ffdddd;
+        }
+        /* Hide all steps by default: */
+        .tab {
+          display: none;
+        }
+
+        button {
+          background-color: #4788bf;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 17px;
+          font-family: Raleway;
+          cursor: pointer;
+        }
+
+        button:hover {
+          opacity: 0.8;
+        }
+
+        /* Make circles that indicate the steps of the form: */
+        .step {
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbbbbb;
+          border: none;
+          border-radius: 50%;
+          display: inline-block;
+          opacity: 0.5;
+        }
+
+        .step.active {
+          opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+          background-color: #4788bf;
+        }
+        #more {
+            color: blue;
+            text-decoration: underline;
+        }
+        .more_information { color: blue; }
+        #title_process{
+
+
+            /* padding: 350px; */
+            /* height: auto; */
+            padding-top: 50px;
+
+
+
+        }
+        #profile-box{
+            padding-top: 50px;
+        }
+        #main-navbar{
+            background: #272833;
+        }
+
+        #title_process {
+            /* padding: 350px; */
+            /* height: auto; */
+            padding-top: 1px;
+        }
+        .title_process {
+          background-color: white;
+        }
+        #p{
+            position: absolute;
+            top: 24px;
+        }
+        .test{
+            position: absolute;
+            top: 30px;
+        }
+
+</style>
+</body>
+</html>

@@ -6,15 +6,20 @@ from django.contrib.auth.decorators import login_required
 from django.http import FileResponse
 from django.http import Http404
 from django.shortcuts import render, redirect
-from reportlab.pdfgen import canvas
-import io
+from django.views.generic import View, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+from reportlab.pdfgen import canvas
+from werkzeug import FileWrapper
+
+import io
+from io import BytesIO
 # Exception
 from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
-from users.models import ResultPdf, Profile
+from users.models import ResultPdf, Profile, AisModel
 from users.models import Process
 from users.area import areas
 from users.config import *
@@ -79,6 +84,7 @@ def new(request):
 
 def page(request):
     if request.method == 'GET':
+
         return render(request, 'index.html')
 
 def info(request):
@@ -585,10 +591,10 @@ def calculate_process(request):
             type_property=data['type_property'],
             fuerzas_horizontales=data['fuerzas_horizontales'],
             fuerzas_verticales=data['fuerzas_verticales'],
-            picture=data['picture'],
+            # picture=data['picture'],
             val_irregular_long=val_irregular_long,
             val_irregular_plant=val_irregular_plant,
-            planes=data['planes'],
+            # planes=data['planes'],
             floors=data['floors'],
             email=data['email'],
             phone_number=data['phone_number'],
@@ -694,7 +700,8 @@ def file_response(request, pk, file= "Hello world."):
     p.save()
     buffer.seek(0)
 
-    return FileResponse(buffer, as_attachment=True, filename=f'Proceso{pk}.pdf')
+    w = FileWrapper(buffer)
+    return FileResponse(w, as_attachment=True, filename=f'Proceso{pk}.pdf', content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
 
 
 @login_required
@@ -705,3 +712,216 @@ def logout_view(request):
 
 def weight(request):
     return render(request, 'users/weight_calculation.html')
+
+
+class Ais(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'users/weight_calculation.html')
+
+    def post(self, request, *args, **kwargs):
+        response = request.POST
+
+        option_floor = response.get('option_floor')
+        obersation_floor = response.get('obersation_floor')
+        option_wall = response.get('option_wall')
+        observation_wall = response.get('observation_wall')
+        option_height = response.get('option_height')
+        observation_height = response.get('observation_height')
+        option_quality = response.get('option_quality')
+        obersation_quality = response.get('obersation_quality')
+        option_location = response.get('option_location')
+        observation_location = response.get('observation_location')
+        option_materials = response.get('option_materials')
+        observation_materials = response.get('observation_materials')
+        option_confined_walls = response.get('option_confined_walls')
+        obersation_confined_walls = response.get('obersation_confined_walls')
+        option_detail = response.get('option_detail')
+        observation_detail = response.get('observation_detail')
+        option_mooring = response.get('option_mooring')
+        observation_mooring = response.get('observation_mooring')
+        option_characteristics = response.get('option_characteristics')
+        obersation_characteristics = response.get('obersation_characteristics')
+        option_mezzanine = response.get('option_mezzanine')
+        observation_mezzanine = response.get('observation_mezzanine')
+        option_cover = response.get('option_cover')
+        observation_cover = response.get('observation_cover')
+        option_base = response.get('option_base')
+        obersation_base = response.get('obersation_base')
+        option_soil = response.get('option_soil')
+        observation_soil = response.get('observation_soil')
+        option_environment = response.get('option_environment')
+        observation_environment = response.get('observation_environment')
+
+        if (
+            not option_confined_walls
+            or not option_detail
+            or not option_mooring
+            or not option_characteristics
+            or not option_mezzanine
+            or not option_cover
+            or not option_floor
+            or not option_wall
+            or not option_height
+            or not option_quality
+            or not option_location
+            or not option_materials
+            or not option_base
+            or not option_soil
+            or not option_environment
+        ):
+            return HttpResponse({'Error': 'Missing data'})
+
+
+        ais = AisModel(
+            option_confined_walls=option_confined_walls,
+            option_detail=option_detail,
+            option_mooring=option_mooring,
+            option_characteristics=option_characteristics,
+            option_mezzanine=option_mezzanine,
+            option_cover=option_cover,
+            option_floor=option_floor,
+            option_wall=option_wall,
+            option_height=option_height,
+            option_quality=option_quality,
+            option_location=option_location,
+            option_materials=option_materials,
+            option_base=option_base,
+            option_soil=option_soil,
+            option_environment=option_environment,
+        )
+
+        ais.save()
+
+        return redirect('ais_detail', pk=ais.pk)
+
+
+        # qualification_structural = (
+        #     (
+        #         int(option_confined_walls) +
+        #         int(option_detail) +
+        #         int(option_mooring) +
+        #         int(option_characteristics) +
+        #         int(option_mezzanine) +
+        #         int(option_cover)
+        #     )/6
+        # )*PORCENT_STRUCTURAL
+
+        # qualification_geometry =  (
+        #     (int(option_floor)+ int(option_wall)+ int(option_height))/3
+        # )*PORCENT_GEOMETRY
+
+        # qualification_constructive =  (
+        #     (int(option_quality) + int(option_location) + int(option_materials))/3
+        # )*PORCENT_CONSTRUCTIVE
+
+        # qualification_base = int(option_base)*PORCENT_BASE
+        # qualification_soil = int(option_soil)*PORCENT_SOIL
+        # qualification_environment = int(option_environment)*PORCENT_ENVIRONMENT
+
+        # vulnerability_result = round(((
+        #     qualification_structural +
+        #     qualification_geometry +
+        #     qualification_constructive +
+        #     qualification_base +
+        #     qualification_soil +
+        #     qualification_environment
+        # )/2)*100)
+
+        # if vulnerability_result <= 15:
+        #     result = 'BAJA'
+        # elif vulnerability_result <= 35:
+        #     result = 'MEDIA'
+        # else:
+        #     result = 'AlTA!'
+
+
+        # return render(
+        #     request,
+        #     'index.html',
+        #     {
+        #         'message': 'Proceso correcto',
+        #         'result': f'El valor del resultado es {vulnerability_result} lo que indica que la vulnerabilidad es {result}',
+        #         'status': 'success',
+        #         'process': 1,
+        #     }
+        # )
+
+class AisDetail(LoginRequiredMixin, DetailView):
+    model = AisModel
+    template_name = 'ais.html'
+    context_object_name = 'aisprocess'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        aisprocess = context['aisprocess']
+
+        qualification_structural = (
+            (
+                aisprocess.option_confined_walls +
+                aisprocess.option_detail +
+                aisprocess.option_mooring +
+                aisprocess.option_characteristics +
+                aisprocess.option_mezzanine +
+                aisprocess.option_cover
+            )/6
+        )
+        total_structural = qualification_structural*PORCENT_STRUCTURAL
+
+        context['qualification_structural'] = qualification_structural
+        context['PORCENT_STRUCTURAL'] = PORCENT_STRUCTURAL
+        context['total_structural'] = total_structural
+
+        qualification_geometry =  (
+            aisprocess.option_floor + aisprocess.option_wall + aisprocess.option_height
+        )/3
+        total_geometry = qualification_geometry*PORCENT_GEOMETRY
+
+        context['qualification_geometry'] = qualification_geometry
+        context['PORCENT_GEOMETRY'] = PORCENT_GEOMETRY
+        context['total_geometry'] = total_geometry
+
+
+        qualification_constructive =  (
+            aisprocess.option_quality + aisprocess.option_location + aisprocess.option_materials
+        )/3
+
+        total_constructive = qualification_constructive*PORCENT_CONSTRUCTIVE
+
+        context['qualification_constructive'] = qualification_constructive
+        context['PORCENT_CONSTRUCTIVE'] = PORCENT_CONSTRUCTIVE
+        context['total_constructive'] = total_constructive
+
+        total_base = aisprocess.option_base*PORCENT_BASE
+
+        context['PORCENT_BASE'] = PORCENT_BASE
+        context['total_base'] = total_base
+
+        total_soil = aisprocess.option_soil*PORCENT_SOIL
+
+        context['PORCENT_SOIL'] = PORCENT_SOIL
+        context['total_soil'] = total_soil
+
+        total_environment = aisprocess.option_environment*PORCENT_ENVIRONMENT
+
+        context['PORCENT_ENVIRONMENT'] = PORCENT_ENVIRONMENT
+        context['total_environment'] = total_environment
+
+
+        vulnerability_result = round(((
+            total_structural +
+            total_geometry +
+            total_constructive +
+            total_base +
+            total_soil +
+            total_environment
+        )/2)*100)
+
+        context['vulnerability_result'] = vulnerability_result
+
+        if vulnerability_result <= 15:
+            context['result'] = 'BAJA'
+        elif vulnerability_result <= 35:
+            context['result']  = 'MEDIA'
+        else:
+            context['result']  = 'AlTA!'
+        return context

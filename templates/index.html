@@ -34,7 +34,12 @@
 							<header>
 								<h2>Proceso de vulnerabilidad sísmica</h2>
 								<p>Plataforma diseñada para determinar la vulnerabilidad en viviendas</p>
-								<br></br>
+
+								<!-- <br></br>
+								<ul class="actions" style="position: relative; left: 36%;">
+									<li><a href="{% url 'init_video' %}" class="button">Calcular</a></li>
+								</ul> -->
+
 							</header>
 							<span class="image"><img src="/static/images/mapa.png" alt="" /></span>
 						</div>
@@ -52,20 +57,16 @@
 									<header>
 										<h2>¿Su vivienda está bien construida?</h2>
 										<p>Determine la vulnerabilidad sísmica de una vivienda en 5 minutos</p>
+										<ul class="actions">
+											<li><a href="{% url 'init_video' %}" class="button">Calcular</a></li>
+										</ul>
 									</header>
 								</div>
-								<div class="col-4 col-12-medium">
-									<p>
-									La plataforma determina el índice de vulnerabilidad de viviendas informales en la ciudad de
-									Bogotá, implementando la metodología de la Asociación Colombiana de
-									Ingeniería Sísmica y parte del Reglamento Colombiano de Construcción Sismo
-									Resistente (NSR-10) que estable unos parámetros para emplear en un análisis
-									más detallado de la vulnerabilidad sísmica de viviendas que fueron construidas
-									antes de este reglamento.</p>
+								<div class="col-8 col-12-medium">
+									<div style="text-align: center"><iframe width="100%" height="340" src="https://www.youtube.com/embed/VVJhivpeGkk">
+									</iframe></div>
 								</div>
-								<div class="col-4 col-12-medium">
-									<p>Para el análisis del índice de vulnerabilidad solo se tendrán en cuenta las edificaciones de grupo de uso I.</p>
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -179,44 +180,27 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <script>
-	var option = {{ process }}
-	var footers = {{ footer }}
+	var option = '{{ process }}'
+	var footers = '{{ footer }}'
 
 	if (option){
-		var url_page = document.URL
-		if (url_page == 'http://127.0.0.1:8000/users/calculate_process/'){
-			fetch(`http://127.0.0.1:8000/file/response/${footers}`)
-				.then(resp => resp.blob())
-				.then(blob => {
-					const url = window.URL.createObjectURL(blob);
-					const a = document.createElement('a');
-					a.style.display = 'none';
-					a.href = url;
-					// the filename you want
-					a.download = 'proceso.pdf';
-					document.body.appendChild(a);
-					a.click();
-					window.URL.revokeObjectURL(url);
-				})
-				.catch(() => alert('oh no hubo un error generando el arhcivo!'));
 
-		}else {
-			fetch(`http://tesisud.pythonanywhere.com/file/response/${footers}`)
-				.then(resp => resp.blob())
-				.then(blob => {
-					const url = window.URL.createObjectURL(blob);
-					const a = document.createElement('a');
-					a.style.display = 'none';
-					a.href = url;
-					// the filename you want
-					a.download = 'proceso.pdf';
-					document.body.appendChild(a);
-					a.click();
-					window.URL.revokeObjectURL(url);
-				})
-				.catch(() => alert('oh no hubo un error generando el arhcivo!'));
 
-		}
+		fetch(`/file/response/${footers}`)
+			.then(resp => resp.blob())
+			.then(blob => {
+				const url = window.URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.style.display = 'none';
+				a.href = url;
+				// the filename you want
+				a.download = 'proceso.pdf';
+				document.body.appendChild(a);
+				a.click();
+				window.URL.revokeObjectURL(url);
+			})
+			.catch(() => alert('oh no hubo un error generando el arhcivo!'));
+
 
 		Swal.fire({
 			icon:'{{ status }}',
