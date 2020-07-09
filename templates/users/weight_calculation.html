@@ -52,7 +52,10 @@
 
 </div>
 
-<h1 id="title_process">Proceso de calculo de vulnerabilidad sísmica</h1>
+<h1 id="title_process">Método AIS</h1>
+<div style="width: 76%; margin:auto"><p style="text-align: justify;">
+  Este método evaluá aspectos cualitativos de la vivienda,  en donde usted determinara bajo su criterio en qué estado  se encuentra la vivienda. El estado se clasifica por Bueno, Regular y Malo el cual contará con una descripción y una imagen para explicar el item seleccionado. El campo de Observaciones es opcional
+</p></div>
 
 <form id="regForm" action="{% url 'ais' %}" method="POST" enctype="multipart/form-data">
   <!-- One "tab" for each step in the form: -->
@@ -63,12 +66,12 @@
   <div class="tab">
     <div class="regForm2">
       <div style="text-align: center;"class="col-lg-12" id="property">
-          <h2>Metodo cualitativo</h2>
-          <a id="help">(Información)</a>
-          <br></br>
+
+
       </div>
       <div class="col-lg-12" id="property">
-        <h4>Irregularidad en planta de la edificacion</h4>
+        <h4>1. Irregularidad en planta de la edificacion</h4>
+        <br>
       </div>
 
       <div class="col-lg-12" id="property_0">
@@ -106,12 +109,15 @@
           <div class="row" id="info_0">
 
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                   <div class="form-group" id="info_descrip_floor" >
+
                       <ul><li>Forma geométrica de la edificación es regular y aproximadamente simetrica. </li><li>El largo es menor a 2.5 veces el ancho. </li><li>No tiene "entradas y salidas" como las que se muestran en las otras dos figuras, visto tanto en planta como en altura. </li></ul>
                         <!-- <a  class="more_information test" id="info_descrip_floor" >Ver descripción</a> -->
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                     <div class="form-group" id="info_img_floor">
                         <!-- <a class="more_information test" id="info_img_floor" >Ver imagen</a> -->
                         <img style="display: block;
@@ -128,10 +134,15 @@
 
 
       </div>
-      <br></br>
-      <br></br>
+
+      <div class="col-lg-12" id="property_0">
+        <div style="height: 30px"></div>
+      </div>
+
+
       <div class="col-lg-12" id="property">
-          <h4>Cantidad de muros en las dos direcciones</h4>
+          <h4>2. Cantidad de muros en las dos direcciones</h4>
+          <br>
         </div>
 
       <div class="col-lg-12" id="property_0">
@@ -172,13 +183,14 @@
 
 
               <div class="col-sm-6">
+                  <label>Descripción:</label>
                   <div class="form-group" id="info_descrip_wall">
-
                       <ul><li>Existen muros estructurales en las dos direcciones principales de la vivienda y estyos son confinados o reforzados.</li><li>Hay una longitud totalizada de muros en cada una de las direcciones principales al menos igual al valor dado por:<ul><li>Lo=(Mo*Ap)/t</li><li>Ap: Area en m2 de la planta (si la cuebierta es liviana, lamina, asbesto, cemento, ap se puede multiplicar por 0.67).</li><li>t: espesor de muros.</li></ul></li></ul>
 
                   </div>
               </div>
               <div class="col-sm-6">
+                  <label>Imagen:</label>
                       <div class="form-group" id="info_img_wall">
                           <img style="display: block;
                           margin: auto;" src="/static/images/1_wall.png">
@@ -199,9 +211,9 @@
 
       </div>
 
-
-      <br></br>
-      <br></br>
+      <div class="col-lg-12" id="property_0">
+        <div style="height: 30px"></div>
+      </div>
 
 
 
@@ -209,7 +221,8 @@
 
 
       <div class="col-lg-12" id="property">
-        <h4>Irregularidad en altura</h4>
+        <h4>3. Irregularidad en altura</h4>
+        <br>
       </div>
 
       <div class="col-lg-12" id="property_0">
@@ -248,11 +261,13 @@
           <div class="row" id="info_0">
 
               <div class="col-sm-6">
+                  <label>Descripción:</label>
                 <div class="form-group" id="info_descrip_height">
                     <ul><li>La mayoria de los muros estructurales son continuos desde la cimentacion hasta la cubierta</li></ul>
                 </div>
               </div>
               <div class="col-sm-6">
+                  <label>Imagen:</label>
                   <div class="form-group" id="info_img_height">
                       <img style="display: block;margin: auto;" src="/static/images/1_height.png">
                   </div>
@@ -266,29 +281,19 @@
       </div>
 
 
-      <br></br>
     </div>
   </div>
-
-
-
-
-
-
-
-
 
 
 
   <div class="tab">
       <div class="regForm2">
         <div style="text-align: center;"class="col-lg-12" id="property">
-            <h2>Metodo cualitativo</h2>
-            <a id="help">(Información)</a>
-            <br></br>
+
         </div>
         <div class="col-lg-12" id="property">
-          <h4>Calidad de las juntas de pega en mortero</h4>
+          <h4>4. Calidad de las juntas de pega en mortero</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -321,32 +326,35 @@
 
                   </div>
 
+            </div>
 
+            <div class="row" id="info_0">
 
-
-                <div class="row" id="info_0">
-
-                    <div class="col-sm-6">
-                        <div class="form-group" id="info_descrip_quality">
-                            <ul><li>El mortero de la mayoría de las pegas esta entre 0.7 y 1.3 cm. </li><li>Las juntas son uniformes y continuas.</li><li>Hay juntas de buena calidad verticales y horizontales rodeando cada unidad de mampostería.</li><li>El mortero es de buena calidad y presentan buena adherencia con la pieza de mampostería</li></ul>
-                        </div>
+                <div class="col-sm-6">
+                    <label>Descripción:</label>
+                    <div class="form-group" id="info_descrip_quality">
+                        <ul><li>El mortero de la mayoría de las pegas esta entre 0.7 y 1.3 cm. </li><li>Las juntas son uniformes y continuas.</li><li>Hay juntas de buena calidad verticales y horizontales rodeando cada unidad de mampostería.</li><li>El mortero es de buena calidad y presentan buena adherencia con la pieza de mampostería</li></ul>
                     </div>
-                    <div class="col-sm-6">
-                          <div class="form-group" id="info_img_quality">
-                              <img style="display: block;margin: auto;" src="/static/images/1_quality.png">
-                          </div>
-                      </div>
                 </div>
+                <div class="col-sm-6">
+                    <label>Imagen:</label>
+                      <div class="form-group" id="info_img_quality">
+                          <img style="display: block;margin: auto;" src="/static/images/1_quality.png">
+                      </div>
+                  </div>
             </div>
 
 
-
         </div>
-        <br></br>
-        <br></br>
+
+        <div class="col-lg-12" id="property_0">
+          <div style="height: 30px"></div>
+        </div>
+
 
         <div class="col-lg-12" id="property">
-            <h4>Tipo y disposición de las unidades de mampostería</h4>
+            <h4>5. Tipo y disposición de las unidades de mampostería</h4>
+            <br>
           </div>
 
         <div class="col-lg-12" id="property_0">
@@ -385,11 +393,13 @@
 
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_location">
                         <ul><li>Las unidades de mampostería están trabadas.</li><li>Las unidades de mampostería son de buena calidad. No presentan agrietamientos importantes, nos hay piezas deterioradas o rotas.</li><li>Las piezas están colocadas de manera uniforme y continua hilada tras hilada.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_location">
                             <img style="display: block;margin: auto;" src="/static/images/1_location.png">
                         </div>
@@ -398,11 +408,15 @@
             </div>
 
         </div>
-        <br></br>
 
+
+        <div class="col-lg-12" id="property_0">
+          <div style="height: 30px"></div>
+        </div>
 
         <div class="col-lg-12" id="property">
-          <h4>Calidad de los materiales</h4>
+          <h4>6. Calidad de los materiales</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -440,11 +454,13 @@
 
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_materials">
                         <ul><li>El mortero no se deja rayar o desmoronar con un clavo o herramienta metálicas.</li><li>El concreto tiene buen aspecto, sin hormigueros y el acero no esta expuesto.</li><li>En los elementos de confinamiento en concreto reforzado, hay estribos abundantes y por lo menos 3 a 4 barras No 3, en sentido longitudinal.</li><li>El ladrillo es de buena calidad, no esta muy fisurado, quebrado, ni despegado y resiste caídas de por lo menos 2 metros de alto sin desintegrarse ni deteriorarse en forma apreciable.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group"  id="info_img_materials">
                             <img style="display: block;margin: auto;" src="/static/images/1_materials.png">
 
@@ -453,7 +469,7 @@
                 </div>
             </div>
 
-            <br></br>
+
 
         </div>
 
@@ -463,13 +479,10 @@
 
   <div class="tab">
       <div class="regForm2">
-          <div style="text-align: center;"class="col-lg-12" id="property">
-              <h2>Metodo cualitativo</h2>
-              <a id="help">(Información)</a>
-              <br></br>
-          </div>
+
         <div class="col-lg-12" id="property">
-          <h4>Muros confinados y reforzados</h4>
+          <h4>7. Muros confinados y reforzados</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -507,6 +520,7 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_confined_walls">
                         <ul><li>Todos los muros de mampostería de la vivienda están confinados con vigas y columnas de concreto reforzado alrededor de ellos.</li><li>El espaciamiento máximo entre elementos de confinamiento es del orden de 4m o la altura entre pisos.</li><li>Todos los elementos de confinamiento tienen refuerzo tanto longitudinal como transversal y esta adecuadamente dispuesto.</li><li>Las culatas y antepechos también están confinados.</li></ul>
                     </div>
@@ -524,7 +538,8 @@
 
 
         <div class="col-lg-12" id="property">
-            <h4>Detalles de columnas y vigas de confinamiento</h4>
+            <h4>8. Detalles de columnas y vigas de confinamiento</h4>
+            <br>
           </div>
 
         <div class="col-lg-12" id="property_0">
@@ -561,12 +576,14 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_detail">
                         <ul><li>Las columnas y vigas tienen mas de 20 cm de espesor o mas de 400 cm2 de área transversal.</li><li>Las columnas y vigas tienen al menos 4 barras No 3 longitudinales y estribos espaciados a no mas de 10 a 15 cm.</li><li>Existe un buen contacto entre el muro de mampostería y los elementos de confinamiento.</li><li>El refuerzo longitudinal de las columnas y vigas debe estar adecuadamente anclado a sus extremos y a los elementos de la cimentación.</li></ul>
                     </div>
                 </div>
 
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                     <div class="form-group" id="info_img_detail" >
                         <img style="display: block; margin: auto;" src="/static/images/1_detail.png" >
 
@@ -580,7 +597,8 @@
 
 
         <div class="col-lg-12" id="property">
-          <h4>Vigas de amarre o corona</h4>
+          <h4>9. Vigas de amarre o corona</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -618,11 +636,13 @@
 
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_mooring">
                         <ul><li>Existen vigas de amarre o de corona en concreto reforzado en todos los muros, parapetos, fachadas y culatas en mamposteria.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_mooring">
                             <img style="display: block; margin: auto;" src="/static/images/1_mooring.png" >
 
@@ -639,13 +659,10 @@
 
   <div class="tab">
       <div class="regForm2">
-          <div style="text-align: center;"class="col-lg-12" id="property">
-              <h2>Metodo cualitativo</h2>
-              <a id="help">(Información)</a>
-              <br></br>
-          </div>
+
         <div class="col-lg-12" id="property">
-          <h4>Características de las aberturas</h4>
+          <h4>10. Características de las aberturas</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -682,6 +699,7 @@
 
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_characteristics">
                         <ul><li>Las aberturas en los muros estructurales totalizan menos del 35% del area total del muro.</li><li>La longitud total de aberturas en el muro corresponde a menos de la mitad de la longitud total del muro.</li><li>Existe una distancia desde el borde del muro hasta la abertura adyacente igual a la altura de la misma o 50 cm, la que sea mayor.</li></ul>
                     </div>
@@ -699,7 +717,8 @@
 
 
         <div class="col-lg-12" id="property">
-            <h4>Entrepiso</h4>
+            <h4>11. Entrepiso</h4>
+            <br>
           </div>
 
         <div class="col-lg-12" id="property_0">
@@ -739,11 +758,13 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_mezzanine">
                         <ul><li>El entrepiso esta conformado por placas de concreto fundidas en el sitio o placas prefabricadas que funcionan de manera monolítica.</li><li>La placa de entrepiso se apoya de manera adecuada a los muros de soporte y proporciona continuidad y monolitismo.</li><li>La placa de entrepiso es continua, monolítica y uniforme en relación con los materiales que lo componen.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_mezzanine">
                             <img style="display: block; margin: auto;" src="/static/images/1_mezzanine.png" >
                         </div>
@@ -756,7 +777,8 @@
 
 
         <div class="col-lg-12" id="property">
-          <h4>Amarre de cubiertas</h4>
+          <h4>12. Amarre de cubiertas</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -792,11 +814,13 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_cover">
                         <ul><li>Existen tornillos, alambres o conexiones similares que amarran el techo a los muros.</li><li>Hay arriostramiento de las vigas y la distancia entre vigas no es muy grande.</li><li>La cubierta es liviana y esta debidamente amarrada y apoyada a la estructura de cubierta.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_cover">
                             <img style="display: block; margin: auto;" src="/static/images/1_cover.png" >
 
@@ -815,12 +839,11 @@
   <div class="tab">
       <div class="regForm2">
         <div style="text-align: center;"class="col-lg-12" id="property">
-            <h2>Metodo cualitativo</h2>
-            <a id="help">(Información)</a>
-            <br></br>
+
         </div>
         <div class="col-lg-12" id="property">
-          <h4>Cimentación</h4>
+          <h4>13. Cimentación</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -860,11 +883,13 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_base">
                         <ul><li>La cimentación esta conformada por vigas corridas en concreto reforzado bajo los muros estructurales.</li><li>Las vigas de cimentacion conforman anillos amarrados.</li><li>Las vigas de cimentacion en concreto reforzado cumplen los requisitos por la NSR-10 en el titulo E.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_base">
 
                             <img style="display: block; margin: auto;" src="/static/images/1_base.png" >
@@ -878,7 +903,8 @@
 
 
         <div class="col-lg-12" id="property">
-            <h4>Suelos</h4>
+            <h4>14. Suelos</h4>
+            <br>
           </div>
 
         <div class="col-lg-12" id="property_0">
@@ -918,11 +944,13 @@
             </div>
             <div class="row" id="info_0">
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_soil">
                         <ul><li>El suelo de la fundación es duro. Esto se puede saber cuando alrededor de la edificación no existen hundimientos, cuando no se evidencien arboles o postes inclinados, no se siente vibración cuando pasa un vehículo pesado cerca de la vivienda o cuando en general las viviendas no presentan agrietamientos o daños generalizados, especialmente grietas en los pisos o hundimientos y desniveles en el mismo.</li></ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group"  id="info_img_soil">
                             <img style="display: block; margin: auto;" src="/static/images/1_soil.png" >
 
@@ -935,7 +963,8 @@
 
 
         <div class="col-lg-12" id="property">
-          <h4>Entorno</h4>
+          <h4>15. Entorno</h4>
+          <br>
         </div>
 
         <div class="col-lg-12" id="property_0">
@@ -978,6 +1007,7 @@
             <div class="row" id="info_0">
 
                 <div class="col-sm-6">
+                    <label>Descripción:</label>
                     <div class="form-group" id="info_descrip_environment">
                         <ul><li>La topografía donde se encuentra la vivienda es plana o muy poco inclinada.</li></ul>
 
@@ -985,6 +1015,7 @@
                 </div>
 
                 <div class="col-sm-6">
+                    <label>Imagen:</label>
                         <div class="form-group" id="info_img_environment">
                             <img style="display: block; margin: auto;" src="/static/images/1_environment.png" >
                         </div>
@@ -1122,6 +1153,9 @@ function fixStepIndicator(n) {
           box-sizing: border-box;
         }
 
+        img {
+          width: 60% !important;
+        }
         body {
           background-color: white;
         }

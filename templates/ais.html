@@ -8,7 +8,7 @@
 
 <body>
 
-<div style="width: 100%;  height:60px;" id="main-navbar">
+<div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
     <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
     left:50px;
     top:17px;
@@ -21,13 +21,18 @@
 
 </div>
 
-<h1 id="title_process">Proceso de calculo de vulnerabilidad sísmica</h1>
 
 
+<h1 id="title_process">Método AIS</h1>
+
+
+<div class="col text-center">
+        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
+    </div>
 <div class="col-lg-12" style="padding: 50px" id="property_0">
         <div class="row">
-            <div class="col-sm-12" style="border: 0.2px solid black; text-align: center">
-                    EVALUACIÓN VISUAL DE LA VIVIENDA
+            <div class="col-sm-12" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    EVALUACIÓN VISUAL DE LA VIVIENDA ID: {{ aisprocess.pk }}
             </div>
         </div>
         <div class="row">
@@ -350,7 +355,7 @@
         <div class="row">
             <div class="col-sm-6" >
                 <div class="row">
-                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: blue">
+                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
                             CIMENTACION
                         </div>
                         <div class="col-sm-2 data" >
@@ -393,7 +398,7 @@
         <div class="row">
             <div class="col-sm-6" >
                 <div class="row">
-                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: blue">
+                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
                             SUELOS
                         </div>
                         <div class="col-sm-2 data" >
@@ -432,7 +437,7 @@
         <div class="row">
             <div class="col-sm-6" >
                 <div class="row">
-                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: blue">
+                        <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
                             ENTORNO
                         </div>
                         <div class="col-sm-2 data" >
@@ -471,10 +476,10 @@
 
         <div class="row">
             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                    Indice de vulnerabilidad sísmica de la vivienda
+                    Indice de vulnerabilidad sísmica de la vivienda  ( Menor o igual a 15: Baja, Menor o igual a 35: Media, Mayor a 35: Alta)
             </div>
             <div class="col-sm-4" >
-                <div class="row">
+                <div class="row" style="background: #272833; color: white">
                     <div class="col-sm-6 data"  >
                         {{ vulnerability_result }}
                     </div>
@@ -509,15 +514,11 @@
 
 
 
-aisprocess.option_confined_walls
-aisprocess.option_detail
-aisprocess.option_mooring
-aisprocess.option_characteristics
-aisprocess.option_mezzanine
-aisprocess.option_cover
 <style>
 
-
+        div div {
+            text-align: center;
+        }
         body {
           background-color: white;
         }
@@ -536,8 +537,10 @@ aisprocess.option_cover
             height: 40px;
         }
         .data-color {
-            background: blue;
+            background: #272833;
+            border: 0.2px solid black; border-top: none;
             height: 20px;
+            color: white
         }
 
         .data-porcentage {
@@ -546,5 +549,11 @@ aisprocess.option_cover
             height: 60px;
         }
 </style>
+<script>
+		Swal.fire({
+			icon:'success',
+			title:'El indice de vulnerabilidad sísmica es {{ result }}'
+			})
+</script>
 </body>
 </html>
