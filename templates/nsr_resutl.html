@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<body>
+
+<div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
+    <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
+    left:50px;
+    top:17px;
+    font-weight: bold;""
+    ></a>
+    <a class="glyphicon glyphicon-log-out" href="{% url 'logout' %}" style="color: white;  position:relative;
+    left:80px;
+    top:17px;
+    font-weight: bold;""></a>
+
+</div>
+
+
+
+<h1 id="title_process">Método AIS</h1>
+
+
+<div class="col text-center">
+        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
+    </div>
+<div class="col-lg-12" style="padding: 50px" id="property_0">
+        <!-- <div class="row">
+            <div class="col-sm-12" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    EVALUACIÓN CUANTITATIVA
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                 INFORMACIÓN CONSTRUCTIVA
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    Información general
+            </div>
+            <div class="col-sm-6"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                    Información especifica
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    Grupo de uso:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    Tipo de sistema estructural:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Numero de pisos:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                fuerzas horizontales:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Altura entre pisos:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                fuerzas verticales
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Total altura propiedad:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Irregularidad en planta:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                zzzzzzzzzzzzzzzzzzzz:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Irregularidad en altura:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data-title"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Comentarios:
+            </div>
+            <div class="col-sm-9 data-title" >
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                ESPECIFICACIÓN SUELOS
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Tipo de suelo:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Velocidad onda:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Fa:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Humedad_Promedio:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Fv:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Efectos relacionados
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Espesor deposito:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-6"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Ubicación
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Periodo suelo:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Cordeneada x:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Descripción geotecnica:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Cordeneada y:
+            </div>
+            <div class="col-sm-3 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                CARGAS MUERTAS
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12 data-color" >
+                        VIGAS
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    Numero de vigas
+            </div>
+            <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                    Cantidad de vigas
+            </div>
+            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                    M3
+            </div>
+            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                    Densidad concreto
+            </div>
+            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                Total peso
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-12 data-color" >
+                    COLUMNAS
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Numero de vigas
+        </div>
+        <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                Cantidad de vigas
+        </div>
+        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                M3
+        </div>
+        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+                Densidad concreto
+        </div>
+        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+            Total peso
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12 data-color" >
+                PLACA
+        </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            Numero de vigas
+    </div>
+    <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+            Cantidad de vigas
+    </div>
+    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            M3
+    </div>
+    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+            Densidad concreto
+    </div>
+    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white" >
+        Total peso
+    </div>
+
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        MURO FACHADA
+    </div>
+    <div class="col-sm-6 data-color" >
+        MURO DIVISORIO
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-5" >
+            Muro de fachadas
+        </div>
+        <div class="col-sm-3 data-color" >
+             Valor nsr-10
+        </div>
+        <div class="col-sm-2 data-color " >
+            M2
+        </div>
+        <div class="col-sm-2 " >
+            Total Peso
+        </div>
+    </div>
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-4 " >
+            Muro de Divisorio
+        </div>
+        <div class="col-sm-3 " >
+            Valor nsr-10
+        </div>
+        <div class="col-sm-2 " >
+            M2
+        </div>
+        <div class="col-sm-3 " >
+            Total Peso
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        PARTICIONES LIVIANAS
+    </div>
+    <div class="col-sm-6 data-color" >
+        VENTANAS
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-5" >
+            Particiones livianas
+        </div>
+        <div class="col-sm-3 data-color" >
+             Valor nsr-10
+        </div>
+        <div class="col-sm-2 data-color " >
+            M2
+        </div>
+        <div class="col-sm-2 " >
+            Total Peso
+        </div>
+    </div>
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-4 " >
+            Ventanas
+        </div>
+        <div class="col-sm-3 " >
+            Valor nsr-10
+        </div>
+        <div class="col-sm-2 " >
+            M2
+        </div>
+        <div class="col-sm-3 " >
+            Total Peso
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        CUBIERTAS
+    </div>
+    <div class="col-sm-6 data-color" >
+        PISOS
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-5" >
+            Cubierta
+        </div>
+        <div class="col-sm-3 data-color" >
+             Valor nsr-10
+        </div>
+        <div class="col-sm-2 data-color " >
+            M2
+        </div>
+        <div class="col-sm-2 " >
+            Total Peso
+        </div>
+    </div>
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-4 " >
+            Piso
+        </div>
+        <div class="col-sm-3 " >
+            Valor nsr-10
+        </div>
+        <div class="col-sm-2 " >
+            M2
+        </div>
+        <div class="col-sm-3 " >
+            Total Peso
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+
+        RECUBRIMIENTO DE MUROS
+    </div>
+    <div class="col-sm-6 data-color" >
+        ENCHAPE
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-5" >
+            Recubrimiento
+        </div>
+        <div class="col-sm-3 data-color" >
+             Valor nsr-10
+        </div>
+        <div class="col-sm-2 data-color " >
+            M2
+        </div>
+        <div class="col-sm-2 " >
+            Total Peso
+        </div>
+    </div>
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-4 " >
+            Enchape
+        </div>
+        <div class="col-sm-3 " >
+            Valor nsr-10
+        </div>
+        <div class="col-sm-2 " >
+            M2
+        </div>
+        <div class="col-sm-3 " >
+            Total Peso
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        TOTAL CARGAS MUERTAS
+    </div>
+    <div class="col-sm-6 data-title" >
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        CARGAS VIVAS
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        OCUPACIÓN O USO
+    </div>
+    <div class="col-sm-6 data-color" >
+        CUBIERTA
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-5" >
+            Ocupación
+        </div>
+        <div class="col-sm-3 data-color" >
+             Valor nsr-10
+        </div>
+        <div class="col-sm-2 data-color " >
+            M2
+        </div>
+        <div class="col-sm-2 " >
+            Total Peso
+        </div>
+    </div>
+    <div class="col-sm-6 data-color" >
+        <div class="col-sm-4 " >
+            Cubierta
+        </div>
+        <div class="col-sm-3 " >
+            Valor nsr-10
+        </div>
+        <div class="col-sm-2 " >
+            M2
+        </div>
+        <div class="col-sm-3 " >
+            Total Peso
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        TOTAL CARGAS VIVAS
+    </div>
+    <div class="col-sm-6 data-title" >
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        TOTAL CARGAS
+    </div>
+    <div class="col-sm-6 data-title" >
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+        div div {
+            text-align: center;
+        }
+        body {
+          background-color: white;
+        }
+
+        h1 {
+          text-align: center;
+        }
+        .data {
+            border: 0.2px solid black; border-top: none;
+            border-left: none;
+            height: 20px;
+        }
+        .data-title{
+            border: 0.2px solid black; border-top: none;
+            border-left: none;
+            height: 40px;
+        }
+        .data-color {
+            background: #272833;
+            border: 0.2px solid black; border-top: none;
+            height: 20px;
+            color: white
+        }
+
+        .data-porcentage {
+            border: 0.2px solid black; border-top: none;
+            border-left: none;
+            height: 60px;
+        }
+</style>
+<script>
+		Swal.fire({
+			icon:'success',
+			title:'El indice de vulnerabilidad sísmica es {{ result }}'
+			})
+</script>
+</body>
+</html>

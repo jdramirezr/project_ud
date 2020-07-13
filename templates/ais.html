@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
+    <script src="/static/sweetalert2/sweetalert2.js"></script>
 
 <body>
 
@@ -72,7 +73,7 @@
                 <div class="col-sm-6" >
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                    Irregularidad en planta de la edificacion
+                                1. Irregularidad en planta de la edificacion
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_floor == 0 %}
@@ -89,7 +90,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                Cantidad de muros en las dos direcciones
+                            2. Cantidad de muros en las dos direcciones
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_wall == 0 %}
@@ -106,7 +107,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                Irregularidad en altura
+                                3. Irregularidad en altura
                             </div>
                             <div class="col-sm-2 data" >
                                 {% if aisprocess.option_height == 0 %}
@@ -147,7 +148,7 @@
                 <div class="col-sm-6" >
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                Calidad de las juntas de pega en mortero
+                                4. Calidad de las juntas de pega en mortero
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_quality == 0 %}
@@ -164,7 +165,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                Tipo y disposición de las unidades de mampostería
+                               5. Tipo y disposición de las unidades de mampostería
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_location == 0 %}
@@ -181,7 +182,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                Calidad de los materiales
+                                6. Calidad de los materiales
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_materials == 0 %}
@@ -223,7 +224,7 @@
                 <div class="col-sm-6" >
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                Muros confinados y reforzados
+                                7. Muros confinados y reforzados
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_confined_walls == 0 %}
@@ -240,7 +241,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                Detalles de columnas y vigas de confinamiento
+                                8. Detalles de columnas y vigas de confinamiento
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_detail == 0 %}
@@ -257,7 +258,7 @@
                     </div>
                     <div class="row">
                             <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                Vigas de amarre o corona
+                                9. Vigas de amarre o corona
                             </div>
                             <div class="col-sm-2 data" >
                                     {% if aisprocess.option_mooring == 0 %}
@@ -274,7 +275,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                            Características de las aberturas
+                            10. Características de las aberturas
                         </div>
                         <div class="col-sm-2 data" >
                                 {% if aisprocess.option_characteristics == 0 %}
@@ -292,7 +293,7 @@
 
                     <div class="row">
                         <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                            Entrepiso
+                            11. Entrepiso
                         </div>
                         <div class="col-sm-2 data" >
                                 {% if aisprocess.option_mezzanine == 0 %}
@@ -309,7 +310,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                        Amarre de cubiertas
+                        12. Amarre de cubiertas
                     </div>
                     <div class="col-sm-2 data" >
                             {% if aisprocess.option_cover == 0 %}
@@ -356,7 +357,7 @@
             <div class="col-sm-6" >
                 <div class="row">
                         <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            CIMENTACION
+                            13. CIMENTACIÓN
                         </div>
                         <div class="col-sm-2 data" >
                                 {% if aisprocess.option_base == 0 %}
@@ -399,7 +400,7 @@
             <div class="col-sm-6" >
                 <div class="row">
                         <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            SUELOS
+                            14. SUELOS
                         </div>
                         <div class="col-sm-2 data" >
                                 {% if aisprocess.option_soil == 0 %}
@@ -438,7 +439,7 @@
             <div class="col-sm-6" >
                 <div class="row">
                         <div class="col-sm-8 data" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            ENTORNO
+                            15. ENTORNO
                         </div>
                         <div class="col-sm-2 data" >
                                 {% if aisprocess.option_environment == 0 %}

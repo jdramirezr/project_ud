@@ -33,5 +33,6 @@ urlpatterns = [
     path('users/inicio/', TemplateView.as_view(template_name="video.html"),  name="init_video"),
     path('file/response/<int:pk>', users_views.file_response, name='file_response'),
     path('users/ais/', users_views.Ais.as_view(), name='ais'),
+    path('users/nsr/', users_views.Nsr10.as_view(), name='nsr'),
     path('users/ais/<int:pk>/', users_views.AisDetail.as_view(), name='ais_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
