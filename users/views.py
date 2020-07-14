@@ -729,6 +729,14 @@ class Nsr10(LoginRequiredMixin, View):
 
         placa_weight = []
 
+        group_use = {
+            1:1,
+            1.1:2,
+            1.25:3,
+            1.5:4
+        }
+        #
+
         if 'Placa_Maciza' in type_placa:
             placa_z = response_weight.get('placa_z')
 
@@ -1321,13 +1329,103 @@ class Nsr10(LoginRequiredMixin, View):
             Humedad_Promedio = '25 - 50'
             Efectos_relacionados = 'Amplificación, licuación'
 
+        fuerzas_horizontales = {
+            "Muros_de_carga":  {
+                1:" Paneles de cortante de madera", 2:"Muros de concreto con capacidad especial de disipación de energía (DES)", 3:" Muros de concreto con capacidad moderada de disipación de energía (DMO)", 4:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 5:" Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas" , 6:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)" , 7:"Muros de mampostería parcialmente reforzada de bloque de perforación vertical" , 8:"Muros de mampostería confinada" , 9:"Muros de mampostería de cavidad reforzada" , 10:"Muros de mampostería no reforzada (no tiene capacidad de disipación de energía)" , 11:"Pórticos de acero estructural con diagonales concéntricas (DES)" , 12:"Pórticos con diagonales de concreto con capacidad moderada de disipación de energía (DMO)", 13:"Pórticos de madera con diagonales"
+            },
+            "Sistema_combinado":{
+                14:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento", 15:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento", 16:"Pórticos de acero con diagonales excéntricas si el vínculo no se conecta a la columna", 17:"Pórticos de acero con diagonales excéntricas si el vínculo tiene conexión resistente a momento con la columna", 18:"Muros de concreto con capacidad especial de disipación de energía (DES)", 19:"Muros de concreto con capacidad moderada de disipación de energía (DMO)", 20:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 21:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas", 22:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)", 23:"Muros de mampostería confinada (DMO — capacidad moderada de disipación de energía", 24:"Muros de mampostería de cavidad reforzada  (DES — capacidad especial de disipación de energía)", 25:"Muros de cortante con placa de acero (DES)", 26:"Muros de cortante compuestos con placa de acero y concreto", 27:"Muros de concreto reforzado (DES) mixtos con elementos de acero", 28:"Muros de concreto reforzado (DMO) mixtos con elementos de acero", 29:"Muros de concreto reforzado (DMI ) mixtos con elementos de acero", 30:"Pórticos de acero con diagonales concéntricas (DES)", 31:"Pórticos de acero con diagonales concéntricas (DMI)", 32:"Pórticos mixtos con diagonales concéntricas (DES)", 33:"Pórticos mixtos con diagonales concéntricas (DMI)", 34:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna resistentes a momento", 35:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna no resistentes a momento", 36:"Pórticos de concreto con diagonales concéntricas con capacidad moderada de disipación de energía (DMO)"
+            },
+            "Sistema_portico":{
+                37:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De concreto", 38:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero", 39:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) Mixtos", 40:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero con cerchas dúctiles", 41:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De concreto", 42:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De acero", 43:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) Mixtos  con  conexiones  rígidas", 44:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De concreto", 45:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero", 46:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones totalmente restringidas a momento", 47:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones parcialmente restringidas a momento", 48:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con cerchas no dúctiles", 49:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con perfiles de lámina doblada en frío y perfiles tubulares estructurales PTE que no cumplen los requisitos de F.2.2.4 para perfiles no esbeltos", 50:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad moderada de disipación de energía (DMO)", 51:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad mínima de disipación de energía (DMI)", 52:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad especial de disipación de energía (DES)", 53:"Estructuras de péndulo invertido, Pórticos de concreto con capacidad especial de disipación de energía (DES)", 54:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad moderada de disipación de energía (DMO)"
+            },
+            "Sistema_dual":{
+                55:"Muros de concreto con capacidad especial de disipación de energía (DES)",56:"Muros de concreto con capacidad moderada de disipación de energía (DMO)",57:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas",58:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)",59:"Muros de cortante con placa de acero (DES)",60:"Muros de cortante mixtos con placa de acero",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",65:"De acero con capacidad especial de disipación de energía (DES)",66:"De acero con capacidad mínima de disipación de energía (DMI)",67:"De concreto con capacidad moderada de disipación de energía (DMO)",68:"Pórticos mixtos con diagonales concéntricas (DES)",69:"Pórticos de acero con diagonales concéntricas restringidas al pandeo",70:"Pórticos de acero con diagonales concéntricas (DES)",71:"Pórticos mixtos con diagonales concéntricas (DES)",72:"Pórticos con diagonales concéntricas que resistan solo a tensión"
+            }
+        }
+        fuerzas_verticales = {
+            1:{3.0:"Muros ligeros de madera laminada"},
+            2:{5.0: "El mismo"},
+            3:{4.0: "El mismo"},
+            4:{2.5: "El mismo"},
+            5:{3.5: "El mismo"},
+            6:{2.5: "El mismo"},
+            7:{2.0: "El mismo"},
+            8:{2.0: "El mismo"},
+            9:{4.0: "El mismo"},
+            10:{1.0: "El mismo"},
+            11:{5.0: "El mismo"},
+            12:{3.5: "El mismo"},
+            13:{2.0: "El mismo"},
+            14:{7.0:"pórticos de acero resistentes a momentos con capacidad mínima de disipación de energía (DMI)"},
+            15:{6.0:"pórticos de acero resistentes a momentos con capacidad mínima de disipación de energía (DMI)"},
+            16:{6.0:"pórticos de acero no resistentes a momentos"},
+            17:{5.0: "pórticos de acero resistentes a momentos con capacidad mínima de disipación de energía (DMI)"},
+            18:{7.0: "pórticos de concreto con capacidad especial de disipación de energía (DES)"},
+            19:{5.0:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)",3.5:"pórticos losa-columna con capacidad moderada de disipación de energía (DMO)"},
+            20:{2.5:"pórticos de concreto con capacidad mínima de disipación de energía (DMI)",2.0:"pórticos losa-columna con capacidad mínima de disipación de energía (DMI)"},
+            21:{4.5:"pórticos de concreto con capacidad especial de disipación de energía (DES)"},
+            22:{3.5:"pórticos de concreto con capacidad especial de disipación de energía (DES)",2.5:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)"},
+            23:{2.0:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)",2.0:"pórticos de concreto con capacidad mínima de disipación de energía (DMI)"},
+            24:{4.0:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)",2.0:"pórticos de concreto con capacidad mínima de disipación de energía (DMI)"},
+            25:{7.0:"pórticos de acero resistente o no a momentos"},
+            26:{6.5:"pórticos de acero resistente o no a momentos"},
+            27:{6.0:"pórticos de acero resistente o no a momentos"},
+            28:{5.5: "pórticos de acero resistente o no a momentos"},
+            29:{5.0: "pórticos de acero resistente o no a momentos"},
+            30:{5.0:"pórticos de acero no resistentes a momentos"},
+            31:{4.0:"pórticos de acero no resistentes a momentos"},
+            32:{5.0:"pórticos de acero resistentes o no a momentos"},
+            33:{3.0: "pórticos de acero resistentes o no a momentos"},
+            34:{7.0: "pórticos de acero no resistentes a momentos"},
+            35:{6.0: "pórticos de acero no resistentes a momentos"},
+            36:{6.0: "pórticos de concreto con capacidad moderada de disipación de energía (DMO)"},
+            37:{7.0:"El mismo"},
+            38:{7.0:"El mismo"},
+            39:{7.0:"Pórticos de acero o mixtos resistentes o no a momentos"},
+            40:{6.0:"Pórticos de acero resistentes o no a momentos"},
+            41:{5.0: "El mismo"},
+            42:{5.0: "El mismo"},
+            43:{5.0: "Pórticos de acero o mixtos resistentes o no a momentos"},
+            44:{2.5: "El mismo"},
+            45:{3.0: "El mismo"},
+            46:{3.0: "Pórticos de acero o mixtos resistentes o no a momentos"},
+            47:{6.0: "Pórticos de acero o mixtos resistentes o no a momentos"},
+            48:{1.5: "El mismo"},
+            49:{1.5: "El mismo"},
+            50:{2.5: "El mismo"},
+            51:{1.5: "El mismo"},
+            52:{2.5:"El mismo"},
+            53:{2.5:"El mismo"},
+            54:{1.5:"El mismo"},
+            55:{8.0:"pórticos de concreto con capacidad especial de disipación de energía (DES)",8.0:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)"},
+            56:{6.0:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)",6.0:"pórticos de acero resistentes a momentos con capacidad moderada de disipación de energía (DMO)"},
+            57:{5.5:"pórticos de concreto con capacidad especial de disipación de energía (DES)",5.5:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)"},
+            58:{4.5:"pórticos de concreto con capacidad especial de disipación de energía (DES)",4.5:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)",3.5:"pórticos de acero resistentes a momentos con capacidad moderada de disipación de energía (DMO)",3.5:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)"},
+            59:{7.0:"pórticos de acero con alma llena, con conexiones rígidas (DES)"},
+            60:{6.5:"pórticos de acero con alma llena, con conexiones rígidas (DES)"},
+            61:{6.0:"pórticos de acero con alma llena, con conexiones rígidas (DES)"},
+            62:{5.0:"pórticos de acero con alma llena, con conexiones rígidas (DES)",4.0:"pórticos de acero con alma llena, con conexiones rígidas (DMO)"},
+            63:{8.0:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)", 6.0:"pórticos de acero resistentes a momentos con capacidad moderada de disipación de energía (DMO)"},
+            64:{7.0:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)",5.0:"pórticos de acero resistentes a momentos con capacidad moderada de disipación de energía (DMO)"},
+            65:{6.0:"pórticos de acero resistentes a momentos con capacidad especial de disipación de energía (DES)"},
+            66:{3.0:"pórticos de acero resistentes a momentos con capacidad moderada de disipación de energía (DMO)"},
+            67:{4.0:"pórticos de concreto con capacidad moderada de disipación de energía (DMO)"},
+            68:{6.0:"pórticos de acero con alma llena con conexiones rígidas (DES)"},
+            69:{7.0:"pórticos de acero con alma llena con conexiones rígidas (DES)"},
+            70:{6.0:"pórticos de acero con alma llena con conexiones rígidas (DMO)"},
+            71:{5.5:"pórticos de acero con alma llena con conexiones rígidas (DMO)"},
+            72:{3.0:"El mismo"}
+        }
+
+        fuerzas_verticalees = {"Muros_de_carga":{}, "Sistema_combinado":{},"Sistema_portico":{}, "Sistema_dual":{}}
         return render(
             request,
             'nsr_resutl.html',
             {
                 'height':data['height_floors']*data['floors'],
                 'type_construccion':data['type_construccion'].replace('_',' '),
-                'type_property':data['type_property'],
+                'grupo':group_use[data['type_property']],
                 'floors':data['floors'],
                 'comments':data['comments'],
                 'cordenada_x':data['cordenada_x'],
