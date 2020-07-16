@@ -852,7 +852,7 @@ class Nsr10(LoginRequiredMixin, View):
                 placa_weight += total
                 placa_aligerada.append(placa)
 
-
+        placa_weight = round(placa_weight, 3)
 
         ancho_viga = response_weight.get('ancho_viga')
         alto_viga = response_weight.get('alto_viga')
@@ -870,7 +870,7 @@ class Nsr10(LoginRequiredMixin, View):
 
         vigas_total = []
         viga_weight = 0
-
+        count = 1
         for num in range(len(numero_viga)):
             vigas = {}
             volumen = float(ancho_viga[num])*float(alto_viga[num])*float(largo_viga[num])
@@ -878,12 +878,12 @@ class Nsr10(LoginRequiredMixin, View):
             total = volumen*numero_vigas*DENSIDAD*GRAVEDAD
             vigas['volumen_vigas'] = volumen
             vigas['numero_vigas'] = numero_vigas
-            vigas['total_vigas'] = total
-
+            vigas['total_vigas'] = round(total,3)
+            vigas['num'] = count
             viga_weight += total
             vigas_total.append(vigas)
-
-
+            count += 1
+        viga_weight = round(viga_weight,3)
 
         ancho_columna = response_weight.get('ancho_columna')
         alto_columna = response_weight.get('alto_columna')
@@ -900,7 +900,7 @@ class Nsr10(LoginRequiredMixin, View):
         # ]
         columnas_total = []
         columna_weight = 0
-
+        count_columna = 1
         for num in range(len(numero_columna)):
             columnas = {}
             volumen = float(ancho_columna[num])*float(alto_columna[num])*float(largo_columna[num])
@@ -908,12 +908,15 @@ class Nsr10(LoginRequiredMixin, View):
             total = volumen*numero_columnas*DENSIDAD*GRAVEDAD
             columnas['volumen_columnas'] = volumen
             columnas['numero_columnas'] = numero_columnas
-            columnas['total_columnas'] = total
+            columnas['total_columnas'] = round(total,3)
+            columnas['num'] = count_columna
 
             columna_weight += total
             columnas_total.append(columnas)
-        print('/////////////////////////////////')
-        print(response_weight.get('muro_fachada'))
+            count_columna += 1
+
+        columna_weight = round(columna_weight, 3)
+
         tipo_muro_fachada = [
             'Mampostería de bloque de arcilla',
             'Mampostería de bloque de concreto',
@@ -922,8 +925,8 @@ class Nsr10(LoginRequiredMixin, View):
         ][int(response_weight.get('muro_fachada')[0])]
         muro_caracteristica = response_weight.get('muro_caracteristica')
         espesor = response_weight.get('espesor')
-        m2_muros = response_weight.get('m2_muros')
-        weight_muro = eval(muro_caracteristica[0])[int(espesor[0])]*float(m2_muros[0])
+        m2_muros = float(response_weight.get('m2_muros')[0])
+        weight_muro = eval(muro_caracteristica[0])[int(espesor[0])]*m2_muros
         valor_nsr_10 = eval(muro_caracteristica[0])[int(espesor[0])]
 
         muro_fachada = {
@@ -940,10 +943,11 @@ class Nsr10(LoginRequiredMixin, View):
             'Mampostería maciza de arcilla',
             'Mampostería maciza de concreto',
         ][int(response_weight.get('muro_divisorio')[0])]
+
         muro_caracteristica_divisorio = response_weight.get('muro_caracteristica_divisorio')
         espesor_divisorio = response_weight.get('espesor_divisorio')
-        m2_muros_divisorio = response_weight.get('m2_muros_divisorio')
-        weight_divisorio = eval(muro_caracteristica_divisorio[0])[int(espesor_divisorio[0])]*float(m2_muros_divisorio[0])
+        m2_muros_divisorio = float(response_weight.get('m2_muros_divisorio')[0])
+        weight_divisorio = eval(muro_caracteristica_divisorio[0])[int(espesor_divisorio[0])]*m2_muros_divisorio
         valor_nsr_10 = eval(muro_caracteristica_divisorio[0])[int(espesor_divisorio[0])]
 
         muro_divisorio = {
@@ -955,8 +959,8 @@ class Nsr10(LoginRequiredMixin, View):
 
 
         type_particiones = response_weight.get('type_particiones')
-        m2_particiones = response_weight.get('m2_particiones')
-        weight_particiones = float(type_particiones[0])*float(m2_particiones[0])
+        m2_particiones = float(response_weight.get('m2_particiones')[0])
+        weight_particiones = float(type_particiones[0])*m2_particiones
 
         name_particiones = {
             0.5:'Particiones móviles de acero (altura parcial)',
@@ -978,8 +982,8 @@ class Nsr10(LoginRequiredMixin, View):
         }
 
         type_ventanas = response_weight.get('type_ventanas')
-        m2_ventanas = response_weight.get('m2_ventanas')
-        weight_ventanas = float(type_ventanas[0])*float(m2_ventanas[0])
+        m2_ventanas = float(response_weight.get('m2_ventanas')[0])
+        weight_ventanas = float(type_ventanas[0])*m2_ventanas
 
         ventanas = {
             'tipo_ventanas': name_ventanas[float(type_ventanas[0])],
@@ -1000,12 +1004,12 @@ class Nsr10(LoginRequiredMixin, View):
         }
         type_cubierta = response_weight.get('type_cubierta')
         espesor_cubierta = response_weight.get('espesor_cubierta')
-        m2_cubierta = response_weight.get('m2_cubierta')
+        m2_cubierta = float(response_weight.get('m2_cubierta')[0])
 
         if espesor_cubierta:
-            cubierta_weight = float(type_cubierta[0])*float(espesor_cubierta[0])*float(m2_cubierta[0])
+            cubierta_weight = float(type_cubierta[0])*float(espesor_cubierta[0])*m2_cubierta
         else:
-            cubierta_weight = float(type_cubierta[0])*float(m2_cubierta[0])
+            cubierta_weight = float(type_cubierta[0])*m2_cubierta
 
         cubierta = {
             'tipo_cubierta': name_cubierta[float(type_cubierta[0])],
@@ -1051,12 +1055,12 @@ class Nsr10(LoginRequiredMixin, View):
 
         type_recubrimiento = response_weight.get('type_recubrimiento')
         espesor_recubrimiento = response_weight.get('espesor_recubrimiento')
-        m2_recubrimiento = response_weight.get('m2_recubrimiento')
+        m2_recubrimiento = float(response_weight.get('m2_recubrimiento')[0])
 
         if espesor_recubrimiento:
-            recubrimiento_weight = float(type_recubrimiento[0])*float(espesor_recubrimiento[0])*float(m2_recubrimiento[0])
+            recubrimiento_weight = float(type_recubrimiento[0])*float(espesor_recubrimiento[0])*m2_recubrimiento
         else:
-            recubrimiento_weight = float(type_recubrimiento[0])*float(m2_recubrimiento[0])
+            recubrimiento_weight = float(type_recubrimiento[0])*m2_recubrimiento
 
         recubrimiento = {
             'tipo_recubrimiento': name_recubrimiento[float(type_recubrimiento[0])],
@@ -1074,8 +1078,8 @@ class Nsr10(LoginRequiredMixin, View):
         }
         type_enchape = response_weight.get('type_enchape')
         espesor_enchape = response_weight.get('espesor_enchape')
-        m2_enchape = response_weight.get('m2_enchape')
-        enchape_weight = float(type_enchape[0])*float(espesor_enchape[0])*float(m2_enchape[0])
+        m2_enchape = float(response_weight.get('m2_enchape')[0])
+        enchape_weight = float(type_enchape[0])*float(espesor_enchape[0])*m2_enchape
 
         enchape = {
             'tipo_enchape': name_enchape[float(type_enchape[0])],
@@ -1085,10 +1089,21 @@ class Nsr10(LoginRequiredMixin, View):
         }
 
 
-        name_ocupacion = response_weight.get('ocupacion')
+
+
+        name_ocupacion = {
+        "0": "Oficinas",
+        "1": "Educativos",
+        "2": "Comercio",
+        "3": "Residencial",
+        "4": "Almacenamiento",
+        "5": "Garajes",
+        }[response_weight.get('ocupacion')[0]]
+
+
         ocupacion_uso = response_weight.get('ocupacion_uso')
-        m2_ocupacion = response_weight.get('m2_ocupacion')
-        ocupacion_weight = float(ocupacion_uso[0])*float(m2_ocupacion[0])
+        m2_ocupacion = float(response_weight.get('m2_ocupacion')[0])
+        ocupacion_weight = float(ocupacion_uso[0])*m2_ocupacion
 
         ocupacion = {
             'tipo_ocupacion': name_ocupacion,
@@ -1105,8 +1120,8 @@ class Nsr10(LoginRequiredMixin, View):
             0.5: "Cubiertas  inclinadas  con  pendiente  de  15°  o menos  en estructura metálica o de madera con imposibilidad física de verse sometidas a cargas superiores a la aquí estipulada",
         }
         cubierta_viva = response_weight.get('cubierta_viva')
-        m2_cubierta_viva = response_weight.get('m2_cubierta_viva')
-        cubierta_viva_weight = float(cubierta_viva[0])*float(m2_cubierta_viva[0])
+        m2_cubierta_viva = float(response_weight.get('m2_cubierta_viva')[0])
+        cubierta_viva_weight = float(cubierta_viva[0])*m2_cubierta_viva
 
         cubierta_viva = {
             'tipo_cubierta': name_cubierta_viva[float(cubierta_viva[0])],
@@ -1115,6 +1130,7 @@ class Nsr10(LoginRequiredMixin, View):
             'cubierta_viva_weight': cubierta_viva_weight
         }
 
+        weight_life = ocupacion_weight + cubierta_viva_weight
 
         form = ProfileForm(request.POST, request.FILES)
         form.is_valid()
@@ -1330,19 +1346,14 @@ class Nsr10(LoginRequiredMixin, View):
             Efectos_relacionados = 'Amplificación, licuación'
 
         fuerzas_horizontales = {
-            "Muros_de_carga":  {
-                1:" Paneles de cortante de madera", 2:"Muros de concreto con capacidad especial de disipación de energía (DES)", 3:" Muros de concreto con capacidad moderada de disipación de energía (DMO)", 4:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 5:" Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas" , 6:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)" , 7:"Muros de mampostería parcialmente reforzada de bloque de perforación vertical" , 8:"Muros de mampostería confinada" , 9:"Muros de mampostería de cavidad reforzada" , 10:"Muros de mampostería no reforzada (no tiene capacidad de disipación de energía)" , 11:"Pórticos de acero estructural con diagonales concéntricas (DES)" , 12:"Pórticos con diagonales de concreto con capacidad moderada de disipación de energía (DMO)", 13:"Pórticos de madera con diagonales"
-            },
-            "Sistema_combinado":{
-                14:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento", 15:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento", 16:"Pórticos de acero con diagonales excéntricas si el vínculo no se conecta a la columna", 17:"Pórticos de acero con diagonales excéntricas si el vínculo tiene conexión resistente a momento con la columna", 18:"Muros de concreto con capacidad especial de disipación de energía (DES)", 19:"Muros de concreto con capacidad moderada de disipación de energía (DMO)", 20:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 21:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas", 22:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)", 23:"Muros de mampostería confinada (DMO — capacidad moderada de disipación de energía", 24:"Muros de mampostería de cavidad reforzada  (DES — capacidad especial de disipación de energía)", 25:"Muros de cortante con placa de acero (DES)", 26:"Muros de cortante compuestos con placa de acero y concreto", 27:"Muros de concreto reforzado (DES) mixtos con elementos de acero", 28:"Muros de concreto reforzado (DMO) mixtos con elementos de acero", 29:"Muros de concreto reforzado (DMI ) mixtos con elementos de acero", 30:"Pórticos de acero con diagonales concéntricas (DES)", 31:"Pórticos de acero con diagonales concéntricas (DMI)", 32:"Pórticos mixtos con diagonales concéntricas (DES)", 33:"Pórticos mixtos con diagonales concéntricas (DMI)", 34:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna resistentes a momento", 35:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna no resistentes a momento", 36:"Pórticos de concreto con diagonales concéntricas con capacidad moderada de disipación de energía (DMO)"
-            },
-            "Sistema_portico":{
-                37:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De concreto", 38:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero", 39:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) Mixtos", 40:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero con cerchas dúctiles", 41:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De concreto", 42:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De acero", 43:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) Mixtos  con  conexiones  rígidas", 44:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De concreto", 45:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero", 46:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones totalmente restringidas a momento", 47:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones parcialmente restringidas a momento", 48:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con cerchas no dúctiles", 49:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con perfiles de lámina doblada en frío y perfiles tubulares estructurales PTE que no cumplen los requisitos de F.2.2.4 para perfiles no esbeltos", 50:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad moderada de disipación de energía (DMO)", 51:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad mínima de disipación de energía (DMI)", 52:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad especial de disipación de energía (DES)", 53:"Estructuras de péndulo invertido, Pórticos de concreto con capacidad especial de disipación de energía (DES)", 54:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad moderada de disipación de energía (DMO)"
-            },
-            "Sistema_dual":{
-                55:"Muros de concreto con capacidad especial de disipación de energía (DES)",56:"Muros de concreto con capacidad moderada de disipación de energía (DMO)",57:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas",58:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)",59:"Muros de cortante con placa de acero (DES)",60:"Muros de cortante mixtos con placa de acero",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",65:"De acero con capacidad especial de disipación de energía (DES)",66:"De acero con capacidad mínima de disipación de energía (DMI)",67:"De concreto con capacidad moderada de disipación de energía (DMO)",68:"Pórticos mixtos con diagonales concéntricas (DES)",69:"Pórticos de acero con diagonales concéntricas restringidas al pandeo",70:"Pórticos de acero con diagonales concéntricas (DES)",71:"Pórticos mixtos con diagonales concéntricas (DES)",72:"Pórticos con diagonales concéntricas que resistan solo a tensión"
-            }
+
+                1:" Paneles de cortante de madera", 2:"Muros de concreto con capacidad especial de disipación de energía (DES)", 3:" Muros de concreto con capacidad moderada de disipación de energía (DMO)", 4:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 5:" Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas" , 6:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)" , 7:"Muros de mampostería parcialmente reforzada de bloque de perforación vertical" , 8:"Muros de mampostería confinada" , 9:"Muros de mampostería de cavidad reforzada" , 10:"Muros de mampostería no reforzada (no tiene capacidad de disipación de energía)" , 11:"Pórticos de acero estructural con diagonales concéntricas (DES)" , 12:"Pórticos con diagonales de concreto con capacidad moderada de disipación de energía (DMO)", 13:"Pórticos de madera con diagonales",
+                14:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento", 15:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento", 16:"Pórticos de acero con diagonales excéntricas si el vínculo no se conecta a la columna", 17:"Pórticos de acero con diagonales excéntricas si el vínculo tiene conexión resistente a momento con la columna", 18:"Muros de concreto con capacidad especial de disipación de energía (DES)", 19:"Muros de concreto con capacidad moderada de disipación de energía (DMO)", 20:"Muros de concreto con capacidad mínima de disipación de energía (DMI)", 21:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas", 22:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)", 23:"Muros de mampostería confinada (DMO — capacidad moderada de disipación de energía", 24:"Muros de mampostería de cavidad reforzada  (DES — capacidad especial de disipación de energía)", 25:"Muros de cortante con placa de acero (DES)", 26:"Muros de cortante compuestos con placa de acero y concreto", 27:"Muros de concreto reforzado (DES) mixtos con elementos de acero", 28:"Muros de concreto reforzado (DMO) mixtos con elementos de acero", 29:"Muros de concreto reforzado (DMI ) mixtos con elementos de acero", 30:"Pórticos de acero con diagonales concéntricas (DES)", 31:"Pórticos de acero con diagonales concéntricas (DMI)", 32:"Pórticos mixtos con diagonales concéntricas (DES)", 33:"Pórticos mixtos con diagonales concéntricas (DMI)", 34:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna resistentes a momento", 35:"Pórticos de acero con diagonales concéntricas restringidas a pandeo, con conexiones viga-columna no resistentes a momento", 36:"Pórticos de concreto con diagonales concéntricas con capacidad moderada de disipación de energía (DMO)",
+                37:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De concreto", 38:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero", 39:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) Mixtos", 40:"Pórticos resistentes a momentos con capacidad especial de disipación de energía (DES) De acero con cerchas dúctiles", 41:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De concreto", 42:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) De acero", 43:"Pórticos resistentes a momentos con capacidad moderada de disipación de energía (DMO) Mixtos  con  conexiones  rígidas", 44:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De concreto", 45:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero", 46:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones totalmente restringidas a momento", 47:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) Mixtos con conexiones parcialmente restringidas a momento", 48:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con cerchas no dúctiles", 49:"Pórticos resistentes a momentos con capacidad mínima de disipación de energía (DMI) De acero con perfiles de lámina doblada en frío y perfiles tubulares estructurales PTE que no cumplen los requisitos de F.2.2.4 para perfiles no esbeltos", 50:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad moderada de disipación de energía (DMO)", 51:"Pórticos losa-columna (incluye reticular celulado) De concreto con capacidad mínima de disipación de energía (DMI)", 52:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad especial de disipación de energía (DES)", 53:"Estructuras de péndulo invertido, Pórticos de concreto con capacidad especial de disipación de energía (DES)", 54:"Estructuras de péndulo invertido, Pórticos de acero resistentes a momento con capacidad moderada de disipación de energía (DMO)",
+                55:"Muros de concreto con capacidad especial de disipación de energía (DES)",56:"Muros de concreto con capacidad moderada de disipación de energía (DMO)",57:"Muros de mampostería reforzada de bloque de perforación vertical (DES) con todas las celdas rellenas",58:"Muros de mampostería reforzada de bloque de perforación vertical (DMO)",59:"Muros de cortante con placa de acero (DES)",60:"Muros de cortante mixtos con placa de acero",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",61:"Muros de concreto reforzado (DES) mixtos con elementos de acero",62:"Muros de concreto reforzado (DMI) mixtos con elementos de acero",63:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo son resistentes a momento",64:"Pórticos de acero con diagonales excéntricas si las conexiones con las columnas por fuera del vínculo no son resistentes a momento",65:"De acero con capacidad especial de disipación de energía (DES)",66:"De acero con capacidad mínima de disipación de energía (DMI)",67:"De concreto con capacidad moderada de disipación de energía (DMO)",68:"Pórticos mixtos con diagonales concéntricas (DES)",69:"Pórticos de acero con diagonales concéntricas restringidas al pandeo",70:"Pórticos de acero con diagonales concéntricas (DES)",71:"Pórticos mixtos con diagonales concéntricas (DES)",72:"Pórticos con diagonales concéntricas que resistan solo a tensión",
+
         }
+
         fuerzas_verticales = {
             1:{3.0:"Muros ligeros de madera laminada"},
             2:{5.0: "El mismo"},
@@ -1419,11 +1430,15 @@ class Nsr10(LoginRequiredMixin, View):
         }
 
         fuerzas_verticalees = {"Muros_de_carga":{}, "Sistema_combinado":{},"Sistema_portico":{}, "Sistema_dual":{}}
+        weight_death = round((columna_weight + viga_weight + placa_weight + enchape_weight + recubrimiento_weight + piso_weight + cubierta_weight + weight_ventanas + weight_particiones + weight_divisorio  + weight_muro), 3)
+        weight_all = weight_life + weight_death
         return render(
             request,
             'nsr_resutl.html',
             {
                 'height':data['height_floors']*data['floors'],
+                'fuerza_horizontal':fuerzas_horizontales[int(data['fuerzas_horizontales'])],
+                'fuerza_vertical':fuerzas_verticales[int(data['fuerzas_horizontales'])][float(data['fuerzas_verticales'])],
                 'type_construccion':data['type_construccion'].replace('_',' '),
                 'grupo':group_use[data['type_property']],
                 'floors':data['floors'],
@@ -1464,6 +1479,9 @@ class Nsr10(LoginRequiredMixin, View):
                 'enchape': enchape,
                 'ocupacion': ocupacion,
                 'cubierta_viva': cubierta_viva,
+                'weight_death': weight_death,
+                'weight_life': weight_life,
+                'weight_all': weight_all
             }
         )
 
