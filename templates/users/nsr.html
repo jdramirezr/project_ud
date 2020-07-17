@@ -141,8 +141,8 @@
             <div class="col-sm-6">
                 <div class="Cordenada-group">
                   <label>Latitud:</label>
-                  <select class="form-control" type="number" name="cordenada_x" id="cordenada_x" step=".000000000001" required>
-                      <option selected></option>
+                  <select class="form-control" type="number" name="cordenada_x" id="cordenada_x" step=".000000000001"  required>
+                      <option selected>4.722541290641601</option>
                   </select>
                 </div>
             </div>
@@ -150,8 +150,8 @@
             <div class="col-sm-6">
               <div class="Cordenada-group">
                   <label>Longitud:</label>
-                  <select class="form-control" type="number" name="cordenada_y" id="cordenada_y" step=".000000000001" required>
-                      <option selected></option>
+                  <select class="form-control" type="number" name="cordenada_y" id="cordenada_y" step=".000000000001"  required>
+                      <option selected>4.722541290641601</option>
                   </select>
               </div>
             </div>
@@ -181,18 +181,19 @@
                             <input class="form-control" type="number" name="ancho_viga" step=".001" min="0" required>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label>Alto:</label>
-                            <input class="form-control" type="number" name="alto_viga" step=".001" min="0" required>
-                        </div>
-                    </div>
+
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label>Largo:</label>
                             <input class="form-control" type="number" name="largo_viga" step=".001" min="0" required>
                         </div>
                     </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                          <label>Alto:</label>
+                          <input class="form-control" type="number" name="alto_viga" step=".001" min="0" required>
+                      </div>
+                  </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label># de vigas:</label>
@@ -211,18 +212,19 @@
                         <input class="form-control" type="number" name="ancho_columna" step=".001" min="0" required>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Alto:</label>
-                        <input class="form-control" type="number" name="alto_columna" step=".001" min="0" required>
-                    </div>
-                </div>
+
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>Largo:</label>
                         <input class="form-control" type="number" name="largo_columna" step=".001" min="0" required>
                     </div>
                 </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>Alto:</label>
+                      <input class="form-control" type="number" name="alto_columna" step=".001" min="0" required>
+                  </div>
+              </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label># de columnas:</label>
@@ -261,7 +263,7 @@
                   </div>
                   <div class="col-sm-3">
                           <div class="form-group">
-                              <label>Cantidad:</label>
+                              <label># de placas:</label>
                               <input class="form-control count" type="number" name="num_placa" min="0" required>
                           </div>
                   </div>

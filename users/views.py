@@ -101,557 +101,6 @@ def stadistic(request):
     if request.method == 'GET':
         return render(request, 'stadistic.html')
 
-@login_required
-def calculate_process(request):
-    if request.method == 'GET':
-        return render(request, 'video.html')
-
-    if request.method == 'POST':
-
-        response = request.POST
-
-        option_floor = response.get('option_floor')
-        obersation_floor = response.get('obersation_floor')
-        option_wall = response.get('option_wall')
-        observation_wall = response.get('observation_wall')
-        option_height = response.get('option_height')
-        observation_height = response.get('observation_height')
-        option_quality = response.get('option_quality')
-        obersation_quality = response.get('obersation_quality')
-        option_location = response.get('option_location')
-        observation_location = response.get('observation_location')
-        option_materials = response.get('option_materials')
-        observation_materials = response.get('observation_materials')
-        option_confined_walls = response.get('option_confined_walls')
-        obersation_confined_walls = response.get('obersation_confined_walls')
-        option_detail = response.get('option_detail')
-        observation_detail = response.get('observation_detail')
-        option_mooring = response.get('option_mooring')
-        observation_mooring = response.get('observation_mooring')
-        option_characteristics = response.get('option_characteristics')
-        obersation_characteristics = response.get('obersation_characteristics')
-        option_mezzanine = response.get('option_mezzanine')
-        observation_mezzanine = response.get('observation_mezzanine')
-        option_cover = response.get('option_cover')
-        observation_cover = response.get('observation_cover')
-        option_base = response.get('option_base')
-        obersation_base = response.get('obersation_base')
-        option_soil = response.get('option_soil')
-        observation_soil = response.get('observation_soil')
-        option_environment = response.get('option_environment')
-        observation_environment = response.get('observation_environment')
-
-        if (
-            not option_confined_walls
-            or not option_detail
-            or not option_mooring
-            or not option_characteristics
-            or not option_mezzanine
-            or not option_cover
-            or not option_floor
-            or not option_wall
-            or not option_height
-            or not option_quality
-            or not option_location
-            or not option_materials
-            or not option_base
-            or not option_soil
-            or not option_environment
-        ):
-            return HttpResponse({'Error': 'Missing data'})
-
-        qualification_structural = (
-            (
-                int(option_confined_walls) +
-                int(option_detail) +
-                int(option_mooring) +
-                int(option_characteristics) +
-                int(option_mezzanine) +
-                int(option_cover)
-            )/6
-        )*PORCENT_STRUCTURAL
-
-        qualification_geometry =  (
-            (int(option_floor)+ int(option_wall)+ int(option_height))/3
-        )*PORCENT_GEOMETRY
-
-        qualification_constructive =  (
-            (int(option_quality) + int(option_location) + int(option_materials))/3
-        )*PORCENT_CONSTRUCTIVE
-
-        qualification_base = int(option_base)*PORCENT_BASE
-        qualification_soil = int(option_soil)*PORCENT_SOIL
-        qualification_environment = int(option_environment)*PORCENT_ENVIRONMENT
-
-        vulnerability_result = round(((
-            qualification_structural +
-            qualification_geometry +
-            qualification_constructive +
-            qualification_base +
-            qualification_soil +
-            qualification_environment
-        )/2)*100)
-
-        response_weight = dict(response.lists())
-
-        type_placa = response_weight.get('type_placa')
-        placa_x = response_weight.get('placa_x')
-        placa_y = response_weight.get('placa_y')
-
-        plate_weight = []
-
-        if 'Placa_Maciza' in type_placa:
-            placa_z = response_weight.get('placa_z')
-
-        if 'Placa_Aligerada' in type_placa:
-            vg_a = response_weight.get('vg_a')
-            vg_b = response_weight.get('vg_b')
-            vg_c = response_weight.get('vg_c')
-            vg_d = response_weight.get('vg_d')
-            vg_e = response_weight.get('vg_e')
-
-        if 'Placa_Facil' in type_placa:
-            type_placa_facil = response_weight.get('type_placa_facil')
-
-            if 'Placa' in type_placa_facil:
-                z_placa_facil = response_weight.get('z_placa_facil')
-
-            if 'Perfil_Metalico' in type_placa_facil:
-                peso_ml_perfil = response_weight.get('peso_ml_perfil')
-                ml_perfil = response_weight.get('ml_perfil')
-
-            if 'Bloquelon' in type_placa_facil:
-                peso_bloquelon = response_weight.get('peso_bloquelon')
-
-
-        for placa in type_placa:
-            if placa == 'Placa_Maciza':
-
-                plate_weight.append(
-                    float(placa_x.pop(0))*float(placa_y.pop(0))
-                    *float(placa_z.pop(0))
-                    *DENSIDAD*GRAVEDAD
-                )
-
-            if placa == 'Placa_Facil':
-                placa_facil = type_placa_facil[0]
-
-                if placa_facil == 'Placa':
-                    plate_weight.append(
-                        float(placa_x.pop(0))*float(placa_y.pop(0))
-                        *float(z_placa_facil.pop(0))
-                        *DENSIDAD*GRAVEDAD
-                    )
-                    type_placa_facil.pop(0)
-
-                if placa_facil == 'Perfil_Metalico':
-                    plate_weight.append(
-                        float(peso_ml_perfil.pop(0))*
-                        float(ml_perfil.pop(0))*
-                        GRAVEDAD
-                    )
-                    type_placa_facil.pop(0)
-
-                if placa_facil == 'Bloquelon':
-                    plate_weight.append(float(placa_x.pop(0))
-                    *float(placa_y.pop(0))*float(peso_bloquelon.pop(0))
-                    *GRAVEDAD
-                )
-                    type_placa_facil.pop(0)
-
-            if placa == 'Placa_Aligerada':
-                vg_b_num = float(vg_b.pop(0))
-                m2 = float(placa_x.pop(0))*float(placa_y.pop(0))
-                vigueta = (vg_b_num*float(vg_c.pop(0))*m2*DENSIDAD*GRAVEDAD)/(
-                    float(vg_a.pop(0))+vg_b_num
-                )
-                placa_superior=(float(vg_d.pop(0))+float(vg_e.pop(0)))*m2*DENSIDAD*GRAVEDAD
-                plate_weight.append(vigueta+placa_superior)
-
-
-        ancho_viga = response_weight.get('ancho_viga')
-        alto_viga = response_weight.get('alto_viga')
-        largo_viga = response_weight.get('largo_viga')
-        numero_viga = response_weight.get('numero_viga')
-
-        plate_weight = plate_weight + [
-            float(ancho_viga[num])*
-            float(alto_viga[num])*
-            float(largo_viga[num])*
-            int(numero_viga[num])*
-            DENSIDAD*GRAVEDAD
-            for num in range(len(numero_viga))
-        ]
-
-
-        ancho_columna = response_weight.get('ancho_columna')
-        alto_columna = response_weight.get('alto_columna')
-        largo_columna = response_weight.get('largo_columna')
-        numero_columna = response_weight.get('numero_columna')
-
-        plate_weight = plate_weight + [
-            float(ancho_columna[num])*
-            float(alto_columna[num])*
-            float(largo_columna[num])*
-            int(numero_columna[num])*
-            DENSIDAD*GRAVEDAD
-            for num in range(len(numero_columna))
-        ]
-
-        muro_caracteristica = response_weight.get('muro_caracteristica')
-        espesor = response_weight.get('espesor')
-        cantidad_muros = response_weight.get('cantidad_muros')
-        m2_muros = response_weight.get('m2_muros')
-
-        muro_caracteristica_divisorio = response_weight.get('muro_caracteristica_divisorio')
-        espesor_divisorio = response_weight.get('espesor_divisorio')
-        cantidad_muros_divisorio = response_weight.get('cantidad_muros_divisorio')
-        m2_muros_divisorio = response_weight.get('m2_muros_divisorio')
-
-        type_cubierta = response_weight.get('type_cubierta')
-        espesor_cubierta = response_weight.get('espesor_cubierta')
-        m2_cubierta = response_weight.get('m2_cubierta')
-
-        type_piso = response_weight.get('type_piso')
-        espesor_piso = response_weight.get('espesor_piso')
-        m2_pisos = response_weight.get('m2_pisos')
-
-        type_recubrimiento = response_weight.get('type_recubrimiento')
-        espesor_recubrimiento = response_weight.get('espesor_recubrimiento')
-        m2_recubrimiento = response_weight.get('m2_recubrimiento')
-
-        type_enchape = response_weight.get('type_enchape')
-        espesor_enchape = response_weight.get('espesor_enchape')
-        m2_enchape = response_weight.get('m2_enchape')
-
-        ocupacion_uso = response_weight.get('ocupacion_uso')
-        m2_ocupacion = response_weight.get('m2_ocupacion')
-
-        cubierta_viva = response_weight.get('cubierta_viva')
-        m2_cubierta_viva = response_weight.get('m2_cubierta_viva')
-
-        type_particiones = response_weight.get('type_particiones')
-        m2_particiones = response_weight.get('m2_particiones')
-
-        type_ventanas = response_weight.get('type_ventanas')
-        m2_ventanas = response_weight.get('m2_ventanas')
-        print(type_cubierta)
-        print(espesor_cubierta)
-        if espesor_cubierta:
-            cubierta_weight = float(type_cubierta[0])*float(espesor_cubierta[0])*float(m2_cubierta[0])
-        else:
-            cubierta_weight = float(type_cubierta[0])*float(m2_cubierta[0])
-
-        if espesor_piso:
-            piso_weight = float(type_piso[0])*float(espesor_piso[0])*float(m2_pisos[0])
-        else:
-            piso_weight = float(type_piso[0])*float(m2_pisos[0])
-
-        if espesor_recubrimiento:
-            recubrimiento_weight = float(type_recubrimiento[0])*float(espesor_recubrimiento[0])*float(m2_recubrimiento[0])
-        else:
-            recubrimiento_weight = float(type_recubrimiento[0])*float(m2_recubrimiento[0])
-
-        weight_muro = eval(muro_caracteristica[0])[int(espesor[0])]*int(cantidad_muros[0])*float(m2_muros[0])
-        weight_divisorio = eval(muro_caracteristica_divisorio[0])[int(espesor_divisorio[0])]*int(cantidad_muros_divisorio[0])*float(m2_muros_divisorio[0])
-        enchape_weight = float(type_enchape[0])*float(espesor_enchape[0])*float(m2_enchape[0])
-        ocupacion_weight = float(ocupacion_uso[0])*float(m2_ocupacion[0])
-        cubierta_viva_weight = float(cubierta_viva[0])*float(m2_cubierta_viva[0])
-        weight_particiones = float(type_particiones[0])*float(m2_particiones[0])
-        weight_ventanas = float(type_ventanas[0])*float(m2_ventanas[0])
-
-        plate_weight.append(cubierta_weight)
-        plate_weight.append(piso_weight)
-        plate_weight.append(recubrimiento_weight)
-        plate_weight.append(weight_muro)
-        plate_weight.append(weight_divisorio)
-        plate_weight.append(enchape_weight)
-        plate_weight.append(ocupacion_weight)
-        plate_weight.append(cubierta_viva_weight)
-        plate_weight.append(weight_particiones)
-        plate_weight.append(weight_ventanas)
-
-
-        form = ProfileForm(request.POST, request.FILES)
-        form.is_valid()
-        data = form.cleaned_data
-
-        user = request.user
-        val_irregular_long = None
-        val_irregular_plant = None
-
-        if data['irregular_plant'] == 'Irregularidad_torsional':
-            val_irregular_plant = 0.9
-        if data['irregular_plant'] == "Irregularidad_torsional_extrema":
-            val_irregular_plant = 0.8
-        if data['irregular_plant'] == "Retrocesos_excesivos_en_las_esquinas":
-            val_irregular_plant = 0.9
-        if data['irregular_plant'] == "Discontinuidades_en_el_diafragma":
-            val_irregular_plant = 0.9
-        if data['irregular_plant'] == "Desplazamientos_del_plano_de_accion_de_elementos_verticales":
-            val_irregular_plant = 0.8
-        if data['irregular_plant'] == "Sistemas_no_paralelos":
-            val_irregular_plant = 0.9
-
-
-        if data['irregular_long'] == 'Piso_flexible_(Irregularidad_en_rigidez)':
-            val_irregular_long = 0.9
-        if data['irregular_long'] == "Piso_flexible_(Irregularidad_extrema_en_rigidez)":
-            val_irregular_long = 0.8
-        if data['irregular_long'] == "Irregularidad_en_la_distribucion_de_las_masas":
-            val_irregular_long = 0.9
-        if data['irregular_long'] == "Irregularidad_geometrica":
-            val_irregular_long = 0.9
-        if data['irregular_long'] == "Desplazamientos_dentro_del_plano_de_accion":
-            val_irregular_long = 0.8
-        if data['irregular_long'] == "Piso_debil_Discontinuidad_en_la_resistencia":
-            val_irregular_long = 0.9
-        if data['irregular_long'] == "Piso_debil_Discontinuidad_extrema_en_la_resistencia":
-            val_irregular_long = 0.8
-
-        cordenada_x = data['cordenada_x']
-        cordenada_y = data['cordenada_y']
-
-        type_suelo = None
-
-        for name_area in areas:
-            p = Path(areas[name_area])
-            response = p.contains_points([[cordenada_x, cordenada_y]])
-            if response:
-                type_suelo = name_area
-
-        if not type_suelo:
-            return render(
-                request,
-                'index.html',
-                {
-                    'message': 'La vivienda no esta en Bogotá',
-                    'result': 0,
-                    'status': 'error',
-                    'process': 1
-                }
-            )
-
-        fa = None
-        fv = None
-
-        if type_suelo =='Cerros':
-            fa = 1.35
-            fv = 1.3
-            Espesor_deposito = '-'
-            Periodo_suelo = '< 0.3'
-            descripcion_geotecnica = 'Rocas sedimentarias y depósitos de ladera con espesores inferiores a 6 m'
-            velocidad_onda = '> 750'
-            Humedad_Promedio = '< 10'
-            Efectos_relacionados = 'Topográfico'
-
-        if type_suelo == 'Piedemonte_A':
-            fa = 1.65
-            fv = 2
-            Espesor_deposito = '< 50'
-            Periodo_suelo = '0.3-0.6'
-            descripcion_geotecnica = 'Suelo coluvial y aluvial con intercalaciones de arcillas blandas: Bloques, cantos y gravas con matriz arcillo arenosas o areno arcillosa, capas de arcillas blandas.'
-            velocidad_onda = '200 - 750'
-            Humedad_Promedio = '10-80'
-            Efectos_relacionados = 'Topográfico, amplificación'
-
-        if type_suelo == 'Piedemonte_B':
-            fa = 1.95
-            fv = 1.7
-            Espesor_deposito = '< 50'
-            Periodo_suelo = '0.3-0.6'
-            descripcion_geotecnica = 'Suelo coluvial y aluvial con espesor superior a 12 m:  Bloques, cantos y gravas con matriz arcillo arenosas o areno arcillosa'
-            velocidad_onda = '300 - 750'
-            Humedad_Promedio = '10-30'
-            Efectos_relacionados = 'Topográfico, amplificación'
-
-        if type_suelo == 'Piedemonte_C':
-            fa = 1.8
-            fv = 1.78
-            Espesor_deposito = '< 50'
-            Periodo_suelo = '0.3-0.6'
-            descripcion_geotecnica = 'Suelo coluvial y aluvial con espesor superior a 12 m:  Bloques, cantos y gravas con matriz arcillo arenosas o areno arcillosa'
-            velocidad_onda = '300 - 750'
-            Humedad_Promedio = '10-30'
-            Efectos_relacionados = 'Topográfico, amplificación'
-
-        if type_suelo == 'Lacustre_50':
-            fa = 1.4
-            fv = 2.9
-            Espesor_deposito = '< 50'
-            Periodo_suelo = '1.0-1.5'
-            descripcion_geotecnica = 'Suelo lacustre blando: Arcillas limosas o limos arcillosos, en algunos sectores con intercalaciones de lentes de turba'
-            velocidad_onda = '< 175'
-            Humedad_Promedio = '> 80'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_100':
-            fa = 1.3
-            fv = 3.2
-            Espesor_deposito = '50-100'
-            Periodo_suelo = '1.5-2.5'
-            descripcion_geotecnica = 'Suelo lacustre blando: Arcillas limosas o limos arcillosos, en algunos sectores con intercalaciones de lentes de turba'
-            velocidad_onda = '< 175'
-            Humedad_Promedio = '> 80'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_200':
-            fa = 1.2
-            fv = 3.5
-            Espesor_deposito = '100-200'
-            Periodo_suelo = '2.5-3.5'
-            descripcion_geotecnica = 'Suelo lacustre blando: Arcillas limosas o limos arcillosos, en algunos sectores con intercalaciones de lentes de turba'
-            velocidad_onda = '< 175'
-            Humedad_Promedio = '> 80'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_300':
-            fa = 1.05
-            fv = 2.9
-            Espesor_deposito = '200-300'
-            Periodo_suelo = '3.4-4.5'
-            descripcion_geotecnica = 'Suelo lacustre blando: Arcillas limosas o limos arcillosos, en algunos sectores con intercalaciones de lentes de turba'
-            velocidad_onda = '< 175'
-            Humedad_Promedio = '> 80'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_500':
-            fa = 0.95
-            fv = 2.7
-            Espesor_deposito = '300-500'
-            Periodo_suelo = '4.5-6.5'
-            descripcion_geotecnica = 'Suelo lacustre blando: Arcillas limosas o limos arcillosos, en algunos sectores con intercalaciones de lentes de turba'
-            velocidad_onda = '< 175'
-            Humedad_Promedio = '> 80'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_Aluvial_200':
-            fa = 1.1
-            fv = 2.8
-            Espesor_deposito = '100-200'
-            Periodo_suelo = '2.0-3.0'
-            descripcion_geotecnica = 'Suelo lacustre con intercalaciones de aluvial: Arcillas limosas o limos arcillosos con de lentes de turba y capas de arenas compactas'
-            velocidad_onda = '< 200'
-            Humedad_Promedio = '> 60'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Lacustre_Aluvial_300':
-            fa = 1.1
-            fv = 2.5
-            Espesor_deposito = '200-300'
-            Periodo_suelo = '3.0-4.0'
-            descripcion_geotecnica = 'Suelo lacustre con intercalaciones de aluvial: Arcillas limosas o limos arcillosos con de lentes de turba y capas de arenas compactas'
-            velocidad_onda = '< 200'
-            Humedad_Promedio = '> 60'
-            Efectos_relacionados = 'Amplificación'
-
-        if type_suelo == 'Aluvial_50':
-            fa = 1.35
-            fv = 1.8
-            Espesor_deposito = '< 50'
-            Periodo_suelo = '0.4-0.8'
-            descripcion_geotecnica = 'Suelo aluvial duro: Arcillas limosas o arenas arcillosos o limos arenosos, en algunos sectores se encuentran lentes de arenas limpias'
-            velocidad_onda = '175 - 300'
-            Humedad_Promedio = '25 - 50'
-            Efectos_relacionados = 'Amplificación, licuación'
-
-        if type_suelo == 'Aluvial_100':
-            fa = 1.2
-            fv = 2.1
-            Espesor_deposito = '50-100'
-            Periodo_suelo = '0.8-1.2'
-            descripcion_geotecnica = 'Suelo aluvial duro: Arcillas limosas o arenas arcillosos o limos arenosos, en algunos sectores se encuentran lentes de arenas limpias'
-            velocidad_onda = '175 - 300'
-            Humedad_Promedio = '25 - 50'
-            Efectos_relacionados = 'Amplificación, licuación'
-
-        if type_suelo == 'Aluvial_200':
-            fa = 1.01
-            fv = 2.1
-            Espesor_deposito = '100-200'
-            Periodo_suelo = '1.2-2.5'
-            descripcion_geotecnica = 'Suelo aluvial duro: Arcillas limosas o arenas arcillosos o limos arenosos, en algunos sectores se encuentran lentes de arenas limpias'
-            velocidad_onda = '175 - 300'
-            Humedad_Promedio = '25 - 50'
-            Efectos_relacionados = 'Amplificación, licuación'
-
-        if type_suelo == 'Aluvial_300':
-            fa = 0.95
-            fv = 2.1
-            Espesor_deposito = '200-300'
-            Periodo_suelo = '2.5-4.0'
-            descripcion_geotecnica = 'Suelo aluvial duro: Arcillas limosas o arenas arcillosos o limos arenosos, en algunos sectores se encuentran lentes de arenas limpias'
-            velocidad_onda = '175 - 300'
-            Humedad_Promedio = '25 - 50'
-            Efectos_relacionados = 'Amplificación, licuación'
-
-        process = Process(
-            user=user,
-            type_construccion=data['type_construccion'],
-            type_property=data['type_property'],
-            fuerzas_horizontales=data['fuerzas_horizontales'],
-            fuerzas_verticales=data['fuerzas_verticales'],
-            # picture=data['picture'],
-            val_irregular_long=val_irregular_long,
-            val_irregular_plant=val_irregular_plant,
-            # planes=data['planes'],
-            floors=data['floors'],
-            email=data['email'],
-            phone_number=data['phone_number'],
-            comments=data['comments'],
-            name_owner=data['name_owner'],
-            address=data['address'],
-            cordenada_x=data['cordenada_x'],
-            cordenada_y=data['cordenada_y'],
-            type_suelo=type_suelo,
-            fa=fa,
-            fv=fv
-        )
-
-        process.save()
-
-        if vulnerability_result <= 15:
-            result = 'BAJA'
-        elif vulnerability_result <= 35:
-            result = 'MEDIA'
-        else:
-            result = 'AlTA!'
-
-        print('/////////////////////')
-        print(data['height_floors'], data['floors'] )
-        height = data['height_floors']*data['floors']
-
-        comments = data['comments']
-        if not comments:
-            comments = ''
-
-
-        if data['type_property'] == 1:
-            group_use = 1
-        elif data['type_property'] == 1.1:
-            group_use = 2
-        elif data['type_property'] == 1.25:
-            group_use = 3
-        else:
-            group_use = 4
-
-        result_pdf = f"{user};{data['name_owner']};{data['address']};{data['email']};{data['floors']};{height};{type_suelo};{Espesor_deposito};{Periodo_suelo};{descripcion_geotecnica};{velocidad_onda};{Humedad_Promedio};{Efectos_relacionados};{group_use};{data['type_construccion']};{data['irregular_plant']};{data['irregular_long']};{round(sum(plate_weight))};{comments};{result}"
-
-        result_process_pdf = ResultPdf(process=process, result_pdf=result_pdf)
-        result_process_pdf.save()
-
-        return render(
-            request,
-            'index.html',
-            {
-                'message': 'Proceso correcto',
-                'result': f'El valor del resultado es {vulnerability_result} lo que indica que la vulnerabilidad es {result}',
-                'status': 'success',
-                'process': 1,
-                'footer': result_process_pdf.pk
-            }
-        )
-
 
 def file_response(request, pk, file= "Hello world."):
     try:
@@ -726,6 +175,8 @@ class Nsr10(LoginRequiredMixin, View):
         type_placa = response_weight.get('type_placa')
         placa_x = response_weight.get('placa_x')
         placa_y = response_weight.get('placa_y')
+        num_placa = response_weight.get('num_placa')
+
 
         placa_weight = []
 
@@ -754,6 +205,7 @@ class Nsr10(LoginRequiredMixin, View):
                 z_placa_facil = response_weight.get('z_placa_facil')
 
             if 'Perfil_Metalico' in type_placa_facil:
+
                 peso_ml_perfil = response_weight.get('peso_ml_perfil')
                 ml_perfil = response_weight.get('ml_perfil')
 
@@ -766,32 +218,44 @@ class Nsr10(LoginRequiredMixin, View):
 
         placa_aligerada = []
         placa_maciza = []
-
+        placa_all = []
         placa_weight = 0
-
-        for placa in type_placa:
+        count_placa = 1
+        for num, placa in enumerate(type_placa):
             if placa == 'Placa_Maciza':
-                placa = {}
+                placa_m = {}
                 volumen = float(placa_x.pop(0))*float(placa_y.pop(0))*float(placa_z.pop(0))
-                total = volumen*DENSIDAD*GRAVEDAD
-                placa['volumen_placa'] = volumen
-                placa['total_placa'] = total
+                numero_placa = int(num_placa[num])
+                placa_m['tipo_placa'] = placa.replace('_', ' ')
+                total = volumen*numero_placa*DENSIDAD*GRAVEDAD
+                placa_m['num'] = count_placa
+                placa_m['volumen_placa'] = volumen
+                placa_m['total_placa'] = round(total, 2)
+                placa_m['numero_placa'] = numero_placa
+
 
                 placa_weight += total
-                placa_maciza.append(placa)
+                placa_all.append(placa_m)
 
             if placa == 'Placa_Facil':
                 placa_facil = type_placa_facil[0]
 
                 if placa_facil == 'Placa':
-                    placa = {}
+                    placa_f = {}
                     volumen = float(placa_x.pop(0))*float(placa_y.pop(0))*float(z_placa_facil.pop(0))
-                    total  = volumen*DENSIDAD*GRAVEDAD
-                    placa['volumen_placa'] = volumen
-                    placa['total_placa'] = total
+                    numero_placa = int(num_placa[num])
+                    total  = volumen*DENSIDAD*GRAVEDAD*numero_placa
+                    placa_f['volumen_placa'] = volumen
+                    placa_f['total_placa'] = round(total, 2)
+
+                    p = placa.replace('_', ' ')
+                    p_f = placa_facil.replace('_', ' ')
+                    placa_f['tipo_placa'] = f'{p} - {p_f}'
+                    placa_f['num'] = count_placa
+                    placa_f['numero_placa'] = numero_placa
 
                     placa_weight += total
-                    placa_facil_placa.append(placa)
+                    placa_all.append(placa_f)
 
 
                     # placa_weight.append(
@@ -803,39 +267,55 @@ class Nsr10(LoginRequiredMixin, View):
                     type_placa_facil.pop(0)
 
                 if placa_facil == 'Perfil_Metalico':
-                    placa = {}
-                    volumen = float(peso_ml_perfil.pop(0))*float(ml_perfil.pop(0))
-                    total  = volumen*GRAVEDAD
-                    placa['volumen_placa'] = volumen
-                    placa['total_placa'] = total
+                    placa_fm = {}
+                    ml_perfil = float(ml_perfil.pop(0))
+                    numero_placa = int(num_placa[num])
+                    total  = ml_perfil*4.47*GRAVEDAD*numero_placa
+                    placa_fm['metro_lineal'] = ml_perfil
+                    placa_fm['total_placa'] = round(total, 2)
+                    placa_fm['peso_perfil_m2'] = 4.47
+                    p = placa.replace('_', ' ')
+                    p_f = placa_facil.replace('_', ' ')
 
+
+                    placa_fm['tipo_placa'] = f'{p} - {p_f}'
+                    placa_fm['num'] = count_placa
+                    placa_fm['numero_placa'] = numero_placa
 
                     placa_weight += total
-                    placa_facil_perfil.append(placa)
+                    placa_all.append(placa_fm)
 
                     type_placa_facil.pop(0)
 
                 if placa_facil == 'Bloquelon':
-                    placa = {}
-                    volumen = float(placa_x.pop(0))*float(placa_y.pop(0))*float(peso_bloquelon.pop(0))
-                    total = volumen*GRAVEDAD
-                    placa['volumen_placa'] = volumen
-                    placa['total_placa'] = total
+                    placa_fb = {}
+                    area = float(placa_x.pop(0))*float(placa_y.pop(0))
+                    numero_placa = int(num_placa[num])
+                    total = area*53.57*GRAVEDAD*numero_placa
+                    placa_fb['peso_bloquelon'] = 53.57
+                    placa_fb['area_bloquelon'] = area
+                    placa_fb['total_placa'] = round(total, 2)
 
+                    p = placa.replace('_', ' ')
+                    p_f = placa_facil.replace('_', ' ')
+
+                    placa_fb['tipo_placa'] = f'{p} - {p_f}'
+                    placa_fb['num'] = count_placa
+                    placa_fb['numero_placa'] = numero_placa
 
                     placa_weight += total
-                    placa_facil_bloquelon.append(placa)
+                    placa_all.append(placa_fb)
 
                     # placa_weight.append(
                     #     float(placa_x.pop(0))
                     # *float(placa_y.pop(0))*float(peso_bloquelon.pop(0))
-                    # *GRAVEDAD
+                    #
                     # )
 
                     type_placa_facil.pop(0)
 
             if placa == 'Placa_Aligerada':
-                placa = {}
+                placa_a = {}
                 vg_b_num = float(vg_b.pop(0))
                 m2 = float(placa_x.pop(0))*float(placa_y.pop(0))
                 vigueta = (vg_b_num*float(vg_c.pop(0))*m2)/(
@@ -843,16 +323,22 @@ class Nsr10(LoginRequiredMixin, View):
                 )
                 placa_superior=(float(vg_d.pop(0))+float(vg_e.pop(0)))*m2
                 volumen = vigueta + placa_superior
+                numero_placa = int(num_placa[num])
+                total = volumen*DENSIDAD*GRAVEDAD*numero_placa
+                placa_a['volumen_placa'] = volumen
+                placa_a['total_placa'] = round(total, 2)
 
-                total = volumen*DENSIDAD*GRAVEDAD
-                placa['volumen_placa'] = volumen
-                placa['total_placa'] = total
+                placa_a['tipo_placa'] = placa.replace('_', ' ')
+                placa_a['num'] = count_placa
+                placa_a['numero_placa'] = numero_placa
 
 
                 placa_weight += total
-                placa_aligerada.append(placa)
+                placa_all.append(placa_a)
 
-        placa_weight = round(placa_weight, 3)
+            count_placa += 1
+
+        placa_weight = round(placa_weight, 2)
 
         ancho_viga = response_weight.get('ancho_viga')
         alto_viga = response_weight.get('alto_viga')
@@ -864,7 +350,7 @@ class Nsr10(LoginRequiredMixin, View):
         #     float(alto_viga[num])*
         #     float(largo_viga[num])*
         #     int(numero_viga[num])*
-        #     DENSIDAD*GRAVEDAD
+        #     DENSIDAD
         #     for num in range(len(numero_viga))
         # ]
 
@@ -878,12 +364,12 @@ class Nsr10(LoginRequiredMixin, View):
             total = volumen*numero_vigas*DENSIDAD*GRAVEDAD
             vigas['volumen_vigas'] = volumen
             vigas['numero_vigas'] = numero_vigas
-            vigas['total_vigas'] = round(total,3)
+            vigas['total_vigas'] = round(total,2)
             vigas['num'] = count
             viga_weight += total
             vigas_total.append(vigas)
             count += 1
-        viga_weight = round(viga_weight,3)
+        viga_weight = round(viga_weight,2)
 
         ancho_columna = response_weight.get('ancho_columna')
         alto_columna = response_weight.get('alto_columna')
@@ -895,7 +381,7 @@ class Nsr10(LoginRequiredMixin, View):
         #     float(alto_columna[num])*
         #     float(largo_columna[num])*
         #     int(numero_columna[num])*
-        #     DENSIDAD*GRAVEDAD
+        #     DENSIDAD
         #     for num in range(len(numero_columna))
         # ]
         columnas_total = []
@@ -908,14 +394,14 @@ class Nsr10(LoginRequiredMixin, View):
             total = volumen*numero_columnas*DENSIDAD*GRAVEDAD
             columnas['volumen_columnas'] = volumen
             columnas['numero_columnas'] = numero_columnas
-            columnas['total_columnas'] = round(total,3)
+            columnas['total_columnas'] = round(total,2)
             columnas['num'] = count_columna
 
             columna_weight += total
             columnas_total.append(columnas)
             count_columna += 1
 
-        columna_weight = round(columna_weight, 3)
+        columna_weight = round(columna_weight, 2)
 
         tipo_muro_fachada = [
             'Mampostería de bloque de arcilla',
@@ -933,7 +419,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_muro': tipo_muro_fachada,
             'valor_nsr_10': valor_nsr_10,
             'm2_muros': m2_muros,
-            'weight_muro':weight_muro
+            'weight_muro':round(weight_muro, 2)
         }
 
 
@@ -954,7 +440,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_muro': tipo_mamposteria,
             'valor_nsr_10': valor_nsr_10,
             'm2_muros': m2_muros_divisorio,
-            'weight_muro':weight_divisorio
+            'weight_muro':round(weight_divisorio, 2)
         }
 
 
@@ -972,7 +458,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_particiones': name_particiones[float(type_particiones[0])],
             'valor_nsr_10': float(type_particiones[0]),
             'm2_particiones': m2_particiones,
-            'weight_particiones': weight_particiones
+            'weight_particiones': round(weight_particiones,2)
 
         }
 
@@ -989,7 +475,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_ventanas': name_ventanas[float(type_ventanas[0])],
             'm2_ventanas': m2_ventanas,
             'valor_nsr_10': float(type_ventanas[0]),
-            'weight_ventanas': weight_ventanas
+            'weight_ventanas': round(weight_ventanas, 2)
         }
 
         name_cubierta = {
@@ -1015,7 +501,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_cubierta': name_cubierta[float(type_cubierta[0])],
             'valor_nsr_10': float(type_cubierta[0]),
             'm2_cubierta': m2_cubierta,
-            'cubierta_weight': cubierta_weight
+            'cubierta_weight': round(cubierta_weight, 2)
 
         }
 
@@ -1032,18 +518,18 @@ class Nsr10(LoginRequiredMixin, View):
 
         type_piso = response_weight.get('type_piso')
         espesor_piso = response_weight.get('espesor_piso')
-        m2_pisos = response_weight.get('m2_pisos')
+        m2_pisos = float(response_weight.get('m2_pisos')[0])
 
         if espesor_piso:
-            piso_weight = float(type_piso[0])*float(espesor_piso[0])*float(m2_pisos[0])
+            piso_weight = float(type_piso[0])*float(espesor_piso[0])*m2_pisos
         else:
-            piso_weight = float(type_piso[0])*float(m2_pisos[0])
+            piso_weight = float(type_piso[0])*m2_pisos
 
         piso = {
             'tipo_piso': name_piso[float(type_piso[0])],
             'valor_nsr_10': float(type_piso[0]),
             'm2_pisos': m2_pisos,
-            'piso_weight':piso_weight
+            'piso_weight': round(piso_weight, 2)
         }
 
         name_recubrimiento = {
@@ -1066,7 +552,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_recubrimiento': name_recubrimiento[float(type_recubrimiento[0])],
             'valor_nsr_10': float(type_recubrimiento[0]),
             'm2_recubrimiento': m2_recubrimiento,
-            'recubrimiento_weight': recubrimiento_weight
+            'recubrimiento_weight': round(recubrimiento_weight,2)
         }
 
         name_enchape = {
@@ -1085,7 +571,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_enchape': name_enchape[float(type_enchape[0])],
             'valor_nsr_10': float(type_enchape[0]),
             'm2_enchape': m2_enchape,
-            'enchape_weight':enchape_weight
+            'enchape_weight': round(enchape_weight,2)
         }
 
 
@@ -1109,7 +595,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_ocupacion': name_ocupacion,
             'valor_nsr_10': float(ocupacion_uso[0]),
             'm2_ocupacion': m2_ocupacion,
-            'ocupacion_weight': ocupacion_weight
+            'ocupacion_weight': round(ocupacion_weight, 2)
         }
 
 
@@ -1127,7 +613,7 @@ class Nsr10(LoginRequiredMixin, View):
             'tipo_cubierta': name_cubierta_viva[float(cubierta_viva[0])],
             'valor_nsr_10': float(cubierta_viva[0]),
             'm2_cubierta_viva': m2_cubierta_viva,
-            'cubierta_viva_weight': cubierta_viva_weight
+            'cubierta_viva_weight': round(cubierta_viva_weight, 2)
         }
 
         weight_life = ocupacion_weight + cubierta_viva_weight
@@ -1430,8 +916,10 @@ class Nsr10(LoginRequiredMixin, View):
         }
 
         fuerzas_verticalees = {"Muros_de_carga":{}, "Sistema_combinado":{},"Sistema_portico":{}, "Sistema_dual":{}}
-        weight_death = round((columna_weight + viga_weight + placa_weight + enchape_weight + recubrimiento_weight + piso_weight + cubierta_weight + weight_ventanas + weight_particiones + weight_divisorio  + weight_muro), 3)
-        weight_all = weight_life + weight_death
+        weight_death = round((columna_weight + viga_weight + placa_weight + enchape_weight + recubrimiento_weight + piso_weight + cubierta_weight + weight_ventanas + weight_particiones + weight_divisorio  + weight_muro), 2)
+        weight_other = round((enchape_weight + recubrimiento_weight + piso_weight + cubierta_weight + weight_ventanas + weight_particiones + weight_divisorio  + weight_muro),2)
+        weight_all = round((weight_life + weight_death),2)
+
         return render(
             request,
             'nsr_resutl.html',
@@ -1481,7 +969,10 @@ class Nsr10(LoginRequiredMixin, View):
                 'cubierta_viva': cubierta_viva,
                 'weight_death': weight_death,
                 'weight_life': weight_life,
-                'weight_all': weight_all
+                'weight_all': weight_all,
+                'placa_all': placa_all,
+                'densidad_concreto': f'{DENSIDAD} kg/m3',
+                'weight_other': weight_other,
             }
         )
 
