@@ -445,22 +445,29 @@ class Nsr10(LoginRequiredMixin, View):
 
 
         type_particiones = response_weight.get('type_particiones')
-        m2_particiones = float(response_weight.get('m2_particiones')[0])
-        weight_particiones = float(type_particiones[0])*m2_particiones
+        m2_particiones = response_weight.get('m2_particiones')
+        particiones = {}
+        weight_particiones = 0
 
-        name_particiones = {
-            0.5:'Particiones móviles de acero (altura parcial)',
-            0.2:'Particiones móviles de acero (altura total)',
-            0.9:'Poste en madera o acero, yeso de 12 mm a cada lado'
-        }
+        if  m2_particiones:
+            m2_particiones = float(m2_particiones[0])
+            weight_particiones = float(type_particiones[0])*m2_particiones
 
-        particiones = {
-            'tipo_particiones': name_particiones[float(type_particiones[0])],
-            'valor_nsr_10': float(type_particiones[0]),
-            'm2_particiones': m2_particiones,
-            'weight_particiones': round(weight_particiones,2)
+            name_particiones = {
+                0.5:'Particiones móviles de acero (altura parcial)',
+                0.2:'Particiones móviles de acero (altura total)',
+                0.9:'Poste en madera o acero, yeso de 12 mm a cada lado'
+            }
 
-        }
+            particiones = {
+                'tipo_particiones': name_particiones[float(type_particiones[0])],
+                'valor_nsr_10': float(type_particiones[0]),
+                'm2_particiones': m2_particiones,
+                'weight_particiones': round(weight_particiones,2)
+
+            }
+
+
 
         name_ventanas = {
             0.5:"Muros cortina de vidrio, entramado y marco",
@@ -468,15 +475,20 @@ class Nsr10(LoginRequiredMixin, View):
         }
 
         type_ventanas = response_weight.get('type_ventanas')
-        m2_ventanas = float(response_weight.get('m2_ventanas')[0])
-        weight_ventanas = float(type_ventanas[0])*m2_ventanas
+        m2_ventanas = response_weight.get('m2_ventanas')
+        ventanas = {}
+        weight_ventanas = 0
+        if m2_ventanas:
 
-        ventanas = {
-            'tipo_ventanas': name_ventanas[float(type_ventanas[0])],
-            'm2_ventanas': m2_ventanas,
-            'valor_nsr_10': float(type_ventanas[0]),
-            'weight_ventanas': round(weight_ventanas, 2)
-        }
+            m2_ventanas = float(response_weight.get('m2_ventanas')[0])
+            weight_ventanas = float(type_ventanas[0])*m2_ventanas
+
+            ventanas = {
+                'tipo_ventanas': name_ventanas[float(type_ventanas[0])],
+                'm2_ventanas': m2_ventanas,
+                'valor_nsr_10': float(type_ventanas[0]),
+                'weight_ventanas': round(weight_ventanas, 2)
+            }
 
         name_cubierta = {
             0.0020: "Cubiertas aislantes Fibra de vidrio",
@@ -490,20 +502,24 @@ class Nsr10(LoginRequiredMixin, View):
         }
         type_cubierta = response_weight.get('type_cubierta')
         espesor_cubierta = response_weight.get('espesor_cubierta')
-        m2_cubierta = float(response_weight.get('m2_cubierta')[0])
+        m2_cubierta = response_weight.get('m2_cubierta')
+        cubierta_weight = 0
+        cubierta = {}
+        if m2_cubierta:
+            m2_cubierta = float(response_weight.get('m2_cubierta')[0])
 
-        if espesor_cubierta:
-            cubierta_weight = float(type_cubierta[0])*float(espesor_cubierta[0])*m2_cubierta
-        else:
-            cubierta_weight = float(type_cubierta[0])*m2_cubierta
+            if espesor_cubierta:
+                cubierta_weight = float(type_cubierta[0])*float(espesor_cubierta[0])*m2_cubierta
+            else:
+                cubierta_weight = float(type_cubierta[0])*m2_cubierta
 
-        cubierta = {
-            'tipo_cubierta': name_cubierta[float(type_cubierta[0])],
-            'valor_nsr_10': float(type_cubierta[0]),
-            'm2_cubierta': m2_cubierta,
-            'cubierta_weight': round(cubierta_weight, 2)
+            cubierta = {
+                'tipo_cubierta': name_cubierta[float(type_cubierta[0])],
+                'valor_nsr_10': float(type_cubierta[0]),
+                'm2_cubierta': m2_cubierta,
+                'cubierta_weight': round(cubierta_weight, 2)
 
-        }
+            }
 
         name_piso = {
             0.02: "Acabado de piso en concreto",
@@ -518,19 +534,23 @@ class Nsr10(LoginRequiredMixin, View):
 
         type_piso = response_weight.get('type_piso')
         espesor_piso = response_weight.get('espesor_piso')
-        m2_pisos = float(response_weight.get('m2_pisos')[0])
+        m2_pisos = response_weight.get('m2_pisos')
+        piso = {}
+        piso_weight = 0
 
-        if espesor_piso:
-            piso_weight = float(type_piso[0])*float(espesor_piso[0])*m2_pisos
-        else:
-            piso_weight = float(type_piso[0])*m2_pisos
+        if m2_pisos:
+            m2_pisos = float(response_weight.get('m2_pisos')[0])
+            if espesor_piso:
+                piso_weight = float(type_piso[0])*float(espesor_piso[0])*m2_pisos
+            else:
+                piso_weight = float(type_piso[0])*m2_pisos
 
-        piso = {
-            'tipo_piso': name_piso[float(type_piso[0])],
-            'valor_nsr_10': float(type_piso[0]),
-            'm2_pisos': m2_pisos,
-            'piso_weight': round(piso_weight, 2)
-        }
+            piso = {
+                'tipo_piso': name_piso[float(type_piso[0])],
+                'valor_nsr_10': float(type_piso[0]),
+                'm2_pisos': m2_pisos,
+                'piso_weight': round(piso_weight, 2)
+            }
 
         name_recubrimiento = {
             0.8: "Baldosín de cemento",
@@ -541,19 +561,24 @@ class Nsr10(LoginRequiredMixin, View):
 
         type_recubrimiento = response_weight.get('type_recubrimiento')
         espesor_recubrimiento = response_weight.get('espesor_recubrimiento')
-        m2_recubrimiento = float(response_weight.get('m2_recubrimiento')[0])
+        m2_recubrimiento = response_weight.get('m2_recubrimiento')
+        recubrimiento_weight = 0
+        recubrimiento = {}
 
-        if espesor_recubrimiento:
-            recubrimiento_weight = float(type_recubrimiento[0])*float(espesor_recubrimiento[0])*m2_recubrimiento
-        else:
-            recubrimiento_weight = float(type_recubrimiento[0])*m2_recubrimiento
+        if m2_recubrimiento:
+            m2_recubrimiento = float(response_weight.get('m2_recubrimiento')[0])
 
-        recubrimiento = {
-            'tipo_recubrimiento': name_recubrimiento[float(type_recubrimiento[0])],
-            'valor_nsr_10': float(type_recubrimiento[0]),
-            'm2_recubrimiento': m2_recubrimiento,
-            'recubrimiento_weight': round(recubrimiento_weight,2)
-        }
+            if espesor_recubrimiento:
+                recubrimiento_weight = float(type_recubrimiento[0])*float(espesor_recubrimiento[0])*m2_recubrimiento
+            else:
+                recubrimiento_weight = float(type_recubrimiento[0])*m2_recubrimiento
+
+            recubrimiento = {
+                'tipo_recubrimiento': name_recubrimiento[float(type_recubrimiento[0])],
+                'valor_nsr_10': float(type_recubrimiento[0]),
+                'm2_recubrimiento': m2_recubrimiento,
+                'recubrimiento_weight': round(recubrimiento_weight,2)
+            }
 
         name_enchape = {
                 0.015:"Enchape cerámico",
@@ -564,15 +589,20 @@ class Nsr10(LoginRequiredMixin, View):
         }
         type_enchape = response_weight.get('type_enchape')
         espesor_enchape = response_weight.get('espesor_enchape')
-        m2_enchape = float(response_weight.get('m2_enchape')[0])
-        enchape_weight = float(type_enchape[0])*float(espesor_enchape[0])*m2_enchape
+        m2_enchape = response_weight.get('m2_enchape')
+        enchape = {}
+        enchape_weight = 0
+        if m2_enchape:
 
-        enchape = {
-            'tipo_enchape': name_enchape[float(type_enchape[0])],
-            'valor_nsr_10': float(type_enchape[0]),
-            'm2_enchape': m2_enchape,
-            'enchape_weight': round(enchape_weight,2)
-        }
+            m2_enchape = float(response_weight.get('m2_enchape')[0])
+            enchape_weight = float(type_enchape[0])*float(espesor_enchape[0])*m2_enchape
+
+            enchape = {
+                'tipo_enchape': name_enchape[float(type_enchape[0])],
+                'valor_nsr_10': float(type_enchape[0]),
+                'm2_enchape': m2_enchape,
+                'enchape_weight': round(enchape_weight,2)
+            }
 
 
 
@@ -672,9 +702,7 @@ class Nsr10(LoginRequiredMixin, View):
                 'index.html',
                 {
                     'message': 'La vivienda no esta en Bogotá',
-                    'result': 0,
-                    'status': 'error',
-                    'process': 1
+                    'status': 'error'
                 }
             )
 
@@ -1122,7 +1150,7 @@ class Ais(LoginRequiredMixin, View):
 
 class AisDetail(LoginRequiredMixin, DetailView):
     model = AisModel
-    template_name = 'nsr_resutl.html'
+    template_name = 'ais.html'
     context_object_name = 'aisprocess'
 
     def get_context_data(self, *args, **kwargs):

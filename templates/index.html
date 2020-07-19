@@ -6,11 +6,13 @@
 -->
 <html>
 	<head>
-		<title>UD</title>
+		<title>Bogotá earthquake
+			</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/static/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/static/assets/css/noscript.css" /></noscript>
+		<link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
 
 	</head>
 	<body class="is-preload landing">
@@ -21,7 +23,7 @@
 					<!-- <h1 id="logo"><a href="index.html">Landed</a></h1> -->
 					<nav id="nav">
 						<ul>
-							<li><a href="/users/calculate_process/">Calcular Processo</a></li>
+							<li><a href="/users/inicio/">Calcular Processo</a></li>
 
 							<li><a href="/users/login/" class="">Ingresar</a></li>
 						</ul>
@@ -63,7 +65,7 @@
 									</header>
 								</div>
 								<div class="col-8 col-12-medium">
-									<div style="text-align: center"><iframe width="100%" height="340" src="https://www.youtube.com/embed/VVJhivpeGkk">
+									<div style="text-align: center"><iframe width="100%" height="340" src="https://www.youtube.com/embed/792bP_HM0aA">
 									</iframe></div>
 								</div>
 
@@ -177,38 +179,18 @@
 
 	</body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="/static/sweetalert2/sweetalert2.js"></script>
+
 
 <script>
-	var option = '{{ process }}'
-	var footers = '{{ footer }}'
+	var option = '{{ message }}'
 
-	if (option){
-
-
-		fetch(`/file/response/${footers}`)
-			.then(resp => resp.blob())
-			.then(blob => {
-				const url = window.URL.createObjectURL(blob);
-				const a = document.createElement('a');
-				a.style.display = 'none';
-				a.href = url;
-				// the filename you want
-				a.download = 'proceso.pdf';
-				document.body.appendChild(a);
-				a.click();
-				window.URL.revokeObjectURL(url);
-			})
-			.catch(() => alert('oh no hubo un error generando el arhcivo!'));
-
+	if ( option ){
 
 		Swal.fire({
 			icon:'{{ status }}',
-			title:'{{ message }}',
-			text:'{{ result }}'
-			})
-
-
+			title:'{{ message }}'
+		})
 
 	}
 

@@ -27,7 +27,9 @@
     crossorigin=""></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-
+    <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
+		<title>Bogotá earthquake
+			</title>
     <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
@@ -41,15 +43,16 @@
 <body>
 
 <div style="width: 100%;  height:60px;" id="main-navbar">
-    <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
+    <a  href="{% url 'page' %}" style="color: white;  position:relative;
     left:50px;
     top:17px;
     font-weight: bold;""
-    ></a>
-    <a class="glyphicon glyphicon-log-out" href="{% url 'logout' %}" style="color: white;  position:relative;
+    ><img   style="width: 20px" src="/static/img/home2.png"></a>
+    <a href="{% url 'logout' %}" style="color: white;  position:relative;
     left:80px;
     top:17px;
-    font-weight: bold;""></a>
+    font-weight: bold;""><img style="width: 20px" src="/static/img/logout2.png"></a>
+
 
 </div>
 
@@ -467,6 +470,7 @@
                             <label>Particiones livianas:</label>
                             <select class="form-control" name="type_particiones" id="type_particiones" required>
                               <option selected></option>
+                              <option value="None">No tiene</option>
                               <option name="0" value=0.5>Particiones móviles de acero (altura parcial)</option>
                               <option name="1" value=0.2>Particiones móviles de acero (altura total)</option>
                               <option name="2" value=0.9>Poste en madera o acero, yeso de 12 mm a cada lado</option>
@@ -486,6 +490,7 @@
                           required
                           step=".001"
                           min="0"
+                          id="m2_particiones"
                           required>
 
                   </div>
@@ -511,6 +516,7 @@
                           <label>Ventanas:</label>
                           <select class="form-control" name="type_ventanas" id="type_ventanas" required>
                             <option selected></option>
+                            <option value="None">No tiene</option>
                             <option name="0" value=0.5>Muros cortina de vidrio, entramado y marco</option>
                             <option name="1" value=0.45>Ventanas, vidrio, entramado y marco</option>
                           </select>
@@ -526,7 +532,7 @@
                         class="form-control"
                         type="number"
                         name="m2_ventanas"
-                        required
+                        id="m2_ventanas"
                         step=".001"
                         min="0"
                         required>
@@ -568,11 +574,6 @@
 
 <div class="tab">
   <div class="regForm2">
-      <div style="text-align: center;"class="col-lg-12" id="property">
-          <h2>Metodo cuantitativo</h2>
-          <a id="help_cuantitativo">(Información)</a>
-          <br></br>
-      </div>
     <div class="col-lg-12" id="property">
       <h4>Cubierta</h4>
     </div>
@@ -585,6 +586,7 @@
                         <label>Tipo de cubierta:</label>
                         <select class="form-control" name="type_cubierta" id="type_cubierta" required>
                           <option selected></option>
+                          <option value="None">No tiene</option>
                           <option name="0" value=0.0020>Cubiertas aislantes Fibra de vidrio</option>
                           <option name="1" value=0.2>Cubiertas corrugadas de asbesto-cemento</option>
                           <option name="2" value=0.0060>Entablado de madera</option>
@@ -605,6 +607,7 @@
                       class="form-control disable"
                       type="number"
                       name="espesor_cubierta"
+                      id="espesor_cubierta"
                       required
                       step=".001"
                       min="0"
@@ -621,6 +624,7 @@
                       class="form-control"
                       type="number"
                       name="m2_cubierta"
+                      id="m2_cubierta"
                       required
                       step=".001"
                       min="0"
@@ -649,6 +653,7 @@
                       <label>Tipo de pisos:</label>
                       <select class="form-control" name="type_piso" id="type_piso" required>
                         <option selected></option>
+                        <option value="None">No tiene</option>
                         <option name="0" value=0.02>Acabado de piso en concreto</option>
                         <option name="1" value=0.8>Baldosa cerámica (20 mm) sobre 12 mm de mortero</option>
                         <option name="2" value=1.1>Baldosa sobre 25 mm de mortero</option>
@@ -669,6 +674,7 @@
                     class="form-control disable"
                     type="number"
                     name="espesor_piso"
+                    id="espesor_piso"
                     required
                     step=".001"
                     min="0"
@@ -685,6 +691,7 @@
                     class="form-control"
                     type="number"
                     name="m2_pisos"
+                    id="m2_pisos"
                     required
                     step=".001"
                     min="0"
@@ -712,6 +719,7 @@
                       <label>Recubrimiento:</label>
                       <select class="form-control" name="type_recubrimiento" id="type_recubrimiento" required>
                         <option selected></option>
+                        <option value="None">No tiene</option>
                         <option name="0" value=0.8>Baldosín de cemento</option>
                         <option name="1" value=0.01>Madera laminada (según el espesor)</option>
                         <option name="2" value=0.003>Tableros de fibra (aislante)</option>
@@ -728,7 +736,7 @@
                     class="form-control disable"
                     type="number"
                     name="espesor_recubrimiento"
-                    required
+                    id="espesor_recubrimiento"
                     step=".001"
                     min="0"
                     required
@@ -744,7 +752,7 @@
                     class="form-control"
                     type="number"
                     name="m2_recubrimiento"
-                    required
+                    id="m2_recubrimiento"
                     step=".001"
                     min="0"
                     required>
@@ -771,6 +779,7 @@
                   <label>Enchape:</label>
                   <select class="form-control" name="type_enchape" id="type_enchape" required>
                     <option selected></option>
+                    <option value="None">No tiene</option>
                     <option name="0" value=0.015>Enchape cerámico</option>
                     <option name="1" value=0.013>Enchape en arenisca</option>
                     <option name="2" value=0.015>Enchape en caliza</option>
@@ -787,7 +796,7 @@
                 class="form-control"
                 type="number"
                 name="espesor_enchape"
-                required
+                id="espesor_enchape"
                 step=".001"
                 min="0"
                 required
@@ -803,7 +812,7 @@
                 class="form-control"
                 type="number"
                 name="m2_enchape"
-                required
+                id="m2_enchape"
                 step=".001"
                 min="0"
                 required>
@@ -1097,6 +1106,7 @@ function validateForm() {
     class_observation = y[i].className.split(' ')[1]
     if (y[i].value == "" & !(y[i].disabled) & !(class_observation == "observation") & !(y[i].className == 'image')) {
       // add an "invalid" class to the field:
+
       y[i].className += " invalid";
       // and set the current valid status to false
       valid = false;
@@ -1107,10 +1117,12 @@ function validateForm() {
 
     if (s[i].value == "") {
       // add an "invalid" class to the field:
+
       s[i].className += " invalid";
       // and set the current valid status to false
       valid = false;
     }
+
   }
   for (i = 0; i < element.length; i++) {
     // If a field is empty...

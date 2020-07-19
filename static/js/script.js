@@ -333,11 +333,85 @@ $(document).ready(function(){
 
     })
 
-    // $('.leaflet-interactive').click(function( date ) {
-    //     console.log($('.leaflet-interactive').serialize().split("=")[1])
-    //     console.log($('.leaflet-interactive').serialize().split("=")[1]['_latlng']['lng'])
 
-    // })
+    $('#type_particiones').click(function( date ) {
+        event.preventDefault();
+
+        if ($('#type_particiones').serialize().split("=")[1] == "None"){
+            $("#m2_particiones").attr("disabled", 'disabled');
+        }
+        else {
+            $("#m2_particiones").removeAttr("disabled");
+        }
+    })
+
+    $('#type_ventanas').click(function( date ) {
+        event.preventDefault();
+
+        if ($('#type_ventanas').serialize().split("=")[1] == "None"){
+
+            $("#m2_ventanas").attr("disabled", 'disabled');
+
+
+        }else {
+            $("#m2_ventanas").removeAttr("disabled");
+        }
+
+    })
+
+    $('#type_cubierta').click(function( date ) {
+        event.preventDefault();
+
+        if ($('#type_cubierta').serialize().split("=")[1] == "None"){
+            $("#espesor_cubierta").attr("disabled", 'disabled');
+            $("#m2_cubierta").attr("disabled", 'disabled');
+        }else {
+            $("#espesor_cubierta").removeAttr("disabled");
+            $("#m2_cubierta").removeAttr("disabled");
+        }
+
+    })
+
+    $('#type_piso').click(function( date ) {
+        event.preventDefault();
+        if ($('#type_piso').serialize().split("=")[1] == "None"){
+
+            $("#m2_pisos").attr("disabled", 'disabled');
+            $("#m2_cubierta").attr("disabled", 'disabled');
+        }else {
+            $("#m2_pisos").removeAttr("disabled");
+            $("#m2_cubierta").removeAttr("disabled");
+        }
+    })
+
+
+    $('#type_recubrimiento').click(function( date ) {
+        event.preventDefault();
+        if ($('#type_recubrimiento').serialize().split("=")[1] == "None"){
+
+            $("#espesor_recubrimiento").attr("disabled", 'disabled');
+            $("#m2_recubrimiento").attr("disabled", 'disabled');
+        } else {
+            $("#espesor_recubrimiento").removeAttr("disabled");
+            $("#m2_recubrimiento").removeAttr("disabled");
+        }
+
+    })
+
+
+    $('#type_enchape').click(function( date ) {
+        event.preventDefault();
+
+        if ($('#type_enchape').serialize().split("=")[1] == "None"){
+            $("#espesor_enchape").attr("disabled", 'disabled');
+            $("#m2_enchape").attr("disabled", 'disabled');
+        }
+        else {
+            $("#espesor_enchape").removeAttr("disabled");
+            $("#m2_enchape").removeAttr("disabled");
+        }
+
+    })
 
 
 });

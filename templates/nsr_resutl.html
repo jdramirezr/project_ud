@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
+    <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
+    <title>Bogotá earthquake
+        </title>
 <body>
 
 <div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
-    <a class="glyphicon glyphicon-home" href="{% url 'page' %}" style="color: white;  position:relative;
+
+    <a  href="{% url 'page' %}" style="color: white;  position:relative;
     left:50px;
     top:17px;
     font-weight: bold;""
-    ></a>
-    <a class="glyphicon glyphicon-log-out" href="{% url 'logout' %}" style="color: white;  position:relative;
+    ><img   style="width: 20px" src="/static/img/home2.png"></a>
+    <a href="{% url 'logout' %}" style="color: white;  position:relative;
     left:80px;
     top:17px;
-    font-weight: bold;""></a>
+    font-weight: bold;""><img style="width: 20px" src="/static/img/logout2.png"></a>
 
 </div>
 
@@ -26,8 +29,8 @@
 <h1 id="title_process">Método Nsr-10</h1>
 
 
-<div class="col text-center">
-        <button onclick=window.print() type="button" class="bKg bKg-default">Guardar</button>
+    <div class="col text-center">
+        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
     </div>
 <div class="col-lg-12" style="padding: 50px" id="property_0">
         <!-- <div class="row">
@@ -36,19 +39,19 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px"> INFORMACIÓN CONSTRUCTIVA</span>
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px"> INFORMACIÓN CONSTRUCTIVA</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                     Grupo de uso:
             </div>
             <div class="col-sm-3 data" >
                 {{ grupo }}
             </div>
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                     Numero de pisos:
                 </div>
                 <div class="col-sm-3 data" >
@@ -58,14 +61,14 @@
 
         </div>
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                     Tipo de sistema estructural:
             </div>
             <div class="col-sm-3 data" >
                 {{ type_construccion }}
             </div>
 
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                     Altura entre pisos:
                 </div>
                 <div class="col-sm-3 data" >
@@ -76,7 +79,7 @@
 
         <!-- <div class="row">
 
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Total altura propiedad:
             </div>
             <div class="col-sm-3 data" >
@@ -88,14 +91,14 @@
 
 
         <div class="row">
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Irregularidad en altura:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Irregularidad en altura:</span>
             </div>
             <div class="col-sm-3 data-porcentage" >
                 {{ irregularidad_long }}
             </div>
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Irregularidad en planta:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Irregularidad en planta:</span>
             </div>
             <div class="col-sm-3 data-porcentage" >
                 {{ irregularidad_planta }}
@@ -103,14 +106,14 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Fuerzas horizontales:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Fuerzas horizontales:</span>
             </div>
             <div class="col-sm-3 data-porcentage" >
                 {{ fuerza_horizontal }}
             </div>
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Fuerzas verticales</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Fuerzas verticales</span>
             </div>
             <div class="col-sm-3 data-porcentage" >
                 {{ fuerza_vertical }}
@@ -118,8 +121,8 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white; ">
-                <span style="position: relative; top:10px">Comentarios:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white; ">
+                <span class="print" style="position: relative; top:10px">Comentarios:</span>
             </div>
             <div class="col-sm-9 data-porcentage" style="overflow: auto;" >
                 {{ comments }}
@@ -133,8 +136,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">ESPECIFICACIÓN SUELOS</span>
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">ESPECIFICACIÓN SUELOS</span>
             </div>
         </div>
 
@@ -143,13 +146,13 @@
 
 
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Tipo de suelo:
             </div>
             <div class="col-sm-3 data" >
                 {{ type_suelo }}
             </div>
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Velocidad onda:
             </div>
             <div class="col-sm-3 data" >
@@ -157,13 +160,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Fa:
             </div>
             <div class="col-sm-3 data" >
                 {{ fa }}
             </div>
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Humedad_Promedio:
             </div>
             <div class="col-sm-3 data" >
@@ -172,13 +175,13 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Fv:
             </div>
             <div class="col-sm-3 data" >
                 {{ fv }}
             </div>
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Efectos relacionados
             </div>
             <div class="col-sm-3 data" >
@@ -189,27 +192,27 @@
 
 
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Espesor deposito:
             </div>
             <div class="col-sm-3 data" >
                 {{ Espesor_deposito }}
             </div>
-            <div class="col-sm-6"  style=" text-align: center; background: #272833; color: white">
+            <div class="col-sm-6 print"  style=" text-align: center; background: #272833; color: white ">
                 Ubicación
             </div>
 
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
                 Periodo suelo:
             </div>
             <div class="col-sm-3 data" >
                 {{ Periodo_suelo }}
             </div>
-            <div class="col-sm-3 data"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                Cordeneada x:
+            <div class="col-sm-3 data print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                Cordenada x:
             </div>
             <div class="col-sm-3 data" >
                 {{ cordenada_x }}
@@ -217,14 +220,14 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Descripción geotecnica:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Descripción geotecnica:</span>
             </div>
             <div class="col-sm-3 data-porcentage" style="overflow: auto;" >
                 {{ descripcion_geotecnica }}
             </div>
-            <div class="col-sm-3 data-porcentage"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">Cordeneada y:</span>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">Cordenada y:</span>
             </div>
             <div class="col-sm-3 data-porcentage"  >
                 <span style="position: relative; top:10px">   {{ cordenada_y }}</span>
@@ -235,30 +238,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">CARGAS MUERTAS</span>
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">CARGAS MUERTAS</span>
             </div>
         </div>
         <div class="row">
                 <div class="col-sm-12 data-color" style="height: 40px !important" >
-                        <span style="position: relative; top:10px"> Vigas {{viga_weight}} N</span>
+                        <span class="print" style="position: relative; top:10px"> Vigas {{viga_weight}} N</span>
                 </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+            <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
                     #
             </div>
-            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+            <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
                     Cantidad de vigas
             </div>
-            <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+            <div class="col-sm-3 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
                     M3
             </div>
-            <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+            <div class="col-sm-3 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
                     Densidad concreto
             </div>
-            <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+            <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
                 Total peso
             </div>
 
@@ -294,24 +297,24 @@
 
         <div class="row">
             <div class="col-sm-12 data-color"  style="height: 40px !important" >
-                    <span style="position: relative; top:10px">Columnas {{ columna_weight }} N</span>
+                    <span class="print" style="position: relative; top:10px">Columnas {{ columna_weight }} N</span>
             </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+        <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
                 #
         </div>
-        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+        <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
                 Cantidad de Columnas
         </div>
-        <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+        <div class="col-sm-3 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
                 M3
         </div>
-        <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+        <div class="col-sm-3 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
                 Densidad concreto
         </div>
-        <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+        <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
             Total peso
         </div>
 
@@ -347,27 +350,27 @@
 
 <div class="row">
         <div class="col-sm-12 data-color"  style="height: 40px !important"  >
-                <span style="position: relative; top:10px"> Placa {{ placa_weight }} N</span>
+                <span class="print" style="position: relative; top:10px"> Placa {{ placa_weight }} N</span>
         </div>
 </div>
 
 <div class="row">
-    <div class="col-sm-1"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+    <div class="col-sm-1 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
             #
     </div>
-    <div class="col-sm-3"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+    <div class="col-sm-3 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
         Tipo de placa
     </div>
-    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+    <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
             Numero de placas
     </div>
-    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
+    <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white">
             Dimension
     </div>
-    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+    <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
             Densidad material
     </div>
-    <div class="col-sm-2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
+    <div class="col-sm-2 print2"  style="border: 0.2px solid black; text-align: center; background: #383737; color: white" >
         Total peso
     </div>
 
@@ -437,13 +440,13 @@
     </div>
 
     <div class="row">
-            <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                <span style="position: relative; top:10px">CARGAS MUERTAS</span>
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+                <span class="print" style="position: relative; top:10px">CARGAS MUERTAS</span>
             </div>
         </div>
 <div class="row">
         <div class="col-sm-12 data-color"  style="height: 40px !important" >
-                <span style="position: relative; top:10px">Otros elementos {{weight_other}} N</span>
+                <span class="print" style="position: relative; top:10px">Otros elementos {{weight_other}} N</span>
         </div>
 </div>
 
@@ -451,30 +454,30 @@
 
 <div class="row">
     <div class="col-sm-6 data-color" style="padding:0; background:#383737" >
-        <div class="col-sm-5" >
+        <div class="col-sm-5 print2" >
             Muro fachadas
         </div>
-        <div class="col-sm-3 data-color" style="background: #383737" >
+        <div class="col-sm-3 data-color print2" style="background: #383737" >
              Valor nsr-10
         </div>
-        <div class="col-sm-2 data-color " style="background: #383737" >
+        <div class="col-sm-2 data-color print2" style="background: #383737" >
             M2
         </div>
-        <div class="col-sm-2 " >
+        <div class="col-sm-2 print2" >
             Total Peso
         </div>
     </div>
-    <div class="col-sm-6 data-color" style="padding:0; background: #383737"">
-        <div class="col-sm-5" >
+    <div class="col-sm-6 data-color print2" style="padding:0; background: #383737"">
+        <div class="col-sm-5 print2" >
                 Muro divisorio
             </div>
-            <div class="col-sm-3 data-color" style="background: #383737" >
+            <div class="col-sm-3 data-color print2" style="background: #383737" >
                     Valor nsr-10
             </div>
-            <div class="col-sm-2 data-color " style="background: #383737" >
+            <div class="col-sm-2 data-color print2" style="background: #383737" >
                 M2
             </div>
-            <div class="col-sm-2 " >
+            <div class="col-sm-2 print2" >
                 Total Peso
             </div>
     </div>
@@ -498,6 +501,7 @@
         </div>
         <div class="col-sm-2 data-title" >
             {{ muro_fachada.weight_muro }} N
+
         </div>
 
     </div>
@@ -513,7 +517,10 @@
             {{ muro_divisorio.m2_muros }}
         </div>
         <div class="col-sm-2 data-title" >
-            {{ muro_divisorio.weight_muro }} N
+
+
+                {{ muro_divisorio.weight_muro }} N
+
         </div>
 </div>
 
@@ -523,31 +530,31 @@
 
 
     <div class="row">
-        <div class="col-sm-6 data-color" style="padding:0; background: #383737" >
-            <div class="col-sm-5" >
+        <div class="col-sm-6 data-color print2" style="padding:0; background: #383737" >
+            <div class="col-sm-5 print2" >
                     Particiones livianas
             </div>
-            <div class="col-sm-3 data-color" style="background: #383737">
+            <div class="col-sm-3 data-color print2" style="background: #383737">
                  Valor nsr-10
             </div>
-            <div class="col-sm-2 data-color " style="background: #383737">
+            <div class="col-sm-2 data-color print2" style="background: #383737">
                 M2
             </div>
-            <div class="col-sm-2 " >
+            <div class="col-sm-2 print2" >
                 Total Peso
             </div>
         </div>
-        <div class="col-sm-6 data-color" style="padding:0; background: #383737">
-            <div class="col-sm-5" >
+        <div class="col-sm-6 data-color print2" style="padding:0; background: #383737">
+            <div class="col-sm-5 print2" >
                     Ventanas
                 </div>
-                <div class="col-sm-3 data-color" style="background: #383737">
+                <div class="col-sm-3 data-color print2" style="background: #383737">
                         Valor nsr-10
                 </div>
-                <div class="col-sm-2 data-color " style="background: #383737">
+                <div class="col-sm-2 data-color print2" style="background: #383737">
                     M2
                 </div>
-                <div class="col-sm-2 " >
+                <div class="col-sm-2 print2" >
                     Total Peso
                 </div>
         </div>
@@ -561,7 +568,11 @@
         <div class="col-sm-6 data-title" style="padding:0" >
 
             <div class="col-sm-5 data-title" >
-                {{ particiones.tipo_particiones}}
+                {% if not  particiones %}
+                    No tiene
+                {% else %}
+                    {{ particiones.tipo_particiones}}
+                {% endif %}
             </div>
             <div class="col-sm-3 data-title" >
                 {{ particiones.valor_nsr_10 }}
@@ -570,14 +581,23 @@
                 {{ particiones.m2_particiones }}
             </div>
             <div class="col-sm-2 data-title" >
-                {{ particiones.weight_particiones }} N
+
+                {% if not  ventanas %}
+                {% else %}
+                    {{ ventanas.weight_particiones }} N
+                {% endif %}
             </div>
 
         </div>
         <div class="col-sm-6 data-title" style="padding:0" >
 
         <div class="col-sm-5 data-title" >
-                {{ ventanas.tipo_ventanas}}
+
+                {% if not  ventanas %}
+                    No tiene
+                {% else %}
+                    {{ ventanas.tipo_ventanas}}
+                {% endif %}
             </div>
             <div class="col-sm-3 data-title" >
                 {{ ventanas.valor_nsr_10 }}
@@ -586,7 +606,11 @@
                 {{ ventanas.m2_ventanas }}
             </div>
             <div class="col-sm-2 data-title" >
-                {{ ventanas.weight_ventanas }} N
+
+                {% if not  ventanas %}
+                {% else %}
+                    {{ ventanas.weight_ventanas }} N
+                {% endif %}
             </div>
     </div>
 
@@ -599,31 +623,31 @@
 
 
         <div class="row">
-            <div class="col-sm-6 data-color" style="padding:0; background: #383737" >
-                <div class="col-sm-5" >
+            <div class="col-sm-6 data-color print2" style="padding:0; background: #383737" >
+                <div class="col-sm-5 print2" >
                         Tipo de cubierta:
                 </div>
-                <div class="col-sm-3 data-color" style="background: #383737" >
+                <div class="col-sm-3 data-color print2" style="background: #383737" >
                      Valor nsr-10
                 </div>
-                <div class="col-sm-2 data-color " style="background: #383737" >
+                <div class="col-sm-2 data-color print2" style="background: #383737" >
                     M2
                 </div>
-                <div class="col-sm-2 " >
+                <div class="col-sm-2 print2" >
                     Total Peso
                 </div>
             </div>
-            <div class="col-sm-6 data-color" style="padding:0; background: #383737">
-                <div class="col-sm-5" >
+            <div class="col-sm-6 data-color print2" style="padding:0; background: #383737">
+                <div class="col-sm-5 print2" >
                         Tipo de pisos:
                     </div>
-                    <div class="col-sm-3 data-color" style="background: #383737">
+                    <div class="col-sm-3 data-color print2" style="background: #383737">
                             Valor nsr-10
                     </div>
-                    <div class="col-sm-2 data-color " style="background: #383737" >
+                    <div class="col-sm-2 data-color print2" style="background: #383737" >
                         M2
                     </div>
-                    <div class="col-sm-2 " >
+                    <div class="col-sm-2 print2" >
                         Total Peso
                     </div>
             </div>
@@ -635,9 +659,14 @@
 
         <div class="row">
             <div class="col-sm-6 data-title" style="padding:0" >
-
                 <div class="col-sm-5 data-title" >
-                    {{ cubierta.tipo_cubierta}}
+
+                    {% if not  cubierta %}
+                        No tiene
+                    {% else %}
+                        {{ cubierta.tipo_cubierta}}
+
+                    {% endif %}
                 </div>
                 <div class="col-sm-3 data-title" >
                     {{ cubierta.valor_nsr_10 }}
@@ -646,14 +675,23 @@
                     {{ cubierta.m2_cubierta }}
                 </div>
                 <div class="col-sm-2 data-title" >
-                    {{ cubierta.cubierta_weight }} N
+
+                    {% if not  cubierta %}
+                    {% else %}
+                        {{ cubierta.cubierta_weight }} N
+                    {% endif %}
                 </div>
 
             </div>
             <div class="col-sm-6 data-title" style="padding:0" >
 
             <div class="col-sm-5 data-title" >
-                    {{ piso.tipo_piso}}
+
+                    {% if not  piso %}
+                        No tiene
+                    {% else %}
+                        {{ piso.tipo_piso}}
+                    {% endif %}
                 </div>
                 <div class="col-sm-3 data-title" >
                     {{ piso.valor_nsr_10 }}
@@ -662,7 +700,11 @@
                     {{ piso.m2_pisos }}
                 </div>
                 <div class="col-sm-2 data-title" >
-                    {{ piso.piso_weight }} N
+
+                    {% if not  piso %}
+                    {% else %}
+                        {{ piso.piso_weight }} N
+                    {% endif %}
                 </div>
         </div>
 
@@ -673,31 +715,31 @@
 
 
     <div class="row">
-        <div class="col-sm-6 data-color" style="padding:0; background: #383737" >
-            <div class="col-sm-5" >
+        <div class="col-sm-6 data-color print2" style="padding:0; background: #383737" >
+            <div class="col-sm-5 print2" >
                     Recubrimiento
             </div>
-            <div class="col-sm-3 data-color" style="background: #383737" >
+            <div class="col-sm-3 data-color print2" style="background: #383737" >
                     Valor nsr-10
             </div>
-            <div class="col-sm-2 data-color " style="background: #383737" >
+            <div class="col-sm-2 data-color print2" style="background: #383737" >
                 M2
             </div>
-            <div class="col-sm-2 " >
+            <div class="col-sm-2 print2" >
                 Total Peso
             </div>
         </div>
-        <div class="col-sm-6 data-color" style="padding:0; background: #383737">
-            <div class="col-sm-5" >
+        <div class="col-sm-6 data-color print2" style="padding:0; background: #383737">
+            <div class="col-sm-5 print2" >
                     Enchapes
                 </div>
-                <div class="col-sm-3 data-color"  style="background: #383737">
+                <div class="col-sm-3 data-color print2"  style="background: #383737">
                         Valor nsr-10
                 </div>
-                <div class="col-sm-2 data-color " style="background: #383737" >
+                <div class="col-sm-2 data-color print2" style="background: #383737" >
                     M2
                 </div>
-                <div class="col-sm-2 " >
+                <div class="col-sm-2 print2" >
                     Total Peso
                 </div>
         </div>
@@ -711,7 +753,14 @@
         <div class="col-sm-6 data-title" style="padding:0" >
 
             <div class="col-sm-5 data-title" >
-                {{ recubrimiento.tipo_recubrimiento}}
+
+
+                {% if not  recubrimiento %}
+                    No tiene
+                {% else %}
+                    {{ recubrimiento.tipo_recubrimiento}}
+
+                {% endif %}
             </div>
             <div class="col-sm-3 data-title" >
                 {{ recubrimiento.valor_nsr_10 }}
@@ -720,14 +769,24 @@
                 {{ recubrimiento.m2_recubrimiento }}
             </div>
             <div class="col-sm-2 data-title" >
+
+                {% if not  recubrimiento %}
+
+                {% else %}
                 {{ recubrimiento.recubrimiento_weight }} N
+                {% endif %}
             </div>
 
         </div>
         <div class="col-sm-6 data-title" style="padding:0" >
 
             <div class="col-sm-5 data-title" >
+
+                {% if not  enchape %}
+                    No tiene
+                {% else %}
                     {{ enchape.tipo_enchape}}
+                {% endif %}
             </div>
             <div class="col-sm-3 data-title" >
                 {{ enchape.valor_nsr_10 }}
@@ -736,7 +795,11 @@
                 {{ enchape.m2_enchape }}
             </div>
             <div class="col-sm-2 data-title" >
-                {{ enchape.enchape_weight }} N
+                {% if not  enchape %}
+
+                {% else %}
+                    {{ enchape.enchape_weight }} N
+                {% endif %}
             </div>
         </div>
 
@@ -746,8 +809,8 @@
 
 
 <div class="row">
-    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-        <span style="position: relative; top:10px">TOTAL CARGAS MUERTAS</span>
+    <div class="col-sm-6 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        <span class="print" style="position: relative; top:10px">TOTAL CARGAS MUERTAS</span>
     </div>
     <div class="col-sm-6 data-title" >
         <span style="position: relative; top:10px">{{ weight_death }} N</span>
@@ -761,8 +824,8 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-12 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-        <span style="position: relative; top:10px">CARGAS VIVAS</span>
+    <div class="col-sm-12 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        <span class="print" style="position: relative; top:10px">CARGAS VIVAS</span>
     </div>
 </div>
 
@@ -771,30 +834,30 @@
 
     <div class="row">
         <div class="col-sm-6 data-color" style="padding:0" >
-            <div class="col-sm-5" >
+            <div class="col-sm-5 print2 " >
                     Uso
             </div>
-            <div class="col-sm-3 data-color" >
+            <div class="col-sm-3 data-color print2" >
                     Valor nsr-10
             </div>
-            <div class="col-sm-2 data-color " >
+            <div class="col-sm-2 data-color print2 " >
                 M2
             </div>
-            <div class="col-sm-2 " >
+            <div class="col-sm-2 print2" >
                 Total Peso
             </div>
         </div>
         <div class="col-sm-6 data-color" style="padding:0">
-            <div class="col-sm-5" >
+            <div class="col-sm-5 print2" >
                     Cubierta
                 </div>
-                <div class="col-sm-3 data-color" >
+                <div class="col-sm-3 data-color print2"  >
                         Valor nsr-10
                 </div>
-                <div class="col-sm-2 data-color " >
+                <div class="col-sm-2 data-color print2" >
                     M2
                 </div>
-                <div class="col-sm-2 " >
+                <div class="col-sm-2 print2" >
                     Total Peso
                 </div>
         </div>
@@ -823,7 +886,7 @@
         </div>
         <div class="col-sm-6 data-title" style="padding:0" >
 
-            <div class="col-sm-5 data-title" style="overflow: auto" >
+            <div class="col-sm-5 data-title" style="overflow-y: auto" >
                     {{ cubierta_viva.tipo_cubierta}}
             </div>
             <div class="col-sm-3 data-title" >
@@ -844,17 +907,17 @@
 
 
 <div class="row">
-    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-        <span style="position: relative; top:10px">TOTAL CARGAS VIVAS</span>
+    <div class="col-sm-6 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        <span class="print" style="position: relative; top:10px">TOTAL CARGAS VIVAS</span>
     </div>
     <div class="col-sm-6 data-title" >
-        <span style="position: relative; top:10px">{{ weight_life }} N</span>
+        <span  style="position: relative; top:10px">{{ weight_life }} N</span>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-sm-6 data-title" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-        <span style="position: relative; top:10px">TOTAL CARGAS</span>
+    <div class="col-sm-6 data-title print" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
+        <span class="print" style="position: relative; top:10px">TOTAL CARGAS</span>
     </div>
     <div class="col-sm-6 data-title" >
         <span style="position: relative; top:10px">{{ weight_all }} N</span>
@@ -909,11 +972,28 @@
 
             height: 60px;
         }
+        body {
+        -webkit-print-color-adjust: exact !important;
+        }
+</style>
+<style media="print" type="text/css">
+    .data-color {
+        background-color: #272833 !important;
+        color: white !important;
+    }
+    .print{
+        background-color: #272833 !important;
+        color: white !important;
+    }
+    .print2{
+        background-color: #383737 !important;
+        color: white !important;
+    }
 </style>
 <script>
 		Swal.fire({
 			icon:'success',
-			title:'El indice de vulnerabilidad sísmica es {{ result }}'
+			title:'Proceso calculado correctamente'
 			})
 </script>
 </body>
