@@ -9,11 +9,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from reportlab.pdfgen import canvas
-from werkzeug import FileWrapper
 
-import io
-from io import BytesIO
+
 # Exception
 from django.db.utils import IntegrityError
 
@@ -43,7 +40,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('calculate_process')
+            return redirect('init_video')
         else:
             return render(request, 'users/login.html', {'error': 'Invalid username and password'})
 
@@ -102,55 +99,6 @@ def stadistic(request):
         return render(request, 'stadistic.html')
 
 
-def file_response(request, pk, file= "Hello world."):
-    try:
-        print(pk)
-        result = ResultPdf.objects.get(pk=pk)
-    except ResultPdf.DoesNotExist:
-        raise Http404("El proceso no existe")
-
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-
-    result = result.result_pdf.split(';')
-    print(result)
-    p.drawString(150, 750, 'RESULTADOS ANÁLISIS DE VULNERABILIDAD SÍSMICA')
-    p.drawString(50, 710, 'Usuario:')
-    p.drawString(80, 685, result[0])
-    print(result[0], type(result[0]))
-
-    p.drawString(50, 645, 'Información preliminar de la vivienda:')
-
-    p.drawString(80, 620, f'Propietario de la vivienda: {result[1]}')
-    p.drawString(80, 605, f'Dirección: {result[2]}')
-    p.drawString(80, 590, f'Email: {result[3]}')
-    p.drawString(80, 575, f'No de pisos: {result[4]}')
-    p.drawString(80, 560, f'Altura de la edificación (m): {result[5]}')
-
-
-    p.drawString(50, 520, 'Resultados del análisis de vulnerabilidad:')
-
-    p.drawString(80, 495, f'Tipo de suelo: {result[6]}')
-    p.drawString(80, 480, f'Espesor del depósito (m) {result[7]}')
-    p.drawString(80, 465, f'Perido fundamental del suelo (s): {result[8]}')
-    p.drawString(80, 450, f'Descropción geotécnica general: {result[9]}')
-    p.drawString(80, 435, f'Velocidad de onda promedio 50 m Vs (m/s): {result[10]}')
-    p.drawString(80, 420, f'Humedad Promedio 50 m Hn (%): {result[11]}')
-    p.drawString(80, 405, f'Efectos de sitio relacionados: {result[12]}')
-    p.drawString(80, 390, f'Grupo de uso: {result[13]}')
-    p.drawString(80, 375, f'Tipo de sistema estructural: {result[14]}')
-    p.drawString(80, 360, f'Irregularidad en planta: {result[15]}')
-    p.drawString(80, 345, f'Irregulidad en altura: {result[16]}')
-    p.drawString(80, 330, f'Peso de la estructura (kn): {result[17]}')
-    p.drawString(80, 315, f'Comentarios: {result[18]}')
-    p.drawString(80, 270, f'Índice de vulnerabilidad sísmica de la vivienda: {result[19]}')
-
-    p.showPage()
-    p.save()
-    buffer.seek(0)
-
-    w = FileWrapper(buffer)
-    return FileResponse(w, as_attachment=True, filename=f'Proceso{pk}.pdf', content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
 
 
 @login_required
