@@ -608,18 +608,14 @@ $(document).ready(function(){
 
         }
         if ($('#option_environment').serialize().split("=")[1] == "1"){
-
-
             $('#info_img_environment').html('<img style="display: block; margin: auto;" src="/static/images/2_environment.png">')
             $('#info_descrip_environment').html('<ul><li>La topografía donde se encuentra la casa tiene un angulo entre 20 a 30 grados de inclinación con la horizontal.</li></ul>')
 
 
         }
         if ($('#option_environment').serialize().split("=")[1] == "2"){
-
             $('#info_img_environment').html('<img style="display: block; margin: auto;" src="/static/images/3_environment.png">')
             $('#info_descrip_environment').html('<ul><li>La vivienda se encuentra localizada en pendientes con una inclinación mayor de 30 grados con la horizontal.</li></ul>')
-
 
         }
 
@@ -913,6 +909,35 @@ $(document).ready(function(){
 
 
 
+    $(document).on ("click", '#value_sistema_estructural', function( event ){
+
+        if ($('#value_sistema_estructural').serialize().split("=")[1] == "1"){
+            $('#sistema_estructural').html(`
+            Pórticos resistentes a momentos de concreto reforzado que resisten a la totalidad de las fuerzas sísmicas y que no están limitados o adheridos a componentes más rígidos, estructurales o no estructurales, que limiten los desplazamientos horizontales al verse sometidos a las fuerzas sísmicas.
+            `)
+        }
+        if ($('#value_sistema_estructural').serialize().split("=")[1] == "2"){
+            $('#sistema_estructural').html(`
+            Pórticos resistentes a momentos de acero estructural que resisten la totalidad de las fuerzas sismicas y que no están limitados o adheridos a componentes más rigidos, estructurales o no estrucutrales, que limiten los desplazamientos horizontales al versse sometidos a las fuerzas sismicas.
+            `)
+        }
+        if ($('#value_sistema_estructural').serialize().split("=")[1] == "3"){
+            $('#sistema_estructural').html(`
+            Pórticos arriostrados de acero estructural con diagonales excéntricas restringidas a pandeo.
+            `)
+        }
+        if ($('#value_sistema_estructural').serialize().split("=")[1] == "4"){
+            $('#sistema_estructural').html(`
+            Todos los otros sistemas estructurales basados en muros de rigidez similar o mayor a la de muros de concreto o mamposteria.
+            `)
+        }
+        if ($('#value_sistema_estructural').serialize().split("=")[1] == "5"){
+            $('#sistema_estructural').html(`
+           Alternativamente, para estructuras que tengan muros estructurales de concreto reforzado o mamposteria estructural, pueden emplearse los siguientes parametro Ct y alpha, donde Cw se calcula utilizando la ecuación A.4.2-4.
+            `)
+        }
+
+    })
 
 
 
