@@ -377,10 +377,10 @@ $(document).ready(function(){
         if ($('#type_piso').serialize().split("=")[1] == "None"){
 
             $("#m2_pisos").attr("disabled", 'disabled');
-            $("#m2_cubierta").attr("disabled", 'disabled');
+            $("#espesor_piso").attr("disabled", 'disabled');
         }else {
             $("#m2_pisos").removeAttr("disabled");
-            $("#m2_cubierta").removeAttr("disabled");
+            $("#espesor_piso").removeAttr("disabled");
         }
     })
 

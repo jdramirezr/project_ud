@@ -3,6 +3,7 @@ $(document).ready(function(){
     $(document).on ("change", '#type_placa', function( event ){
         event.preventDefault();
         console.log($('#type_placa').serialize().split("=")[1])
+
         if ($('#type_placa').serialize().split("=")[1] == "Placa_Facil"){
             $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option selected></option><option name="Placa" value="Placa">Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de placas:</label><input class="form-control count" type="number" name="num_placa" min="0" required></div></div>')
         }
@@ -915,26 +916,161 @@ $(document).ready(function(){
             $('#sistema_estructural').html(`
             Pórticos resistentes a momentos de concreto reforzado que resisten a la totalidad de las fuerzas sísmicas y que no están limitados o adheridos a componentes más rígidos, estructurales o no estructurales, que limiten los desplazamientos horizontales al verse sometidos a las fuerzas sísmicas.
             `)
+            $('#Cw').html('')
         }
         if ($('#value_sistema_estructural').serialize().split("=")[1] == "2"){
             $('#sistema_estructural').html(`
             Pórticos resistentes a momentos de acero estructural que resisten la totalidad de las fuerzas sismicas y que no están limitados o adheridos a componentes más rigidos, estructurales o no estrucutrales, que limiten los desplazamientos horizontales al versse sometidos a las fuerzas sismicas.
             `)
+            $('#Cw').html('')
         }
         if ($('#value_sistema_estructural').serialize().split("=")[1] == "3"){
             $('#sistema_estructural').html(`
             Pórticos arriostrados de acero estructural con diagonales excéntricas restringidas a pandeo.
             `)
+            $('#Cw').html('')
         }
         if ($('#value_sistema_estructural').serialize().split("=")[1] == "4"){
             $('#sistema_estructural').html(`
             Todos los otros sistemas estructurales basados en muros de rigidez similar o mayor a la de muros de concreto o mamposteria.
             `)
+            $('#Cw').html('')
         }
         if ($('#value_sistema_estructural').serialize().split("=")[1] == "5"){
             $('#sistema_estructural').html(`
-           Alternativamente, para estructuras que tengan muros estructurales de concreto reforzado o mamposteria estructural, pueden emplearse los siguientes parametro Ct y alpha, donde Cw se calcula utilizando la ecuación A.4.2-4.
+           Alternativamente, para estructuras que tengan muros estructurales de concreto reforzado o mamposteria estructural, pueden emplearse los siguientes parametro Ct y α, donde Cw se calcula utilizando la ecuación A.4.2-4.
             `)
+            $('#Cw').html(`
+            <div class="row">
+            <div class="col-sm-2">
+            </div>
+
+            <div class="col-sm-10" style="padding: 28px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img src="/static/images/formula.png" style="width: 355px; margin-left: auto; margin-right: auto; display: block;">
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-sm-9">
+                      <span><strong>Ab (M2): </strong> Area de la edificación en la base</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="Cw"
+
+                                step=".001"
+                                min="0"
+                                required>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div id="muros">
+                  <!-- <br> -->
+
+                  <div class="row">
+                      <div class="col-sm-9">
+                        <span><strong>Hn (M): </strong> Altura en metros, medida desde la base hasta el piso mas allá del edificio</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <input
+                                  class="form-control"
+                                  type="number"
+                                  name="Hn"
+
+                                  step=".001"
+                                  min="0"
+                                  required>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+
+                  <div class="row">
+                      <div class="col-sm-9">
+                        <span><strong>Hwi (M): </strong> Altura del muro i medida desde la base</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <input
+                                  class="form-control"
+                                  type="number"
+                                  name="Hwi"
+
+                                  step=".001"
+                                  min="0"
+                                  required>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="col-sm-9">
+                        <span><strong>Awi (M2): </strong> Area mínima de cortante de la sección de un muro estructural medida en la dirección de estudio</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <input
+                                  class="form-control"
+                                  type="number"
+                                  name="Awi"
+
+                                  step=".001"
+                                  min="0"
+                                  required>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+
+                  <div class="row">
+                      <div class="col-sm-9">
+                        <span><strong>lwi (M2): </strong> Longitud medida de un muro estructural horizontalmente en el primer nivel de la estructura</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <input
+                                  class="form-control"
+                                  type="number"
+                                  name="lwi"
+
+                                  step=".001"
+                                  min="0"
+                                  required>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <a href="#" id="more_muros" >(Más muros)</a>
+              </div>
+            </div>
+
+
+          </div>
+        `)
+
         }
 
     })

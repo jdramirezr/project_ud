@@ -601,8 +601,8 @@ class Nsr10(LoginRequiredMixin, View):
         data = form.cleaned_data
 
         user = request.user
-        val_irregular_long = None
-        val_irregular_plant = None
+        val_irregular_long = 1
+        val_irregular_plant = 1
 
         if data['irregular_plant'] == 'Irregularidad_torsional':
             val_irregular_plant = 0.9
@@ -994,18 +994,30 @@ class Nsr10(LoginRequiredMixin, View):
         I = data['type_property']
         T_x = [0.00, 0.06, 0.11, 0.17, 0.23, 0.28, 0.34, 0.40, 0.45, 0.51, 0.57, 0.62, 0.68, 0.74, 0.79, 0.85, 0.91, 0.96, 1.02, 1.08, 1.13, 1.19, 1.25, 1.30, 1.36, 1.41, 1.47, 1.53, 1.58, 1.64, 1.70, 1.75, 1.81, 1.87, 1.92, 1.98, 2.04, 2.09, 2.15, 2.21, 2.26, 2.32, 2.38, 2.43, 2.49]
         Sa_list = []
+        Sa_all = {}
 
-        for x in T_x:
+        # print('Aa:',Aa, 'I:',I, 'fa:',fa,'fv:',fv, 'T:',T, 'Tl:',Tl)
+        # T = 0.34
+        # Tl = 4.32
+        # Aa = 0.15
+        # I = 1
+        # fa = 1.35
+        # fv = 1.8
+        # print('Aa:',Aa, 'I:',I, 'fa:',fa,'fv:',fv, 'T:',T, 'Tl:',Tl)
+        for num, x in enumerate(T_x):
+
             if x <= T:
-                Sa_list.append(2.5*Aa*fa*I*(0.4 + (0.6*x)/T))
+                Sa_all[f'Sa_{num}'] = 2.5*Aa*fa*I*(0.4 + (0.6*x)/T)
             if T <= x < Tc:
-                Sa_list.append(2.5*Aa*fa*I)
+                Sa_all[f'Sa_{num}'] = 2.5*Aa*fa*I
             if Tc <= x < Tl:
-                Sa_list.append(1.2*Aa*fv*I)
+                Sa_all[f'Sa_{num}'] = 1.2*Aa*fv*I
             if Tl <= x:
-                Sa_list.append((1.2*Aa*fv*Tl*I)/x*x)
+                Sa_all[f'Sa_{num}'] = (1.2*Aa*fv*Tl*I)/x*x
 
-
+        Sa = max(Sa_all.values())
+        Vs = weight_all*Sa
+        E = Vs/r_prima
 
         return render(
             request,
@@ -1061,8 +1073,61 @@ class Nsr10(LoginRequiredMixin, View):
                 'densidad_concreto': f'{DENSIDAD} kg/m3',
                 'weight_other': weight_other,
                 'T_x':T_x,
-                'Sa_list':Sa_list
-
+                'Sa_list':Sa_list,
+                'Sa_0': Sa_all['Sa_0'],
+                'Sa_1': Sa_all['Sa_1'],
+                'Sa_2': Sa_all['Sa_2'],
+                'Sa_3': Sa_all['Sa_3'],
+                'Sa_4': Sa_all['Sa_4'],
+                'Sa_5': Sa_all['Sa_5'],
+                'Sa_6': Sa_all['Sa_6'],
+                'Sa_7': Sa_all['Sa_7'],
+                'Sa_8': Sa_all['Sa_8'],
+                'Sa_9': Sa_all['Sa_9'],
+                'Sa_10': Sa_all['Sa_10'],
+                'Sa_11': Sa_all['Sa_11'],
+                'Sa_12': Sa_all['Sa_12'],
+                'Sa_13': Sa_all['Sa_13'],
+                'Sa_14': Sa_all['Sa_14'],
+                'Sa_15': Sa_all['Sa_15'],
+                'Sa_16': Sa_all['Sa_16'],
+                'Sa_17': Sa_all['Sa_17'],
+                'Sa_18': Sa_all['Sa_18'],
+                'Sa_19': Sa_all['Sa_19'],
+                'Sa_20': Sa_all['Sa_20'],
+                'Sa_21': Sa_all['Sa_21'],
+                'Sa_22': Sa_all['Sa_22'],
+                'Sa_23': Sa_all['Sa_23'],
+                'Sa_24': Sa_all['Sa_24'],
+                'Sa_25': Sa_all['Sa_25'],
+                'Sa_26': Sa_all['Sa_26'],
+                'Sa_27': Sa_all['Sa_27'],
+                'Sa_28': Sa_all['Sa_28'],
+                'Sa_29': Sa_all['Sa_29'],
+                'Sa_30': Sa_all['Sa_30'],
+                'Sa_31': Sa_all['Sa_31'],
+                'Sa_32': Sa_all['Sa_32'],
+                'Sa_33': Sa_all['Sa_33'],
+                'Sa_34': Sa_all['Sa_34'],
+                'Sa_35': Sa_all['Sa_35'],
+                'Sa_36': Sa_all['Sa_36'],
+                'Sa_37': Sa_all['Sa_37'],
+                'Sa_38': Sa_all['Sa_38'],
+                'Sa_39': Sa_all['Sa_39'],
+                'Sa_40': Sa_all['Sa_40'],
+                'Sa_41': Sa_all['Sa_41'],
+                'Sa_42': Sa_all['Sa_42'],
+                'Sa_43': Sa_all['Sa_43'],
+                'Sa_44': Sa_all['Sa_44'],
+                'To': round(To, 2),
+                'Tc': round(Tc, 2),
+                'Tl': round(Tl, 2),
+                'T': round(T, 2),
+                'K':round(k, 2),
+                'Sa': round(Sa, 2),
+                'Vs': round(Vs,2),
+                'E': round(Vs*r_prima,2),
+                'r_prima': round(r_prima, 2)
             }
         )
 
