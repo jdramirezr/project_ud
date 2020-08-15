@@ -135,6 +135,8 @@ class Nsr10(LoginRequiredMixin, View):
             1.5:4
         }
         #
+        espeso_placa_facil = None
+        espeso_placa = None
 
         if 'Placa_Maciza' in type_placa:
             placa_z = response_weight.get('placa_z')
@@ -172,7 +174,9 @@ class Nsr10(LoginRequiredMixin, View):
         for num, placa in enumerate(type_placa):
             if placa == 'Placa_Maciza':
                 placa_m = {}
-                volumen = float(placa_x.pop(0))*float(placa_y.pop(0))*float(placa_z.pop(0))
+                ancho_placo = float(placa_x.pop(0))
+                espeso_placa = float(placa_z.pop(0))
+                volumen = ancho_placo*float(placa_y.pop(0))*espeso_placa
                 numero_placa = int(num_placa[num])
                 placa_m['tipo_placa'] = placa.replace('_', ' ')
                 total = volumen*numero_placa*DENSIDAD*GRAVEDAD
@@ -190,7 +194,9 @@ class Nsr10(LoginRequiredMixin, View):
 
                 if placa_facil == 'Placa':
                     placa_f = {}
-                    volumen = float(placa_x.pop(0))*float(placa_y.pop(0))*float(z_placa_facil.pop(0))
+                    ancho_placo = float(placa_x.pop(0))
+                    espeso_placa_facil = float(z_placa_facil.pop(0))
+                    volumen = ancho_placo*float(placa_y.pop(0))*espeso_placa_facil
                     numero_placa = int(num_placa[num])
                     total  = volumen*DENSIDAD*GRAVEDAD*numero_placa
                     placa_f['volumen_placa'] = volumen
@@ -204,14 +210,6 @@ class Nsr10(LoginRequiredMixin, View):
 
                     placa_weight += total
                     placa_all.append(placa_f)
-
-
-                    # placa_weight.append(
-                    #     float(placa_x.pop(0))*float(placa_y.pop(0))
-                    #     *float(z_placa_facil.pop(0))
-                    #     *DENSIDAD*GRAVEDAD
-                    # )
-
                     type_placa_facil.pop(0)
 
                 if placa_facil == 'Perfil_Metalico':
@@ -237,7 +235,8 @@ class Nsr10(LoginRequiredMixin, View):
 
                 if placa_facil == 'Bloquelon':
                     placa_fb = {}
-                    area = float(placa_x.pop(0))*float(placa_y.pop(0))
+                    ancho_placo = float(placa_x.pop(0))
+                    area = ancho_placo*float(placa_y.pop(0))
                     numero_placa = int(num_placa[num])
                     total = area*53.57*GRAVEDAD*numero_placa
                     placa_fb['peso_bloquelon'] = 53.57
@@ -254,18 +253,13 @@ class Nsr10(LoginRequiredMixin, View):
                     placa_weight += total
                     placa_all.append(placa_fb)
 
-                    # placa_weight.append(
-                    #     float(placa_x.pop(0))
-                    # *float(placa_y.pop(0))*float(peso_bloquelon.pop(0))
-                    #
-                    # )
-
                     type_placa_facil.pop(0)
 
             if placa == 'Placa_Aligerada':
                 placa_a = {}
                 vg_b_num = float(vg_b.pop(0))
-                m2 = float(placa_x.pop(0))*float(placa_y.pop(0))
+                ancho_placo = float(placa_x.pop(0))
+                m2 = ancho_placo*float(placa_y.pop(0))
                 vigueta = (vg_b_num*float(vg_c.pop(0))*m2)/(
                     float(vg_a.pop(0))+vg_b_num
                 )
@@ -293,24 +287,23 @@ class Nsr10(LoginRequiredMixin, View):
         largo_viga = response_weight.get('largo_viga')
         numero_viga = response_weight.get('numero_viga')
 
-        # viga_weight = [
-        #     float(ancho_viga[num])*
-        #     float(alto_viga[num])*
-        #     float(largo_viga[num])*
-        #     int(numero_viga[num])*
-        #     DENSIDAD
-        #     for num in range(len(numero_viga))
-        # ]
-
         vigas_total = []
         viga_weight = 0
         count = 1
         for num in range(len(numero_viga)):
             vigas = {}
-            volumen = float(ancho_viga[num])*float(alto_viga[num])*float(largo_viga[num])
+
+            if espeso_placa:
+                alto_viga_r = float(alto_viga[num])- espeso_placa
+            elif espeso_placa_facil:
+                alto_viga_r = float(alto_viga[num]) - espeso_placa_facil
+            else:
+                alto_viga_r = float(alto_viga[num])
+
+            volumen = float(ancho_viga[num])*alto_viga_r*(float(largo_viga[num]))
             numero_vigas = int(numero_viga[num])
             total = volumen*numero_vigas*DENSIDAD*GRAVEDAD
-            vigas['volumen_vigas'] = volumen
+            vigas['volumen_vigas'] = round(volumen, 2)
             vigas['numero_vigas'] = numero_vigas
             vigas['total_vigas'] = round(total,2)
             vigas['num'] = count
@@ -324,14 +317,7 @@ class Nsr10(LoginRequiredMixin, View):
         largo_columna = response_weight.get('largo_columna')
         numero_columna = response_weight.get('numero_columna')
 
-        # columna_weight = [
-        #     float(ancho_columna[num])*
-        #     float(alto_columna[num])*
-        #     float(largo_columna[num])*
-        #     int(numero_columna[num])*
-        #     DENSIDAD
-        #     for num in range(len(numero_columna))
-        # ]
+
         columnas_total = []
         columna_weight = 0
         count_columna = 1
@@ -340,7 +326,7 @@ class Nsr10(LoginRequiredMixin, View):
             volumen = float(ancho_columna[num])*float(alto_columna[num])*float(largo_columna[num])
             numero_columnas = int(numero_columna[num])
             total = volumen*numero_columnas*DENSIDAD*GRAVEDAD
-            columnas['volumen_columnas'] = volumen
+            columnas['volumen_columnas'] = round(volumen,2)
             columnas['numero_columnas'] = numero_columnas
             columnas['total_columnas'] = round(total,2)
             columnas['num'] = count_columna

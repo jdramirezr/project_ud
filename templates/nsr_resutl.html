@@ -246,7 +246,7 @@
         </div>
         <div class="row">
                 <div class="col-sm-12 data-color" style="height: 20px !important" >
-                        <span class="print" > Vigas {{viga_weight}} N</span>
+                        <span class="print" > Vigas {{viga_weight}} KN</span>
                 </div>
         </div>
 
@@ -288,7 +288,7 @@
                 {{ densidad_concreto }}
             </div>
             <div class="col-sm-2 data"  >
-                {{viga.total_vigas}} N
+                {{viga.total_vigas}} KN
             </div>
 
         </div>
@@ -299,7 +299,7 @@
 
         <div class="row">
             <div class="col-sm-12 data-color"  style="height: 20px !important" >
-                    <span class="print" >Columnas {{ columna_weight }} N</span>
+                    <span class="print" >Columnas {{ columna_weight }} KN</span>
             </div>
     </div>
 
@@ -341,7 +341,7 @@
                 {{ densidad_concreto }}
         </div>
         <div class="col-sm-2 data"  >
-            {{columna.total_columnas}} N
+            {{columna.total_columnas}} KN
         </div>
 
     </div>
@@ -352,7 +352,7 @@
 
 <div class="row">
         <div class="col-sm-12 data-color"  style="height: 20px !important"  >
-                <span class="print" > Placa {{ placa_weight }} N</span>
+                <span class="print" > Placa {{ placa_weight }} KN</span>
         </div>
 </div>
 
@@ -423,7 +423,7 @@
 
 
     <div class="col-sm-2 data"  >
-        {{placa.total_placa}} N
+        {{placa.total_placa}} KN
     </div>
 
 </div>
@@ -448,7 +448,7 @@
         </div>
 <div class="row">
         <div class="col-sm-12 data-color"  style="height: 20px !important" >
-                <span class="print" >Otros elementos {{weight_other}} N</span>
+                <span class="print" >Otros elementos {{weight_other}} KN</span>
         </div>
 </div>
 
@@ -490,38 +490,38 @@
 
 
 <div class="row">
-    <div class="col-sm-6 data-title" style="padding:0" >
+    <div class="col-sm-6 data-title2" style="padding:0" >
 
-        <div class="col-sm-5 data-title" >
+        <div class="col-sm-5" >
             {{ muro_fachada.tipo_muro}}
         </div>
-        <div class="col-sm-3 data-title" >
+        <div class="col-sm-3" >
             {{ muro_fachada.valor_nsr_10 }}
         </div>
-        <div class="col-sm-2 data-title" >
+        <div class="col-sm-2" >
             {{ muro_fachada.m2_muros }}
         </div>
-        <div class="col-sm-2 data-title" >
-            {{ muro_fachada.weight_muro }} N
+        <div class="col-sm-2" >
+            {{ muro_fachada.weight_muro }} KN
 
         </div>
 
     </div>
-    <div class="col-sm-6 data-title" style="padding:0" >
+    <div class="col-sm-6 data-title2" style="padding:0" >
 
-    <div class="col-sm-5 data-title" >
+    <div class="col-sm-5 " >
             {{ muro_divisorio.tipo_muro}}
         </div>
-        <div class="col-sm-3 data-title" >
+        <div class="col-sm-3 " >
             {{ muro_divisorio.valor_nsr_10 }}
         </div>
-        <div class="col-sm-2 data-title" >
+        <div class="col-sm-2 " >
             {{ muro_divisorio.m2_muros }}
         </div>
-        <div class="col-sm-2 data-title" >
+        <div class="col-sm-2 " >
 
 
-                {{ muro_divisorio.weight_muro }} N
+                {{ muro_divisorio.weight_muro }} KN
 
         </div>
 </div>
@@ -567,54 +567,54 @@
 
 
     <div class="row">
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" >
+            <div class="col-sm-5 " >
                 {% if not  particiones %}
                     No tiene
                 {% else %}
                     {{ particiones.tipo_particiones}}
                 {% endif %}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3 " >
                 {{ particiones.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
                 {{ particiones.m2_particiones }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
 
-                {% if not  ventanas %}
+                {% if not  particiones %}
                 {% else %}
-                    {{ ventanas.weight_particiones }} N
+                    {{ particiones.weight_particiones }} KN
                 {% endif %}
             </div>
 
         </div>
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-        <div class="col-sm-5 data-title" >
+            <div class="col-sm-5" >
 
-                {% if not  ventanas %}
-                    No tiene
-                {% else %}
-                    {{ ventanas.tipo_ventanas}}
-                {% endif %}
+                    {% if not  ventanas %}
+                        No tiene
+                    {% else %}
+                        {{ ventanas.tipo_ventanas}}
+                    {% endif %}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3" >
                 {{ ventanas.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2" >
                 {{ ventanas.m2_ventanas }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2" >
 
                 {% if not  ventanas %}
                 {% else %}
-                    {{ ventanas.weight_ventanas }} N
+                    {{ ventanas.weight_ventanas }} KN
                 {% endif %}
             </div>
-    </div>
+        </div>
 
     </div>
 
@@ -660,8 +660,8 @@
 
 
         <div class="row">
-            <div class="col-sm-6 data-title" style="padding:0" >
-                <div class="col-sm-5 data-title" >
+            <div class="col-sm-6 data-title2" style="padding:0" >
+                <div class="col-sm-5 " >
 
                     {% if not  cubierta %}
                         No tiene
@@ -670,24 +670,24 @@
 
                     {% endif %}
                 </div>
-                <div class="col-sm-3 data-title" >
+                <div class="col-sm-3 " >
                     {{ cubierta.valor_nsr_10 }}
                 </div>
-                <div class="col-sm-2 data-title" >
+                <div class="col-sm-2 " >
                     {{ cubierta.m2_cubierta }}
                 </div>
-                <div class="col-sm-2 data-title" >
+                <div class="col-sm-2 " >
 
                     {% if not  cubierta %}
                     {% else %}
-                        {{ cubierta.cubierta_weight }} N
+                        {{ cubierta.cubierta_weight }} KN
                     {% endif %}
                 </div>
 
             </div>
-            <div class="col-sm-6 data-title" style="padding:0" >
+            <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" >
+            <div class="col-sm-5" >
 
                     {% if not  piso %}
                         No tiene
@@ -695,17 +695,17 @@
                         {{ piso.tipo_piso}}
                     {% endif %}
                 </div>
-                <div class="col-sm-3 data-title" >
+                <div class="col-sm-3" >
                     {{ piso.valor_nsr_10 }}
                 </div>
-                <div class="col-sm-2 data-title" >
+                <div class="col-sm-2" >
                     {{ piso.m2_pisos }}
                 </div>
-                <div class="col-sm-2 data-title" >
+                <div class="col-sm-2" >
 
                     {% if not  piso %}
                     {% else %}
-                        {{ piso.piso_weight }} N
+                        {{ piso.piso_weight }} KN
                     {% endif %}
                 </div>
         </div>
@@ -752,9 +752,9 @@
 
 
     <div class="row">
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" >
+            <div class="col-sm-5 " >
 
 
                 {% if not  recubrimiento %}
@@ -764,25 +764,25 @@
 
                 {% endif %}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3 " >
                 {{ recubrimiento.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
                 {{ recubrimiento.m2_recubrimiento }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
 
                 {% if not  recubrimiento %}
 
                 {% else %}
-                {{ recubrimiento.recubrimiento_weight }} N
+                {{ recubrimiento.recubrimiento_weight }} KN
                 {% endif %}
             </div>
 
         </div>
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" >
+            <div class="col-sm-5 " >
 
                 {% if not  enchape %}
                     No tiene
@@ -790,22 +790,23 @@
                     {{ enchape.tipo_enchape}}
                 {% endif %}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3 " >
                 {{ enchape.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
                 {{ enchape.m2_enchape }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2 " >
                 {% if not  enchape %}
 
                 {% else %}
-                    {{ enchape.enchape_weight }} N
+                    {{ enchape.enchape_weight }} KN
                 {% endif %}
             </div>
         </div>
 
     </div>
+
 
 
 
@@ -815,7 +816,7 @@
         <span class="print" style="position: relative; top:10px">TOTAL CARGAS MUERTAS</span>
     </div>
     <div class="col-sm-6 data-title" >
-        <span style="position: relative; top:10px">{{ weight_death }} N</span>
+        <span style="position: relative; top:10px">{{ weight_death }} KN</span>
     </div>
 </div>
 
@@ -870,35 +871,35 @@
 
 
     <div class="row">
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" >
+            <div class="col-sm-5" >
                 {{ ocupacion.tipo_ocupacion }}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3" >
                 {{ ocupacion.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2" >
                 {{ ocupacion.m2_ocupacion }}
             </div>
-            <div class="col-sm-2 data-title" >
-                {{ ocupacion.ocupacion_weight }} N
+            <div class="col-sm-2" >
+                {{ ocupacion.ocupacion_weight }} KN
             </div>
 
         </div>
-        <div class="col-sm-6 data-title" style="padding:0" >
+        <div class="col-sm-6 data-title2" style="padding:0" >
 
-            <div class="col-sm-5 data-title" style="overflow-y: auto" >
+            <div class="col-sm-5" style="overflow-y: auto" >
                     {{ cubierta_viva.tipo_cubierta}}
             </div>
-            <div class="col-sm-3 data-title" >
+            <div class="col-sm-3" >
                 {{ cubierta_viva.valor_nsr_10 }}
             </div>
-            <div class="col-sm-2 data-title" >
+            <div class="col-sm-2" >
                 {{ cubierta_viva.m2_cubierta_viva }}
             </div>
-            <div class="col-sm-2 data-title" >
-                {{ cubierta_viva.cubierta_viva_weight }} N
+            <div class="col-sm-2" >
+                {{ cubierta_viva.cubierta_viva_weight }} KN
             </div>
         </div>
 
@@ -913,7 +914,7 @@
         <span class="print" style="position: relative; top:10px">TOTAL CARGAS VIVAS</span>
     </div>
     <div class="col-sm-6 data-title" >
-        <span  style="position: relative; top:10px">{{ weight_life }} N</span>
+        <span  style="position: relative; top:10px">{{ weight_life }} KN</span>
     </div>
 </div>
 
@@ -922,7 +923,7 @@
         <span class="print" style="position: relative; top:10px">TOTAL CARGAS</span>
     </div>
     <div class="col-sm-6 data-title" >
-        <span style="position: relative; top:10px">{{ weight_all }} N</span>
+        <span style="position: relative; top:10px">{{ weight_all }} KN</span>
     </div>
 </div>
 <br>
@@ -1219,6 +1220,11 @@ chart.render();
         .data-title{
             border: 0.2px solid black;
 
+            height: 40px;
+        }
+        .data-title2{
+            border-left: 0.2px solid black;
+            border-right: 0.2px solid black;
             height: 40px;
         }
         .data-color {
