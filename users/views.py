@@ -959,11 +959,17 @@ class Nsr10(LoginRequiredMixin, View):
         Ct = name_sistema[value_sistema]['ct']
         Alpha = name_sistema[value_sistema]['alpha']
         H = data['height_floors']*data['floors']
+        print(data['height_floors'])
+        print(data['floors'])
+        # H = 9
+        Ta = Ct*(H**Alpha)
 
-        Ta = Ct*Alpha*H
+        print('ct:', Ct, 'Alpha:',Alpha, 'H:',H)
         Cu_Ta = Cu*Ta
         To = (0.1*(Av*fv))/(Aa*fa)
         Tc = (0.48*(Av*fv))/(Aa*fa)
+        # print('fv:', fv)
+        # fv = 1.8
         Tl = 2.4*fv
 
         # T=
@@ -982,13 +988,13 @@ class Nsr10(LoginRequiredMixin, View):
         Sa_list = []
         Sa_all = {}
 
-        # print('Aa:',Aa, 'I:',I, 'fa:',fa,'fv:',fv, 'T:',T, 'Tl:',Tl)
+        print('Aa:',Aa, 'I:',I, 'fa:',fa,'fv:',fv, 'T:',T, 'Tl:',Tl)
         # T = 0.34
         # Tl = 4.32
-        # Aa = 0.15
-        # I = 1
-        # fa = 1.35
-        # fv = 1.8
+        # Aa = 0.15 =>
+        # I = 1 =>
+        # fa = 1.35 =>
+        # fv = 1.8 =>
         # print('Aa:',Aa, 'I:',I, 'fa:',fa,'fv:',fv, 'T:',T, 'Tl:',Tl)
         for num, x in enumerate(T_x):
 
@@ -1000,7 +1006,8 @@ class Nsr10(LoginRequiredMixin, View):
                 Sa_all[f'Sa_{num}'] = 1.2*Aa*fv*I
             if Tl <= x:
                 Sa_all[f'Sa_{num}'] = (1.2*Aa*fv*Tl*I)/x*x
-
+        print('////////////////////////////')
+        print(Sa_all)
         Sa = max(Sa_all.values())
         Vs = weight_all*Sa
         E = Vs/r_prima
