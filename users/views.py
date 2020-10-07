@@ -21,7 +21,7 @@ from users.models import Process
 from users.area import areas
 from users.config import *
 # Forms
-from users.forms import ProfileForm
+from users.forms import ProfileForm, IndiceForm
 from matplotlib.path import Path
 
 from django.http import HttpResponse
@@ -1332,3 +1332,112 @@ class AisDetail(LoginRequiredMixin, DetailView):
         else:
             context['result']  = 'AlTA!'
         return context
+
+
+class Indice(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'indice.html')
+    def post(self, request, *args, **kwargs):
+        form = IndiceForm(request.POST)
+
+        calification_1 = {0: 'A', 5: 'B', 25:'C', 45:'D'}
+        calification_2 = {0: 'A', 5: 'B', 20:'C', 45:'D'}
+        calification_3 = {0: 'A', 5: 'B', 15:'C', 45:'D'}
+        calification_4 = {0: 'A', 15: 'B', 25:'C', 45:'D'}
+        calification_5 = {0: 'A', 0: 'B', 25:'C', 45:'D'}
+
+        if form.is_valid():
+            data = form.cleaned_data
+            organization = data['organization']
+            quality = data['quality']
+            number_of_floors = data['number_of_floors']
+            cover_area = data['cover_area']
+            area_x = data['area_x']
+            area_y = data['area_y']
+            height = data['height']
+            diaphragm_thickness = data['diaphragm_thickness']
+            mamposteria = data['mamposteria']
+            position = data['position']
+            diaphragm = data['diaphragm']
+            a = data['a']
+            b = data['b']
+            L = data['L']
+            area_floor_1 = data['area_floor_1']
+            area_floor_2 = data['area_floor_2']
+            area_floor_3 = data['area_floor_3']
+            wall_length = data['wall_length']
+            wall_thickness = data['wall_thickness']
+            cover_type = data['cover_type']
+            elements = data['elements']
+            status_conservation = data['status_conservation']
+
+            Tk = ((area_x*mamposteria)+(area_y*mamposteria))/(area_x+area_y)
+            Ps = 2.4*diaphragm_thickness
+
+            if area_x < area_y:
+                A = area_x
+                B = area_y
+            else:
+                A = area_y
+                B = area_x
+            Ao = A/cover_area
+            Y = B/A
+            q = (((A+B)*height/cover_area)*1.85) + Ps
+            C = ((Ao*Tk)/(q*height))* ((1+((q*height)/(1.5*Ao*Tk*(1+Y))))**0.5)
+            alpha = C/0.15
+
+            if alpha > 1:
+                resistance = 0
+            elif 0.6 >= alpha < 1:
+                resistance = 5
+            elif 0.4 >= alpha < 0.6:
+                resistance = 25
+            elif alpha >= 0.4:
+                resistance = 45
+
+            B1 = a/L
+            B2 = b/L
+
+            if B1 >= 0.8 or B2 < 0.1:
+                plan_configuration = 0
+            elif 0.8 > B1 >= 0.6 or 0.1 < B2 <= 0.2:
+                plan_configuration = 0
+            elif 0.6 > B1 >= 0.4 or 0.2 < B2 <= 0.3:
+                plan_configuration = 0
+            elif 0.4 > B1 or 0.3 < B2:
+                plan_configuration = 0
+
+            Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+            Ls = wall_length/wall_thickness
+
+        else:
+            print(form.errors)
+            print('RRRRRRRRRRRRRRRRRRRRRR')
+        return render(
+            request,
+            'indice_result.html',
+            {
+                'calification_1':calification_2[organization],
+                'calification_2':calification_1[quality],
+                'calification_3':calification_1[resistance],
+                'calification_4':calification_1[position],
+                'calification_5':calification_3[diaphragm],
+                'calification_6':calification_1[plan_configuration],
+                'calification_7':calification_1[elevation_configuration],
+                'calification_8':calification_1[maximum_distance],
+                'calification_9':calification_4[cover_type],
+                'calification_10':calification_5[elements],
+                'calification_11':calification_1[status_conservation],
+                'score_1': organization*1,
+                'score_2': quality*0.25,
+                'score_3': resistance*1.5,
+                'score_4': position*0.75,
+                'score_5': diaphragm*1,
+                'score_6': plan_configuration*0.5,
+                'score_7': elevation_configuration*1,
+                'score_8': maximum_distance*0.25,
+                'score_9': cover_type*1,
+                'score_10': elements*0.25,
+                'score_11': status_conservation*1
+            }
+        )
