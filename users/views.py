@@ -1408,36 +1408,59 @@ class Indice(LoginRequiredMixin, View):
                 plan_configuration = 0
 
             Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+
+
+            if Daa < 10:
+                elevation_configuration = 0
+            elif 10 <= Daa < 20:
+                elevation_configuration = 5
+            elif Daa > 20:
+                elevation_configuration = 25
+            elif Daa > 0:
+                elevation_configuration = 45
+
+
             Ls = wall_length/wall_thickness
 
-        else:
-            print(form.errors)
-            print('RRRRRRRRRRRRRRRRRRRRRR')
-        return render(
-            request,
-            'indice_result.html',
-            {
-                'calification_1':calification_2[organization],
-                'calification_2':calification_1[quality],
-                'calification_3':calification_1[resistance],
-                'calification_4':calification_1[position],
-                'calification_5':calification_3[diaphragm],
-                'calification_6':calification_1[plan_configuration],
-                'calification_7':calification_1[elevation_configuration],
-                'calification_8':calification_1[maximum_distance],
-                'calification_9':calification_4[cover_type],
-                'calification_10':calification_5[elements],
-                'calification_11':calification_1[status_conservation],
-                'score_1': organization*1,
-                'score_2': quality*0.25,
-                'score_3': resistance*1.5,
-                'score_4': position*0.75,
-                'score_5': diaphragm*1,
-                'score_6': plan_configuration*0.5,
-                'score_7': elevation_configuration*1,
-                'score_8': maximum_distance*0.25,
-                'score_9': cover_type*1,
-                'score_10': elements*0.25,
-                'score_11': status_conservation*1
-            }
-        )
+            if Ls < 15:
+                maximum_distance = 0
+            elif 15 <= Ls < 18:
+                maximum_distance = 5
+            elif 18 <= Ls < 25:
+                maximum_distance = 25
+            elif Ls >= 25:
+                maximum_distance = 45
+
+
+            return render(
+                request,
+                'indice_result.html',
+                {
+                    'calification_1':calification_2[organization],
+                    'calification_2':calification_1[quality],
+                    'calification_3':calification_1[resistance],
+                    'calification_4':calification_1[position],
+                    'calification_5':calification_3[diaphragm],
+                    'calification_6':calification_1[plan_configuration],
+                    'calification_7':calification_1[elevation_configuration],
+                    'calification_8':calification_1[maximum_distance],
+                    'calification_9':calification_4[cover_type],
+                    'calification_10':calification_5[elements],
+                    'calification_11':calification_1[status_conservation],
+                    'score_1': organization*1,
+                    'score_2': quality*0.25,
+                    'score_3': resistance*1.5,
+                    'score_4': position*0.75,
+                    'score_5': diaphragm*1,
+                    'score_6': plan_configuration*0.5,
+                    'score_7': elevation_configuration*1,
+                    'score_8': maximum_distance*0.25,
+                    'score_9': cover_type*1,
+                    'score_10': elements*0.25,
+                    'score_11': status_conservation*1
+                }
+            )
+
+        print(form.errors)
+        print('RRRRRRRRRRRRRRRRRRRRRR')
+        return render(request, 'indice.html')

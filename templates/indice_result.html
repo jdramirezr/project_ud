@@ -3,10 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
+    <script src="/static/sweetalert2/sweetalert2.js"></script>
+    <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
+    <title>Bogotá earthquake
+        </title>
 <body>
-    {{g}}
+
+    <div style="width: 100%;  height:60px; background: #525573" id="main-navbar">
+
+            <a  href="{% url 'page' %}" style="color: white;  position:relative;
+            left:50px;
+            top:17px;
+            font-weight: bold;""
+            ><img   style="width: 20px !important" src="/static/img/home2.png"></a>
+            <a href="{% url 'logout' %}" style="color: white;  position:relative;
+            left:80px;
+            top:17px;
+            font-weight: bold;""><img style="width: 20px !important" src="/static/img/logout2.png"></a>
+
+        </div>
+
+
+<h1 id="title_process">Método AIS</h1>
+
+
+<div class="col text-center">
+        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
+    </div>
+<div class="col-lg-12" style="padding-left: 150px; padding-right: 150px;padding-bottom: 80px; padding-top: 60px" id="property_0">
+
+        <div class="row">
+            <div class="col-sm-6 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white;padding-top:10px ">
+                    PARÁMETROS
+            </div>
+
+            <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
+                    VALOR
+            </div>
+            <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
+                    CALIFICACIÓN
+            </div>
+            <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
+                    PUNTUACIÓN
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                        1. ORGANIZACIÓN DEL SISTEMA RESISTENTE
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+        </div>
+
+
+
+        <div class="row">
+                <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                        2. CALIDAD DEL SISTEMA RESISTENTE
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+        </div>
+
+
+
+
+        <div class="row">
+                <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important;text-align: left">
+                        3. RESISTENCIA CONVENCIONAL
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+        </div>
+
+
+
+
+
+
+    <div class="row">
+            <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+            </div>
+            <div class="col-sm-5 data" style="text-align: left"  >
+                Numero de pisos
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Area total cubierta en (m2)
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Area Mamposteria resistente sentido x
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Area Mamposteria resistente sentido Y
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Altura media de los pisos en (m)
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Resistencia cortante mamposteria
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Peso especifico mampostería
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Peso por unidad de area diafragma
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+
+
+        <div class="row">
+                <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                    4. POSICION DEL EDIFICIO Y DE LA CIMENTACION
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+                <div class="col-sm-2 data" >
+
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                5. DIAFRAGMAS HORIZONTALES
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                6. CONFIGURACIÓN EN PLANTA
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+            </div>
+            <div class="col-sm-5 data" style="text-align: left" >
+                B1
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+            </div>
+            <div class="col-sm-5 data" style="text-align: left" >
+                B2
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                7. CONFIGURACIÓN EN ELEVACIÓN
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+            </div>
+            <div class="col-sm-5 data" style="text-align: left" >
+                ±∆A/A
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                8. DISTANCIA MÁXIMA ENTRE LOS MUROS            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+            </div>
+            <div class="col-sm-5 data" style="text-align: left" >
+                L/S
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                9. TIPO DE CUBIERTA            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                10. ELEMENTOS NO ESTRUCTURALES           </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-6 data" style="border-left: 0.2px solid #525573 !important; text-align: left">
+                11. ESTADO DE CONSERVACIÓN           </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+            <div class="col-sm-2 data" >
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-8 data-title" style="color:aliceblue ;background: #525573; border-left: 0.2px solid #525573 !important; text-align: center; padding-top:10px ">
+                INDICE DE VULNERABILIDAD     </div>
+            <div class="col-sm-2 data-title" >
+                IV
+            </div>
+            <div class="col-sm-2 data-title" >
+                %
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+        div div {
+            text-align: center;
+        }
+        body {
+          background-color: white;
+        }
+
+        h1 {
+          text-align: center;
+        }
+        .data {
+            border: 0.2px solid #525573; border-top: none;
+            border-left: none;
+            height: 20px;
+        }
+        .data-title{
+            border: 0.2px solid #525573; border-top: none;
+            border-left: none;
+            height: 40px;
+        }
+        .data-color {
+            background: #525573;
+            border: 0.2px solid #525573; border-top: none;
+            height: 40px;
+            color: white
+        }
+
+        .data-porcentage {
+            border: 0.2px solid #525573; border-top: none;
+            border-left: none;
+            height: 60px;
+        }
+</style>
+<style media="print" type="text/css">
+    .data-color {
+        background-color: #525573 !important;
+        color: white !important;
+        height: 40px;
+    }
+
+  </style>
+<script>
+		Swal.fire({
+			icon:'success',
+			title:'El indice de vulnerabilidad sísmica es {{ result }}'
+			})
+</script>
 </body>
 </html>
