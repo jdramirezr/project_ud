@@ -1386,13 +1386,13 @@ class Indice(LoginRequiredMixin, View):
             C = ((Ao*Tk)/(q*height))* ((1+((q*height)/(1.5*Ao*Tk*(1+Y))))**0.5)
             alpha = C/0.15
 
-            if alpha > 1:
+            if alpha >= 1:
                 resistance = 0
             elif 0.6 >= alpha < 1:
                 resistance = 5
-            elif 0.4 >= alpha < 0.6:
+            elif 0.4 <= alpha < 0.6:
                 resistance = 25
-            elif alpha >= 0.4:
+            elif alpha < 0.4:
                 resistance = 45
 
             B1 = a/L
@@ -1432,6 +1432,33 @@ class Indice(LoginRequiredMixin, View):
                 maximum_distance = 45
 
 
+            score_1 = organization*1
+            score_2 = quality*0.25
+            score_3 = resistance*1.5
+            score_4 = position*0.75
+            score_5 = diaphragm*1
+            score_6 = plan_configuration*0.5
+            score_7 = elevation_configuration*1
+            score_8 = maximum_distance*0.25
+            score_9 = cover_type*1
+            score_10 = elements*0.25
+            score_11 = status_conservation*1
+
+            total = (
+                score_1 +
+                score_2 +
+                score_3 +
+                score_4 +
+                score_5 +
+                score_6 +
+                score_7 +
+                score_8 +
+                score_9 +
+                score_10 +
+                score_11
+            )
+
+            total_porcentage = total/382.5*100
             return render(
                 request,
                 'indice_result.html',
@@ -1447,17 +1474,30 @@ class Indice(LoginRequiredMixin, View):
                     'calification_9':calification_4[cover_type],
                     'calification_10':calification_5[elements],
                     'calification_11':calification_1[status_conservation],
-                    'score_1': organization*1,
-                    'score_2': quality*0.25,
-                    'score_3': resistance*1.5,
-                    'score_4': position*0.75,
-                    'score_5': diaphragm*1,
-                    'score_6': plan_configuration*0.5,
-                    'score_7': elevation_configuration*1,
-                    'score_8': maximum_distance*0.25,
-                    'score_9': cover_type*1,
-                    'score_10': elements*0.25,
-                    'score_11': status_conservation*1
+                    'score_1':round(score_1),
+                    'score_2':round(score_2),
+                    'score_3':round(score_3),
+                    'score_4':round(score_4),
+                    'score_5':round(score_5),
+                    'score_6':round(score_6),
+                    'score_7':round(score_7),
+                    'score_8':round(score_8),
+                    'score_9':round(score_9),
+                    'score_10':round(score_10),
+                    'score_11':round(score_11),
+                    'total': total,
+                    'number_of_floors': number_of_floors,
+                    'cover_area': cover_area,
+                    'area_x': area_x,
+                    'area_y': area_y,
+                    'height': height,
+                    'diaphragm_thickness':diaphragm_thickness,
+                    'mamposteria': mamposteria,
+                    'B1': B1,
+                    'B2': B2,
+                    'Daa': Daa,
+                    'Ls': Ls,
+                    'total_porcentage': round(total_porcentage),
                 }
             )
 
