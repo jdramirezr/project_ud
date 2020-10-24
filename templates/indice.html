@@ -34,10 +34,7 @@
 		<title>Bogotá earthquake
 			</title>
     <script src="/static/js/jquery.min.js"></script>
-    <script  type="text/javascript"  src="/static/js/script_volumns.js"></script>
-    <script  type="text/javascript"  src="/static/js/script.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <body>
 
@@ -182,7 +179,7 @@
                 </div>
 
                 <div class="col-lg-12" id="property_0">
-                    <div style="width:80%; margin:auto">
+                    <div  style="width:80%; margin:auto">
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Numero de pisos:</label>
@@ -192,7 +189,7 @@
                                         name="number_of_floors"
                                         id="number_of_floors"
                                         step="1"
-                                        min="0"
+                                        min="1"
                                         required
                                     >
                                 </div>
@@ -207,8 +204,8 @@
                                     type="number"
                                     name="cover_area"
                                     id="cover_area"
-                                    step="1"
-                                    min="0"
+                                    step="0.01"
+                                    min="1"
                                     required>
 
                             </div>
@@ -230,8 +227,8 @@
                                         type="number"
                                         name="area_x"
                                         id="area_x"
-                                        step="1"
-                                        min="0"
+                                        step="0.01"
+                                        min="1"
                                         required
                                     >
                                 </div>
@@ -246,8 +243,8 @@
                                     type="number"
                                     name="area_y"
                                     id="area_y"
-                                    step="1"
-                                    min="0"
+                                    step="0.01"
+                                    min="1"
                                     required>
 
                             </div>
@@ -269,7 +266,7 @@
                                             name="height"
                                             id="height"
                                             step="0.01"
-                                            min="0"
+                                            min="1"
                                             required
                                         >
                                     </div>
@@ -285,7 +282,7 @@
                                             name="diaphragm_thickness"
                                             id="diaphragm_thickness"
                                             step="0.01"
-                                            min="0"
+                                            min="1"
                                             required
                                         >
                                     </div>
@@ -548,7 +545,7 @@
 
 
             <div class="col-lg-12" id="property_0">
-                <div style="width:80%; margin:auto">
+                <div  class="div_floors" style="width:80%; margin:auto">
                     <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Area piso 1:</label>

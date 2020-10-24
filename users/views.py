@@ -1258,7 +1258,7 @@ class AisDetail(LoginRequiredMixin, DetailView):
     template_name = 'ais.html'
     context_object_name = 'aisprocess'
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, *arglas, **kwargs):
         context = super().get_context_data(**kwargs)
         aisprocess = context['aisprocess']
 

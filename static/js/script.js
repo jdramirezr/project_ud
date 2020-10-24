@@ -413,6 +413,34 @@ $(document).ready(function(){
 
     })
 
+    alert('1111')
+
+    $('#number_of_floors').change(function( date ) {
+
+        event.preventDefault();
+        var number = $('#number_of_floors').serialize().split("=")[1]
+
+        var html = ''
+        for (var i =0; i < parseInt(number) ; i++){
+            html = html + `<div class="col-sm-4">
+                <div class="form-group">
+                    <label>Area piso 1:</label>
+                    <input
+                        class="form-control disable"
+                        type="number"
+                        name="area_floor_${i}"
+                        id="area_floor_${i}"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+                </div>
+
+                </div>`
+        }
+
+        $("#div_floors").html(html)
+    })
 
 });
 
