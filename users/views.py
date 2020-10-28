@@ -1433,9 +1433,10 @@ class Indice(LoginRequiredMixin, View):
             C = ((Ao*Tk)/(q*height))* ((1+((q*height)/(1.5*Ao*Tk*(1+Y))))**0.5)
             alpha = C/0.15
 
+
             if alpha >= 1:
                 resistance = 0
-            elif 0.6 >= alpha < 1:
+            elif 0.6 <= alpha < 1:
                 resistance = 5
             elif 0.4 <= alpha < 0.6:
                 resistance = 25
