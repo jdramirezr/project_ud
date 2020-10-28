@@ -34,6 +34,7 @@
 		<title>Bogotá earthquake
 			</title>
     <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
 
 
 <body>
@@ -77,9 +78,10 @@
     <br>
     </div>
 
+
     <div class="col-lg-12" id="property_0">
     <div class="col-sm-1">
-        <input  type="checkbox" id="vehicle3" name="organization" value=0>
+        <input   type="radio" id="vehicle3" name="organization" value=0 checked>
     </div>
     <div class="col-sm-11">
         <label for="vehicle3">Edificio construido de acuerdo con las recomendaciones de la NSR-10 para la construcción sismo-resistente, específicamente del Titulo E.1.3.1 de dicha norma.</label><br><br>
@@ -88,7 +90,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
         <div class="col-sm-1">
-            <input  type="checkbox" id="vehicle3" name="organization" value=5>
+            <input   type="radio" id="vehicle3" name="organization" value=5>
         </div>
         <div class="col-sm-11">
             <label for="vehicle3">Edificio que presenta, en todas las plantas, conexiones realizadas mediante vigas de amarre, capaces de trasmitir acciones cortantes verticales.</label><br><br>
@@ -97,7 +99,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="organization" value=20>
+                <input   type="radio" id="vehicle3" name="organization" value=20>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio que, por no presentar vigas de amarre en todas las plantas, esta constituido unicamente por paredes ortogonales bien ligadas.</label><br><br>
@@ -106,7 +108,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="organization" value=45>
+                <input   type="radio" id="vehicle3" name="organization" value=45>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio con paredes ortogonales NO ligadas.</label><br><br>
@@ -124,7 +126,7 @@
 
     <div class="col-lg-12" id="property_0">
     <div class="col-sm-1">
-        <input  type="checkbox" id="vehicle3" name="quality" value=0>
+        <input  type="radio" id="vehicle3" name="quality" value=0 checked>
     </div>
     <div class="col-sm-11">
         <label for="vehicle3">Mampostería en ladrillo o bloques de buena calidad, Con piezas homogéneas y de dimensiones constantes por toda la extension del muro. Presencia de ligamento entre las piezas.</label><br><br>
@@ -133,7 +135,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
         <div class="col-sm-1">
-            <input  type="checkbox" id="vehicle3" name="quality" value=5>
+            <input  type="radio" id="vehicle3" name="quality" value=5>
         </div>
         <div class="col-sm-11">
             <label for="vehicle3">Mampostería en ladrillo o bloques, bien ligada mas no muy homogéneas en toda la extension del muro.</label><br><br>
@@ -142,7 +144,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="quality" value=25>
+                <input  type="radio" id="vehicle3" name="quality" value=25>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Mampostería en ladrillo de baja calidad, bien trabadas y privados de ligamento. </label><br><br>
@@ -151,7 +153,7 @@
     </div>
     <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="quality" value=45>
+                <input  type="radio" id="vehicle3" name="quality" value=45>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Mampostería en ladrillo de baja calidad, con la inclusion de guijarros y con piezas no homogéneas o privadas de ligamento.</label><br><br>
@@ -167,7 +169,7 @@
 
   <div class="tab">
       <div class="regForm2">
-        <div style="text-align: center;"class="col-lg-12" id="property">
+        <div style="text-align: center;"class="col-lg-12" id="property" >
 
         </div>
 
@@ -183,15 +185,14 @@
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Numero de pisos:</label>
-                                    <input
-                                        class="form-control disable"
-                                        type="number"
-                                        name="number_of_floors"
-                                        id="number_of_floors"
-                                        step="1"
-                                        min="1"
-                                        required
-                                    >
+                                    <select class="form-control" name="number_of_floors" id="number_of_floors_id" required>
+                                        <option selected></option>
+                                        <option name="1" value="1">1</option>
+                                        <option name="2" value=2>2</option>
+                                        <option name="3" value=3>3</option>
+                                        <option name="4" value=4>4</option>
+                                        <option name="5" value=5>5</option>
+                                    </select>
                                 </div>
 
                         </div>
@@ -316,7 +317,7 @@
                             <div class="col-sm-6">
 
                                     <div class="col-sm-2">
-                                            <input  type="checkbox" id="vehicle3" name="mamposteria" value=15.0>
+                                            <input  type="radio" name="mamposteria" value=15.0>
                                         </div>
                                         <div class="col-sm-10">
                                             <label for="vehicle3">Mampostería confinada</label><br><br>
@@ -326,7 +327,7 @@
 
                             <div class="col-sm-6">
                                     <div class="col-sm-2">
-                                            <input  type="checkbox" id="vehicle3" name="mamposteria" value=7.5>
+                                            <input  type="radio" name="mamposteria" value=7.5>
                                         </div>
                                     <div class="col-sm-10">
                                         <label for="vehicle3">Mampostería no confinada</label><br><br>
@@ -348,7 +349,7 @@
 
                 <div class="col-lg-12" id="property_0">
                 <div class="col-sm-1">
-                    <input  type="checkbox" id="vehicle3" name="position" value=0>
+                    <input  type="radio" id="vehicle3" name="position" value=0 checked>
                 </div>
                 <div class="col-sm-11">
                     <label for="vehicle3">Edificio cimentado sobre terreno estable con pendiente inferior o igual al 10%. La cimentación esta ubicada en una misma cota. Ausencia de empuje no equilibrado debido a un terraplén.</label><br><br>
@@ -357,7 +358,7 @@
                 </div>
                 <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="position" value=5>
+                        <input  type="radio" id="vehicle3" name="position" value=5>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio cimentado sobre roca con pendiente comprendida entre 10% y 30% o sobre terreno suelto con pendiente comprendida entre un 10% y 20%. La diferencia entre las cotas de la fundación es inferior a 1 metro. Ausencia de empuje no equilibrado debido a un terraplén.</label><br><br>
@@ -366,7 +367,7 @@
                 </div>
                 <div class="col-lg-12" id="property_0">
                         <div class="col-sm-1">
-                            <input  type="checkbox" id="vehicle3" name="position" value=25>
+                            <input  type="radio" id="vehicle3" name="position" value=25>
                         </div>
                         <div class="col-sm-11">
                             <label for="vehicle3">Edificio cimentado sobre terreno suelto con pendiente comprendida entre 20% y 30% o sobre terreno rocoso con pendiente comprendida entre 30% y 50%. La diferencia máxima entre las cotas de la cimentación es inferior a 1 metro. Presencia de empuje no equilibrado debido a un terraplén.</label><br><br>
@@ -375,7 +376,7 @@
                 </div>
                 <div class="col-lg-12" id="property_0">
                         <div class="col-sm-1">
-                            <input  type="checkbox" id="vehicle3" name="position" value=45>
+                            <input  type="radio" id="vehicle3" name="position" value=45>
                         </div>
                         <div class="col-sm-11">
                             <label for="vehicle3">Edificio cimentado sobre terreno suelto con pendiente mayor al 30% o sobre terreno rocoso con pendiente mayor al 50%. La diferencia máxima entre las cotas de la cimentación es superior a 1 metro. Presencia de empuje no equilibrado debido a un terraplén.</label><br><br>
@@ -415,7 +416,7 @@
 
                     <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="diaphragm" value=0>
+                        <input  type="radio" id="vehicle3" name="diaphragm" value=0 checked>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio con diafragmas, de cualquier naturaleza, que satisfacen todas las condiciones.</label><br><br>
@@ -424,7 +425,7 @@
                     </div>
                     <div class="col-lg-12" id="property_0">
                         <div class="col-sm-1">
-                            <input  type="checkbox" id="vehicle3" name="diaphragm" value=5>
+                            <input  type="radio" id="vehicle3" name="diaphragm" value=5>
                         </div>
                         <div class="col-sm-11">
                             <label for="vehicle3">Edificio con diafragmas, de cualquier naturaleza, que satisfacen las condiciones 2 y 3.</label><br><br>
@@ -433,7 +434,7 @@
                     </div>
                     <div class="col-lg-12" id="property_0">
                             <div class="col-sm-1">
-                                <input  type="checkbox" id="vehicle3" name="diaphragm" value=15>
+                                <input  type="radio" id="vehicle3" name="diaphragm" value=15>
                             </div>
                             <div class="col-sm-11">
                                 <label for="vehicle3">Edificio con diafragmas, de cualquier naturaleza, que satisface la condición 3.</label><br><br>
@@ -442,7 +443,7 @@
                     </div>
                     <div class="col-lg-12" id="property_0">
                             <div class="col-sm-1">
-                                <input  type="checkbox" id="vehicle3" name="diaphragm" value=45>
+                                <input  type="radio" id="vehicle3" name="diaphragm" value=45>
                             </div>
                             <div class="col-sm-11">
                                 <label for="vehicle3">Edificio cuyos diafragmas no cumplen ninguna de las tres condiciones.</label><br><br>
@@ -545,7 +546,7 @@
 
 
             <div class="col-lg-12" id="property_0">
-                <div  class="div_floors" style="width:80%; margin:auto">
+                <div id="div_floors_id" class="div_floors" style="width:80%; margin:auto">
                     <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Area piso 1:</label>
@@ -654,7 +655,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="cover_type" value=0>
+                <input  type="radio" id="vehicle3" name="cover_type" value=0 required>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio con cubierta estable y provisto de viga cumbrera. Edificio con cubierta plana.</label><br><br>
@@ -663,7 +664,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                 <div class="col-sm-1">
-                    <input  type="checkbox" id="vehicle3" name="cover_type" value=15>
+                    <input  type="radio" id="vehicle3" name="cover_type" value=15>
                 </div>
                 <div class="col-sm-11">
                     <label for="vehicle3">Edificio con cubierta estable y bien conectada a los muros, pero sin viga cumbrera. Edificio con cubierta parcialmente estable y provista de viga cumbrera.</label><br><br>
@@ -672,7 +673,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="cover_type" value=25>
+                        <input  type="radio" id="vehicle3" name="cover_type" value=25>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio con cubierta inestable, provista de viga cumbrera.</label><br><br>
@@ -681,7 +682,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="cover_type" value=45>
+                        <input  type="radio" id="vehicle3" name="cover_type" value=45>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio con cubierta inestable, sin viga cumbrera.</label><br><br>
@@ -710,7 +711,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="elements" value=0>
+                <input  type="radio" id="vehicle3" name="elements" value=0 checked>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio sin cornisas y sin parapetos. Edificio con cornisas bien conectadas a la pared, con chimeneas de pequeña dimension y de peso modesto. Edificio cuyo balcón forma parte integrante de la estructura de los diafragmas.</label><br><br>
@@ -719,7 +720,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                 <div class="col-sm-1">
-                    <input  type="checkbox" id="vehicle3" name="elements" value=0>
+                    <input  type="radio" id="vehicle3" name="elements" value=0>
                 </div>
                 <div class="col-sm-11">
                     <label for="vehicle3">Edificio sin cornisas y sin parapetos. Edificio con cornisas bien conectadas a la pared, con chimeneas de pequeña dimension y de peso modesto. Edificio cuyo balcón forma parte integrante de la estructura de los diafragmas.</label><br><br>
@@ -728,7 +729,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="elements" value=25>
+                        <input  type="radio" id="vehicle3" name="elements" value=25>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio con elementos de pequeña dimension. Mal vinculados a la pared.</label><br><br>
@@ -737,7 +738,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="elements" value=45>
+                        <input  type="radio" id="vehicle3" name="elements" value=45>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio que presenta chimeneas o cualquier otro tipo de elemento en el techo, mal vinculado a la estructura. Parapetos u otros elementos de peso significativo, mal construidos, que pueden caer en caso de terremoto. Edificio con balcones construidos posteriormente a la estructura principal y conectados a esta de modo deficiente.</label><br><br>
@@ -759,7 +760,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="checkbox" id="vehicle3" name="status_conservation" value=0>
+                <input  type="radio" id="vehicle3" name="status_conservation" value=0 checked>
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Muros en buena condición, sin lesiones visibles.</label><br><br>
@@ -768,7 +769,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                 <div class="col-sm-1">
-                    <input  type="checkbox" id="vehicle3" name="status_conservation" value=5>
+                    <input  type="radio" id="vehicle3" name="status_conservation" value=5>
                 </div>
                 <div class="col-sm-11">
                     <label for="vehicle3">Muro que presentan lesiones capilares no extendidas, con excepción de los casos en los cuales dichas lesiones han sido producidas por terremotos.</label><br><br>
@@ -777,7 +778,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="status_conservation" value=25>
+                        <input  type="radio" id="vehicle3" name="status_conservation" value=25>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Muros con lesiones de tamaño medio entre  y 3 milímetros de ancho o con lesiones capilares producidas por sismos. Edificio que no presenta lesiones pero que se caracteriza por un estado mediocre de conservación de la mampostería.</label><br><br>
@@ -786,7 +787,7 @@
             </div>
             <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="checkbox" id="vehicle3" name="status_conservation" value=45>
+                        <input  type="radio" id="vehicle3" name="status_conservation" value=45>
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Muros que presentan un fuerte deterioro de sus materiales constituyentes o lesiones muy grabes de mas de 3 milímetros de ancho.</label><br><br>
@@ -878,13 +879,27 @@ function validateForm() {
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     class_observation = y[i].className.split(' ')[1]
-    if (y[i].value == "" & !(y[i].disabled) & !(class_observation == "observation") & !(y[i].className == 'image')) {
+
+    if (y[i].value == "" & !(y[i].disabled) &  !(y[i].className == 'image')) {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
       valid = false;
     }
+
+
   }
+//   for (i = 0; i < p.length; i++) {
+//     // If a field is empty...
+
+//     if (s[p].value == "") {
+//       // add an "invalid" class to the field:
+//       s[p].className += " invalid";
+//       // and set the current valid status to false
+//       valid = false;
+//     }
+//   }
+
   for (i = 0; i < s.length; i++) {
     // If a field is empty...
 

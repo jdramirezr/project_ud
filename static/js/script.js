@@ -413,18 +413,38 @@ $(document).ready(function(){
 
     })
 
-    alert('1111')
 
-    $('#number_of_floors').change(function( date ) {
+    $('#number_of_floors_id').change(function( date ) {
 
         event.preventDefault();
-        var number = $('#number_of_floors').serialize().split("=")[1]
+
+
+        var number = $('#number_of_floors_id').serialize().split("=")[1]
 
         var html = ''
-        for (var i =0; i < parseInt(number) ; i++){
-            html = html + `<div class="col-sm-4">
+        var space = 0
+        switch (number) {
+          case '1':
+            space = 12
+            break;
+          case '2':
+            space = 6
+            break;
+          case '3':
+            space = 4
+            break;
+          case '4':
+            space = 3
+            break;
+          case '5':
+            space = 12
+            break;
+        }
+
+        for (var i =1; i < (parseInt(number) + 1) ; i++){
+            html = html + `<div class="col-sm-${space}">
                 <div class="form-group">
-                    <label>Area piso 1:</label>
+                    <label>Area piso ${i}:</label>
                     <input
                         class="form-control disable"
                         type="number"
@@ -439,7 +459,7 @@ $(document).ready(function(){
                 </div>`
         }
 
-        $("#div_floors").html(html)
+        $("#div_floors_id").html(html)
     })
 
 });

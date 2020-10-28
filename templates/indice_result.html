@@ -9,6 +9,12 @@
     <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
     <title>Bogotá earthquake
         </title>
+    <style>
+
+    .col-sm-2 {
+        width: 12% !important;
+    }
+    </style>
 <body>
 
     <div style="width: 100%;  height:60px; background: #525573" id="main-navbar">
@@ -32,7 +38,7 @@
 <div class="col text-center">
         <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
     </div>
-<div class="col-lg-12" style="padding-left: 150px; padding-right: 150px;padding-bottom: 80px; padding-top: 60px" id="property_0">
+<div class="col-lg-12" style="padding-left: 12%; padding-bottom: 80px; padding-top: 60px" id="property_0">
 
         <div class="row">
             <div class="col-sm-6 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white;padding-top:10px ">
@@ -462,8 +468,12 @@
 
 
         <div class="row">
-            <div class="col-sm-8 data-title" style="color:aliceblue ;background: #525573; border-left: 0.2px solid #525573 !important; text-align: center; padding-top:10px ">
+            <div class="col-sm-6 data-title" style="color:aliceblue ;background: #525573; border-left: 0.2px solid #525573 !important; text-align: center; padding-top:10px ">
                 INDICE DE VULNERABILIDAD     </div>
+
+                <div class="col-sm-2 data-title"  style="background:#525573">
+
+                </div>
             <div class="col-sm-2 data-title" >
                 {{ total }}
             </div>
@@ -563,7 +573,7 @@
 <script>
 		Swal.fire({
 			icon:'success',
-			title:'El indice de vulnerabilidad sísmica es {{ result }}'
+			title:'El proceso se realizó correctamente'
 			})
 </script>
 </body>

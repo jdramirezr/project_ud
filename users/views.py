@@ -1362,14 +1362,61 @@ class Indice(LoginRequiredMixin, View):
             a = data['a']
             b = data['b']
             L = data['L']
-            area_floor_1 = data['area_floor_1']
-            area_floor_2 = data['area_floor_2']
-            area_floor_3 = data['area_floor_3']
             wall_length = data['wall_length']
             wall_thickness = data['wall_thickness']
             cover_type = data['cover_type']
             elements = data['elements']
             status_conservation = data['status_conservation']
+
+            print(number_of_floors)
+            print('///////////////////////')
+            if number_of_floors == 1:
+                area_floor_1 = data['area_floor_1']
+                Daa = area_floor_1
+
+            if number_of_floors == 2:
+                area_floor_1 = data['area_floor_1']
+                area_floor_2 = data['area_floor_2']
+
+                Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+
+            if number_of_floors == 3:
+                area_floor_1 = data['area_floor_1']
+                area_floor_2 = data['area_floor_2']
+                area_floor_3 = data['area_floor_3']
+
+
+                Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+                Daa2 = ((area_floor_2 - area_floor_3)/area_floor_2)*100
+
+                Daa = max(Daa, Daa2)
+
+            if number_of_floors == 4:
+                area_floor_1 = data['area_floor_1']
+                area_floor_2 = data['area_floor_2']
+                area_floor_3 = data['area_floor_3']
+                area_floor_4 = data['area_floor_4']
+                print( area_floor_1, area_floor_2, area_floor_3, area_floor_4)
+                print('///////////')
+                Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+                Daa2 = ((area_floor_2 - area_floor_3)/area_floor_2)*100
+                Daa3 = ((area_floor_3 - area_floor_4)/area_floor_3)*100
+
+                Daa = max(Daa, Daa2, Daa3)
+
+            if number_of_floors == 5:
+                area_floor_1 = data['area_floor_1']
+                area_floor_2 = data['area_floor_2']
+                area_floor_3 = data['area_floor_3']
+                area_floor_4 = data['area_floor_4']
+                area_floor_5 = data['area_floor_5']
+
+                Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
+                Daa2 = ((area_floor_2 - area_floor_3)/area_floor_2)*100
+                Daa3 = ((area_floor_3 - area_floor_4)/area_floor_3)*100
+                Daa4 = ((area_floor_4 - area_floor_5)/area_floor_4)*100
+
+                Daa = max(Daa, Daa2, Daa3, Daa4)
 
             Tk = ((area_x*mamposteria)+(area_y*mamposteria))/(area_x+area_y)
             Ps = 2.4*diaphragm_thickness
@@ -1407,14 +1454,12 @@ class Indice(LoginRequiredMixin, View):
             elif 0.4 > B1 or 0.3 < B2:
                 plan_configuration = 0
 
-            Daa = ((area_floor_1 - area_floor_2)/area_floor_1)*100
 
-
-            if Daa < 10:
+            if -Daa < 10:
                 elevation_configuration = 0
-            elif 10 <= Daa < 20:
+            elif 10 <= -Daa < 20:
                 elevation_configuration = 5
-            elif Daa > 20:
+            elif -Daa > -20:
                 elevation_configuration = 25
             elif Daa > 0:
                 elevation_configuration = 45
@@ -1485,18 +1530,18 @@ class Indice(LoginRequiredMixin, View):
                     'score_9':round(score_9),
                     'score_10':round(score_10),
                     'score_11':round(score_11),
-                    'total': total,
+                    'total': round(total, 2),
                     'number_of_floors': number_of_floors,
-                    'cover_area': cover_area,
-                    'area_x': area_x,
-                    'area_y': area_y,
-                    'height': height,
-                    'diaphragm_thickness':diaphragm_thickness,
-                    'mamposteria': mamposteria,
-                    'B1': B1,
-                    'B2': B2,
-                    'Daa': Daa,
-                    'Ls': Ls,
+                    'cover_area': round(cover_area, 1),
+                    'area_x': round(area_x, 1),
+                    'area_y': round(area_y, 1),
+                    'height': round(height, 1),
+                    'diaphragm_thickness': round(diaphragm_thickness, 1),
+                    'mamposteria': round(mamposteria, 1),
+                    'B1': round(B1),
+                    'B2': round(B2),
+                    'Daa': round(Daa),
+                    'Ls': round(Ls),
                     'total_porcentage': round(total_porcentage),
                 }
             )
