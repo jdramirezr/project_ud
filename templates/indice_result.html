@@ -12,7 +12,13 @@
     <style>
 
     .col-sm-2 {
-        width: 12% !important;
+        width: 10% !important;
+    }
+    .col-sm-6 {
+        width: 47% !important;
+    }
+    .col-sm-5 {
+        width: 38.666667% !important;
     }
     </style>
 <body>
@@ -38,7 +44,7 @@
 <div class="col text-center">
         <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
     </div>
-<div class="col-lg-12" style="padding-left: 12%; padding-bottom: 80px; padding-top: 60px" id="property_0">
+<div class="col-lg-12" style="padding-left: 21%; padding-bottom: 80px; padding-top: 60px" id="property_0">
 
         <div class="row">
             <div class="col-sm-6 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white;padding-top:10px ">
@@ -48,10 +54,10 @@
             <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
                     VALOR
             </div>
-            <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
+            <div class="col-sm-2 data-color" style="padding-left: 1px; border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
                     CALIFICACIÓN
             </div>
-            <div class="col-sm-2 data-color" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
+            <div class="col-sm-2 data-color" style="padding-left: 4px; border: 0.2px solid #525573; text-align: center; background: #525573; color: white; padding-top:10px ">
                     PUNTUACIÓN
             </div>
         </div>
@@ -138,7 +144,7 @@
             Area total cubierta en (m2)
         </div>
         <div class="col-sm-2 data" >
-            {{cover_area}} m2
+            {{cover_area}}
         </div>
         <div class="col-sm-2 data" >
 
@@ -153,10 +159,10 @@
 
         </div>
         <div class="col-sm-5 data" style="text-align: left" >
-            Area Mamposteria resistente sentido x
+            Area Mamposteria resistente sentido x (m2)
         </div>
         <div class="col-sm-2 data" >
-            {{area_x}} m2
+            {{area_x}}
         </div>
         <div class="col-sm-2 data" >
 
@@ -172,10 +178,10 @@
 
         </div>
         <div class="col-sm-5 data" style="text-align: left" >
-            Area Mamposteria resistente sentido Y
+            Area Mamposteria resistente sentido Y (m2)
         </div>
         <div class="col-sm-2 data" >
-            {{area_y}} m2
+            {{area_y}}
         </div>
         <div class="col-sm-2 data" >
 
@@ -193,7 +199,7 @@
             Altura media de los pisos en (m)
         </div>
         <div class="col-sm-2 data" >
-            {{height}} m
+            {{height}}
         </div>
         <div class="col-sm-2 data" >
 
@@ -208,28 +214,10 @@
 
         </div>
         <div class="col-sm-5 data" style="text-align: left" >
-            Resistencia cortante mamposteria
+            Resistencia cortante mamposteria (Ton/M2)
         </div>
         <div class="col-sm-2 data" >
-            {{diaphragm_thickness}} Ton/M2
-        </div>
-        <div class="col-sm-2 data" >
-
-        </div>
-        <div class="col-sm-2 data" >
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
-
-        </div>
-        <div class="col-sm-5 data" style="text-align: left" >
-            Peso especifico mampostería
-        </div>
-        <div class="col-sm-2 data" >
-            1.8 Ton/M3
+            {{Tk}}
         </div>
         <div class="col-sm-2 data" >
 
@@ -244,10 +232,28 @@
 
         </div>
         <div class="col-sm-5 data" style="text-align: left" >
-            Peso por unidad de area diafragma
+            Peso especifico mampostería (Ton/M2)
         </div>
         <div class="col-sm-2 data" >
-            2.4 Ton/M3
+            1.8
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+        <div class="col-sm-2 data" >
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 data" style="border-left: 0.2px solid #525573 !important">
+
+        </div>
+        <div class="col-sm-5 data" style="text-align: left" >
+            Peso por unidad de area diafragma (Ton/M3)
+        </div>
+        <div class="col-sm-2 data" >
+            2.4
 
         </div>
         <div class="col-sm-2 data" >
@@ -547,8 +553,10 @@
         .data-title{
             border: 0.2px solid #525573; border-top: none;
             border-left: none;
-            height: 40px;
+            height: 60px;
+            padding-top: 16px !important;
         }
+
         .data-color {
             background: #525573;
             border: 0.2px solid #525573; border-top: none;

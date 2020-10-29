@@ -187,6 +187,7 @@
                                     <label>Numero de pisos:</label>
                                     <select class="form-control" name="number_of_floors" id="number_of_floors_id" required>
                                         <option selected></option>
+                                        <option name="1" value=1>1</option>
                                         <option name="2" value=2>2</option>
                                         <option name="3" value=3>3</option>
                                         <option name="4" value=4>4</option>
@@ -479,7 +480,7 @@
                                     <div class="form-group">
                                         <label>a:</label>
                                         <input
-                                            class="form-control disable"
+                                            class="form-control observation"
                                             type="number"
                                             name="a"
                                             id="a"
@@ -493,9 +494,28 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label>b:</label>
+                                    <label>L:</label>
                                     <input
                                         class="form-control"
+                                        type="number"
+                                        name="L"
+                                        id="L"
+                                        step="0.01"
+                                        min="0"
+                                        required>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>b:</label>
+                                    <input
+                                        class="form-control observation"
                                         type="number"
                                         name="b"
                                         id="b"
@@ -507,21 +527,7 @@
 
                             </div>
 
-                            <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label>L:</label>
-                                        <input
-                                            class="form-control"
-                                            type="number"
-                                            name="L"
-                                            id="L"
-                                            step="0.01"
-                                            min="0"
-                                            required>
 
-                                    </div>
-
-                                </div>
                         </div>
                     </div>
 
@@ -879,7 +885,7 @@ function validateForm() {
     // If a field is empty...
     class_observation = y[i].className.split(' ')[1]
 
-    if (y[i].value == "" & !(y[i].disabled) &  !(y[i].className == 'image')) {
+    if (y[i].value == "" & !(y[i].disabled) & !(class_observation == "observation") & !(y[i].className == 'image')) {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
