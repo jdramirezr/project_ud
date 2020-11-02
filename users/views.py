@@ -1449,11 +1449,11 @@ class Indice(LoginRequiredMixin, View):
                 if B1 >= 0.8:
                     plan_configuration = 0
                 elif 0.8 > B1 >= 0.6:
-                    plan_configuration = 0
+                    plan_configuration = 5
                 elif 0.6 > B1 >= 0.4:
-                    plan_configuration = 0
+                    plan_configuration = 25
                 elif 0.4 > B1:
-                    plan_configuration = 0
+                    plan_configuration = 45
 
                 B1 = round(B1,2)
 
@@ -1463,11 +1463,11 @@ class Indice(LoginRequiredMixin, View):
                 if B2 < 0.1:
                     plan_configuration = 0
                 elif 0.1 < B2 <= 0.2:
-                    plan_configuration = 0
+                    plan_configuration = 5
                 elif 0.2 < B2 <= 0.3:
-                    plan_configuration = 0
+                    plan_configuration = 25
                 elif 0.3 < B2:
-                    plan_configuration = 0
+                    plan_configuration = 45
 
                 B2 = round(B2,2)
             else:
@@ -1477,11 +1477,11 @@ class Indice(LoginRequiredMixin, View):
                 if B1 >= 0.8 or B2 < 0.1:
                     plan_configuration = 0
                 elif 0.8 > B1 >= 0.6 or 0.1 < B2 <= 0.2:
-                    plan_configuration = 0
+                    plan_configuration = 5
                 elif 0.6 > B1 >= 0.4 or 0.2 < B2 <= 0.3:
-                    plan_configuration = 0
+                    plan_configuration = 25
                 elif 0.4 > B1 or 0.3 < B2:
-                    plan_configuration = 0
+                    plan_configuration = 45
 
                 B1 = round(B1,2)
                 B2 = round(B2,2)
