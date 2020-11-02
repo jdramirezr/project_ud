@@ -1455,7 +1455,7 @@ class Indice(LoginRequiredMixin, View):
                 elif 0.4 > B1:
                     plan_configuration = 0
 
-                B1 = round(B1)
+                B1 = round(B1,2)
 
             elif b and not a:
                 B2 = b/L
@@ -1469,7 +1469,7 @@ class Indice(LoginRequiredMixin, View):
                 elif 0.3 < B2:
                     plan_configuration = 0
 
-                B2 = round(B2)
+                B2 = round(B2,2)
             else:
                 B1 = a/L
                 B2 = b/L
@@ -1483,8 +1483,8 @@ class Indice(LoginRequiredMixin, View):
                 elif 0.4 > B1 or 0.3 < B2:
                     plan_configuration = 0
 
-                B1 = round(B1)
-                B2 = round(B2)
+                B1 = round(B1,2)
+                B2 = round(B2,2)
 
 
 
