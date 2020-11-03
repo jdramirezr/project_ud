@@ -1494,7 +1494,7 @@ class Indice(LoginRequiredMixin, View):
                 elevation_configuration = 0
             elif Daa < 0 and  10 <= abs(Daa) < 20:
                 elevation_configuration = 5
-            elif Daa < 0 and abs(Daa) > 20:
+            elif Daa < 0 and abs(Daa) >= 20:
                 elevation_configuration = 25
             elif Daa >= 0:
                 elevation_configuration = 45
