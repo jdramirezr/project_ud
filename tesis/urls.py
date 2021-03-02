@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
 
-from platzigram import views as local_views
-from users import views as users_views
+from tesis import views as local_views
+from app import views as users_views
 
 
 urlpatterns = [

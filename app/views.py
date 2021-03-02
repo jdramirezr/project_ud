@@ -9,19 +9,17 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-
 # Exception
 from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
-from users.models import ResultPdf, Profile, AisModel
-from users.models import Process
-from users.area import areas
-from users.config import *
+from app.models import ResultPdf, Profile, AisModel
+from app.models import Process
+from app.area import areas
+from app.config import *
 # Forms
-from users.forms import ProfileForm, IndiceForm
+from app.forms import ProfileForm, IndiceForm
 from matplotlib.path import Path
 
 from django.http import HttpResponse
