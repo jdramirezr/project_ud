@@ -131,7 +131,7 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/app/login/'
+LOGIN_URL = '/users/login/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATICFILES_DIRS comentado en produccion y static_Root descomentado em prod y comentado en local

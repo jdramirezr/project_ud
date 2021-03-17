@@ -40,7 +40,7 @@ def login_view(request):
             login(request, user)
             return redirect('init_video')
         else:
-            return render(request, 'users/login.html', {'error': 'Invalid username and password'})
+            return render(request, 'users/login.html', {'error': 'Usuario invalido o contraseña'})
 
     return render(request, 'users/login.html')
 
@@ -54,12 +54,12 @@ def signup(request):
         passwd_confirmation = request.POST['passwd_confirmation']
 
         if passwd != passwd_confirmation:
-            return render(request, 'users/signup.html', {'error': 'Password confirmation does not match'})
+            return render(request, 'users/signup.html', {'error': 'la contraseña de confirmacion no coincide'})
 
         try:
             user = User.objects.create_user(username=username, password=passwd)
         except IntegrityError:
-            return render(request, 'users/signup.html', {'error': 'Username is already in user'})
+            return render(request, 'users/signup.html', {'error': 'Ya existe el nombre de usuario'})
 
         user.email = request.POST['email']
         user.save()

@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="/static/css/main.css" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
@@ -81,7 +81,7 @@
 
     <div class="col-lg-12" id="property_0">
     <div class="col-sm-1">
-        <input   type="radio" id="vehicle3" name="organization" value=0 checked>
+        <input   type="radio" id="vehicle3" name="organization" value=0>
     </div>
     <div class="col-sm-11">
         <label for="vehicle3">Edificio construido de acuerdo con las recomendaciones de la NSR-10 para la construcción sismo-resistente, específicamente del Titulo E.1.3.1 de dicha norma.</label><br><br>
@@ -126,7 +126,7 @@
 
     <div class="col-lg-12" id="property_0">
     <div class="col-sm-1">
-        <input  type="radio" id="vehicle3" name="quality" value=0 checked>
+        <input  type="radio" id="vehicle3" name="quality" value=0 >
     </div>
     <div class="col-sm-11">
         <label for="vehicle3">Mampostería en ladrillo o bloques de buena calidad, Con piezas homogéneas y de dimensiones constantes por toda la extension del muro. Presencia de ligamento entre las piezas.</label><br><br>
@@ -349,7 +349,7 @@
 
                 <div class="col-lg-12" id="property_0">
                 <div class="col-sm-1">
-                    <input  type="radio" id="vehicle3" name="position" value=0 checked>
+                    <input  type="radio" id="vehicle3" name="position" value=0 >
                 </div>
                 <div class="col-sm-11">
                     <label for="vehicle3">Edificio cimentado sobre terreno estable con pendiente inferior o igual al 10%. La cimentación esta ubicada en una misma cota. Ausencia de empuje no equilibrado debido a un terraplén.</label><br><br>
@@ -393,7 +393,7 @@
 </div>
 
 
-  <div class="tab">
+  <div class="tab" id="tab-one-button">
       <div class="regForm2">
 
 
@@ -416,7 +416,7 @@
 
                     <div class="col-lg-12" id="property_0">
                     <div class="col-sm-1">
-                        <input  type="radio" id="vehicle3" name="diaphragm" value=0 checked>
+                        <input  type="radio" id="vehicle3" name="diaphragm" value=0 >
                     </div>
                     <div class="col-sm-11">
                         <label for="vehicle3">Edificio con diafragmas, de cualquier naturaleza, que satisfacen todas las condiciones.</label><br><br>
@@ -480,7 +480,7 @@
                                     <div class="form-group">
                                         <label>a:</label>
                                         <input
-                                            class="form-control observation"
+                                            class="form-control"
                                             type="number"
                                             name="a"
                                             id="a"
@@ -538,7 +538,7 @@
   </div>
 
 
-  <div class="tab">
+  <div class="tab" id="tab-two-button">
       <div class="regForm2">
 
 
@@ -660,7 +660,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="radio" id="vehicle3" name="cover_type" value=0 checked>
+                <input  type="radio" id="vehicle3" name="cover_type" value=0 >
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio con cubierta estable y provisto de viga cumbrera. Edificio con cubierta plana.</label><br><br>
@@ -716,7 +716,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="radio" id="vehicle3" name="elements" value=0 checked>
+                <input  type="radio" id="vehicle3" name="elements" value=0 >
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Edificio sin cornisas y sin parapetos. Edificio con cornisas bien conectadas a la pared, con chimeneas de pequeña dimension y de peso modesto. Edificio cuyo balcón forma parte integrante de la estructura de los diafragmas.</label><br><br>
@@ -765,7 +765,7 @@
 
             <div class="col-lg-12" id="property_0">
             <div class="col-sm-1">
-                <input  type="radio" id="vehicle3" name="status_conservation" value=0 checked>
+                <input  type="radio" id="vehicle3" name="status_conservation" value=0 >
             </div>
             <div class="col-sm-11">
                 <label for="vehicle3">Muros en buena condición, sin lesiones visibles.</label><br><br>
@@ -877,6 +877,33 @@ function validateForm() {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
+
+
+    var array_elemnt = []
+
+    for ( const element of y) {
+        if ( element.checked == true){
+        array_elemnt.push(1)
+        }
+    }
+
+    if (array_elemnt.length <= 1){
+        if (x[currentTab].id == 'tab-one-button' || x[currentTab].id == 'tab-two-button') {
+            if (array_elemnt.length <= 0){
+                return false
+            }
+        }
+        else {
+            return false
+        }
+
+    }
+
+
+
+
+
+
   s = x[currentTab].getElementsByTagName("select");
   element = x[currentTab].getElementsByClassName("count")
   // A loop that checks every input field in the current tab:
@@ -1068,6 +1095,20 @@ function fixStepIndicator(n) {
             width:100%;
             height:400px;
             }
+        body {
+            -webkit-print-color-adjust: exact !important;
+        }
+</style>
+<style media="print" type="text/css">
+    .data-color {
+        background-color: #525573 !important;
+        color: white !important;
+    }
+
+    .print2{
+        background-color: #383737 !important;
+        color: white !important;
+    }
 </style>
 </body>
 </html>

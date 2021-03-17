@@ -14,12 +14,6 @@ from app import views as users_views
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-
-    path('hello-world/', local_views.hello_world, name='hello_world'),
-    path('sorted/', local_views.sort_integers, name='sort'),
-    path('hi/<str:name>/<int:age>/', local_views.say_hi, name='hi'),
-
-
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup, name='signup'),
@@ -35,3 +29,11 @@ urlpatterns = [
     path('users/indice/', users_views.Indice.as_view(), name='indice'),
     path('users/ais/<int:pk>/', users_views.AisDetail.as_view(), name='ais_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
+
+

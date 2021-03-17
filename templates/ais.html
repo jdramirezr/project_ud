@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
     <script src="/static/sweetalert2/sweetalert2.js"></script>
     <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
-    <title>Bogotá earthquake
-        </title>
+    <title>Bogotá earthquake</title>
 <body>
 
     <div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
@@ -25,482 +24,464 @@
 
         </div>
 
+    <h1 id="title_process">Método AIS</h1>
 
-<h1 id="title_process">Método AIS</h1>
 
-
-<div class="col text-center">
-        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
+    <div class="col text-center">
+            <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
     </div>
-<div class="col-lg-12" style="padding: 50px" id="property_0">
-        <div class="row">
-            <div class="col-sm-12 data-color" style="border: 0.2px solid black; text-align: center; background: #272833; color: white">
-                    EVALUACIÓN VISUAL DE LA VIVIENDA ID: {{ aisprocess.pk }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 data-title" style="border-left: 0.2px solid black !important">
-
-            </div>
-            <div class="col-sm-1 data-title" >
-                    ESTADO
-            </div>
-            <div class="col-sm-1 data-title" >
-                    VALOR
-            </div>
-            <div class="col-sm-2 data-title" >
-                    CALIFICACIÓN DE CADA ASPECTO
-            </div>
-            <div class="col-sm-2 data-title" >
-                    PORCENTAJE DE CADA ASPECTO
-
-            </div>
-            <div class="col-sm-2 data-title" >
-                    PONDERACIÓN DE CALIFICACIÓN
-            </div>
 
 
-
-        </div>
-
-        <div class="row">
-                <div class="col-sm-12 data-color" >
-                        ASPECTOS GEOMÉTRICOS
+    <div class="col-lg-12" style="padding: 50px;" id="property_0">
+                <div class="row">
+                    <div class="col-sm-12 data-color" style="border: 0.2px solid black; text-align: center; background: #525573; color: white">
+                            EVALUACIÓN VISUAL DE LA VIVIENDA ID: {{ aisprocess.pk }}
+                    </div>
                 </div>
-        </div>
+                <div class="row">
+                    <div class="col-sm-4 data-title" style="border-left: 0.2px solid black !important">
 
-
-
-        <div class="row">
-                <div class="col-sm-6" >
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                1. Irregularidad en planta de la edificacion
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_floor == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_floor == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_floor == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_floor }}
-                            </div>
                     </div>
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                            2. Cantidad de muros en las dos direcciones
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_wall == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_wall == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_wall == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_wall }}
-                            </div>
+                    <div class="col-sm-1 data-title" >
+                            ESTADO
                     </div>
-                    <div class="row">
+                    <div class="col-sm-1 data-title" >
+                            VALOR
+                    </div>
+                    <div class="col-sm-2 data-title" >
+                            CALIFICACIÓN DE CADA ASPECTO
+                    </div>
+                    <div class="col-sm-2 data-title" >
+                            PORCENTAJE DE CADA ASPECTO
+
+                    </div>
+                    <div class="col-sm-2 data-title" >
+                            PONDERACIÓN DE CALIFICACIÓN
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12 data-color" >
+                                ASPECTOS GEOMÉTRICOS
+                        </div>
+                </div>
+
+
+
+                <div class="row">
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                        1. Irregularidad en planta de la edificacion
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_floor == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_floor == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_floor == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_floor }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                    2. Cantidad de muros en las dos direcciones
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_wall == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_wall == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_wall == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_wall }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
+                                        3. Irregularidad en altura
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_height == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_height == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_height == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_height }}
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                <div class="col-sm-4 data-porcentage" >
+
+                                        {{ qualification_geometry }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" >
+                                        {{ PORCENT_GEOMETRY }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" >
+
+                                        {{ total_geometry }}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 data-color" >
+                        ASPECTOS CONSTRUCTIVOS
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                        4. Calidad de las juntas de pega en mortero
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_quality == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_quality == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_quality == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_quality }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                    5. Tipo y disposición de las unidades de mampostería
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_location == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_location == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_location == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_location }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
+                                        6. Calidad de los materiales
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_materials == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_materials == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_materials == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_materials }}
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                <div class="col-sm-4 data-porcentage" >
+                                        {{ qualification_constructive }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" >
+                                        {{ PORCENT_CONSTRUCTIVE }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" >
+                                        {{ total_constructive }}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12 data-color" >
+                        ASPECTOS ESTRUCTURALES
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                        7. Muros confinados y reforzados
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_confined_walls == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_confined_walls == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_confined_walls == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_confined_walls }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                                        8. Detalles de columnas y vigas de confinamiento
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_detail == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_detail == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_detail == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_detail }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
+                                        9. Vigas de amarre o corona
+                                    </div>
+                                    <div class="col-sm-2 data" >
+                                            {% if aisprocess.option_mooring == 0 %}
+                                            <p>Bueno  </p>
+                                            {% elif aisprocess.option_mooring == 1 %}
+                                                <p>Regular</p>
+                                            {% elif aisprocess.option_mooring == 2 %}
+                                                <p>Malo</p>
+                                            {% endif %}
+                                    </div>
+                                    <div class="col-sm-2 data">
+                                            {{ aisprocess.option_mooring }}
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
+                                    10. Características de las aberturas
+                                </div>
+                                <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_characteristics == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_characteristics == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_characteristics == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                </div>
+                                <div class="col-sm-2 data">
+                                        {{ aisprocess.option_characteristics }}
+                                </div>
+                        </div>
+
+                            <div class="row">
+                                <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
+                                    11. Entrepiso
+                                </div>
+                                <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_mezzanine == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_mezzanine == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_mezzanine == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                </div>
+                                <div class="col-sm-2 data">
+                                        {{ aisprocess.option_mezzanine }}
+                                </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                3. Irregularidad en altura
+                                12. Amarre de cubiertas
                             </div>
                             <div class="col-sm-2 data" >
-                                {% if aisprocess.option_height == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_height == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_height == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_height }}
-                            </div>
-                    </div>
-                </div>
-                <div class="col-sm-6" >
-                    <div class="row">
-                        <div class="col-sm-4 data-porcentage" >
-
-                                {{ qualification_geometry }}
-                        </div>
-                        <div class="col-sm-4 data-porcentage" >
-                                {{ PORCENT_GEOMETRY }}
-                        </div>
-                        <div class="col-sm-4 data-porcentage" >
-
-                                {{ total_geometry }}
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 data-color" >
-                ASPECTOS CONSTRUCTIVOS
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-sm-6" >
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                4. Calidad de las juntas de pega en mortero
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_quality == 0 %}
+                                    {% if aisprocess.option_cover == 0 %}
                                     <p>Bueno  </p>
-                                    {% elif aisprocess.option_quality == 1 %}
+                                    {% elif aisprocess.option_cover == 1 %}
                                         <p>Regular</p>
-                                    {% elif aisprocess.option_quality == 2 %}
+                                    {% elif aisprocess.option_cover == 2 %}
                                         <p>Malo</p>
                                     {% endif %}
                             </div>
                             <div class="col-sm-2 data">
-                                    {{ aisprocess.option_quality }}
+                                    {{ aisprocess.option_cover }}
+
                             </div>
                     </div>
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                               5. Tipo y disposición de las unidades de mampostería
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_location == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_location == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_location == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_location }}
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                6. Calidad de los materiales
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_materials == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_materials == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_materials == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_materials }}
-                            </div>
-                    </div>
-                </div>
-                <div class="col-sm-6" >
-                    <div class="row">
-                        <div class="col-sm-4 data-porcentage" >
-                                {{ qualification_constructive }}
                         </div>
-                        <div class="col-sm-4 data-porcentage" >
-                                {{ PORCENT_CONSTRUCTIVE }}
-                        </div>
-                        <div class="col-sm-4 data-porcentage" >
-                                {{ total_constructive }}
-                        </div>
-                    </div>
-                </div>
-        </div>
+                        <div class="col-sm-6" >
+                            <div class="row">
+                                <div class="col-sm-4 data-porcentage" style="height: 120px" >
+                                    {{ qualification_structural }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" style="height: 120px" >
+                                        {{ PORCENT_STRUCTURAL }}
+                                </div>
+                                <div class="col-sm-4 data-porcentage" style="height: 120px" >
+                                        {{ total_structural }}
 
 
-
-        <div class="row">
-            <div class="col-sm-12 data-color" >
-                ASPECTOS ESTRUCTURALES
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-sm-6" >
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                7. Muros confinados y reforzados
+                                </div>
                             </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_confined_walls == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_confined_walls == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_confined_walls == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_confined_walls }}
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                                8. Detalles de columnas y vigas de confinamiento
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_detail == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_detail == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_detail == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_detail }}
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                                9. Vigas de amarre o corona
-                            </div>
-                            <div class="col-sm-2 data" >
-                                    {% if aisprocess.option_mooring == 0 %}
-                                    <p>Bueno  </p>
-                                    {% elif aisprocess.option_mooring == 1 %}
-                                        <p>Regular</p>
-                                    {% elif aisprocess.option_mooring == 2 %}
-                                        <p>Malo</p>
-                                    {% endif %}
-                            </div>
-                            <div class="col-sm-2 data">
-                                    {{ aisprocess.option_mooring }}
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                            10. Características de las aberturas
-                        </div>
-                        <div class="col-sm-2 data" >
-                                {% if aisprocess.option_characteristics == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_characteristics == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_characteristics == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
-                        </div>
-                        <div class="col-sm-2 data">
-                                {{ aisprocess.option_characteristics }}
                         </div>
                 </div>
 
-                    <div class="row">
-                        <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                            11. Entrepiso
-                        </div>
-                        <div class="col-sm-2 data" >
-                                {% if aisprocess.option_mezzanine == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_mezzanine == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_mezzanine == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
-                        </div>
-                        <div class="col-sm-2 data">
-                                {{ aisprocess.option_mezzanine }}
-                        </div>
-                </div>
+
                 <div class="row">
-                    <div class="col-sm-8 data"  style="border-left: 0.2px solid black !important">
-                        12. Amarre de cubiertas
-                    </div>
-                    <div class="col-sm-2 data" >
-                            {% if aisprocess.option_cover == 0 %}
-                            <p>Bueno  </p>
-                            {% elif aisprocess.option_cover == 1 %}
-                                <p>Regular</p>
-                            {% elif aisprocess.option_cover == 2 %}
-                                <p>Malo</p>
-                            {% endif %}
-                    </div>
-                    <div class="col-sm-2 data">
-                            {{ aisprocess.option_cover }}
+                    <div class="col-sm-6" >
+                        <div class="row">
+                                <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #525573; color: white">
+                                    13. CIMENTACIÓN
+                                </div>
+                                <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_base == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_base == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_base == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                </div>
+                                <div class="col-sm-2 data">
+                                        {{ aisprocess.option_base }}
+                                </div>
+                        </div>
 
                     </div>
-            </div>
+                    <div class="col-sm-6" >
+                        <div class="row">
+                            <div class="col-sm-4 data"  >
+                                    {{ aisprocess.option_base }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ PORCENT_BASE }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ total_base }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6" >
-                    <div class="row">
-                        <div class="col-sm-4 data-porcentage" style="height: 120px" >
-                            {{ qualification_structural }}
-                        </div>
-                        <div class="col-sm-4 data-porcentage" style="height: 120px" >
-                                {{ PORCENT_STRUCTURAL }}
-                        </div>
-                        <div class="col-sm-4 data-porcentage" style="height: 120px" >
-                                {{ total_structural }}
-
-
-                        </div>
-                    </div>
-                </div>
-        </div>
 
 
 
-
-
-
-
-
-
-
-        <div class="row">
-            <div class="col-sm-6" >
                 <div class="row">
-                        <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            13. CIMENTACIÓN
+                    <div class="col-sm-6" >
+                        <div class="row">
+                                <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #525573; color: white">
+                                    14. SUELOS
+                                </div>
+                                <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_soil == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_soil == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_soil == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                </div>
+                                <div class="col-sm-2 data">
+                                        {{ aisprocess.option_soil }}
+                                </div>
                         </div>
-                        <div class="col-sm-2 data" >
-                                {% if aisprocess.option_base == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_base == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_base == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
+
+                    </div>
+                    <div class="col-sm-6" >
+                        <div class="row">
+                            <div class="col-sm-4 data"  >
+                                    {{ aisprocess.option_soil }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ PORCENT_SOIL }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ total_soil }}
+                            </div>
                         </div>
-                        <div class="col-sm-2 data">
-                                {{ aisprocess.option_base }}
-                        </div>
+                    </div>
                 </div>
 
-            </div>
-            <div class="col-sm-6" >
+
                 <div class="row">
-                    <div class="col-sm-4 data"  >
-                            {{ aisprocess.option_base }}
+                    <div class="col-sm-6" >
+                        <div class="row">
+                                <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #525573; color: white">
+                                    15. ENTORNO
+                                </div>
+                                <div class="col-sm-2 data" >
+                                        {% if aisprocess.option_environment == 0 %}
+                                        <p>Bueno  </p>
+                                        {% elif aisprocess.option_environment == 1 %}
+                                            <p>Regular</p>
+                                        {% elif aisprocess.option_environment == 2 %}
+                                            <p>Malo</p>
+                                        {% endif %}
+                                </div>
+                                <div class="col-sm-2 data">
+                                        {{ aisprocess.option_environment }}
+                                </div>
+                        </div>
+
                     </div>
-                    <div class="col-sm-4 data"  >
-                            {{ PORCENT_BASE }}
-                    </div>
-                    <div class="col-sm-4 data"  >
-                            {{ total_base }}
+                    <div class="col-sm-6" >
+                        <div class="row">
+                            <div class="col-sm-4 data"  >
+                                    {{ aisprocess.option_environment }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ PORCENT_ENVIRONMENT }}
+                            </div>
+                            <div class="col-sm-4 data"  >
+                                    {{ total_environment }}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
 
 
-
-
-
-
-
-        <div class="row">
-            <div class="col-sm-6" >
                 <div class="row">
-                        <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            14. SUELOS
+                    <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
+                            Indice de vulnerabilidad sísmica de la vivienda  ( Menor o igual a 15: Baja, Menor o igual a 35: Media, Mayor a 35: Alta)
+                    </div>
+                    <div class="col-sm-4" >
+                        <div class="row" style="background: #525573; color: white">
+                            <div class="col-sm-6 data data-color"  >
+                                {{ vulnerability_result }}
+                            </div>
+                            <div class="col-sm-6 data data-color"  >
+                                    {{ result }}
+                            </div>
+
                         </div>
-                        <div class="col-sm-2 data" >
-                                {% if aisprocess.option_soil == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_soil == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_soil == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
-                        </div>
-                        <div class="col-sm-2 data">
-                                {{ aisprocess.option_soil }}
-                        </div>
+                    </div>
                 </div>
 
-            </div>
-            <div class="col-sm-6" >
-                <div class="row">
-                    <div class="col-sm-4 data"  >
-                            {{ aisprocess.option_soil }}
-                    </div>
-                    <div class="col-sm-4 data"  >
-                            {{ PORCENT_SOIL }}
-                    </div>
-                    <div class="col-sm-4 data"  >
-                            {{ total_soil }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="row">
-            <div class="col-sm-6" >
-                <div class="row">
-                        <div class="col-sm-8 data data-color" style="border-left: 0.2px solid black !important; background: #272833; color: white">
-                            15. ENTORNO
-                        </div>
-                        <div class="col-sm-2 data" >
-                                {% if aisprocess.option_environment == 0 %}
-                                <p>Bueno  </p>
-                                {% elif aisprocess.option_environment == 1 %}
-                                    <p>Regular</p>
-                                {% elif aisprocess.option_environment == 2 %}
-                                    <p>Malo</p>
-                                {% endif %}
-                        </div>
-                        <div class="col-sm-2 data">
-                                {{ aisprocess.option_environment }}
-                        </div>
-                </div>
-
-            </div>
-            <div class="col-sm-6" >
-                <div class="row">
-                    <div class="col-sm-4 data"  >
-                            {{ aisprocess.option_environment }}
-                    </div>
-                    <div class="col-sm-4 data"  >
-                            {{ PORCENT_ENVIRONMENT }}
-                    </div>
-                    <div class="col-sm-4 data"  >
-                            {{ total_environment }}
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 
 
 
-        <div class="row">
-            <div class="col-sm-8 data" style="border-left: 0.2px solid black !important">
-                    Indice de vulnerabilidad sísmica de la vivienda  ( Menor o igual a 15: Baja, Menor o igual a 35: Media, Mayor a 35: Alta)
-            </div>
-            <div class="col-sm-4" >
-                <div class="row" style="background: #272833; color: white">
-                    <div class="col-sm-6 data data-color"  >
-                        {{ vulnerability_result }}
-                    </div>
-                    <div class="col-sm-6 data data-color"  >
-                            {{ result }}
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-        </div>
-
+    </div>
 
 
 
@@ -540,7 +521,7 @@
             height: 40px;
         }
         .data-color {
-            background: #272833;
+            background: #525573;
             border: 0.2px solid black; border-top: none;
             height: 20px;
             color: white
@@ -551,19 +532,30 @@
             border-left: none;
             height: 60px;
         }
+        body {
+        -webkit-print-color-adjust: exact !important;
+        }
 </style>
 <style media="print" type="text/css">
     .data-color {
-        background-color: #272833 !important;
+        background-color: #525573 !important;
         color: white !important;
     }
+    .print{
+        background-color: #525573 !important;
+        color: white !important;
+    }
+    .print2{
+        background-color: #383737 !important;
+        color: white !important;
+    }
+</style>
 
-  </style>
 <script>
 		Swal.fire({
 			icon:'success',
 			title:'El indice de vulnerabilidad sísmica es {{ result }}'
-			})
+		})
 </script>
 </body>
 </html>
