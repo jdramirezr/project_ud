@@ -815,7 +815,7 @@
   <div style="overflow:auto; position: relative; padding-top: 1px;">
     <div class="next-button">
         <br>
-      <button type="button" class="btn btn-primary my-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" class="btn btn-primary my-btn" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
       <button type="button" class="btn btn-primary my-btn" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
     </div>
   </div>
@@ -845,9 +845,9 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").innerHTML = "Enviar";
   } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+    document.getElementById("nextBtn").innerHTML = "Siguiente";
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)

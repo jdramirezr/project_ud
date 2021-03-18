@@ -33,8 +33,208 @@
         <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
     </div>
 <div class="col-lg-12" style="padding: 50px" id="property_0">
+        <!-- <div class="row">
+            <div class="col-sm-12" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                    EVALUACIÓN CUANTITATIVA
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px"> INFORMACIÓN CONSTRUCTIVA</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                    Grupo de uso:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ grupo }}
+            </div>
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                    Numero de pisos:
+                </div>
+                <div class="col-sm-3 data" >
+                    {{ floors }}
+                </div>
 
 
+        </div>
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                    Tipo de sistema estructural:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ type_construccion }}
+            </div>
+
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                    Altura entre pisos:
+                </div>
+                <div class="col-sm-3 data" >
+                    {{ height_floors }}
+                </div>
+
+        </div>
+
+        <!-- <div class="row">
+
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Total altura propiedad:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ height }}
+
+            </div>
+        </div> -->
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Irregularidad en altura:</span>
+            </div>
+
+            <div class="col-sm-3 data-porcentage" >
+                {{ irregularidad_long }}
+            </div>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Irregularidad en planta:</span>
+            </div>
+            <div class="col-sm-3 data-porcentage" >
+                {{ irregularidad_planta }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Fuerzas horizontales:</span>
+            </div>
+            <div class="col-sm-3 data-porcentage" >
+                {{ fuerza_horizontal }}
+            </div>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Fuerzas verticales</span>
+            </div>
+            <div class="col-sm-3 data-porcentage" >
+                {{ fuerza_vertical }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; ">
+                <span class="print" style="position: relative; top:10px">Comentarios:</span>
+            </div>
+            <div class="col-sm-9 data-porcentage" style="overflow: auto;" >
+                {{ comments }}
+            </div>
+
+        </div>
+
+<br>
+        <div class="row">
+            <div class="col-sm-12 " style="height: 40px" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">ESPECIFICACIÓN SUELOS</span>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Tipo de suelo:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ type_suelo }}
+            </div>
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Velocidad onda:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ velocidad_onda }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Fa:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ fa }}
+            </div>
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Humedad_Promedio:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ Humedad_Promedio }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Fv:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ fv }}
+            </div>
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Efectos relacionados
+            </div>
+            <div class="col-sm-3 data" >
+                {{ Efectos_relacionados }}
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Espesor deposito:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ Espesor_deposito }}
+            </div>
+            <div class="col-sm-6 print"  style=" text-align: center; background: #525573; color: white ">
+                Ubicación
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Periodo suelo:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ Periodo_suelo }}
+            </div>
+            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                Cordenada x:
+            </div>
+            <div class="col-sm-3 data" >
+                {{ cordenada_x }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Descripción geotecnica:</span>
+            </div>
+            <div class="col-sm-3 data-porcentage" style="overflow: auto;" >
+                {{ descripcion_geotecnica }}
+            </div>
+            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
+                <span class="print" style="position: relative; top:10px">Cordenada y:</span>
+            </div>
+            <div class="col-sm-3 data-porcentage"  >
+                <span style="position: relative; top:10px">   {{ cordenada_y }}</span>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-sm-12 " style="height: 40px" >
             </div>
@@ -805,191 +1005,6 @@
 <br>
 
 
-<script>
-    var a = parseFloat('{{Sa_1 }}')
-    var b = parseFloat('{{Sa_8 }}')
-    window.onload = function () {
-
-    // var chart = new CanvasJS.Chart("chartContainer", {
-    //     title: {
-    //         text: "House Median Price"
-    //     },
-    //     axisX: {
-    //         // valueFormatString: "MMM YYYY"
-    //         // prefix: "$",
-    //         // suffix: "T"
-    //         title: "T"
-    //     },
-    //     axisY2: {
-    //         title: "Median List Price",
-    //         prefix: "$",
-    //         suffix: "K"
-    //     },
-    //     toolTip: {
-    //         shared: true
-    //     },
-    //     legend: {
-    //         cursor: "pointer",
-    //         verticalAlign: "top",
-    //         horizontalAlign: "center",
-    //         dockInsidePlotArea: true,
-    //         itemclick: toogleDataSeries
-    //     },
-    //     // for ( 'T_x'){
-
-    //     // }
-    //     // const T_x = eval('{{ T_x }}')
-    //     // for (const element of T_x) {
-    //     //     console.log(element);
-    //     // }
-
-    //     // const Sa_list = eval('{{ Sa_list }}')
-    //     // for (const element of Sa_list) {
-    //     //     console.log(element);
-    //     // }
-
-    //     data: [{
-    //         type:"line",
-    //         axisYType: "secondary",
-    //         name: "San Fransisco",
-    //         showInLegend: true,
-    //         markerSize: 0,
-    //         yValueFormatString: "$#,##k",
-    //         dataPoints: [
-    //             { x: 0.00, y: parseFloat(parseFloat('{{Sa_0 }}').toFixed(8)) },
-    //             { x: 0.06, y: parseFloat(parseFloat('{{Sa_1 }}').toFixed(8)) },
-    //             { x: 0.11, y: parseFloat(parseFloat('{{Sa_2 }}').toFixed(8)) },
-    //             { x: 0.17, y: parseFloat(parseFloat('{{Sa_3 }}').toFixed(8)) },
-    //             { x: 0.23, y: parseFloat(parseFloat('{{Sa_4 }}').toFixed(8)) },
-    //             { x: 0.28, y: parseFloat(parseFloat('{{Sa_5 }}').toFixed(8)) },
-    //             { x: 0.34, y: parseFloat(parseFloat('{{Sa_6 }}').toFixed(8)) },
-    //             { x: 0.40, y: parseFloat(parseFloat('{{Sa_7 }}').toFixed(8)) },
-    //             { x: 0.45, y: parseFloat(parseFloat('{{Sa_8 }}').toFixed(8)) },
-    //             { x: 0.51, y: parseFloat(parseFloat('{{Sa_9 }}').toFixed(8)) },
-    //             { x: 0.57, y: parseFloat(parseFloat('{{Sa_10 }}').toFixed(8)) },
-    //             { x: 0.62, y: parseFloat(parseFloat('{{Sa_11 }}').toFixed(8)) },
-    //             { x: 0.68, y: parseFloat(parseFloat('{{Sa_12 }}').toFixed(8)) },
-    //             { x: 0.74, y: parseFloat(parseFloat('{{Sa_13 }}').toFixed(8)) },
-    //             { x: 0.79, y: parseFloat(parseFloat('{{Sa_14 }}').toFixed(8)) },
-    //             { x: 0.85, y: parseFloat(parseFloat('{{Sa_15 }}').toFixed(8)) },
-    //             { x: 0.91, y: parseFloat(parseFloat('{{Sa_16 }}').toFixed(8)) },
-    //             { x: 0.96, y: parseFloat(parseFloat('{{Sa_17 }}').toFixed(8)) },
-    //             { x: 1.02, y: parseFloat(parseFloat('{{Sa_18 }}').toFixed(8)) },
-    //             { x: 1.08, y: parseFloat(parseFloat('{{Sa_19 }}').toFixed(8)) },
-    //             { x: 1.13, y: parseFloat(parseFloat('{{Sa_20 }}').toFixed(8)) },
-    //             { x: 1.19, y: parseFloat(parseFloat('{{Sa_21 }}').toFixed(8)) },
-    //             { x: 1.25, y: parseFloat(parseFloat('{{Sa_22 }}').toFixed(8)) },
-    //             { x: 1.30, y: parseFloat(parseFloat('{{Sa_23 }}').toFixed(8)) },
-    //             { x: 1.36, y: parseFloat(parseFloat('{{Sa_24 }}').toFixed(8)) },
-    //             { x: 1.41, y: parseFloat(parseFloat('{{Sa_25 }}').toFixed(8)) },
-    //             { x: 1.47, y: parseFloat(parseFloat('{{Sa_26 }}').toFixed(8)) },
-    //             { x: 1.53, y: parseFloat(parseFloat('{{Sa_27 }}').toFixed(8)) },
-    //             { x: 1.58, y: parseFloat(parseFloat('{{Sa_28 }}').toFixed(8)) },
-    //             { x: 1.64, y: parseFloat(parseFloat('{{Sa_29 }}').toFixed(8)) },
-    //             { x: 1.70, y: parseFloat(parseFloat('{{Sa_30 }}').toFixed(8)) },
-    //             { x: 1.75, y: parseFloat(parseFloat('{{Sa_32 }}').toFixed(8)) },
-    //             { x: 1.81, y: parseFloat(parseFloat('{{Sa_32 }}').toFixed(8)) },
-    //             { x: 1.87, y: parseFloat(parseFloat('{{Sa_33 }}').toFixed(8)) },
-    //             { x: 1.92, y: parseFloat(parseFloat('{{Sa_34 }}').toFixed(8)) },
-    //             { x: 1.98, y: parseFloat(parseFloat('{{Sa_35 }}').toFixed(8)) },
-    //             { x: 2.04, y: parseFloat(parseFloat('{{Sa_36 }}').toFixed(8)) },
-    //             { x: 2.09, y: parseFloat(parseFloat('{{Sa_37 }}').toFixed(8)) },
-    //             { x: 2.15, y: parseFloat(parseFloat('{{Sa_38 }}').toFixed(8)) },
-    //             { x: 2.21, y: parseFloat(parseFloat('{{Sa_39 }}').toFixed(8)) },
-    //             { x: 2.26, y: parseFloat(parseFloat('{{Sa_40 }}').toFixed(8)) },
-    //             { x: 2.32, y: parseFloat(parseFloat('{{Sa_41 }}').toFixed(8)) },
-    //             { x: 2.38, y: parseFloat(parseFloat('{{Sa_42 }}').toFixed(8)) },
-    //             { x: 2.43, y: parseFloat(parseFloat('{{Sa_43 }}').toFixed(8)) },
-    //             { x: 2.49, y: parseFloat(parseFloat('{{Sa_44 }}').toFixed(8)) },
-    //         ]
-    //     }]
-    // });
-    // chart.render();
-    // console.log(parseFloat('{{Sa_1 }}'))
-    // function toogleDataSeries(e){
-    //     if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-    //         e.dataSeries.visible = false;
-    //     } else{
-    //         e.dataSeries.visible = true;
-    //     }
-    //     chart.render();
-    // }
-
-    // }
-    var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title:{
-		text: "Espectro elástico de aceleraciones como fracción de g"
-	},
-	axisY: {
-		title: "Espectro de diseño de aceleración",
-		valueFormatString: "Sa #,##0.00##",
-		suffix: "",
-		prefix: ""
-	},
-	data: [{
-		type: "splineArea",
-		color: "rgba(54,158,173,.7)",
-		markerSize: 5,
-		xValueFormatString: "T",
-		yValueFormatString: "Sa #,##0.00##",
-		dataPoints: [
-                { x: 0.00, y: parseFloat(parseFloat('{{Sa_0 }}').toFixed(8)) },
-                { x: 0.06, y: parseFloat(parseFloat('{{Sa_1 }}').toFixed(8)) },
-                { x: 0.11, y: parseFloat(parseFloat('{{Sa_2 }}').toFixed(8)) },
-                { x: 0.17, y: parseFloat(parseFloat('{{Sa_3 }}').toFixed(8)) },
-                { x: 0.23, y: parseFloat(parseFloat('{{Sa_4 }}').toFixed(8)) },
-                { x: 0.28, y: parseFloat(parseFloat('{{Sa_5 }}').toFixed(8)) },
-                { x: 0.34, y: parseFloat(parseFloat('{{Sa_6 }}').toFixed(8)) },
-                { x: 0.40, y: parseFloat(parseFloat('{{Sa_7 }}').toFixed(8)) },
-                { x: 0.45, y: parseFloat(parseFloat('{{Sa_8 }}').toFixed(8)) },
-                { x: 0.51, y: parseFloat(parseFloat('{{Sa_9 }}').toFixed(8)) },
-                { x: 0.57, y: parseFloat(parseFloat('{{Sa_10 }}').toFixed(8)) },
-                { x: 0.62, y: parseFloat(parseFloat('{{Sa_11 }}').toFixed(8)) },
-                { x: 0.68, y: parseFloat(parseFloat('{{Sa_12 }}').toFixed(8)) },
-                { x: 0.74, y: parseFloat(parseFloat('{{Sa_13 }}').toFixed(8)) },
-                { x: 0.79, y: parseFloat(parseFloat('{{Sa_14 }}').toFixed(8)) },
-                { x: 0.85, y: parseFloat(parseFloat('{{Sa_15 }}').toFixed(8)) },
-                { x: 0.91, y: parseFloat(parseFloat('{{Sa_16 }}').toFixed(8)) },
-                { x: 0.96, y: parseFloat(parseFloat('{{Sa_17 }}').toFixed(8)) },
-                { x: 1.02, y: parseFloat(parseFloat('{{Sa_18 }}').toFixed(8)) },
-                { x: 1.08, y: parseFloat(parseFloat('{{Sa_19 }}').toFixed(8)) },
-                { x: 1.13, y: parseFloat(parseFloat('{{Sa_20 }}').toFixed(8)) },
-                { x: 1.19, y: parseFloat(parseFloat('{{Sa_21 }}').toFixed(8)) },
-                { x: 1.25, y: parseFloat(parseFloat('{{Sa_22 }}').toFixed(8)) },
-                { x: 1.30, y: parseFloat(parseFloat('{{Sa_23 }}').toFixed(8)) },
-                { x: 1.36, y: parseFloat(parseFloat('{{Sa_24 }}').toFixed(8)) },
-                { x: 1.41, y: parseFloat(parseFloat('{{Sa_25 }}').toFixed(8)) },
-                { x: 1.47, y: parseFloat(parseFloat('{{Sa_26 }}').toFixed(8)) },
-                { x: 1.53, y: parseFloat(parseFloat('{{Sa_27 }}').toFixed(8)) },
-                { x: 1.58, y: parseFloat(parseFloat('{{Sa_28 }}').toFixed(8)) },
-                { x: 1.64, y: parseFloat(parseFloat('{{Sa_29 }}').toFixed(8)) },
-                { x: 1.70, y: parseFloat(parseFloat('{{Sa_30 }}').toFixed(8)) },
-                { x: 1.75, y: parseFloat(parseFloat('{{Sa_32 }}').toFixed(8)) },
-                { x: 1.81, y: parseFloat(parseFloat('{{Sa_32 }}').toFixed(8)) },
-                { x: 1.87, y: parseFloat(parseFloat('{{Sa_33 }}').toFixed(8)) },
-                { x: 1.92, y: parseFloat(parseFloat('{{Sa_34 }}').toFixed(8)) },
-                { x: 1.98, y: parseFloat(parseFloat('{{Sa_35 }}').toFixed(8)) },
-                { x: 2.04, y: parseFloat(parseFloat('{{Sa_36 }}').toFixed(8)) },
-                { x: 2.09, y: parseFloat(parseFloat('{{Sa_37 }}').toFixed(8)) },
-                { x: 2.15, y: parseFloat(parseFloat('{{Sa_38 }}').toFixed(8)) },
-                { x: 2.21, y: parseFloat(parseFloat('{{Sa_39 }}').toFixed(8)) },
-                { x: 2.26, y: parseFloat(parseFloat('{{Sa_40 }}').toFixed(8)) },
-                { x: 2.32, y: parseFloat(parseFloat('{{Sa_41 }}').toFixed(8)) },
-                { x: 2.38, y: parseFloat(parseFloat('{{Sa_42 }}').toFixed(8)) },
-                { x: 2.43, y: parseFloat(parseFloat('{{Sa_43 }}').toFixed(8)) },
-                { x: 2.49, y: parseFloat(parseFloat('{{Sa_44 }}').toFixed(8)) },
-		]
-	}]
-	});
-chart.render();
-
-}
-    </script>
-    <br>
-    <br>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-    <script src="/static/js/canvasjs.min.js"></script>
 
 
 

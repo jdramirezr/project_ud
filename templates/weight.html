@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+            #mapid { height: 180px;
+            width:100%;
+            height:400px;
+            }
+            .regForm2{
+              padding-bottom: 0px !important;
+            }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="/static/assets/css/main.css" />
+    <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
+		<title>Bogotá earthquake
+			</title>
+    <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script  type="text/javascript"  src="/static/js/script_volumns.js"></script>
+    <script  type="text/javascript"  src="/static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+</head>
+<body>
+    <div id="page-wrapper">
+        <header id="header">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a style="color:white;font-weight:bold" href="{% url 'page' %}">Inicio</a>
+
+                        </li>
+                        <li><a style="color:white;font-weight:bold" href="/users/calculate_process/">Calcular Processo</a></li>
+
+                        <li><a style="color:white;font-weight:bold" href="/users/login/" >Ingresar</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+
+    </div>
+
+    <form id="regForm" action="{% url 'nsr' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="tab">
+        <div class="regForm2">
+
+            <div class="mt-5">
+
+
+                <div class="" id="profile-box2">
+                    <h4>Especificaciónes de las vigas: <span class="more_information" id="mas_vigas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+                    <div class="row" id="viga_0">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Ancho:</label>
+                                <input class="form-control" type="number" name="ancho_viga" step=".001" min="0" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Largo:</label>
+                                <input class="form-control" type="number" name="largo_viga" step=".001" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                          <div class="form-group">
+                              <label>Alto:</label>
+                              <input class="form-control" type="number" name="alto_viga" step=".001" min="0" required>
+                          </div>
+                      </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label># de vigas:</label>
+                                <input class="form-control count" type="number" name="numero_viga" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="" id="profile-box3" style="width: 100%;">
+                    <h4>Especificaciónes de las columnas:  <span class="more_information" id="mas_columnas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+                    <div class="row" id="columna_0" >
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Ancho:</label>
+                            <input class="form-control" type="number" name="ancho_columna" step=".001" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Largo:</label>
+                            <input class="form-control" type="number" name="largo_columna" step=".001" min="0" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                          <label>Alto:</label>
+                          <input class="form-control" type="number" name="alto_columna" step=".001" min="0" required>
+                      </div>
+                  </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label># de columnas:</label>
+                            <input class="form-control count" type="number" name="numero_columna" min="0" required>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="" id="profile-box1" style="width: 100%;">
+
+                  <h4>Dimensiones de la placa: <span class="more_information" id="mas_placas"><u><h6>(Agregar más filas)</h6></u></span></h4>
+                  <div class="row" id="placa_0">
+                      <div class="col-sm-3">
+                          <div class="">
+                              <label>Tipo de Placa:</label>
+                              <select class="form-control" name="type_placa" id="type_placa" required>
+                                  <option selected></option>
+                                  <option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option>
+                                  <option name="Placa_Maciza" value="Placa_Maciza">Maciza</option>
+                                  <option name="Placa_Facil" value="Placa_Facil">Facil</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="">
+                              <label>Ancho:</label>
+                              <input class="form-control" type="number" name="placa_x" step=".001" min="0" required>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="">
+                              <label>Largo:</label>
+                              <input class="form-control" type="number" name="placa_y" step=".001" min="0" required>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label># de placas:</label>
+                                  <input class="form-control count" type="number" name="num_placa" min="0" required>
+                              </div>
+                      </div>
+
+
+                  </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab">
+        <div class="regForm2">
+            <div style="text-align: center;"class="col-lg-12" id="property">
+                <h2>Metodo cuantitativo</h2>
+                <a id="help_cuantitativo">(Información)</a>
+                <br></br>
+            </div>
+            <div class="col-lg-12" id="property">
+                <h4>Muros Fachada</h4>
+              </div>
+
+              <div class="col-lg-12" id="property_0">
+
+                  <div class="row" id="info_0">
+                      <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label>Muro de fachadas</label>
+                                  <select class="form-control" name="muro_fachada" id="muro_fachada" required>
+                                    <option selected></option>
+                                    <option value=0>Mampostería de bloque de arcilla</option>
+                                    <option value=1>Mampostería de bloque de concreto</option>
+                                    <option value=2>Mampostería maciza de arcilla</option>
+                                    <option value=3>Mampostería maciza de concreto</option>
+                                  </select>
+                              </div>
+
+                      </div>
+
+
+                      <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Caracteristica</label>
+                                <select class="form-control" name="muro_caracteristica" id="muro_caracteristica" required>
+                                  <option selected></option>
+                                </select>
+                            </div>
+
+                      </div>
+
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Espesor (mm)</label>
+                            <select class="form-control" name="espesor" id="espesor" required>
+                              <option selected></option>
+                              <option name="100" value=0>100</option>
+                              <option name="150" value=1>150</option>
+                              <option name="200" value=2>200</option>
+                              <option name="250" value=3>250</option>
+                              <option name="300" value=4>300</option>
+                            </select>
+                        </div>
+
+                      </div>
+
+                      <!-- <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Cantidad:</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="cantidad_muros"
+                                min=0
+                                required
+
+                              />
+                        </div>
+
+                      </div> -->
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>M2 Total:</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="m2_muros"
+                                required
+                                step=".001"
+                                min="0"
+                                required>
+
+                        </div>
+
+                      </div>
+
+
+
+                  </div>
+
+              </div>
+
+
+              <div class="col-lg-12" id="property">
+                <h4>Muros Divisorio</h4>
+              </div>
+
+              <div class="col-lg-12" id="property_0">
+
+                  <div class="row" id="info_0">
+                      <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label>Muros divisorio</label>
+                                  <select class="form-control" name="muro_divisorio" id="muro_divisorio" required>
+                                    <option selected></option>
+                                    <option value=0>Mampostería de bloque de arcilla</option>
+                                    <option value=1>Mampostería de bloque de concreto</option>
+                                    <option value=2>Mampostería maciza de arcilla</option>
+                                    <option value=3>Mampostería maciza de concreto</option>
+                                  </select>
+                              </div>
+
+                      </div>
+
+
+                      <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Caracteristica</label>
+                                <select class="form-control" name="muro_caracteristica_divisorio" id="muro_caracteristica_divisorio" required>
+                                  <option selected></option>
+                                </select>
+                            </div>
+
+                      </div>
+
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Espesor (mm)</label>
+                            <select class="form-control" name="espesor_divisorio" id="espesor_divisorio" required>
+                              <option selected></option>
+                              <option name="100" value=0>100</option>
+                              <option name="150" value=1>150</option>
+                              <option name="200" value=2>200</option>
+                              <option name="250" value=3>250</option>
+                              <option name="300" value=4>300</option>
+                            </select>
+                        </div>
+
+                      </div>
+
+                      <!-- <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Cantidad:</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="cantidad_muros_divisorio"
+                                min=0
+                                required
+
+                              />
+                        </div>
+
+                      </div> -->
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>M2 Total:</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="m2_muros_divisorio"
+                                required
+                                step=".001"
+                                min="0"
+                                required>
+
+                        </div>
+
+                      </div>
+
+
+
+                  </div>
+
+              </div>
+
+
+            <div class="col-lg-12" id="property">
+                <h4>Particiones livianas</h4>
+              </div>
+
+              <div class="col-lg-12" id="property_0">
+
+                <div class="row" id="info_0">
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Particiones livianas:</label>
+                                <select class="form-control" name="type_particiones" id="type_particiones" required>
+                                  <option selected></option>
+                                  <option value="None">No tiene</option>
+                                  <option name="0" value=0.5>Particiones móviles de acero (altura parcial)</option>
+                                  <option name="1" value=0.2>Particiones móviles de acero (altura total)</option>
+                                  <option name="2" value=0.9>Poste en madera o acero, yeso de 12 mm a cada lado</option>
+                                </select>
+                            </div>
+
+                    </div>
+
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>M2:</label>
+                          <input
+                              class="form-control"
+                              type="number"
+                              name="m2_particiones"
+                              required
+                              step=".001"
+                              min="0"
+                              id="m2_particiones"
+                              required>
+
+                      </div>
+
+                    </div>
+
+
+
+                </div>
+
+              </div>
+
+
+            <div class="col-lg-12" id="property">
+              <h4>Ventanas</h4>
+            </div>
+
+            <div class="col-lg-12" id="property_0">
+
+              <div class="row" id="info_0">
+                  <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>Ventanas:</label>
+                              <select class="form-control" name="type_ventanas" id="type_ventanas" required>
+                                <option selected></option>
+                                <option value="None">No tiene</option>
+                                <option name="0" value=0.5>Muros cortina de vidrio, entramado y marco</option>
+                                <option name="1" value=0.45>Ventanas, vidrio, entramado y marco</option>
+                              </select>
+                          </div>
+
+                  </div>
+
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>M2:</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="m2_ventanas"
+                            id="m2_ventanas"
+                            step=".001"
+                            min="0"
+                            required>
+
+                    </div>
+
+                  </div>
+
+
+
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="tab">
+      <div class="regForm2">
+        <div class="col-lg-12" id="property">
+          <h4>Cubierta</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+            <div class="row" id="info_0">
+                <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Tipo de cubierta:</label>
+                            <select class="form-control" name="type_cubierta" id="type_cubierta" required>
+                              <option selected></option>
+                              <option value="None">No tiene</option>
+                              <option name="0" value=0.0020>Cubiertas aislantes Fibra de vidrio</option>
+                              <option name="1" value=0.2>Cubiertas corrugadas de asbesto-cemento</option>
+                              <option name="2" value=0.0060>Entablado de madera</option>
+                              <option name="3" value=0.1>Láminas de yeso, 12 mm</option>
+                              <option name="4" value=0.0100>Madera laminada (según el espesor)</option>
+                              <option name="5" value=0.4>Marquesinas, marco metálico, vidrio de 10 mm</option>
+                              <option name="6" value=0.15>Tablillas (shingles) de madera</option>
+                              <option name="7" value=0.8>Teja de arcilla, incluyendo el mortero</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="form-group"  id="espesor_disable">
+                      <label>Espesor (mm):</label>
+                      <input
+                          class="form-control disable"
+                          type="number"
+                          name="espesor_cubierta"
+                          id="espesor_cubierta"
+                          required
+                          step=".001"
+                          min="0"
+                          required
+                      >
+                  </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>M2:</label>
+                      <input
+                          class="form-control"
+                          type="number"
+                          name="m2_cubierta"
+                          id="m2_cubierta"
+                          required
+                          step=".001"
+                          min="0"
+                          required>
+
+                  </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12" id="property">
+          <h4>Pisos</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Tipo de pisos:</label>
+                          <select class="form-control" name="type_piso" id="type_piso" required>
+                            <option selected></option>
+                            <option value="None">No tiene</option>
+                            <option name="0" value=0.02>Acabado de piso en concreto</option>
+                            <option name="1" value=0.8>Baldosa cerámica (20 mm) sobre 12 mm de mortero</option>
+                            <option name="2" value=1.1>Baldosa sobre 25 mm de mortero</option>
+                            <option name="3" value=0.2>Madera densa, 25 mm</option>
+                            <option name="4" value=0.03>Pizarra</option>
+                            <option name="5" value=1.5>Terrazzo (25 mm), concreto 50 mm</option>
+                            <option name="6" value=0.9>Terrazzo (40 mm) directamente sobre la losa</option>
+                            <option name="7" value=1.5>Terrazzo (25 mm) sobre afinado en concreto</option>
+                          </select>
+                      </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group" id="piso_disable">
+                    <label>Espesor (mm):</label>
+                    <input
+                        class="form-control disable"
+                        type="number"
+                        name="espesor_piso"
+                        id="espesor_piso"
+                        required
+                        step=".001"
+                        min="0"
+                        required
+                    >
+                </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group">
+                    <label>M2:</label>
+                    <input
+                        class="form-control"
+                        type="number"
+                        name="m2_pisos"
+                        id="m2_pisos"
+                        required
+                        step=".001"
+                        min="0"
+                        required>
+
+                </div>
+
+              </div>
+
+
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-12" id="property">
+        <h4>Recubrimiento de muros</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+          <div class="row" id="info_0">
+              <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Recubrimiento:</label>
+                          <select class="form-control" name="type_recubrimiento" id="type_recubrimiento" required>
+                            <option selected></option>
+                            <option value="None">No tiene</option>
+                            <option name="0" value=0.8>Baldosín de cemento</option>
+                            <option name="1" value=0.01>Madera laminada (según el espesor)</option>
+                            <option name="2" value=0.003>Tableros de fibra (aislante)</option>
+                            <option name="3" value=0.1>Tableros de yeso, 12 mm (aislante)</option>
+                          </select>
+                      </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group" id="recubrimiento_disable">
+                    <label>Espesor (mm):</label>
+                    <input
+                        class="form-control disable"
+                        type="number"
+                        name="espesor_recubrimiento"
+                        id="espesor_recubrimiento"
+                        step=".001"
+                        min="0"
+                        required
+                    >
+                </div>
+
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group">
+                    <label>M2:</label>
+                    <input
+                        class="form-control"
+                        type="number"
+                        name="m2_recubrimiento"
+                        id="m2_recubrimiento"
+                        step=".001"
+                        min="0"
+                        required>
+
+                </div>
+
+              </div>
+
+
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-12" id="property">
+        <h4>Enchape</h4>
+        </div>
+
+        <div class="col-lg-12" id="property_0">
+
+        <div class="row" id="info_0">
+          <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Enchape:</label>
+                      <select class="form-control" name="type_enchape" id="type_enchape" required>
+                        <option selected></option>
+                        <option value="None">No tiene</option>
+                        <option name="0" value=0.015>Enchape cerámico</option>
+                        <option name="1" value=0.013>Enchape en arenisca</option>
+                        <option name="2" value=0.015>Enchape en caliza</option>
+                        <option name="3" value=0.017>Enchape en granito</option>
+                      </select>
+                  </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group" id="enchape_disable">
+                <label>Espesor (mm):</label>
+                <input
+                    class="form-control"
+                    type="number"
+                    name="espesor_enchape"
+                    id="espesor_enchape"
+                    step=".001"
+                    min="0"
+                    required
+                >
+            </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+                <label>M2:</label>
+                <input
+                    class="form-control"
+                    type="number"
+                    name="m2_enchape"
+                    id="m2_enchape"
+                    step=".001"
+                    min="0"
+                    required>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="tab">
+        <div class="regForm2">
+            <div style="text-align: center;"class="col-lg-12" id="property">
+                <h2>Metodo cuantitativo</h2>
+                <a id="help_cuantitativo">(Información)</a>
+                <br></br>
+            </div>
+            <div class="col-lg-12" id="property">
+                <h4>Ocupacion o Uso</h4>
+              </div>
+
+              <div class="col-lg-12" id="property_0">
+
+                  <div class="row" id="info_0">
+                      <div class="col-sm-4">
+                              <div class="form-group">
+                                  <label>Ocupación</label>
+                                  <select class="form-control" name="ocupacion" id="ocupacion" required>
+                                    <option selected></option>
+                                    <option value=0>Oficinas</option>
+                                    <option value=1>Educativos</option>
+                                    <option value=2>Comercio</option>
+                                    <option value=3>Residencial</option>
+                                    <option value=4>Almacenamiento</option>
+                                    <option value=5>Garajes</option>
+                                  </select>
+                              </div>
+
+                      </div>
+
+
+                      <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Uso:</label>
+                                <select class="form-control" name="ocupacion_uso" id="ocupacion_uso" required>
+                                  <option selected></option>
+                                </select>
+                            </div>
+
+                      </div>
+
+
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>M2:</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="m2_ocupacion"
+                                required
+                                step=".001"
+                                min="0"
+                                required>
+
+                        </div>
+
+                      </div>
+
+
+
+                  </div>
+
+              </div>
+
+              <div class="col-lg-12" id="property">
+                  <h4>Cubierta</h4>
+                </div>
+
+                <div class="col-lg-12" id="property_0">
+
+                    <div class="row" id="info_0">
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Tipo de cubierta</label>
+                                    <select class="form-control" name="cubierta_viva" id="cubierta_viva" required>
+                                      <option selected></option>
+                                      <option value=1>Cubiertas, Azoteas y Terrazas</option>
+                                      <option value=5.0>Cubiertas usadas para jardines de cubierta o para reuniones</option>
+                                      <option value=0.35>Cubiertas inclinadas con más de 15° de pendiente en estructura metálica o de madera con imposibilidad física de verse sometidas a cargas superiores a la aquí estipulada</option>
+                                      <option value=0.5>Cubiertas  inclinadas  con  pendiente  de  15°  o menos  en estructura metálica o de madera con imposibilidad física de verse sometidas a cargas superiores a la aquí estipulada</option>
+                                    </select>
+                                </div>
+
+                        </div>
+
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                              <label>M2:</label>
+                              <input
+                                  class="form-control"
+                                  type="number"
+                                  name="m2_cubierta_viva"
+                                  required
+                                  step=".001"
+                                  min="0"
+                                  required>
+
+                          </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <br>
+    <div style="overflow:auto; position: relative; padding-top: 1px;">
+      <div class="next-button">
+          <br>
+        <button type="button" class="btn btn-primary my-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" class="btn btn-primary my-btn" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px; position: relative;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+
+    </div>
+  </form>
+
+  <script>
+  var currentTab = 0; // Current tab is set to be the first tab (0)
+  showTab(currentTab); // Display the current tab
+
+  function showTab(n) {
+    // This function will display the specified tab of the form...
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    //... and fix the Previous/Next buttons:
+    if (n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+    } else {
+      document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+      document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+      document.getElementById("nextBtn").innerHTML = "Next";
+    }
+    //... and run a function that will display the correct step indicator:
+    fixStepIndicator(n)
+  }
+
+  function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form...
+    if (currentTab >= x.length) {
+      // ... the form gets submitted:
+      document.getElementById("regForm").submit();
+      return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+  }
+
+  function validateForm() {
+    // This function deals with validation of the form fields
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    s = x[currentTab].getElementsByTagName("select");
+    element = x[currentTab].getElementsByClassName("count")
+    // A loop that checks every input field in the current tab:
+
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
+      class_observation = y[i].className.split(' ')[1]
+      if (y[i].value == "" & !(y[i].disabled) & !(class_observation == "observation") & !(y[i].className == 'image')) {
+        // add an "invalid" class to the field:
+
+        y[i].className += " invalid";
+        // and set the current valid status to false
+        valid = false;
+      }
+    }
+    for (i = 0; i < s.length; i++) {
+      // If a field is empty...
+
+      if (s[i].value == "") {
+        // add an "invalid" class to the field:
+
+        s[i].className += " invalid";
+        // and set the current valid status to false
+        valid = false;
+      }
+
+    }
+    for (i = 0; i < element.length; i++) {
+      // If a field is empty...
+
+      if (parseInt(element[i].value) == 0) {
+        // add an "invalid" class to the field:
+        element[i].className += " invalid";
+        // and set the current valid status to false
+        valid = false;
+      }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid) {
+      document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid; // return the valid status
+  }
+
+  function fixStepIndicator(n) {
+    // This function removes the "active" class of all steps...
+    var i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(" active", "");
+    }
+    //... and adds the "active" class on the current step:
+    x[n].className += " active";
+  }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: white;
+    }
+
+    /* #regForm {
+      background-color: #ffffff;
+      margin: 100px auto;
+      font-family: Raleway;
+      padding: 40px;
+      width: 100%;
+      min-width: 300px;
+    } */
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      font-size: 17px;
+      font-family: Raleway;
+      border: 1px solid #aaaaaa;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+      background-color: #ffdddd;
+    }
+    select.invalid {
+      background-color: #ffdddd;
+    }
+    /* Hide all steps by default: */
+    .tab {
+      display: none;
+    }
+
+    button {
+      background-color: #4788bf;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 17px;
+      font-family: Raleway;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbbbbb;
+      border: none;
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0.5;
+    }
+
+    .step.active {
+      opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+      background-color: #4788bf;
+    }
+    #more {
+        color: blue;
+        text-decoration: underline;
+    }
+    .more_information { color: blue; }
+    #title_process{
+
+
+        /* padding: 350px; */
+        /* height: auto; */
+        padding-top: 50px;
+
+
+
+    }
+    #profile-box{
+        padding-top: 50px;
+    }
+    #main-navbar{
+        background: #272833;
+    }
+
+    #title_process {
+        /* padding: 350px; */
+        /* height: auto; */
+        padding-top: 1px;
+    }
+    .title_process {
+      background-color: white;
+    }
+    #p{
+        position: absolute;
+        top: 24px;
+    }
+    .test{
+        position: absolute;
+        top: 30px;
+    }
+    #mapid { height: 180px;
+        width:100%;
+        height:400px;
+        }
+</style>
+  </body>
+</html>

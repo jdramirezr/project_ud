@@ -10,7 +10,25 @@
             </title>
     <style>
         .note {
-            padding: 20px;
+
+            margin-left: 30px;
+
+        }
+        .div-img {
+            height: 200px;
+            width: 300px;
+
+        }
+        .text {
+            height: 100px;
+            background: white;
+            position: relative;
+            top: -9px;
+        }
+        .text-name {
+            background: #eaeaea;
+            position: relative;
+            top: -9px;
         }
     </style>
 </head>
@@ -20,12 +38,12 @@
 					<nav id="nav">
 						<ul>
 							<li>
-								<a href="{% url 'page' %}">Inicio</a>
+								<a style="color:white;font-weight:bold" href="{% url 'page' %}">Inicio</a>
 
 							</li>
-							<li><a href="/users/calculate_process/">Calcular Processo</a></li>
+							<li><a style="color:white;font-weight:bold" href="/users/calculate_process/">Calcular Processo</a></li>
 
-							<li><a href="/users/login/" class="">Ingresar</a></li>
+							<li><a  style="color:white;font-weight:bold" href="/users/login/" class="">Ingresar</a></li>
 						</ul>
 					</nav>
                 </header>
@@ -38,29 +56,35 @@
                     <h2 style="text-align: center;" >Metodos complementarios</h2>
 
                     <div style="display:flex">
+                        <a href="{% url 'soil' %}">
+                            <div class="note" >
+                                <div >
+                                    <img class="div-img" src="/static/images/mapa1.png">
+                                </div>
+                                <div class="text">
+                                    asdasdasd
+
+                                </div>
+                                <div class="text-name">yyyy</div>
+                            </div>
+                        </a>
+                        <a href="{% url 'weight' %}" >
+                            <div class="note">
+                                <div  >
+                                    <img class="div-img" src="/static/images/1_base.png">
+                                </div>
+                                <div class="text">
+                                    asdasdasd
+                                </div>
+                            </div>
+                        </a>
                         <div class="note">
-                            <div>
-                                <img src="/static/images/1_base.png">
+                            <div  >
+                                <img class="div-img" src="/static/images/1_base.png">
                             </div>
-                            <div>
-                             asdasdasd
+                            <div class="text">
+                                asdasdasd
                             </div>
-                        </div>
-                        <div class="note">
-                            <div>
-                                <img src="/static/images/1_base.png">
-                            </div>
-                            <div>
-                             asdasdasd
-                            </div>
-                        </div>
-                        <div class="note">
-                            <div>
-                                <img src="/static/images/1_base.png">
-                            </div>
-                            <div>
-                             asdasdasd
-                        </div>
 
 
 

@@ -36,6 +36,9 @@ class ProfileForm(forms.Form):
     cordenada_x = forms.FloatField(required=False)
     cordenada_y = forms.FloatField(required=False)
 
+class SoilForm(forms.Form):
+    cordenada_x = forms.FloatField(required=False)
+    cordenada_y = forms.FloatField(required=False)
 
 class IndiceForm(forms.Form):
     organization = forms.IntegerField()
