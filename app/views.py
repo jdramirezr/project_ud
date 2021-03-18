@@ -491,6 +491,14 @@ class Weight(View):
 
         placa_weight = round(placa_weight, 2)
 
+
+        print(response_weight.get('ancho_viga'))
+        print(response_weight.get('alto_viga'))
+        print(response_weight.get('largo_viga'))
+        print(response_weight.get('numero_viga'))
+        print('///////////////////////////////////')
+
+
         ancho_viga = response_weight.get('ancho_viga')
         alto_viga = response_weight.get('alto_viga')
         largo_viga = response_weight.get('largo_viga')

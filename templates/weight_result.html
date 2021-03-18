@@ -6,239 +6,67 @@
     <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
-    <title>Bogotá earthquake
+    <title>vulnerabilidad sísmica Bogotá
         </title>
+        <style>
+
+            #header {
+                background: rgba(39, 40, 51, 0.965);
+                box-shadow: 0 0 0.25em 0 rgb(0 0 0 / 25%);
+                cursor: default;
+                height: 3.5em;
+                left: 0;
+                line-height: 3.5em;
+
+                width: 100%;
+                z-index: 100;
+            }
+            #header nav {
+                position: absolute;
+                right: 5em;
+                top: 0;
+            }
+
+            #header nav ul li {
+                display: inline-block;
+                margin-left: 1em;
+            }
+            ul li span {
+                border: 0;
+                color: inherit;
+                display: inline-block;
+                height: inherit;
+                line-height: inherit;
+                outline: 0;
+            }
+        </style>
 <body>
 
-<div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
+    <div id="page-wrapper">
+        <header id="header">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a style="color:white;font-weight:bold" href="{% url 'page' %}">Inicio</a>
 
-    <a  href="{% url 'page' %}" style="color: white;  position:relative;
-    left:50px;
-    top:17px;
-    font-weight: bold;""
-    ><img   style="width: 20px" src="/static/img/home2.png"></a>
-    <a href="{% url 'logout' %}" style="color: white;  position:relative;
-    left:80px;
-    top:17px;
-    font-weight: bold;""><img style="width: 20px" src="/static/img/logout2.png"></a>
+                        </li>
+                        <li><a style="color:white;font-weight:bold" href="/users/inicio/">Calcular Proceso</a></li>
 
-</div>
+                        <li><a style="color:white;font-weight:bold" href="/users/login/" >Ingresar</a></li>
+                    </ul>
+                </nav>
+            </header>
 
+
+      </div>
 
 
 <h1 id="title_process">Método Nsr-10</h1>
 
 
-    <div class="col text-center">
-        <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
-    </div>
+
 <div class="col-lg-12" style="padding: 50px" id="property_0">
-        <!-- <div class="row">
-            <div class="col-sm-12" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                    EVALUACIÓN CUANTITATIVA
-            </div>
-        </div> -->
-        <div class="row">
-            <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px"> INFORMACIÓN CONSTRUCTIVA</span>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                    Grupo de uso:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ grupo }}
-            </div>
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                    Numero de pisos:
-                </div>
-                <div class="col-sm-3 data" >
-                    {{ floors }}
-                </div>
-
-
-        </div>
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                    Tipo de sistema estructural:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ type_construccion }}
-            </div>
-
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                    Altura entre pisos:
-                </div>
-                <div class="col-sm-3 data" >
-                    {{ height_floors }}
-                </div>
-
-        </div>
-
-        <!-- <div class="row">
-
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Total altura propiedad:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ height }}
-
-            </div>
-        </div> -->
-
-
-
-        <div class="row">
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Irregularidad en altura:</span>
-            </div>
-
-            <div class="col-sm-3 data-porcentage" >
-                {{ irregularidad_long }}
-            </div>
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Irregularidad en planta:</span>
-            </div>
-            <div class="col-sm-3 data-porcentage" >
-                {{ irregularidad_planta }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Fuerzas horizontales:</span>
-            </div>
-            <div class="col-sm-3 data-porcentage" >
-                {{ fuerza_horizontal }}
-            </div>
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Fuerzas verticales</span>
-            </div>
-            <div class="col-sm-3 data-porcentage" >
-                {{ fuerza_vertical }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white; ">
-                <span class="print" style="position: relative; top:10px">Comentarios:</span>
-            </div>
-            <div class="col-sm-9 data-porcentage" style="overflow: auto;" >
-                {{ comments }}
-            </div>
-
-        </div>
-
-<br>
-        <div class="row">
-            <div class="col-sm-12 " style="height: 40px" >
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">ESPECIFICACIÓN SUELOS</span>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Tipo de suelo:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ type_suelo }}
-            </div>
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Velocidad onda:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ velocidad_onda }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Fa:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ fa }}
-            </div>
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Humedad_Promedio:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ Humedad_Promedio }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Fv:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ fv }}
-            </div>
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Efectos relacionados
-            </div>
-            <div class="col-sm-3 data" >
-                {{ Efectos_relacionados }}
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Espesor deposito:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ Espesor_deposito }}
-            </div>
-            <div class="col-sm-6 print"  style=" text-align: center; background: #525573; color: white ">
-                Ubicación
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Periodo suelo:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ Periodo_suelo }}
-            </div>
-            <div class="col-sm-3 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                Cordenada x:
-            </div>
-            <div class="col-sm-3 data" >
-                {{ cordenada_x }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Descripción geotecnica:</span>
-            </div>
-            <div class="col-sm-3 data-porcentage" style="overflow: auto;" >
-                {{ descripcion_geotecnica }}
-            </div>
-            <div class="col-sm-3 data-porcentage print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-                <span class="print" style="position: relative; top:10px">Cordenada y:</span>
-            </div>
-            <div class="col-sm-3 data-porcentage"  >
-                <span style="position: relative; top:10px">   {{ cordenada_y }}</span>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-12 " style="height: 40px" >
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
                 <span class="print" style="position: relative; top:10px">CARGAS MUERTAS</span>
@@ -929,85 +757,13 @@
 <br>
 <br>
 
-<div class="row">
-    <div class="col-sm-12 data-title print" style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        <span class="print" style="position: relative; top:10px">MÉTODO FUERZA EQUIVALENTE</span>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        To
-    </div>
-    <div class="col-sm-2 data" >
-        {{ To }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-            T
-    </div>
-    <div class="col-sm-2 data" >
-        {{ T }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        Vs(KN)
-    </div>
-    <div class="col-sm-2 data" >
-        {{ Vs }}
-    </div>
-
-
-</div>
-
-<div class="row">
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-           Tc
-    </div>
-    <div class="col-sm-2 data" >
-        {{ Tc }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        K
-    </div>
-    <div class="col-sm-2 data" >
-        {{ K }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        R’
-    </div>
-    <div class="col-sm-2 data" >
-        {{ r_prima }}
-    </div>
-
-
-</div>
-
-<div class="row">
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-           Tl
-    </div>
-    <div class="col-sm-2 data" >
-        {{ Tl }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-            Sa
-    </div>
-    <div class="col-sm-2 data" >
-        {{ Sa }}
-    </div>
-    <div class="col-sm-2 data print"  style="border: 0.2px solid #525573; text-align: center; background: #525573; color: white">
-        E
-    </div>
-    <div class="col-sm-2 data" >
-        {{ E }}
-    </div>
-
-
-</div>
-<br>
 
 
 
 
-
+<div class="col text-center">
+    <button onclick=window.print() type="button" class="btn btn-default">Guardar</button>
+</div>s
 
 
 
@@ -1021,7 +777,7 @@
             text-align: center;
         }
         body {
-          background-color: white;
+          background-color: #f6f6f6;
         }
 
         h1 {

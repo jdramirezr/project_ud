@@ -51,7 +51,8 @@ $(document).ready(function(){
 
 
 
-    $(document).on ("click", '#type_placa_facil', function( event ){
+    $(document).on ("change", '#type_placa_facil', function( event ){
+        console.log('//////////////////////////entroooooooooo')
         if ($('#type_placa_facil').serialize().split("=")[1] == "Placa"){
 
             $('#placa_0').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de placas:</label><input class="form-control count" type="number" name="num_placa" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
@@ -86,7 +87,7 @@ $(document).ready(function(){
 
 
 
-    $(document).on ("click", '#type_placa_1', function( event ){
+    $(document).on ("change", '#type_placa_1', function( event ){
         event.preventDefault();
         console.log($('#type_placa_1').serialize().split("=")[1])
         if ($('#type_placa_1').serialize().split("=")[1] == "Placa_Facil"){
@@ -122,7 +123,7 @@ $(document).ready(function(){
     })
 
 
-    $(document).on ("click", '#type_placa_facil_1', function( event ){
+    $(document).on ("change", '#type_placa_facil_1', function( event ){
         if ($('#type_placa_facil_1').serialize().split("=")[1] == "Placa"){
 
             $('#placa_1').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa_1" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil_1" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de placas:</label><input class="form-control count" type="number" name="num_placa" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')
@@ -144,7 +145,7 @@ $(document).ready(function(){
 
 
 
-    $(document).on ("click", '#type_placa_2', function( event ){
+    $(document).on ("change", '#type_placa_2', function( event ){
         event.preventDefault();
         console.log($('#type_placa_2').serialize().split("=")[1])
         if ($('#type_placa_2').serialize().split("=")[1] == "Placa_Facil"){
@@ -181,7 +182,7 @@ $(document).ready(function(){
     })
 
 
-    $(document).on ("click", '#type_placa_facil_2', function( event ){
+    $(document).on ("change", '#type_placa_facil_2', function( event ){
         if ($('#type_placa_facil_2').serialize().split("=")[1] == "Placa"){
 
             $('#placa_2').html('<div class="col-sm-2"><div class="form-group"><label>Tipo de Placa:</label><select class="form-control" name="type_placa" id="type_placa_2" required><option name="Placa_Aligerada" value="Placa_Aligerada">Aligerada</option><option name="Placa_Maciza" value="Placa_Maciza">Maciza</option><option name="Placa_Facil" value="Placa_Facil" selected>Facil</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Tipo:</label><select class="form-control" name="type_placa_facil" id="type_placa_facil_2" required><option name="Placa" value="Placa" selected>Placa</option><option name="Bloquelon" value="Bloquelon">Bloquelon</option><option name="Perfil_Metalico" value="Perfil_Metalico">Perfil Metalico</option></select></div></div><div class="col-sm-2"><div class="form-group"><label>Ancho:</label><input class="form-control" type="number" name="placa_x" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Largo:</label><input class="form-control" type="number" name="placa_y" step=".001" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label># de placas:</label><input class="form-control count" type="number" name="num_placa" min="0" required></div></div><div class="col-sm-2"><div class="form-group"><label>Espesor:</label><input class="form-control" type="number" name="z_placa_facil" step=".001" min="0" required></div></div>')

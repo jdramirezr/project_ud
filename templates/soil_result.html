@@ -5,24 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/bootstrap2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <link rel='shortcut icon' type='image/x-icon' href='/static/img/earthquake.png' />
     <title>Bogotá earthquake
         </title>
+        <style>
+            #page-wrapper {
+                padding-top: 3.5em;
+            }
+            #header {
+                background: rgba(39, 40, 51, 0.965);
+                box-shadow: 0 0 0.25em 0 rgb(0 0 0 / 25%);
+                cursor: default;
+                height: 3.5em;
+                left: 0;
+                line-height: 3.5em;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 100;
+            }
+            #header nav {
+                position: absolute;
+                right: 5em;
+                top: 0;
+            }
+
+            #header nav ul li {
+                display: inline-block;
+                margin-left: 1em;
+            }
+            ul li span {
+                border: 0;
+                color: inherit;
+                display: inline-block;
+                height: inherit;
+                line-height: inherit;
+                outline: 0;
+            }
+        </style>
 <body>
 
-<div style="width: 100%;  height:60px; background: #272833" id="main-navbar">
+    <div id="page-wrapper">
+        <header id="header">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a style="color:white;font-weight:bold" href="{% url 'page' %}">Inicio</a>
 
-    <a  href="{% url 'page' %}" style="color: white;  position:relative;
-    left:50px;
-    top:17px;
-    font-weight: bold;""
-    ><img   style="width: 20px" src="/static/img/home2.png"></a>
-    <a href="{% url 'logout' %}" style="color: white;  position:relative;
-    left:80px;
-    top:17px;
-    font-weight: bold;""><img style="width: 20px" src="/static/img/logout2.png"></a>
+                        </li>
+                        <li><a style="color:white;font-weight:bold" href="/users/inicio/">Calcular Proceso</a></li>
 
-</div>
+                        <li><a style="color:white;font-weight:bold" href="/users/login/" >Ingresar</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+
+      </div>
 
 
 
@@ -159,7 +199,7 @@
             text-align: center;
         }
         body {
-          background-color: white;
+          background-color: #f6f6f6;
         }
 
         h1 {

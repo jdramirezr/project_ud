@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="/static/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/static/assets/css/noscript.css" /></noscript>
-		<title>Bogotá earthquake
+		<title>vulnerabilidad sísmica Bogotá
             </title>
     <style>
+        html {
+            background: #272833
+        }
         .note {
 
             margin-left: 30px;
@@ -20,10 +23,9 @@
 
         }
         .text {
-            height: 100px;
-            background: white;
-            position: relative;
-            top: -9px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
         }
         .text-name {
             background: #eaeaea;
@@ -41,7 +43,7 @@
 								<a style="color:white;font-weight:bold" href="{% url 'page' %}">Inicio</a>
 
 							</li>
-							<li><a style="color:white;font-weight:bold" href="/users/calculate_process/">Calcular Processo</a></li>
+							<li><a style="color:white;font-weight:bold" href="/users/inicio/">Calcular Proceso</a></li>
 
 							<li><a  style="color:white;font-weight:bold" href="/users/login/" class="">Ingresar</a></li>
 						</ul>
@@ -50,48 +52,44 @@
 
 
     </div>
-    <section id="banner" style="background-image: none;">
-            <div class="content" >
-                <header >
-                    <h2 style="text-align: center;" >Metodos complementarios</h2>
+    <h2 style="text-align: center;margin-top: 50px;" >Metodos complementarios</h2>
 
-                    <div style="display:flex">
-                        <a href="{% url 'soil' %}">
-                            <div class="note" >
-                                <div >
-                                    <img class="div-img" src="/static/images/mapa1.png">
-                                </div>
-                                <div class="text">
-                                    asdasdasd
+    <div style="justify-content: center;display: flex;">
+        <div style="display: inline-block;margin-left: 50px;width: 310px;height: 300px;">
+        <a href="{% url 'soil' %}">
 
-                                </div>
-                                <div class="text-name">yyyy</div>
-                            </div>
-                        </a>
-                        <a href="{% url 'weight' %}" >
-                            <div class="note">
-                                <div  >
-                                    <img class="div-img" src="/static/images/1_base.png">
-                                </div>
-                                <div class="text">
-                                    asdasdasd
-                                </div>
-                            </div>
-                        </a>
-                        <div class="note">
-                            <div  >
-                                <img class="div-img" src="/static/images/1_base.png">
-                            </div>
-                            <div class="text">
-                                asdasdasd
-                            </div>
+                <div >
+                    <img class="div-img" src="/static/images/mapa1.png">
+                </div>
+                <div class="text">
 
+                    Especificaciónes de suelos
+                </div>
 
+        </a>
+                <div style="text-align: center;">
 
+                    Valores de la respuesta sísmica de los suelos de la cuidad de Bogotá D.C
+                </div>
+        </div>
+
+        <div  style="display: inline-block;margin-left: 50px;width: 310px;height: 300px;">
+            <a href="{% url 'weight' %}" >
+
+                    <div  >
+                        <img class="div-img" src="/static/images/1_base.png">
                     </div>
-                </header>
+                    <div class="text">
+                        Calculo de cargas
+                    </div>
+
+            </a>
+            <div style="text-align: center; ">
+
+                Proceso calculo de cargas vivas y muerta para una vivienda según la Nsr-10
             </div>
-        </section>
+        </div>
+    </div>
 
 </body>
 <style>
